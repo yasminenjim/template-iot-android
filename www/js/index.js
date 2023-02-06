@@ -28,5 +28,31 @@ const login = () => {
 
 //************************************************//
 
+
+// Get the scan button
+var scanButton = document.getElementById("scanButton");
+
+// Add an event listener to start a scan when the button is clicked
+scanButton.addEventListener("click", function() {
+  // Start a scan for nearby Bluetooth devices
+  bluetooth.startScan(function(devices) {
+    // Get the device list element
+    var list = document.getElementById("deviceList");
+
+    // Clear the current list of devices
+    list.innerHTML = "";
+
+    // Loop through the array of devices
+    devices.forEach(function(device) {
+      // Create a new list item for the device
+      var item = document.createElement("li");
+      item.innerHTML = device.name + " (" + device.address + ")";
+
+      // Add the item to the list
+      list.appendChild(item);
+    });
+  });
+});
+
 //**************************************************************** */
  
