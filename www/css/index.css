@@ -1,0 +1,69 @@
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+#login{
+  background-color: #ffffff; /* Green */
+  color: rgb(130, 128, 128);
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  width: 230px;
+  height: 50px;
+  border-radius: 25px;
+  text-align: center;
+  line-height: 50px;
+}
+
+#username{
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  color: #ff0000;
+
+}
+
+
+.icon{
+  animation: vibrate 3s ease-in-out 10s alternate infinite;
+}
+
+
+@keyframes vibrate {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-10px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+}
+
+.card {
+  
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+
+}
+
+.toolbar-background {
+  background-color: #232a2d;
+}

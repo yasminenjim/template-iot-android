@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.frenell" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>lottie</name>
+    <description>Sample Apache Cordova App</description>
+    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+<platform name="android">
+    <splash src="res/screen/android/bluetooth.png" density="land-hdpi" />
+    <splash src="res/screen/android/bluetooth.png" density="land-ldpi" />
+    <splash src="res/screen/android/bluetooth.png" density="land-mdpi" />
+    <splash src="res/screen/android/bluetooth.png" density="land-xhdpi" />
+    <splash src="res/screen/android/bluetooth.png" density="land-xxhdpi" />
+    <splash src="res/screen/android/bluetooth.png" density="land-xxxhdpi" />
+
+    <splash src="res/screen/android/bluetooth.png" density="port-hdpi" />
+    <splash src="res/screen/android/bluetooth.png" density="port-ldpi" />
+    <splash src="res/screen/android/bluetooth.png" density="port-mdpi" />
+    <splash src="res/screen/android/bluetooth.png" density="port-xhdpi" />
+    <splash src="res/screen/android/bluetooth.png" density="port-xxhdpi" />
+    <splash src="res/screen/android/bluetooth.png" density="port-xxxhdpi" /> 
+</platform>
+<!-- Configuration using MRT concept (Recommended, see "Windows-specific information" section for details): -->
+
+
+<!-- Configuration using image size: -->
+<!--<platform name="windows">
+    <splash src="res/screen/windows/splashscreen.png" width="620" height="300"/>
+    <splash src="res/screen/windows/splashscreenphone.png" width="1152" height="1920"/>
+</platform>-->
+
+<preference name="SplashScreenDelay" value="2000" />
+
+</widget>

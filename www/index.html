@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="vendor/OnsenUI/css/onsenui.css">
+	    	<link rel="stylesheet" type="text/css" href="vendor/OnsenUI/css/onsen-css-components.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <title>template</title>
+        <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    
+      </head>
+    <body>
+    <ons-navigator id="navigator" >
+      <ons-page >
+        <div class="background-image" style="background-image: url(../img/frenell_angebot.jpg);"></div>
+        <div class="content">
+          
+        <div style="text-align: center; margin-top: 300px">
+        <p>
+          <ons-input id="username" placeholder="Username" modifier="underbar" style="color:rgb(255, 255, 255);"></ons-input>
+        </p>
+      
+        <p>
+          <ons-input id="password" placeholder="Password"type="password" modifier="underbar" style="color:rgb(255, 255, 255);"></ons-input>
+        </p>
+      
+        <p>
+          <ons-button id="login" onclick="login()">Sign in</ons-button>
+        </p>
+        </div>
+        </div>
+      
+      </ons-page>
+    </ons-navigator>
+      
+
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+		    <script type="text/javascript" src="vendor/jquery/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="vendor/OnsenUI/js/onsenui.js"></script>
+       
+    </body>
+</html>

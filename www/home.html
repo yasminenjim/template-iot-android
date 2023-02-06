@@ -1,0 +1,103 @@
+
+<ons-page id="home" style="text-align: center;">
+ <ons-toolbar class="toolbar-background" >
+    <div class="left">
+      <ons-toolbar-button>
+        <span style="color: rgb(243, 246, 247);">
+        <i class="fa-solid fa-bars"></i>
+      </span>
+      </ons-toolbar-button>
+    </div>
+
+
+    <div class="right">
+  <ons-toolbar-button>  
+  <span style="color: rgb(255, 255, 255);">
+    <i class="fa-solid fa-bell"></i>
+  </span>
+  </ons-toolbar-button>
+</div>
+
+    <div class="center" style="color:rgb(255, 255, 255);">Home</div>
+  </ons-toolbar>
+   <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; margin: 50px auto;">
+     <div style="width: 40%; margin: 1%;">
+       <ons-card style="text-align: center;" onclick="navigateToBluetooth()">
+        <!--this is done with Font Awesome library-->
+        <span style="color: rgb(68, 160, 207);">
+         <i class="icon fa-brands fa-bluetooth" style="font-size: 36px;"></i>
+         </span>
+         <p>Bluetooth</p>
+       </ons-card>
+     </div>
+     <div style="width: 40%; margin: 1%;">
+       <ons-card style="text-align: center;">
+        <span style="color: rgb(68, 160, 207);">
+         <i class="icon fa-regular fa-file" style="font-size: 36px;"></i>
+         </span>
+         <p>Logs</p>
+       </ons-card>
+     </div>
+     <div style="width: 40%; margin: 1%;">
+       <ons-card style="text-align: center;">
+        <span style="color: rgb(68, 160, 207);">
+         <i class="icon fa-solid fa-gear" style="font-size: 36px;"></i>
+        </span>
+         <p>Configuration</p>
+       </ons-card>
+     </div>
+    <div style="width: 40%; margin: 1%;">
+       <ons-card style="text-align: center;">
+        <span style="color: rgb(68, 160, 207);">
+         <i class="icon fa-solid fa-barcode" style="font-size: 36px;"></i>
+         </span>
+         <p>Serial Number</p>
+       </ons-card>
+     </div>
+     <div style="width: 40%; margin: 1%;">
+       <ons-card style="text-align: center;">
+        <span style="color: rgb(68, 160, 207);">
+         <i class="icon fa-solid fa-chart-simple" style="font-size: 36px;"></i>
+         </span>
+         <p>Dashboard</p>
+       </ons-card>
+     </div>
+     <div style="width: 40%; margin: 1%;">
+       <ons-card style="text-align: center;">
+      
+          <span style="color: rgb(68, 160, 207);">
+         <i class="icon fa-regular fa-file" style="font-size: 36px; "></i>
+        </span>
+      
+         <p>File</p>
+       </ons-card>
+     </div>
+     <div style="width: 40%; margin: 1%;">
+      <ons-card style="text-align: center;">
+     
+         <span style="color: rgb(68, 160, 207);">
+        <i class="icon fa-regular fa-file" style="font-size: 36px; "></i>
+       </span>
+     
+        <p>File</p>
+      </ons-card>
+    </div>
+    <div style="width: 40%; margin: 1%;">
+      <ons-card style="text-align: center;">
+     
+         <span style="color: rgb(68, 160, 207);">
+        <i class="icon fa-regular fa-file" style="font-size: 36px; "></i>
+       </span>
+     
+        <p>File</p>
+      </ons-card>
+    </div>
+    
+   </div>
+   <script>
+    function navigateToBluetooth() {
+      document.querySelector('ons-navigator').pushPage('bluetooth.html');
+    }
+  </script>
+ </ons-page>
+ 
