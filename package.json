@@ -1,6 +1,6 @@
 {
   "name": "com.frenell",
-  "displayName": "lottie",
+  "displayName": "Template",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
@@ -15,7 +15,6 @@
   "devDependencies": {
     "cordova-android": "^10.1.2",
     "cordova-browser": "^6.0.0",
-    "cordova-plugin-bluetoothle": "^6.7.2",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-splashscreen": "^6.0.2",
     "cordova.plugins.diagnostic": "^7.1.1"
@@ -26,13 +25,17 @@
       "browser"
     ],
     "plugins": {
-      "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-bluetoothle": {},
+      "cordova-plugin-camera": {
+        "ANDROIDX_CORE_VERSION": "1.6.+"
+      },
       "cordova.plugins.diagnostic": {
+        "ACCESS_BACKGROUND_LOCATION": "true",
         "ANDROIDX_VERSION": "1.0.0",
         "ANDROIDX_APPCOMPAT_VERSION": "1.3.1"
-      }
+      },
+      "cordova-plugin-bluetoothle": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {}
     }
   },
   "dependencies": {
@@ -40,6 +43,7 @@
     "chart.js": "^4.2.0",
     "cordova-plugin-lottie-splashscreen": "^0.9.6",
     "d3": "^7.8.2",
-    "gsap": "^3.11.4"
+    "gsap": "^3.11.4",
+	 "cordova-plugin-bluetoothle": "^6.7.2"
   }
 }
