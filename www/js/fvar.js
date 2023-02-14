@@ -2,7 +2,7 @@ var fvar = (function() {
     var onjson_; // function to call if json comes in
     var functions = {};
     var vars2 = {};
-
+    var fv={}; // fvars as parsed
     function log(txt) {
         if (functions.log) functions.log(txt);
     }
@@ -71,9 +71,11 @@ var fvar = (function() {
         }
     }
     //-----------------------------------------------------------------------------
-    function scanforfvars() {
-        var fvars = document.querySelectorAll("[fvar]");
-
+    function scanforfvars(o) {
+	    var scanobj=document;
+	    if (o) scanobj=o;
+	    var fvars = scanobj.querySelectorAll("[fvar]");
+           console.log("scanforvars "+fvars.length+"  ");//+JSON.stringify(vars2));
         for (var i = 0; i < fvars.length; i++) {
             var tagName = fvars[i].tagName;
             var fid = fvars[i].id;
@@ -111,6 +113,7 @@ var fvar = (function() {
         }
 
         //console.log("vars2 " + JSON.stringify(vars2));
+     return this;
     }
     //-----------------------------------------------------------------------------
     //add object from fvar="{object}"  
@@ -213,12 +216,18 @@ var fvar = (function() {
         //mylog("parsejson "+JSON.stringify(jo));
         if (onjson_) onjson_(jo);
         setfvar(vars2, jo);
-        //mylog("*");
+        Object.assign(fv,jo); 
+	 //mylog("*");
         return;
     }
     //-----------------------------------------------------------------------------
+    function update(){
+     if (onjson_) onjson_(vars2);
+     setfvar(vars2,fv);	  
+     return;	    
+    }
+    //-----------------------------------------------------------------------------
     function addfnc2var(jo) {
-       mylog("fnc2var");
         addobj(jo, vars2);
     }
     //-----------------------------------------------------------------------------
@@ -232,7 +241,7 @@ var fvar = (function() {
     }
     //-----------------------------------------------------------------------------
     function getfvars() {
-        return vars2;
+        return fv;
     }
     //-----------------------------------------------------------------------------
     function getfvar(name){
@@ -253,7 +262,8 @@ var fvar = (function() {
         scan: scanforfvars,
         addfnc2var: addfnc2var,
         addfunc: addfunc,
-        parse: parsejson,
+        update: update,
+	parse: parsejson,
         onjson: addonjson,
         getvars: getfvars,
         getvar: getfvar

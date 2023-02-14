@@ -1,28 +1,32 @@
-
 <ons-page id="home" style="text-align: center;">
  <ons-toolbar class="toolbar-background" >
     <div class="left">
-      <ons-toolbar-button id="toggle-sidebar">
+	    <!-- toggle splitter -->
+	    <ons-toolbar-button role="button" component="button/menu"
+				       onclick="togglesplitter();">
         <span style="color: rgb(243, 246, 247);">
         <i class="fa-solid fa-bars"></i>
       </span>
       </ons-toolbar-button>
     </div>
-
-
-    <div class="right">
-  <ons-toolbar-button>  
-  <span style="color: rgb(255, 255, 255);">
-    <i class="fa-solid fa-bell"></i>
-  </span>
-  </ons-toolbar-button>
 </div>
 
     <div class="center" style="color:rgb(255, 255, 255);">Home</div>
+    
+    <div class="right"  onclick="navigatetopage('./pages/bluetooth.html');"  >
+     <span id="btconnectto" style="color:white"></span>   	    
+     <ons-icon id="bticononhome"   class="mx-auto" icon="fa-bluetooth-b" aria-hidden="true" size="28px"
+     style="color:white;"   ></ons-icon>
+     </div>	    
   </ons-toolbar>
+
+
+  <!--   -->           
+
+
    <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; margin: 50px auto;">
      <div style="width: 40%; margin: 1%;">
-       <ons-card style="text-align: center;" onclick="navigateToBluetooth()">
+       <ons-card style="text-align: center;" onclick='navigatetopage("./pages/bluetooth.html");'>
         <!--this is done with Font Awesome library-->
         <span style="color: rgb(68, 160, 207);">
          <i class="icon fa-brands fa-bluetooth" style="font-size: 36px;"></i>
@@ -31,15 +35,15 @@
        </ons-card>
      </div>
      <div style="width: 40%; margin: 1%;">
-       <ons-card style="text-align: center;">
+       <ons-card style="text-align: center;"  onclick='navigatetopage("./pages/testpage.html");'>
         <span style="color: rgb(68, 160, 207);">
          <i class="icon fa-regular fa-file" style="font-size: 36px;"></i>
          </span>
-         <p>Logs</p>
+         <p>Testpage</p>
        </ons-card>
      </div>
      <div style="width: 40%; margin: 1%;">
-       <ons-card style="text-align: center;">
+       <ons-card style="text-align: center;" onclick="navigatetopage('testhome.html')" >
         <span style="color: rgb(68, 160, 207);">
          <i class="icon fa-solid fa-gear" style="font-size: 36px;"></i>
         </span>
@@ -73,31 +77,35 @@
        </ons-card>
      </div>
      <div style="width: 40%; margin: 1%;">
-      <ons-card style="text-align: center;">
+	     <ons-card style="text-align: center;" onclick="fble.sendjson({a:1,b:2,txt:'foo'})" >
      
          <span style="color: rgb(68, 160, 207);">
         <i class="icon fa-regular fa-file" style="font-size: 36px; "></i>
        </span>
      
-        <p>File</p>
+        <p>send via bt</p>
       </ons-card>
     </div>
     <div style="width: 40%; margin: 1%;">
       <ons-card style="text-align: center;">
      
-         <span style="color: rgb(68, 160, 207);">
-        <i class="icon fa-regular fa-file" style="font-size: 36px; "></i>
-       </span>
-     
-        <p>File</p>
+       <span style="color: rgb(68, 160, 207);" fvar='{name:"data.ctr"}' ></span> | 
+
+       <div style="font-size:30px;" fvar='{name:"data.r",digits:1}'> </div> 
       </ons-card>
     </div>
-    
+     
+       
    </div>
    <script>
-    function navigateToBluetooth() {
-      document.querySelector('ons-navigator').pushPage('bluetooth.html');
-    }
+    
+     ons.getScriptPage().onInit = function() {
+	                                      console.log("home onInit "); 
+                                            }; 	  
+  function togglesplitter(){
+   console.log("toggle");
+  var s=document.getElementById('appSplitter');s.left.toggle().then((r)=>{fvar.scan(s).update();console.log("splitter updated");});
+  }
   </script>
  </ons-page>
  

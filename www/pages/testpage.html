@@ -1,0 +1,40 @@
+<ons-page id="testpage"  >
+    <ons-toolbar class="toolbar-background" >
+      <div class="left">
+        <ons-back-button>Back</ons-back-button>
+      </div>
+     
+    <div class="center" style="color:rgb(255, 255, 255);">TestPage</div>
+
+    <div class="right">
+   <ons-toolbar-button onclick='gohome();' >  
+   <span style="color: rgb(255, 255, 255);">
+    <i class="fa-solid fa-home"></i>
+  </span>
+  </ons-toolbar-button>
+</div>
+
+      </ons-toolbar>
+
+  
+
+		    <ons-tabbar 
+		      swipeable 
+		      id="appTabbar"
+		      class="tabbarPosition tabbarStyle"
+		      animation-options="{duration: 0.4, delay: 0.0, timing: 'ease-in'}" 
+		      position="bottom" 
+		      ignore-edge-width="20">
+		      <ons-tab label="page1" icon="fa-bluetooth-b" style="height: 62%;" page="./pages/page1.html">
+		      </ons-tab>
+		      <ons-tab label="page2" icon="fa-sliders-h" style="height: 62%;" page="./pages/page2.html">
+		      </ons-tab>
+		      <ons-tab label="page3" icon="clock" style="height: 62%;"  page="./pages/page3.html">
+		      </ons-tab>
+		    </ons-tabbar>
+
+ <script> 
+  console.log("loading testpage");	 
+  ons.getScriptPage().onInit = function() {console.log("testpage onInit "); };       
+ </script>  
+</ons-page>

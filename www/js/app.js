@@ -1,128 +1,66 @@
-/*
- app related stuff
+console.log("loading app.js");	
 
-add functions wo docelement
-fvar.addfnc2var({name:"data.di",fnc:difnc});
-*/
-
-//-----------------------------------------------------------------------------
-var startdate=new Date(); 
-var b_log=true;
-var lstsend=Date.now();
-var dtapploop=1000; //ms
-var ctr=0;
-var datactr=0;
-//-----------------------------------------------------------------------------
-//-----------------------------------------------------------------------------
-//-----------------------------------------------------------------------------
 function onappstart(){
-fvar.scan(); 
-fvar.addfunc("log", mylog); 
-fvar.addfunc("sendbtjson", fble.sendjson); 	
-// tabs	
-//document.getElementById("mainbt").addEventListener("click",openTab,false); 
-//document.getElementById("settingsbt").addEventListener("click",openTab,false);
-//document.getElementById("btoothbt").addEventListener("click",openTab,false);
-/***
-document.addEventListener('prepush', function(event) {
-	var page = event.target.topPage;
-	if (page.id === 'bluetooth') {
-	  var btScanButton = page.querySelector('#bt_scan');
-	  btScanButton.addEventListener('click', function() {
-		// Perform the Bluetooth scan here
-	  });
-	}
-  }); ***/
-//document.getElementById("debugbt").addEventListener("click",openTab,false);
-//set btooth tab
-//document.getElementById("btooth").style.display = "block";
-//---------------------------------------------------------------------------
-//you can change the parametres when you call fble function
-fble.config({btservice:"7f190f68-2749-493c-947f-193fe27fd4cb",btnamefilter:"ble"});  
+console.log("we are on "+cordova.platformId);
 
-if (cordova.platformId === "android") {
-
-	
-	
-fble.onsubscribed(function(){
-	                console.log("we subscribed to bt server"); 
-                        fble.readchar("2002"); 
-                        openTab("no","main"); //
-                        });
-
-fble.ondisconnected(function(){
-	                console.log("we disconnected from bt server"); 
-	                var d=document.getElementById("irel"); 
-	                d.style.background="red";
-                         });
-fble.ongotjson(function(jo,ch){
-
-fvar.parse(jo);	
-	
-//console.log("got json "+JSON.stringify(jo));
-if (jo.hasOwnProperty("whatever")) {
-
-	 return;
-	                           }
-
-});
-fble.start();  
-}
+/*
+  skip login
+  go directly
+*/
+setTimeout(login(),200);
 
 
-var el = document.getElementById('jsontest');
-if(el){
-  el.addEventListener('keypress', fble.testjson, false);
-}
-
-
-/* document.getElementById("jsontest").addEventListener("keypress",fble.testjson,false);
-console.log("btstarted"); 	 */
-//-----------------------------------------------------------------------------
-//send "reboot" to the esp32
-
-/* document.getElementById("bt_restart").addEventListener("click",function(e){
-if (!confirm("restart esp?")) return;
-
-fble.sendjson({"reboot":true});  
-},false);
- */
-
-
-
-
-startapploop();
+// crobot 7f190f68-2749-493c-947f-178fe27fd4bc
+// youvee  7f190f68-2749-493c-947f-193fe27fd4bc
+// igauge 7f190f68-2749-493c-947f-193fe27fd4cb
+// bletest 7f190f68-2749-493c-947f-193fe27fd4cb
+fble.config({btservice:"7f190f68-2749-493c-947f-193fe27fd4cb",mtu:200});   
+if (cordova.platformId === "android") { 	
+fble.start();
+}	
+fvar.addfunc("sendbtjson", fble.sendjson);  
+fble.ongotjson(onjson);  
 
 }
 //-----------------------------------------------------------------------------
-function apploop(){
-ctr++;
-if (cordova.platformId === "android") {
-
- if(ctr%5==0) fble.getrssi();  
- if (ctr%11==0) fble.readchar("2002");
- 
-}
+function apponsubscribed(){
+fble.sendjson({act:"info"});
 }
 //-----------------------------------------------------------------------------
-//
-function startapploop(){
-
-window.setInterval(function(){
-
-apploop();
-} ,dtapploop); // intervall
+function onjson(o,ch){
+//console.log("onjsonfunc  "+JSON.stringify(o));
+fvar.parse(o);
+let e=document.getElementById("char2001");
+if (e) {
+	e.innerHTML=JSON.stringify(o);
+       }
 }
 //-----------------------------------------------------------------------------
+function inputkeydown(e){
+                  let t=e.currentTarget;
+		  //console.log("onkeydown "+t.id+" "+e.keyCode+"  "+t.value);
+                  if (e.keyCode==13) {
+			        console.log("return with "+t.value);
+                          try {
+			  let o=JSON.parse(t.value);	  
+			  onjson(o);
+			  toast(t.value);	  
+			  }
+			  catch (e){
+				   toast("no json");
+				  console.log("no json "+e); 
+			  }
+		   }
+		}
 //-----------------------------------------------------------------------------
-function testbt(){
-//sendbt("hallo bt\n");
-var o={bla:1};	
-fble.sendjson(o);	
+
+function tactile(d){
+if (!d) d=60;
+//console.log("tacile "+cordova.platformId); 	
+	     if (cordova.platformId.indexOf("ios")==0) {
+		      if (window.TapticEngine)  TapticEngine.unofficial.weakBoom();
+		                      }
+	     if (cordova.platformId.indexOf("android")==0){
+	    navigator.vibrate(d);
+		  }
 }
-//-----------------------------------------------------------------------------
-
-
-
-
-

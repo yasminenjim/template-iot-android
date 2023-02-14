@@ -1,0 +1,13 @@
+  ons-input input {
+    width: 300px;
+    font-size: 36px;
+  }
+
+  .biginput input {
+   width:100% !important;
+   font-size: 36px !important;
+   height: 54px;
+
+
+  }
+

@@ -1,0 +1,190 @@
+<ons-page style="background-color: aqua;">
+ <ons-toolbar class="toolbar-background" >
+  <div class="left">
+    <ons-back-button>Back</ons-back-button>
+     </div>
+     <div class="center" style="color:rgb(255, 255, 255);">Bluetooth</div>
+    <div class="right">
+   <ons-toolbar-button onclick='gohome();' >  
+   <span style="color: rgb(255, 255, 255);">
+    <i class="fa-solid fa-home"></i>
+  </span>
+  </ons-toolbar-button>
+ </div>
+</ons-toolbar>
+  
+<div class="bluetooth-container">
+	<div class="bluetooth-header">
+	  <h1>Bluetooth Devices</h1>
+	  <button id="scanButton" onclick="scanforble()">Scan</button>
+	</div>
+   </div>
+
+
+   <div class="center" >  
+<ons-icon id="btscanspinner" icon="fa-spinner"  spin> </ons-icon>  
+   </div>
+<br>
+<ons-button disabled="true"  id="btdisconnect" modifier="large" onclick="disconnect(event)"   >
+   disconnect</ons-button>      
+<br>
+
+<br>
+
+			<ons-list id="btscandiv" class="background-grey mt-3">
+
+			</ons-list>
+
+	<br>
+	<br>
+	<hr>
+	
+	<div class="outer-circle">
+		<div class="inner-circle">
+<div class="icon-ble-scan">
+	<span style="color: rgb(68, 160, 207);">
+		<i class="fas fa-bluetooth"></i>
+		</span>
+		</div>
+		</div>
+	</div>
+	
+	<br>
+
+	<span id="char2001" ></span> <br>
+
+
+<script>
+	
+//-----------------------------------------------------------------------------
+console.log("load Bluetooth ");
+
+/*
+ons.getScriptPage().onInit = function() {
+console.log("bluetooth.html  onInit "); 
+};
+*/
+
+// if scanning ?
+$('#btscanspinner').hide();
+
+var devices=fble.founddevices();
+//console.log("found already "+devices.length+" connected "+fble.isconnected());
+
+
+devices.forEach(function(o,nr) { // add  devices already found
+	 //console.log(i+"  "+e.name);
+        var deviceId = "id_" + o.name + "_" + nr;  
+	adddevicetolist(o,nr); 
+	                      });
+
+
+//are we already connected when changing to bluetooth.html
+var connecteddevice=fble.getconnected();
+if (connecteddevice.name){
+ var deviceId = "id_" + connecteddevice.name + "_" + connecteddevice.nr; 
+ console.log("already connected to "+deviceId);
+let b=document.getElementById(deviceId);
+	if (b) {
+	       b.style.background="blue";	
+	       }
+b=document.getElementById("btdisconnect");
+b.disabled=false;
+} else {
+	let b=document.getElementById("btdisconnect"); 
+	b.setAttribute('disabled','true');
+       }
+
+
+//-----------------------------------------------------------------------------
+function scanforble(){
+	if (fble.isconnected()) {
+		      ons.notification.toast('still connected to ' + o.name, { timeout: 2000 });
+		      return;
+		                }
+console.log("scanforble");
+//document.getElementById("btscanspinner").show();
+$('#btscanspinner').show();   
+document.getElementById('btscandiv').innerHTML="";	
+fble.scan();
+}
+//-----------------------------------------------------------------------------
+fble.onscanstop(function(){
+ //document.getElementById("btscanspinner").hide();
+ $('#btscanspinner').hide();    	
+});
+//-----------------------------------------------------------------------------
+fble.ondevicefound(function(dev,nr){
+//console.log("found "+JSON.stringify(dev));
+adddevicetolist(dev,nr);
+});
+//-----------------------------------------------------------------------------
+function adddevicetolist(dev,nr){
+var deviceId = "id_" + dev.name + "_" + nr;    
+  	var element= document.createElement('ons-list-item');
+  	element.setAttribute('tappable', 'true');
+  	element.setAttribute('id', deviceId);
+	element.innerHTML = dev.name+"  "+dev.rssi;
+	
+	element.setAttribute('btaddress',dev.address);
+	element.setAttribute('btname',dev.name);
+	
+        element.style.fontSize="36px;";
+	// spinner till connection
+	element.addEventListener("click", function (e) {
+	 var btn=e.currentTarget;
+	 var address=btn.getAttribute('btaddress');
+	 var btname=btn.getAttribute('btname');	
+	 if (fble.isconnected()) {
+          ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
+	 return; 	
+	 }
+         console.log("cicked "+btn.id+"  "+address);
+	 fble.connect(address);	
+	});
+var d=document.getElementById('btscandiv');
+if (d) 	d.appendChild(element); 	
+}
+//-----------------------------------------------------------------------------
+fble.onsubscribed(function(o){
+var deviceId = "id_" + o.name + "_" + o.nr;    
+console.log(deviceId+" connected and subscribed to characteristic "+o.characteristic); 
+let b=document.getElementById(deviceId);
+	if (b) {
+	       b.style.background="blue";	
+	       }
+b=document.getElementById("btdisconnect");
+b.disabled=false;
+b=document.getElementById("bticononhome");
+b.style.color="blue";
+b=document.getElementById("btconnectto");
+b.innerHTML=o.name;	
+if (apponsubscribed)	setTimeout(()=>{apponsubscribed()},1000);
+});
+
+
+fble.ondisconnected((o)=>{
+	                  var deviceId = "id_" + o.name + "_" + o.nr;
+	                  console.log("disconnected "+deviceId); 
+                          let b=document.getElementById("btdisconnect");       
+	                  b.disabled=true;
+                         b=document.getElementById(deviceId);     
+	                 b.style.background="none";
+b=document.getElementById("bticononhome");
+b.style.color="white";
+b=document.getElementById("btconnectto");
+b.innerHTML="";
+ons.notification.toast('disconnected ' + o.name, { timeout: 3000 }); 	
+                          });
+
+function disconnect(e){
+fble.disconnect();
+}
+
+</script>
+
+  </ons-page>
+  
+  
+  
+  

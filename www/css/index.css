@@ -110,3 +110,95 @@ li {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   list-style: none;
 }
+#bluetooth-icon {
+  width: 50px;
+  height: 50px;
+  animation: pulse 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+
+.device-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.device-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.device-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.device-name {
+  font-size: 20px;
+}
+.outer-outer-circle {
+  width: 250px;
+  height: 250px;
+  background-color: #b5bdd8;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  animation: extend-outer 2s ease-in-out infinite;
+}
+
+.outer-circle {
+  width: 200px;
+  height: 200px;
+  background-color: #7d96e8;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  animation: extend-outer 2s ease-in-out infinite;
+}
+
+.inner-circle {
+  width: 150px;
+  height: 150px;
+  background-color: rgb(0, 132, 255);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: extend-inner 2s ease-in-out infinite;
+}
+
+.icon-ble-scan {
+  font-size: 50px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes extend-outer {
+  from {
+    width: 200px;
+    height: 200px;
+  }
+  to {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@keyframes extend-inner {
+  from {
+    width: 150px;
+    height: 150px;
+  }
+  to {
+    width: 175px;
+    height: 175px;
+  }
+}

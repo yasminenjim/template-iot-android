@@ -1,58 +1,49 @@
 /*
 
 
-ongotline with chariacteristic to make distinction  ?
-
-if (fvar)  fvar.addfunc("sendbtjson", sendbtjson);   
--> if (fvar) fvar.addfunc("sendbtjson", fble.sendjson);
-
-
-fvar.parse(jo); -> ongotjson(jo);   
-
 */
-
-//you can change the parametres when you call fble function
 fble = (function() {
     let config = {
         btservice: "",
         btpassword: "frenell",
-        scandivid: "btscandiv",
         scanbtnid: "bt_scan",
-        scandiscbtnid: "bt_disconnect",
         sendchar: "2010",
 	readchar: "2001",   
-        btnamefilter: ""
+        btnamefilter: "",
+	scantimeout: 5000,
+	mtu: 94    
     }
 
     let foundDevices = [];
+    let nrinfoundDevices;	
     let btconnected = false;
     let btestablished = false;
     let btctr = 0;
     let b_accesgranted = false;
     let btaddress = "";
-    var b_scanning = false;
-    var lastsendms = Date.now();
-    let onbtsubscribed = function() {};
-    let onbtdisconnected = function() {};
+    let b_scanning = false;
+    let lastsendms = Date.now();
+    let rssi=0;
 
+    let onbtenabled = function(){}; //todo	
+    let ondevicefound = function() {console.log("ondevicefound not defined");};
+    let onbtsubscribed = function() {};
+    let onbtdisconnected = function() {console.log("ondisconnected not defined");};
     let onreceivedbinary = function() {};
     let ongotmsg = function() {};
     let ongotjson = function() {};
-
-
-    console.log("lastsendms " + lastsendms);
-
+    let onscanstop = function() {};  
+    
+//-----------------------------------------------------------------------------
     function setconfig(obj) {
-        console.log("setconfig " + JSON.stringify(obj));
+        //console.log("setconfig " + JSON.stringify(obj));
         for (var key in obj) {
             console.log("key " + key + " " + obj[key]);
             if (config.hasOwnProperty(key)) {
                 config[key] = obj[key];
             }
         }
-
         console.log(JSON.stringify(config));
-
     }
     //-----------------------------------------------------------------------------
     function blestart() {
@@ -61,12 +52,8 @@ fble = (function() {
             return;
         }
         console.log("blestart " + config.btservice);
-
-        document.getElementById(config.scanbtnid).addEventListener("click", startScan, false);
-        document.getElementById(config.scandiscbtnid).addEventListener("click", disconnect, false);
-
-
         console.log("deviceready platform" + window.cordova.platformId);
+
         bluetoothle.isEnabled(function(b) {
             console.log("bluetooth is " + JSON.stringify(b));
         });
@@ -104,6 +91,15 @@ fble = (function() {
         }).then(initializeSuccess, handleError);
     }
     //-----------------------------------------------------------------------------
+    function defondevicefound(f){
+   
+        if (typeof f != "function") {
+            alert("ondevicefound");
+            return;
+        }
+	   ondevicefound=f; 
+    }
+    //-----------------------------------------------------------------------------
     function defonsubscribed(f) {
         if (typeof f != "function") {
             alert("onbtsubscribed");
@@ -123,6 +119,15 @@ fble = (function() {
     function defongotmsg(f) {
         ongotmsg = f;
     }
+  //-----------------------------------------------------------------------------
+
+    function defonscanstop(f) {
+        if (typeof f != "function") {
+            alert("onscanstop");
+            return;
+        }
+        onscanstop = f;
+    }
     //-----------------------------------------------------------------------------
     function defongotjson(f) {
         ongotjson = f;
@@ -141,12 +146,13 @@ fble = (function() {
 
         if (result.status === "enabled") {
             console.log("Bluetooth is enabled.");
+	    onbtenabled(true);
+
             setTimeout(function() {
-                startScan();
+                startScan(); // shall we do this automatically ?
             }, 500);
         } else {
-            document.getElementById("bt_scan").disabled = true;
-            alert("Bluetooth is not enabled:");
+            onbtenabled(false);
         }
     }
     //-----------------------------------------------------------------------------
@@ -155,17 +161,19 @@ fble = (function() {
             alert("no btservice defined");
             return;
         }
-        console.log("scanning...");
+	if (b_scanning) {
+		       console.log("already scanning");
+		       return;
+		        }
+	    
+        console.log("scanning... "+config.btservice);
         foundDevices = [];
 
-        document.getElementById("btscandiv").innerHTML = "";
-        //    if (window.cordova.platformId === "windows") {
-        //        bluetoothle.retrieveConnected(retrieveConnectedSuccess, handleError, {});
-        //    }
         if (window.cordova.platformId === "android" || window.cordova.platformId === "ios") {
             bluetoothle.startScan(startScanSuccess, function(e) {
                 console.log("startscanerror ");
                 b_scanning = false;
+		onscanstop();  // ?    
             }, {
                 services: [config.btservice]
             });
@@ -176,111 +184,93 @@ fble = (function() {
         bluetoothle.stopScan(function(e) {
             console.log("scan stopped");
             b_scanning = false;
+	    onscanstop();	
         }, handleError);
     }
     //-----------------------------------------------------------------------------
     function startScanSuccess(result) {
-        console.log("startScanSuccess " + result.status);
         if (result.status === "scanStarted") {
+		console.log("scan started");
             foundtime = "";
             b_scanning = true;
-        } else if (result.status === "scanResult") {
+	    setTimeout(()=>{mystopscan()},config.scantimeout); //
+            return;
+	} 
+	
+	if (result.status === "scanResult") {
             if (foundtime != "") {
                 var d = new Date;
                 var difftime = (d.getTime() - foundtime.getTime()) / 1000.;
                 if (difftime > 0.6) mystopscan(); //stop 0.6 sec after found  
             }
 
-            if (!foundDevices.some(function(device) {
-
+            if (!foundDevices.some(function(device) { // check if not already in list
                     return device.address === result.address;
-
                 })) {
-
                 foundtime = new Date;
                 console.log('FOUND DEVICE: ' + result.address);
-                foundDevices.push(result);
-                addDevice(result, foundDevices.length - 1);
-            }
-        }
-    }
-    //-----------------------------------------------------------------------------
-    function addDevice(o, nr) {
-        console.log("addDevice " + o.name + " " + nr);
-        
-	if (config.btnamefilter !="") {
-		if (o.name.indexOf(config.btnamefilter)!=0) {
+		    
+	  if (config.btnamefilter !="") { // do we have a name filter ?
+		if (result.name.indexOf(config.btnamefilter)!=0) {
 			   return;
 			                             }
 		               }
+		foundDevices.push(result);
+                ondevicefound(result,foundDevices.length-1);
+		console.log("add "+result.name);    
 
-        var button = document.createElement("button");
-        var btid = "id_" + o.name + "_" + nr;
-        button.setAttribute("id", btid);
-        button.className = "btnametable";
-
-        button.textContent = o.name + "   rssi " + o.rssi; // + ": " + address;
-        button.addEventListener("click", function(e) {
-
-            if (btconnected) {
-                alert("disconnect first");
-                return;
-            }
-            btaddress = o.address;
-            connect(o.address, e.target.id);
-        });
-
-        document.getElementById("btscandiv").appendChild(button);
+	    } /*
+		else {
+		     console.log("already in list  "+result.name); 
+		   }
+	      */
+	return;	
+        }
+	console.log("fble unknown :"+result.status );     
     }
     //-----------------------------------------------------------------------------
-    function connect(address, btid) {
-        btbuttonid = btid;
-        if (cordova.platformId === "windows") {
-            getDeviceServices(address);
-        } else {
-            if (b_scanning) mystopscan();
-
+    //-----------------------------------------------------------------------------
+    function connect(address) {
+     nrinfoundDevices=-1; 
+     foundDevices.forEach(function(d,i){
+	       if (d.address==address) nrinfoundDevices=i;
+	                               });
+     if (nrinfoundDevices==-1) {
+	                      console.log("was not found in list "); 
+	                       }
+     if (b_scanning) mystopscan();
             new Promise(function(resolve, reject) {
                 bluetoothle.connect(resolve, reject, {
                     address: address
                 });
             }).then(connectSuccess, handleError);
-
-        }
     }
     //-----------------------------------------------------------------------------
     function connectSuccess(result) {
         console.log("connectedSuccess " + result.status);
         if (result.status === "connected") {
             console.log("connected " + JSON.stringify(result));
-           // tactile();
+            btaddress=result.address; 
             btconnected = true;
-            document.getElementById(btbuttonid).style.background = "blue";
             btname = result.name;
             if (cordova.platformId === "android") {
-                console.log("set MTU");
+                console.log("set MTU "+config.mtu);
                 //set mtu
                 var params = {
                     address: result.address,
-                    mtu: 92
+                    mtu: config.mtu
                 }
                 bluetoothle.mtu(function(res) {
                     console.log("mtu set ")
                 }, handleError, params);
-				showDetailPage();
             }
             setTimeout(function() {
                 getDeviceServices(result.address);
                 btconnected = true;
             }, 1000);
         } else if (result.status === "disconnected") {
-            btconnected = false;
-            onbtdisconnected(); //send name?    
-            // change 
-            //document.getElementById("btbtn").style.background = "green"; 
-			console.log("could not connect");
-			
-        }
+          ondisconnect();
+	}
     }
     //-----------------------------------------------------------------------------
     function getDeviceServices(address) {
@@ -348,7 +338,9 @@ fble = (function() {
         var params = {
             "address": btaddress,
             "service": config.btservice,
-            "characteristic": config.readchar
+            "characteristic": config.readchar,
+	    "name":btname,
+	    "nr":nrinfoundDevices	
         };
         console.log("subscribe to " + params.characteristic);
         bluetoothle.subscribe(function(result) {
@@ -356,12 +348,13 @@ fble = (function() {
                 btctr++;
                 //console.log("subscribedResult "+JSON.stringify(result)); 
                 var v = window.atob(result.value);
-                gotline(v, result.characteristic); // coming from writecharacteristic 2001 
+                gotline(v, result.characteristic); 
                 return;
             }
 
             if (result.status === "subscribed") {
                 atsubscribed();
+		onbtsubscribed(params);      
             }
         }, handleError, params);
     }
@@ -394,7 +387,6 @@ fble = (function() {
         btestablished = true;
 
         setTimeout(function() {
-            onbtsubscribed();
             sendbtjson({
                 "start": {
                     "msg": "hallo"
@@ -404,20 +396,14 @@ fble = (function() {
 
     }
     //-----------------------------------------------------------------------------
-
-    bluetoothle.startStateNotifications(
-        function(state) {
-            console.log("Bluetooth is " + state);
-            console.log("showing bluetooth state");
-        }
-    );
     //-----------------------------------------------------------------------------
     function handleError(error) {
         if (typeof(error) === 'object') {
             var e = String(error.error);
             console.log("error " + e + " ");
             if (e.indexOf("isDisconnected") == 0 || e.indexOf("isNotC") == 0) {
-                onbtdisconnected();
+                    disconnect();
+		   //ondisconnect();
                 return;
             }
             console.log("error " + JSON.stringify(error));
@@ -428,7 +414,6 @@ fble = (function() {
     }
     //-----------------------------------------------------------------------------
     function disconnect() {
-        console.log("disconnecting<BR>");
         var params = {
             address: btaddress
         }
@@ -437,17 +422,12 @@ fble = (function() {
             console.log("closed now");
             ondisconnect();
         }, handleError, params);
-		showMainPage();
-		
     }
     //-----------------------------------------------------------------------------
     function ondisconnect() {
-        alert("bt disconnected");
         btconnected = false;
         btestablished = false;
-        var b = document.getElementById(btbuttonid);
-        if (b) b.style.background = "gray";
-        //document.getElementById("cbtname")="not connected";
+         onbtdisconnected({name:btname,address:btaddress,nr:nrinfoundDevices});  
     }
     //-----------------------------------------------------------------------------
     function sincelastsend() {
@@ -483,7 +463,6 @@ fble = (function() {
             if (typeof onreceivedbinary === 'function') onreceivedbinary(line);
             return;
         }
-
         if (line[0] != '{') { // no json
             if (typeof ongotmsg === "function") ongotmsg(line, ch);
             return;
@@ -500,20 +479,22 @@ fble = (function() {
         ongotjson(jo, ch);
     }
     //-----------------------------------------------------------------------------
-    function getrssi() {
+function getrssi() {
+   let ret=new Promise(function(resolve,reject) {	    
         if (btconnected) {
             bluetoothle.rssi(function(res) {
                 console.log("rssi " + res.rssi);
-                var e = document.getElementById("rssivalue");
-                if (e) e.innerHTML = res.rssi;
-                //document.getElementById("d_btconnected").innerHTML="BT connected rssi "+res.rssi;                           
-            }, function(e) {
-                disconnect(); // we have to really disconnect                                                                
+		    rssi=res.rssi;
+		    resolve(res);
+            }, function(e) { // used also to check connection 
+                disconnect(); // we have to really disconnect
+		 reject();   
             }, {
                 address: btaddress
             });
         }
-
+   });
+   return ret;
     }
     //-----------------------------------------------------------------------------
     function testjsonfunc(e) {
@@ -524,36 +505,34 @@ fble = (function() {
             gotline(v, "testjson");
         }
     }
+    	
+    function getfounddevices(){
+    return foundDevices;
+    }
+    function getconnected(){
+    if (!btconnected) return{};
+     return({name:btname,address:btaddress,nr:nrinfoundDevices,service:config.btservice}); 
+    }
     //-----------------------------------------------------------------------------
-	
-	function showMainPage () {
-        mainPage.hidden = false;
-        detailPage.hidden = true;
-    }
-	
-    function showDetailPage() {
-        mainPage.hidden = true;
-        detailPage.hidden = false;
-    }
-	
-	
-	
-	
-	//-----------------------------------------------------------------------------
     return {
         sendjson: sendbtjson,
         send: sendbt,
-        onsubscribed: defonsubscribed,
+        ondevicefound: defondevicefound,
+	founddevices : getfounddevices,    
+	onsubscribed: defonsubscribed,
         ondisconnected: defdisconnect,
         ongotmsg: defongotmsg,
         ongotjson: defongotjson,
-        testjson: testjsonfunc,
+        onscanstop: defonscanstop,
+	testjson: testjsonfunc,
         getrssi: getrssi,
         config: setconfig,
         disconnect: disconnect,
         readchar: btreadchar,
         isconnected: isconnected,
-        start: blestart
-
+	getconnected: getconnected,    
+        scan : startScan,
+	connect : connect,    
+	start: blestart
     }
 })();
