@@ -15,184 +15,297 @@
 </ons-toolbar>
   
 
-<!---
-<div style="text-align: center;">
+<div style="padding-top: 5px; margin-top: 20px;" id="first-interface">
+	<div id="outerContainer">
+	  <div id="container">
+		<div class="item">
+		  <img src="../img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
+		</div>
+	
+	
+	</div> 
+	
+	</div>
+	<br>
+	<br>
 
+	<div style="text-align: center;" id="scanMsg">
+	  <br>
+	<tr>
+	  
+	 <p style="color: aliceblue; ">Tap to scan</p>
+	</tr>
+	</div>
+	
+	
+
+	</div>
+	
+
+<!------------------------------------------------------->
+
+
+<div style="padding-top: 5px; margin-top: 20px;" id="scanningInterface">
 <div id="outerContainer">
   <div id="container">
     <div class="item">
-      <img src="../img/Bluetooth-scan.png" />
-      
+      <img src="../img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
     </div>
-    <div id="scanning-circles">
-    <div class="circle" style="animation-delay: -3s"></div>
+
+  
+<div class="circle" style="animation-delay: -3s"></div>
 <div class="circle" style="animation-delay: -2s"></div>
 <div class="circle" style="animation-delay: -1s"></div>
 <div class="circle" style="animation-delay: 0s"></div>
+</div>
+
+
+
+</div>
 <br>
 <br>
+<div style="text-align: center;" id="scanningMsg">
 <br>
+ 
 <tr>
   
  <p style="color: aliceblue; ">Scanning for devices.. </p>
 </tr>
 </div>
-  </div>
-</div>
-</div> -->
 
-<div style="padding-top: 5px; margin-top: 20px;">
-<div id="outerContainer">
-  <div id="container">
-    <div class="item">
-      <img src="../img/Bluetooth-scan.png" />
-    </div>
-    <div class="circle" style="animation-delay: -3s"></div>
-<div class="circle" style="animation-delay: -2s"></div>
-<div class="circle" style="animation-delay: -1s"></div>
-<div class="circle" style="animation-delay: 0s"></div>
-  
-</div>
-</div>
+
+
+
+<div id="hide-content">
+
 <br>
-<br>
-<div style="text-align: center;">
-  <br>
-  <br>
-<tr>
-  
- <p style="color: aliceblue; ">Scanning for devices.. </p>
-</tr>
+   <ons-button disabled="true"  id="btdisconnect" modifier="large" onclick="disconnect(event)"   >
+	   disconnect</ons-button>      
+   <br>
+
+   <br>
+
+                <ons-list id="btscandiv" class="background-grey mt-3">
+
+                </ons-list>
+
+		<br>
+		<br>
+		<hr>
+		
+	
+	
+		<br>
+
+		<span id="char2001" ></span> <br>
+
+		</div>
 </div>
-</div>
+
+
+
 <!--
+
+
+
+	<div style="padding-top: 5px; margin-top: 20px;" id="scanningInterface">
+<div id="outerContainer">
+  <div id="container">
+    <div class="item">
+      <img src="../img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
+    </div>
+
+  
+<div class="circle" style="animation-delay: -3s"></div>
+<div class="circle" style="animation-delay: -2s"></div>
+<div class="circle" style="animation-delay: -1s"></div>
+<div class="circle" style="animation-delay: 0s"></div>
+</div> 
+
+</div>
+<br>
+<br>
+<div style="text-align: center;" id="scanningMsg">
+<br>
+ 
+<tr>
+  
+ <p style="color: aliceblue; ">Scanning for devices.. </p>
+</tr>
+</div>
+
+<div style="text-align: center;" id="scanMsg">
+  <br>
+<tr>
+  
+ <p style="color: aliceblue; ">Tap to scan</p>
+</tr>
+</div>
+
+
+<div id="hide-content">
+
+<br>
+   <ons-button disabled="true"  id="btdisconnect" modifier="large" onclick="disconnect(event)"   >
+	   disconnect</ons-button>      
+   <br>
+
+   <br>
+
+                <ons-list id="btscandiv" class="background-grey mt-3">
+
+                </ons-list>
+
+		<br>
+		<br>
+		<hr>
+		
+	
+	
+		<br>
+
+		<span id="char2001" ></span> <br>
+
+		</div>
+</div>
+-->
+
+<!----------------------------------------------------------------------------->
+
 <script>
-  //-----------------------------------------------------------------------------
-  console.log("load Bluetooth ");
-  
-  /*
-  ons.getScriptPage().onInit = function() {
-  console.log("bluetooth.html  onInit "); 
-  };
-  */
-  
-  // if scanning ?
-  $('#scanning-circles').hide();
-  
-  var devices=fble.founddevices();
-  //console.log("found already "+devices.length+" connected "+fble.isconnected());
-  
-  
-  devices.forEach(function(o,nr) { // add  devices already found
-     //console.log(i+"  "+e.name);
-          var deviceId = "id_" + o.name + "_" + nr;  
-    adddevicetolist(o,nr); 
+ 
+ $('#scanningInterface').hide();
+ //$('#first-interface').hide();
+
+ 
+
+
+
+
+ var devices=fble.founddevices();
+//console.log("found already "+devices.length+" connected "+fble.isconnected());
+
+
+devices.forEach(function(o,nr) { // add  devices already found
+	 //console.log(i+"  "+e.name);
+        var deviceId = "id_" + o.name + "_" + nr;  
+	adddevicetolist(o,nr); 
+	                      });
+
+
+//are we already connected when changing to bluetooth.html
+var connecteddevice=fble.getconnected();
+if (connecteddevice.name){
+ var deviceId = "id_" + connecteddevice.name + "_" + connecteddevice.nr; 
+ console.log("already connected to "+deviceId);
+let b=document.getElementById(deviceId);
+	if (b) {
+	       b.style.background="blue";	
+	       }
+b=document.getElementById("btdisconnect");
+b.disabled=false;
+} else {
+	let b=document.getElementById("btdisconnect"); 
+	b.setAttribute('disabled','true');
+       }
+
+
+//-----------------------------------------------------------------------------
+function scanforble(){
+	if (fble.isconnected()) {
+		      ons.notification.toast('still connected to ' + o.name, { timeout: 2000 });
+		      return;
+		                }
+console.log("scanforble");
+//document.getElementById("circles").show();
+
+document.getElementById('btscandiv').innerHTML="";	
+fble.scan();
+
+$('#first-interface').hide();
+ $('#scanningInterface').show();
+
+ 
+}
+//-----------------------------------------------------------------------------
+fble.onscanstop(function(){
+ //document.getElementById("circles").hide();
+ //$('#circles').show();
+ 
+
+});
+//-----------------------------------------------------------------------------
+fble.ondevicefound(function(dev,nr){
+//console.log("found "+JSON.stringify(dev));
+adddevicetolist(dev,nr);
+});
+//-----------------------------------------------------------------------------
+function adddevicetolist(dev,nr){
+var deviceId = "id_" + dev.name + "_" + nr;    
+  	var element= document.createElement('ons-list-item');
+  	element.setAttribute('tappable', 'true');
+  	element.setAttribute('id', deviceId);
+	element.innerHTML = dev.name+"  "+dev.rssi;
+	
+	element.setAttribute('btaddress',dev.address);
+	element.setAttribute('btname',dev.name);
+	
+        element.style.fontSize="36px;";
+	// spinner till connection
+	element.addEventListener("click", function (e) {
+	 var btn=e.currentTarget;
+	 var address=btn.getAttribute('btaddress');
+	 var btname=btn.getAttribute('btname');	
+	 if (fble.isconnected()) {
+          ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
+	 return; 	
+	 }
+         console.log("cicked "+btn.id+"  "+address);
+	 fble.connect(address);	
+	});
+var d=document.getElementById('btscandiv');
+if (d) 	d.appendChild(element); 	
+}
+//-----------------------------------------------------------------------------
+fble.onsubscribed(function(o){
+var deviceId = "id_" + o.name + "_" + o.nr;    
+console.log(deviceId+" connected and subscribed to characteristic "+o.characteristic); 
+let b=document.getElementById(deviceId);
+	if (b) {
+	       b.style.background="blue";	
+	       }
+b=document.getElementById("btdisconnect");
+b.disabled=false;
+b=document.getElementById("bticononhome");
+b.style.color="blue";
+b=document.getElementById("btconnectto");
+b.innerHTML=o.name;	
+if (apponsubscribed)	setTimeout(()=>{apponsubscribed()},1000);
+});
+
+
+fble.ondisconnected((o)=>{
+	                  var deviceId = "id_" + o.name + "_" + o.nr;
+	                  console.log("disconnected "+deviceId); 
+                          let b=document.getElementById("btdisconnect");       
+	                  b.disabled=true;
+                         b=document.getElementById(deviceId);     
+	                 b.style.background="none";
+b=document.getElementById("bticononhome");
+b.style.color="white";
+b=document.getElementById("btconnectto");
+b.innerHTML="";
+ons.notification.toast('disconnected ' + o.name, { timeout: 3000 }); 	
                           });
-  
-  
-  //are we already connected when changing to bluetooth.html
-  var connecteddevice=fble.getconnected();
-  if (connecteddevice.name){
-   var deviceId = "id_" + connecteddevice.name + "_" + connecteddevice.nr; 
-   console.log("already connected to "+deviceId);
-  let b=document.getElementById(deviceId);
-    if (b) {
-           b.style.background="blue";	
-           }
-  b=document.getElementById("btdisconnect");
-  b.disabled=false;
-  } else {
-    let b=document.getElementById("btdisconnect"); 
-    b.setAttribute('disabled','true');
-         }
-  
-  
-  //-----------------------------------------------------------------------------
-  function scanforble(){
-    if (fble.isconnected()) {
-            ons.notification.toast('still connected to ' + o.name, { timeout: 2000 });
-            return;
-                      }
-  console.log("scanforble");
-  //document.getElementById("scanning-circles").show();
-  $('#scanning-circles').show();   
-  document.getElementById('btscandiv').innerHTML="";	
-  fble.scan();
-  }
-  //-----------------------------------------------------------------------------
-  fble.onscanstop(function(){
-   //document.getElementById("scanning-circles").hide();
-   $('#scanning-circles').hide();    	
-  });
-  //-----------------------------------------------------------------------------
-  fble.ondevicefound(function(dev,nr){
-  //console.log("found "+JSON.stringify(dev));
-  adddevicetolist(dev,nr);
-  });
-  //-----------------------------------------------------------------------------
-  function adddevicetolist(dev,nr){
-  var deviceId = "id_" + dev.name + "_" + nr;    
-      var element= document.createElement('ons-list-item');
-      element.setAttribute('tappable', 'true');
-      element.setAttribute('id', deviceId);
-    element.innerHTML = dev.name+"  "+dev.rssi;
-    
-    element.setAttribute('btaddress',dev.address);
-    element.setAttribute('btname',dev.name);
-    
-          element.style.fontSize="36px;";
-    // spinner till connection
-    element.addEventListener("click", function (e) {
-     var btn=e.currentTarget;
-     var address=btn.getAttribute('btaddress');
-     var btname=btn.getAttribute('btname');	
-     if (fble.isconnected()) {
-            ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
-     return; 	
-     }
-           console.log("cicked "+btn.id+"  "+address);
-     fble.connect(address);	
-    });
-  var d=document.getElementById('btscandiv');
-  if (d) 	d.appendChild(element); 	
-  }
-  //-----------------------------------------------------------------------------
-  fble.onsubscribed(function(o){
-  var deviceId = "id_" + o.name + "_" + o.nr;    
-  console.log(deviceId+" connected and subscribed to characteristic "+o.characteristic); 
-  let b=document.getElementById(deviceId);
-    if (b) {
-           b.style.background="blue";	
-           }
-  b=document.getElementById("btdisconnect");
-  b.disabled=false;
-  b=document.getElementById("bticononhome");
-  b.style.color="blue";
-  b=document.getElementById("btconnectto");
-  b.innerHTML=o.name;	
-  if (apponsubscribed)	setTimeout(()=>{apponsubscribed()},1000);
-  });
-  
-  
-  fble.ondisconnected((o)=>{
-                      var deviceId = "id_" + o.name + "_" + o.nr;
-                      console.log("disconnected "+deviceId); 
-                            let b=document.getElementById("btdisconnect");       
-                      b.disabled=true;
-                           b=document.getElementById(deviceId);     
-                     b.style.background="none";
-  b=document.getElementById("bticononhome");
-  b.style.color="white";
-  b=document.getElementById("btconnectto");
-  b.innerHTML="";
-  ons.notification.toast('disconnected ' + o.name, { timeout: 3000 }); 	
-                            });
-  
-  function disconnect(e){
-  fble.disconnect();
-  }
-  
-  </script> -->
+
+function disconnect(e){
+fble.disconnect();
+}
+
+
+
+</script>
+
 </ons-page>
   
 
