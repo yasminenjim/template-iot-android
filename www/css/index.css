@@ -16,8 +16,8 @@
 
 #login{
   background-color: #ffffff; /* Green */
-  color: rgb(130, 128, 128);
-  font-size: 18px;
+  color: rgb(255, 254, 254) !important;
+  font-size: 24px;
   font-weight: bold;
   font-family: Arial, sans-serif;
   width: 230px;
@@ -59,17 +59,21 @@
   justify-content: center;
   align-items: center;
   border-radius: 25px;
-  background-color: rgb(255, 255, 255);
+  background-color:#f0f1f1;
   padding: 20px;
-
+ 
 }
 
 .toolbar-background {
   background-color: #232a2d;
 }
 
+.toolbar-background-bl{
+  background-color:#094860;
+
+}
 .bluetooth-container {
-  background-color: #f2f2f2;
+  background-color: #cb3333;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -140,37 +144,7 @@ li {
 .device-name {
   font-size: 20px;
 }
-.outer-outer-circle {
-  width: 250px;
-  height: 250px;
-  background-color: #b5bdd8;
-  border-radius: 50%;
-  position: relative;
-  margin: 0 auto;
-  animation: extend-outer 2s ease-in-out infinite;
-}
 
-.outer-circle {
-  width: 200px;
-  height: 200px;
-  background-color: #7d96e8;
-  border-radius: 50%;
-  position: relative;
-  margin: 0 auto;
-  animation: extend-outer 2s ease-in-out infinite;
-}
-
-.inner-circle {
-  width: 150px;
-  height: 150px;
-  background-color: rgb(0, 132, 255);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: extend-inner 2s ease-in-out infinite;
-}
 
 .icon-ble-scan {
   font-size: 50px;
@@ -181,24 +155,69 @@ li {
   transform: translate(-50%, -50%);
 }
 
-@keyframes extend-outer {
+
+
+
+#outerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  padding-top: 50px;
+}
+
+
+#container {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding-top: 50px;
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: deepskyblue;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  opacity: 0;
+  animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+}
+
+.item {
+  z-index: 100;
+  padding: 5px;
+}
+
+.item img {
+  width: 150px;
+}
+
+@keyframes scaleIn {
   from {
-    width: 200px;
-    height: 200px;
+    transform: scale(.5, .5);
+    opacity: .5;
   }
   to {
-    width: 250px;
-    height: 250px;
+    transform: scale(2.5, 2.5);
+    opacity: 0;
   }
 }
 
-@keyframes extend-inner {
-  from {
-    width: 150px;
-    height: 150px;
-  }
-  to {
-    width: 175px;
-    height: 175px;
-  }
+
+
+.home-page {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.bluetooth-page{
+
+  background-color: #094860 !important;
+  
+  background-image: linear-gradient(to bottom, #094860, #0e6d9b)  !important;
+
 }

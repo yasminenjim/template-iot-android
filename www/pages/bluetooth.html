@@ -1,5 +1,6 @@
-<ons-page style="background-color: aqua;">
- <ons-toolbar class="toolbar-background" >
+
+<ons-page id="bluetooth" style="text-align: center;"  class="page__background bluetooth-page">
+ <ons-toolbar class="toolbar-background-bl" >
   <div class="left">
     <ons-back-button>Back</ons-back-button>
      </div>
@@ -13,178 +14,187 @@
  </div>
 </ons-toolbar>
   
-<div class="bluetooth-container">
-	<div class="bluetooth-header">
-	  <h1>Bluetooth Devices</h1>
-	  <button id="scanButton" onclick="scanforble()">Scan</button>
-	</div>
-   </div>
 
+<!---
+<div style="text-align: center;">
 
-   <div class="center" >  
-<ons-icon id="btscanspinner" icon="fa-spinner"  spin> </ons-icon>  
-   </div>
+<div id="outerContainer">
+  <div id="container">
+    <div class="item">
+      <img src="../img/Bluetooth-scan.png" />
+      
+    </div>
+    <div id="scanning-circles">
+    <div class="circle" style="animation-delay: -3s"></div>
+<div class="circle" style="animation-delay: -2s"></div>
+<div class="circle" style="animation-delay: -1s"></div>
+<div class="circle" style="animation-delay: 0s"></div>
 <br>
-<ons-button disabled="true"  id="btdisconnect" modifier="large" onclick="disconnect(event)"   >
-   disconnect</ons-button>      
 <br>
-
 <br>
+<tr>
+  
+ <p style="color: aliceblue; ">Scanning for devices.. </p>
+</tr>
+</div>
+  </div>
+</div>
+</div> -->
 
-			<ons-list id="btscandiv" class="background-grey mt-3">
-
-			</ons-list>
-
-	<br>
-	<br>
-	<hr>
-	
-	<div class="outer-circle">
-		<div class="inner-circle">
-<div class="icon-ble-scan">
-	<span style="color: rgb(68, 160, 207);">
-		<i class="fas fa-bluetooth"></i>
-		</span>
-		</div>
-		</div>
-	</div>
-	
-	<br>
-
-	<span id="char2001" ></span> <br>
-
-
+<div style="padding-top: 5px; margin-top: 20px;">
+<div id="outerContainer">
+  <div id="container">
+    <div class="item">
+      <img src="../img/Bluetooth-scan.png" />
+    </div>
+    <div class="circle" style="animation-delay: -3s"></div>
+<div class="circle" style="animation-delay: -2s"></div>
+<div class="circle" style="animation-delay: -1s"></div>
+<div class="circle" style="animation-delay: 0s"></div>
+  
+</div>
+</div>
+<br>
+<br>
+<div style="text-align: center;">
+  <br>
+  <br>
+<tr>
+  
+ <p style="color: aliceblue; ">Scanning for devices.. </p>
+</tr>
+</div>
+</div>
+<!--
 <script>
-	
-//-----------------------------------------------------------------------------
-console.log("load Bluetooth ");
-
-/*
-ons.getScriptPage().onInit = function() {
-console.log("bluetooth.html  onInit "); 
-};
-*/
-
-// if scanning ?
-$('#btscanspinner').hide();
-
-var devices=fble.founddevices();
-//console.log("found already "+devices.length+" connected "+fble.isconnected());
-
-
-devices.forEach(function(o,nr) { // add  devices already found
-	 //console.log(i+"  "+e.name);
-        var deviceId = "id_" + o.name + "_" + nr;  
-	adddevicetolist(o,nr); 
-	                      });
-
-
-//are we already connected when changing to bluetooth.html
-var connecteddevice=fble.getconnected();
-if (connecteddevice.name){
- var deviceId = "id_" + connecteddevice.name + "_" + connecteddevice.nr; 
- console.log("already connected to "+deviceId);
-let b=document.getElementById(deviceId);
-	if (b) {
-	       b.style.background="blue";	
-	       }
-b=document.getElementById("btdisconnect");
-b.disabled=false;
-} else {
-	let b=document.getElementById("btdisconnect"); 
-	b.setAttribute('disabled','true');
-       }
-
-
-//-----------------------------------------------------------------------------
-function scanforble(){
-	if (fble.isconnected()) {
-		      ons.notification.toast('still connected to ' + o.name, { timeout: 2000 });
-		      return;
-		                }
-console.log("scanforble");
-//document.getElementById("btscanspinner").show();
-$('#btscanspinner').show();   
-document.getElementById('btscandiv').innerHTML="";	
-fble.scan();
-}
-//-----------------------------------------------------------------------------
-fble.onscanstop(function(){
- //document.getElementById("btscanspinner").hide();
- $('#btscanspinner').hide();    	
-});
-//-----------------------------------------------------------------------------
-fble.ondevicefound(function(dev,nr){
-//console.log("found "+JSON.stringify(dev));
-adddevicetolist(dev,nr);
-});
-//-----------------------------------------------------------------------------
-function adddevicetolist(dev,nr){
-var deviceId = "id_" + dev.name + "_" + nr;    
-  	var element= document.createElement('ons-list-item');
-  	element.setAttribute('tappable', 'true');
-  	element.setAttribute('id', deviceId);
-	element.innerHTML = dev.name+"  "+dev.rssi;
-	
-	element.setAttribute('btaddress',dev.address);
-	element.setAttribute('btname',dev.name);
-	
-        element.style.fontSize="36px;";
-	// spinner till connection
-	element.addEventListener("click", function (e) {
-	 var btn=e.currentTarget;
-	 var address=btn.getAttribute('btaddress');
-	 var btname=btn.getAttribute('btname');	
-	 if (fble.isconnected()) {
-          ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
-	 return; 	
-	 }
-         console.log("cicked "+btn.id+"  "+address);
-	 fble.connect(address);	
-	});
-var d=document.getElementById('btscandiv');
-if (d) 	d.appendChild(element); 	
-}
-//-----------------------------------------------------------------------------
-fble.onsubscribed(function(o){
-var deviceId = "id_" + o.name + "_" + o.nr;    
-console.log(deviceId+" connected and subscribed to characteristic "+o.characteristic); 
-let b=document.getElementById(deviceId);
-	if (b) {
-	       b.style.background="blue";	
-	       }
-b=document.getElementById("btdisconnect");
-b.disabled=false;
-b=document.getElementById("bticononhome");
-b.style.color="blue";
-b=document.getElementById("btconnectto");
-b.innerHTML=o.name;	
-if (apponsubscribed)	setTimeout(()=>{apponsubscribed()},1000);
-});
-
-
-fble.ondisconnected((o)=>{
-	                  var deviceId = "id_" + o.name + "_" + o.nr;
-	                  console.log("disconnected "+deviceId); 
-                          let b=document.getElementById("btdisconnect");       
-	                  b.disabled=true;
-                         b=document.getElementById(deviceId);     
-	                 b.style.background="none";
-b=document.getElementById("bticononhome");
-b.style.color="white";
-b=document.getElementById("btconnectto");
-b.innerHTML="";
-ons.notification.toast('disconnected ' + o.name, { timeout: 3000 }); 	
+  //-----------------------------------------------------------------------------
+  console.log("load Bluetooth ");
+  
+  /*
+  ons.getScriptPage().onInit = function() {
+  console.log("bluetooth.html  onInit "); 
+  };
+  */
+  
+  // if scanning ?
+  $('#scanning-circles').hide();
+  
+  var devices=fble.founddevices();
+  //console.log("found already "+devices.length+" connected "+fble.isconnected());
+  
+  
+  devices.forEach(function(o,nr) { // add  devices already found
+     //console.log(i+"  "+e.name);
+          var deviceId = "id_" + o.name + "_" + nr;  
+    adddevicetolist(o,nr); 
                           });
-
-function disconnect(e){
-fble.disconnect();
-}
-
-</script>
-
-  </ons-page>
   
   
+  //are we already connected when changing to bluetooth.html
+  var connecteddevice=fble.getconnected();
+  if (connecteddevice.name){
+   var deviceId = "id_" + connecteddevice.name + "_" + connecteddevice.nr; 
+   console.log("already connected to "+deviceId);
+  let b=document.getElementById(deviceId);
+    if (b) {
+           b.style.background="blue";	
+           }
+  b=document.getElementById("btdisconnect");
+  b.disabled=false;
+  } else {
+    let b=document.getElementById("btdisconnect"); 
+    b.setAttribute('disabled','true');
+         }
+  
+  
+  //-----------------------------------------------------------------------------
+  function scanforble(){
+    if (fble.isconnected()) {
+            ons.notification.toast('still connected to ' + o.name, { timeout: 2000 });
+            return;
+                      }
+  console.log("scanforble");
+  //document.getElementById("scanning-circles").show();
+  $('#scanning-circles').show();   
+  document.getElementById('btscandiv').innerHTML="";	
+  fble.scan();
+  }
+  //-----------------------------------------------------------------------------
+  fble.onscanstop(function(){
+   //document.getElementById("scanning-circles").hide();
+   $('#scanning-circles').hide();    	
+  });
+  //-----------------------------------------------------------------------------
+  fble.ondevicefound(function(dev,nr){
+  //console.log("found "+JSON.stringify(dev));
+  adddevicetolist(dev,nr);
+  });
+  //-----------------------------------------------------------------------------
+  function adddevicetolist(dev,nr){
+  var deviceId = "id_" + dev.name + "_" + nr;    
+      var element= document.createElement('ons-list-item');
+      element.setAttribute('tappable', 'true');
+      element.setAttribute('id', deviceId);
+    element.innerHTML = dev.name+"  "+dev.rssi;
+    
+    element.setAttribute('btaddress',dev.address);
+    element.setAttribute('btname',dev.name);
+    
+          element.style.fontSize="36px;";
+    // spinner till connection
+    element.addEventListener("click", function (e) {
+     var btn=e.currentTarget;
+     var address=btn.getAttribute('btaddress');
+     var btname=btn.getAttribute('btname');	
+     if (fble.isconnected()) {
+            ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
+     return; 	
+     }
+           console.log("cicked "+btn.id+"  "+address);
+     fble.connect(address);	
+    });
+  var d=document.getElementById('btscandiv');
+  if (d) 	d.appendChild(element); 	
+  }
+  //-----------------------------------------------------------------------------
+  fble.onsubscribed(function(o){
+  var deviceId = "id_" + o.name + "_" + o.nr;    
+  console.log(deviceId+" connected and subscribed to characteristic "+o.characteristic); 
+  let b=document.getElementById(deviceId);
+    if (b) {
+           b.style.background="blue";	
+           }
+  b=document.getElementById("btdisconnect");
+  b.disabled=false;
+  b=document.getElementById("bticononhome");
+  b.style.color="blue";
+  b=document.getElementById("btconnectto");
+  b.innerHTML=o.name;	
+  if (apponsubscribed)	setTimeout(()=>{apponsubscribed()},1000);
+  });
+  
+  
+  fble.ondisconnected((o)=>{
+                      var deviceId = "id_" + o.name + "_" + o.nr;
+                      console.log("disconnected "+deviceId); 
+                            let b=document.getElementById("btdisconnect");       
+                      b.disabled=true;
+                           b=document.getElementById(deviceId);     
+                     b.style.background="none";
+  b=document.getElementById("bticononhome");
+  b.style.color="white";
+  b=document.getElementById("btconnectto");
+  b.innerHTML="";
+  ons.notification.toast('disconnected ' + o.name, { timeout: 3000 }); 	
+                            });
+  
+  function disconnect(e){
+  fble.disconnect();
+  }
+  
+  </script> -->
+</ons-page>
+  
+
   
   
