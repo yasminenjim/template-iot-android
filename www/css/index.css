@@ -69,8 +69,8 @@
 }
 
 .toolbar-background-bl{
-  background-color:#094860;
-
+  background-color:#0e4b64;
+box-shadow: none;
 }
 .bluetooth-container {
   background-color: #cb3333;
@@ -336,3 +336,15 @@ animation: pulse 8s ease-in-out infinite;
     margin-bottom: 2px;
   }
 
+  .back-button__icon {
+    margin-right: 6px;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    fill: rgb(255 255 255);
+    fill: rgb(255 255 255);
+    -webkit-align-items: center;
+    align-items: center;
+    height: 100%;
+    font-size: 32;
+    
+}
