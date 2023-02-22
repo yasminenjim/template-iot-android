@@ -255,7 +255,7 @@ fble = (function() {
             console.log("connected " + JSON.stringify(result));
            // tactile();
             btconnected = true;
-            document.getElementById(btbuttonid).style.background = "blue";
+            document.getElementById(btbuttonid).style.background = "whitesmoke";
             btname = result.name;
             if (cordova.platformId === "android") {
                 console.log("set MTU");
