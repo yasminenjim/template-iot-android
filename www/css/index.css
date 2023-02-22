@@ -59,13 +59,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 25px;
-  background-color:#f0f1f1;
+  background-color:#ffffff;
   padding: 20px;
  
 }
 
 .toolbar-background {
   background-color: #232a2d;
+  box-shadow: none;
 }
 
 .toolbar-background-bl{
@@ -211,7 +212,7 @@ li {
 
 
 .home-page {
-  background-color: rgb(255, 255, 255) !important;
+  background-color: #232a2d!important;
 }
 
 .bluetooth-page{
@@ -346,5 +347,5 @@ animation: pulse 8s ease-in-out infinite;
     align-items: center;
     height: 100%;
     font-size: 32;
-    
+
 }
