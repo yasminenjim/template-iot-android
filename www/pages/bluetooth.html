@@ -13,7 +13,11 @@
   </ons-toolbar-button>
  </div>
 </ons-toolbar>
-  
+
+<!------------------------------------------------------------------------------------------------------->
+
+<ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+	<ons-carousel-item>
 <!------------------------------------------------------------------------------------------------------->
 <!--first bluetooth interface-->
 <div style="padding-top: 5px; margin-top: 20px;" id="first-interface">
@@ -129,7 +133,18 @@
   </div>
 </div>
 
-
+</ons-carousel-item>
+<ons-carousel-item style="background-color: #373B44;">
+  <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
+	DARK
+  </div>
+</ons-carousel-item>
+<ons-carousel-item style="background-color: #D38312;">
+  <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
+	ORANGE
+  </div>
+</ons-carousel-item>
+</ons-carousel>
 
 <!--this section if for displaying the available bluetooth devices-->
 
@@ -161,7 +176,7 @@
 <!------------------------------------------------------------------------------------------------------->
 <!--bottom toolbar-->		
 
-		<!--<ons-bottom-toolbar>
+		<!--<ons-bottom-toolbar class="bl-toolbar-bottom">
 				<div class="bottom-toolbar__content">
 				  <div class="bottom-toolbar__item" onclick="doSomething()">
 					<ons-icon icon="fa-home"></ons-icon>
@@ -173,6 +188,8 @@
 				  </div>
 				</div>
 			  </ons-bottom-toolbar> -->
+
+			 
 
 <!----------------------------------------------------------------------------->
 
@@ -350,6 +367,30 @@ function devicePaired(){
 
 
 /****************************************************************************/
+var prev = function() {
+  var carousel = document.getElementById('carousel');
+  carousel.prev();
+};
+
+var next = function() {
+  var carousel = document.getElementById('carousel');
+  carousel.next();
+};
+
+ons.ready(function() {
+  var carousel = document.addEventListener('postchange', function(event) {
+    console.log('Changed to ' + event.activeIndex)
+  });
+});
+/****************************************************************************/
+
+
+
+
+
+
+
+
 
 </script>
 

@@ -317,14 +317,14 @@ animation: pulse 8s ease-in-out infinite;
     justify-content: space-between;
     align-items: center;
     height: 48px;
-    background-color: #094860;
+    background-color: #1387b3;
     border-top: none;
   }
   .bottom-toolbar__item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #666;
+    color: #ffffff;
     font-size: 10px;
     padding: 6px;
   }
@@ -349,3 +349,4 @@ animation: pulse 8s ease-in-out infinite;
     font-size: 32;
 
 }
+
