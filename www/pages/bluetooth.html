@@ -1,5 +1,5 @@
 
-<ons-page id="bluetooth" style="text-align: center;"  class="page__background bluetooth-page">
+<ons-page id="bluetooth" style="text-align: center;"  class="page__background bluetooth-page" >
  <ons-toolbar class="toolbar-background-bl" >
   <div class="left">
     <ons-back-button style="color: aliceblue;">Back</ons-back-button>
@@ -26,8 +26,6 @@
 		<div class="item">
 		  <img class="ble-img" src="../img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
 		</div>
-	
-	
 	</div> 
 	
 	</div>
@@ -113,7 +111,7 @@
 
   <div class="popup-background"></div>
   <div class="popup">
-	<span class="close-x" style="font-size: 1.5em;right: 55px; position: absolute; top:240px">&times;</span> 
+<!--<span class="close-x" style="font-size: 1.5em;right: 55px; position: absolute; top:240px">&times;</span> -->	
     <h1>Available Devices</h1>
     <ul class="onsen-list">
 
@@ -195,16 +193,16 @@
 
 <script>
  
-
+/**
 
  // added Close-x into the selectors
 $('.close-x').click(function () {
     $('#popup').fadeOut('slow');
-});
+}); **/
 /***************************************************************************************/
  $('#scanningInterface').hide();
  $('#hide-content').hide();
- $('#popup').hide();
+ hidePopup();
  $('#deviceConnected').hide();
 
 
@@ -220,7 +218,7 @@ $('.close-x').click(function () {
 
 
 
- var devices=fble.founddevices();
+ var devices=fble.founddevices()
 
 devices.forEach(function(o,nr) { // add  devices already found
 	 //console.log(i+"  "+e.name);
@@ -325,6 +323,7 @@ let b=document.getElementById(deviceId);
 	       }
 b=document.getElementById("btdisconnect");
 b.disabled=false;
+//bluetooth icon and name in the home page
 b=document.getElementById("bticononhome");
 b.style.color="LightBlue";
 b=document.getElementById("btconnectto");
@@ -355,17 +354,25 @@ fble.disconnect();
 }
 
 /************************************************************************/
+/************************************************************************/
 
-/** var  iscon=fble.isconnected;
+function popupshow(){
+	
+	if (fble.isconnected()) {
+			  ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
+	$('#scanningInterface').hide();
+	$('#deviceConnected').show();
+	$('#first-interface').hide();}}
+/************************************************************************/
 
-function devicePaired(){
-	if (iscon==true){
-		 $('#deviceConnected').show();
-
-	}
-}
-
-
+function testincnx(){
+	
+if (fble.isconnected()) {
+          ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
+$('#scanningInterface').hide();
+$('#deviceConnected').show();
+$('#first-interface').hide();
+$('#popup').hide();}}
 /****************************************************************************/
 var prev = function() {
   var carousel = document.getElementById('carousel');
@@ -385,11 +392,10 @@ ons.ready(function() {
 /****************************************************************************/
 
 
-
-
-
-
-
+//initializing the bluetooth page, if the device is paired, then display the interface for paired device
+document.addEventListener('init', function(event) {
+  if (event.target.matches('#bluetooth')) {
+   testincnx(); }}, false);
 
 
 </script>
