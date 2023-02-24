@@ -203,7 +203,14 @@ $('.close-x').click(function () {
 //initializing the bluetooth page, if the device is paired, then display the interface for paired device
 document.addEventListener('init', function(event) {
   if (event.target.matches('#bluetooth')) {
-   testingconn(); }}, false);
+    var myCarousel = event.target.querySelector('#myCarousel');
+    myCarousel.addEventListener('postchange', function(event) {
+      console.log('Changed to ' + event.activeIndex);
+    });
+  }
+}, false);
+  /**  if (event.target.matches('#bluetooth')) {
+   testingconn(); }}, false); **/
 
  /************************************************************************/
  function hidePopup() {
@@ -275,6 +282,12 @@ function changeTabbar(event) {
       document.querySelector('.center').innerHTML = 'Bluetooth';
     }
   }
+//--------------------------------------------------------------------------------
+var activeItem = document.querySelector('ons-carousel-item[active]');
+if (activeItem) {
+  var itemId = activeItem.getAttribute('id');
+  console.log("this the carousel item "+itemId);
+}
 
 //-----------------------------------------------------------------------------
 //dev: object representing the BLE device to add
@@ -360,7 +373,6 @@ function popupshow(){
 
 }}
 /************************************************************************/
-
 //when navigation from home to bluetooth interface, check if the device is connected and display the appropriate interface
 function testingconn(){
 	
