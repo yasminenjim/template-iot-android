@@ -267,7 +267,7 @@ fble = (function() {
                 bluetoothle.mtu(function(res) {
                     console.log("mtu set ")
                 }, handleError, params);
-				showDetailPage();
+				
             }
             setTimeout(function() {
                 getDeviceServices(result.address);
@@ -437,7 +437,7 @@ fble = (function() {
             console.log("closed now");
             ondisconnect();
         }, handleError, params);
-		showMainPage();
+	
 		
     }
     //-----------------------------------------------------------------------------
@@ -526,15 +526,7 @@ fble = (function() {
     }
     //-----------------------------------------------------------------------------
 	
-	function showMainPage () {
-        mainPage.hidden = false;
-        detailPage.hidden = true;
-    }
 	
-    function showDetailPage() {
-        mainPage.hidden = true;
-        detailPage.hidden = false;
-    }
 	
 	
 	
@@ -554,6 +546,5 @@ fble = (function() {
         readchar: btreadchar,
         isconnected: isconnected,
         start: blestart
-
     }
 })();

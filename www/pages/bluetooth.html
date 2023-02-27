@@ -13,8 +13,15 @@
  </div>
 </ons-toolbar>
 <!------------------------------------------------------------------------------------------------------->
+<!---
+auto-scroll: automatically snap to item borders
+overscrollable: scroll past the first and last element of the carousel.
+fullscreen: cover the whole screen you can use the fullscreen
+---->
+<!---
+<ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel" onpostchange="changeTabbar()" animation="true"> -->
+<ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel"> 
 
-<ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel" onpostchange="changeTabbar()">
 <!------------Content for the first carousel item (bl scan/connected)------------------------------------>	
 <!--first bluetooth interface-->
 <ons-carousel-item>
@@ -124,31 +131,62 @@
 
 <!----------------------------------Content for the second carousel item (Parametres)--------------------------------------------->
 <ons-carousel-item style="background-color: #ffffff;">
-	<div style="text-align: left; margin-top: 20px; color: #000000;">
-	  <h1>Settings</h1>
+	<div style="margin-top: 20px; color: #000000;margin-right: 250px;">
+	  <h3>Settings</h3>
 	</div>
-	<ons-list-header>Switch and icon</ons-list-header>
-	<ons-list-item>
-	  <div class="left">
-		<ons-icon icon="md-face" class="list-item__icon"></ons-icon>
-	  </div>
-	  <div class="center">
-		Icon and switch
-	  </div>
-	  <div class="right">
-		<ons-switch></ons-switch>
-	  </div>
+	<ons-list-header>Switch bluetooth </ons-list-header>
+    <ons-list-item>
+      <div class="left">
+        <ons-icon icon="fa-bluetooth-b" class="list-item__icon"></ons-icon>
+      </div>
+      <div class="center">
+        Icon and switch
+      </div>
+      <div class="right">
+        <ons-switch></ons-switch>
+      </div>
+    </ons-list-item>
+	<ons-list-header>PAIRED DEVICES</ons-list-header>
+    <ons-list-item expandable>
+      Tap to expand
+      <div class="expandable-content">		
+		<ons-list-item>
+			<div class="left">
+			  <ons-icon icon="fa-bluetooth-b" class="list-item__icon"></ons-icon>
+			</div>
+			<div class="center">
+			  Device A
+			</div>
+		  </ons-list-item>
+	</div>
+
 	</ons-list-item>
+	<ons-list-header>AVAILABLE DEVICES</ons-list-header>
+	<ons-list-item>
+	<div class="left">
+	  <ons-icon icon="fa-bluetooth-b" ></ons-icon>
+	</div>
+	<div>
+	  Device A
+	</div>
+  </ons-list-item>
+  <ons-list-item>
+	<div class="left">
+	  <ons-icon icon="fa-bluetooth-b" ></ons-icon>
+	</div>
+	<div>
+	  Device A
+	</div>
+  </ons-list-item>
+<!----------------------------------The end of the second swipe page(number 1)------------------------------------------------------------------------->
   </ons-carousel-item>
-
-
 
 <ons-carousel-item style="background-color: #D38312;">
   <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
 	ORANGE
   </div>
 </ons-carousel-item>
-<!----------------------------------The end of ons-items------------------------------------------------------------------------->
+<!----------------------------------The end of ons-carousel items------------------------------------------------------------------------->
 </ons-carousel>
 
 <!----------------------------------Have to delete this-------------------------------------------------------------------------->
@@ -193,6 +231,10 @@ $('.close-x').click(function () {
     $('#popup').fadeOut('slow');
 }); **/
 
+
+
+
+
 /***************************************************************************************/
 //initializing
  $('#scanningInterface').hide();
@@ -203,16 +245,9 @@ $('.close-x').click(function () {
 //initializing the bluetooth page, if the device is paired, then display the interface for paired device
 document.addEventListener('init', function(event) {
   if (event.target.matches('#bluetooth')) {
-    var myCarousel = event.target.querySelector('#myCarousel');
-    myCarousel.addEventListener('postchange', function(event) {
-      console.log('Changed to ' + event.activeIndex);
-    });
-  }
-}, false);
-  /**  if (event.target.matches('#bluetooth')) {
-   testingconn(); }}, false); **/
+   testingconn(); }}, false);
 
- /************************************************************************/
+/************************************************************************/
  function hidePopup() {
     var popup = document.getElementById("popup");
     popup.style.display = "none";
@@ -274,7 +309,7 @@ adddevicetolist(dev,nr);
 });
 //-----------------------------------------------------------------------------
 //Change tabbar when you swipe to the right/left
-function changeTabbar(event) {
+/**function changeTabbar(event) {
     var index = event.activeIndex;
     if (index == 1) {
       document.querySelector('.center').innerHTML = 'Bluetooth Settings';
@@ -282,13 +317,7 @@ function changeTabbar(event) {
       document.querySelector('.center').innerHTML = 'Bluetooth';
     }
   }
-//--------------------------------------------------------------------------------
-var activeItem = document.querySelector('ons-carousel-item[active]');
-if (activeItem) {
-  var itemId = activeItem.getAttribute('id');
-  console.log("this the carousel item "+itemId);
-}
-
+**/
 //-----------------------------------------------------------------------------
 //dev: object representing the BLE device to add
 //nr: a number representing the device's order in the list
@@ -312,7 +341,7 @@ var deviceId = "id_" + dev.name + "_" + nr;
           ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
 	 return; 	
 	 }
-    console.log("cicked "+btn.id+"  "+address);
+    console.log("clicked "+btn.id+"  "+address);
 	 fble.connect(address);	
 	});
 var d=document.getElementById('btscandiv');
@@ -373,6 +402,7 @@ function popupshow(){
 
 }}
 /************************************************************************/
+
 //when navigation from home to bluetooth interface, check if the device is connected and display the appropriate interface
 function testingconn(){
 	
@@ -384,16 +414,6 @@ $('#first-interface').hide();
 $('#popup').hide();}}
 /****************************************************************************/
 //Swipping right/left
-var prev = function() {
-  var carousel = document.getElementById('carousel');
-  carousel.prev();
-};
-
-var next = function() {
-  var carousel = document.getElementById('carousel');
-  carousel.next();
-};
-
 ons.ready(function() {
   var carousel = document.addEventListener('postchange', function(event) {
     console.log('Changed to ' + event.activeIndex)

@@ -27,6 +27,7 @@ function onDeviceReady() {
 
     });
 
+    /** 
  // for tabs ?
     document.addEventListener('prechange', function(event) { 
      console.log("prechange "+event.tabItem.getAttribute('label'));
@@ -38,7 +39,7 @@ function onDeviceReady() {
      // just scan the new item
      fvar.scan(event.tabItem).update(); 	    
 	    
-    });
+    }); **/
 
 //css_getclass('.page__background').style.background="white";
 

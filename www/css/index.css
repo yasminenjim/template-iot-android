@@ -39,6 +39,7 @@
 
 .icon{
   animation: vibrate 3s ease-in-out 10s alternate infinite;
+  animation-delay: 10s;
 }
 
 
@@ -58,16 +59,26 @@
   
   justify-content: center;
   align-items: center;
-  border-radius: 25px;
   background-color:#ffffff;
   padding: 20px;
+  margin: -1px;
  
 }
 
-.toolbar-background {
-  background-color: #232a2d;
+
+.toolbar-background-home {
+  background-color: #0e4b64;
   box-shadow: none;
+  border-radius: 0 0 34px 30px;
+  height: 380px;
+  position: absolute;
+  top: 0;
+  z-index: -1 !important;
+  border-bottom: 1px solid #cccccc;
+
+ 
 }
+
 
 .toolbar-background-bl{
   background-color:#0e4b64;
@@ -212,7 +223,7 @@ li {
 
 
 .home-page {
-  background-color: #232a2d!important;
+  background-color: #e0e0e0!important;
 }
 
 .bluetooth-page{
