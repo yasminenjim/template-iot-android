@@ -134,18 +134,21 @@ fullscreen: cover the whole screen you can use the fullscreen
 	<div style="margin-top: 20px; color: #000000;margin-right: 250px;">
 	  <h3>Settings</h3>
 	</div>
-	<ons-list-header>Switch bluetooth </ons-list-header>
+
+
+	<ons-list-header>Connected to</ons-list-header>
     <ons-list-item>
       <div class="left">
         <ons-icon icon="fa-bluetooth-b" class="list-item__icon"></ons-icon>
       </div>
       <div class="center">
-        Icon and switch
+		<span id="connectTO" style="color:rgb(0, 0, 0)"></span>   	
       </div>
       <div class="right">
-        <ons-switch></ons-switch>
+        <ons-switch ></ons-switch>
       </div>
     </ons-list-item>
+
 	<ons-list-header>PAIRED DEVICES</ons-list-header>
     <ons-list-item expandable>
       Tap to expand
@@ -235,12 +238,14 @@ $('.close-x').click(function () {
 
 
 
+
 /***************************************************************************************/
 //initializing
  $('#scanningInterface').hide();
  $('#hide-content').hide();
  hidePopup();
  $('#deviceConnected').hide();
+ //var switch1 = document.getElementById('switch-1');
 
 //initializing the bluetooth page, if the device is paired, then display the interface for paired device
 document.addEventListener('init', function(event) {
@@ -253,6 +258,12 @@ document.addEventListener('init', function(event) {
     popup.style.display = "none";
 	console.log("popup is hided");
   }
+/****************************************************************************/
+
+ 
+
+
+
 /****************************************************************************/
 
 var devices=fble.founddevices()
@@ -366,9 +377,13 @@ b.disabled=false;
 b=document.getElementById("bticononhome");
 b.style.color="LightBlue";
 b=document.getElementById("btconnectto");
+c=document.getElementById("connectTO");
+c.innerHTML=o.name;	
 b.innerHTML=o.name;	
 $('#scanningInterface').hide();
 $('#deviceConnected').show();
+document.querySelector('ons-switch').setAttribute('checked', 'true')
+
 if (apponsubscribed)	setTimeout(()=>{apponsubscribed()},1000);
 });
 
@@ -379,6 +394,7 @@ fble.ondisconnected((o)=>{
 	                  b.disabled=true;
                          b=document.getElementById(deviceId);     
 	                 b.style.background="none";
+					 
 b=document.getElementById("bticononhome");
 b.style.color="white";
 b=document.getElementById("btconnectto");

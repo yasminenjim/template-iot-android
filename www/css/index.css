@@ -37,23 +37,6 @@
 }
 
 
-.icon{
-  animation: vibrate 3s ease-in-out 10s alternate infinite;
-  animation-delay: 10s;
-}
-
-
-@keyframes vibrate {
-  0% {
-    transform: translateY(0);
-  }
-  20% {
-    transform: translateY(-10px);
-  }
-  40% {
-    transform: translateY(0);
-  }
-}
 
 .card {
   
