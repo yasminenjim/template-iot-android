@@ -258,11 +258,20 @@ document.addEventListener('init', function(event) {
     popup.style.display = "none";
 	console.log("popup is hided");
   }
+ /******************************************************************************/
+ disableSwtich(); 
 /****************************************************************************/
-
- 
-
-
+ function disableSwtich()
+ {
+let switch1=document.querySelector('ons-switch');
+	
+	if(switch1.disabled==true){
+	disconnect();
+	console.log("disconnected from ble from the switch");
+ }
+else {
+console.log("disconnect from the switch please");}
+ }
 
 /****************************************************************************/
 
@@ -394,7 +403,7 @@ fble.ondisconnected((o)=>{
 	                  b.disabled=true;
                          b=document.getElementById(deviceId);     
 	                 b.style.background="none";
-					 
+
 b=document.getElementById("bticononhome");
 b.style.color="white";
 b=document.getElementById("btconnectto");

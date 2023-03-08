@@ -14,8 +14,9 @@
   z-index: 1;
 }
 
-#login{
-  background-color: #ffffff; /* Green */
+#login {
+  background-color: #ffffff;
+  /* Green */
   color: rgb(255, 254, 254) !important;
   font-size: 24px;
   font-weight: bold;
@@ -27,7 +28,7 @@
   line-height: 50px;
 }
 
-#username{
+#username {
   font-size: 18px;
   font-weight: bold;
   font-family: Arial, sans-serif;
@@ -39,13 +40,13 @@
 
 
 .card {
-  
+
   justify-content: center;
   align-items: center;
-  background-color:#ffffff;
+  background-color: #ffffff;
   padding: 20px;
   margin: -1px;
- 
+
 }
 
 
@@ -58,15 +59,14 @@
   top: 0;
   z-index: -1 !important;
   border-bottom: 1px solid #cccccc;
-
- 
 }
 
 
-.toolbar-background-bl{
-  background-color:#0e4b64;
-box-shadow: none;
+.toolbar-background-bl {
+  background-color: #0e4b64;
+  box-shadow: none;
 }
+
 .bluetooth-container {
   background-color: #cb3333;
   padding: 20px;
@@ -109,6 +109,7 @@ li {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   list-style: none;
 }
+
 #bluetooth-icon {
   width: 50px;
   height: 50px;
@@ -197,6 +198,7 @@ li {
     transform: scale(.5, .5);
     opacity: .5;
   }
+
   to {
     transform: scale(2.5, 2.5);
     opacity: 0;
@@ -206,14 +208,14 @@ li {
 
 
 .home-page {
-  background-color: #e0e0e0!important;
+  background-color: #e0e0e0 !important;
 }
 
-.bluetooth-page{
+.bluetooth-page {
 
   background-color: #094860 !important;
-  
-  background-image: linear-gradient(to bottom, #094860, #2587b8)  !important;
+
+  background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
 
 }
 
@@ -257,6 +259,7 @@ li {
   from {
     transform: scale(0);
   }
+
   to {
     transform: scale(1);
   }
@@ -267,22 +270,26 @@ li {
   margin: 0;
   padding: 0;
 }
+
 .onsen-list li {
   display: flex;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
 }
+
 .onsen-list li img {
   width: 50px;
   height: 50px;
   margin-right: 10px;
   border-radius: 50%;
 }
+
 .onsen-list li h2 {
   font-size: 18px;
   margin: 0;
 }
+
 .onsen-list li p {
   font-size: 14px;
   margin: 0;
@@ -290,57 +297,91 @@ li {
 }
 
 
-.ble-img{
-animation: pulse 8s ease-in-out infinite;
+.ble-img {
+  animation: pulse 8s ease-in-out infinite;
 
 }
-@keyframes pulse{
-  0%{
+
+@keyframes pulse {
+  0% {
     transform: scale(0.9);
   }
-  50%{
+
+  50% {
     transform: scale(1.2);
   }
-  100%{
+
+  100% {
     transform: scale(1);
   }
 }
 
-  .bottom-toolbar__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 48px;
-    background-color: #1387b3;
-    border-top: none;
-  }
-  .bottom-toolbar__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #ffffff;
-    font-size: 10px;
-    padding: 6px;
-  }
-  .bottom-toolbar__item.active {
-    color: #000;
-    font-weight: bold;
-  }
-  .bottom-toolbar__item ons-icon {
-    font-size: 24px;
-    margin-bottom: 2px;
-  }
-
-  .back-button__icon {
-    margin-right: 6px;
-    display: -webkit-inline-flex;
-    display: inline-flex;
-    fill: rgb(255 255 255);
-    fill: rgb(255 255 255);
-    -webkit-align-items: center;
-    align-items: center;
-    height: 100%;
-    font-size: 32;
-
+.bottom-toolbar__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  background-color: #1387b3;
+  border-top: none;
 }
 
+.bottom-toolbar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 6px;
+}
+
+.bottom-toolbar__item.active {
+  color: #000;
+  font-weight: bold;
+}
+
+.bottom-toolbar__item ons-icon {
+  font-size: 24px;
+  margin-bottom: 2px;
+}
+
+.back-button__icon {
+  margin-right: 6px;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  fill: rgb(255 255 255);
+  fill: rgb(255 255 255);
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  font-size: 32;
+
+}
+.container-motor {
+  position: relative;
+  width: 70px;
+  height: 100px;
+  background-color: #333;
+  border-radius: 30px;
+  padding-top: 100px;
+}
+
+.circle-mot{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  background-color: #333;
+  border-radius: 50%;
+}
+.small-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+}

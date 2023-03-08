@@ -5,7 +5,7 @@ ongotline with chariacteristic to make distinction  ?
 
 if (fvar)  fvar.addfunc("sendbtjson", sendbtjson);   
 -> if (fvar) fvar.addfunc("sendbtjson", fble.sendjson);
-
+ 
 
 fvar.parse(jo); -> ongotjson(jo);   
 
