@@ -13,32 +13,30 @@
      </ons-toolbar-button>
     </div>
    </ons-toolbar>
- <!--------------------------------------The circle-------------------------------------->
-  
+
+
+
+
+
+
+
+
+
+<!----
  <div class="circle-mot" style="margin-top: -180px">
-  <div class="small-circle"> Select</div>
+  <div class="small-circle"></div>
 </div>
+  
 
- <!--------------------------------------change motor speed-------------------------------------->
+
+
+
 <div class="control-buttons">
-   <div style="padding-top: 5px; margin-top: 300px;margin-left: 50px;">
-   <div class="container-motor">
-   <div style="margin-top: -50px;">
-    <span style="color: #ffffff;">
-    <i class="fa-solid fa-plus" style="font-size: 40px;margin-top:-90px;margin-left: 17.5px;"></i>
-  </span>
-</div>
-<div style="margin-top: -50px;">
-  <span style="color: #ffffff;">
-  <i class="fa-solid fa-minus" style="font-size: 40px;margin-top:120px;margin-left: 17.5px;"></i>
-</span>
-</div>
+ <div style="padding-top: 5px; margin-top: 300px;margin-left: 50px;">
 
-   </div>
  </div>
 
- <!--------------------------------------change motor direction-------------------------------------->
- <div style="padding-top: 20px; margin-top: -220px;margin-left: 243px;">
+ <div>
   <div class="container-motor">
     
     <div style="margin-top: -63px;">
@@ -54,7 +52,159 @@
 
   </div>
 </div>
+</div> ---->
+<!---
+
+  <ons-list>
+    <ons-list-item>
+      <ons-range id="myRange" min="0" max="10" value="5" onchange="updateRangeValue()">
+        <span class="range-bar"></span>
+        <span class="range-button"></span>
+      </ons-range>
+    </ons-list-item>
+  </ons-list>
+
+  <div class="range-values">
+    <span class="min-value">0</span>
+    <span class="max-value">10</span>
+  </div>
+
+  <div id="rangeValue">5</div>
+
+
+
+
+<script>
+  var myVariable = 5; // Initialize your variable with a default value
+
+  function updateRangeValue() {
+    var rangeValue = document.getElementById('myRange').value;
+
+    // Update your variable with the new range slider value
+    myVariable = parseFloat(rangeValue); // Use parseFloat to convert the value to a float
+
+    document.getElementById('rangeValue').textContent = rangeValue;
+
+    // Check if the range slider value is zero and call your method if it is
+    if (rangeValue == 0) {
+      myMethod();
+    }
+  }
+
+  function myMethod() {
+    // Your method code goes here
+    console.log('The range slider value is zero!');
+  }
+</script>
+-->
+
+
+
+
+<!---
+<div class="slider">
+  <input type="range" min="" max="" step="" value="" class="slider-bar">
+  <div class="slider-values">
+    <span class="value"></span>
+    <span class="value"></span>
+    <span class="value"></span>
+  </div>
 </div>
+
+
+-->
+
+<!----<ons-range modifier="custom">
+  <input type="range" min="0" max="100" value="50">
+</ons-range>
+
+<style>
+  /* Customize the track */
+  .range-bar.custom input[type=range] {
+    background-color: #ccc;
+    height: 4px;
+    border-radius: 10px;
+  }
+
+  /* Customize the thumb */
+  .range-bar.custom input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    margin-top: -8px;
+  }
+</style>
+
+
+
+-->
+
+<!---
+
+<input type="range" id="myRange" min="0" max="100" value="50">
+<div id="rangeValue">50</div>
+
+
+<script>
+
+const range = document.getElementById("myRange");
+const rangeValue = document.getElementById("rangeValue");
+
+rangeValue.innerHTML = range.value;
+
+range.addEventListener("input", function() {
+  rangeValue.innerHTML = this.value;
+  if (this.value === "0") {
+    callMyMethod();
+  }
+});
+
+function callMyMethod() {
+  // your method code here
+}
+
+
+
+
+</script>-->
+
+
+
+
+
+
+
+
+
+<div class="slider-container">
+  <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+  <div id="slider-value" class="slider-value">50</div>
+</div>
+
+
+
+
+
+
+<script>
+
+const slider = document.getElementById("myRange");
+const output = document.getElementById("slider-value");
+
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+
+
+</script>
+</ons-page>
+
 <!---
 <ons-fab position="bottom right">
     <ons-icon icon="fa-save"></ons-icon>
@@ -63,9 +213,9 @@
 -->
 
 
-<script>
 
-    
-</script>
 
-     </ons-page>
+
+
+
+     
