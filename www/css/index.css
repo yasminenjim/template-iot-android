@@ -63,7 +63,7 @@
 
 
 .toolbar-background-bl {
-  background-color: #0e4b64;
+  background-color: #094860 ;
   box-shadow: none;
 }
 
@@ -208,14 +208,23 @@ li {
 
 
 .home-page {
+ 
   background-color: #e0e0e0 !important;
 }
 
 .bluetooth-page {
 
   background-color: #094860 !important;
-
   background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
+
+
+
+}
+
+.motors-page {
+
+  background-color: #094860 !important;
+
 
 }
 
@@ -394,7 +403,7 @@ li {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 20px;
+  height: 18px;
   margin: 10px 0;
   background-color: #ddd;
   outline: none;
@@ -408,36 +417,51 @@ li {
   appearance: none;
   width: 25px;
   height: 25px;
-  background-color: #4CAF50;
+  background-color: #6B6A6A;
   cursor: pointer;
 }
 
 #myRange::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background-color: #4CAF50;
+  background-color:#6B6A6A;
   cursor: pointer;
 }
 
 
 .slider-container {
+
   position: relative;
   height: 300px;
   margin: 50px;
+  margin-top: 170px;
+  margin-right: 100px;
+  width: 310px;
+
 }
+.slider-background {
+  position: absolute;
+  top: 0;
+  left: 239px; /* adjust the left position to align with the slider */
+  width: 50px; /* width of the rectangle */
+  height: 120%; /* height of the rectangle */
+  background-color: #f8f8f8; /* color of the rectangle */
+  border-radius: 30px;
+}
+
 
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  width: 400%;
   height: 20px;
-  background: #ccc;
+  background: transparent; /* make the slider transparent */
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 30px;
+  left: -54px;
   transform: rotate(270deg);
   transform-origin: right top 0;
 }
@@ -447,14 +471,14 @@ li {
   appearance: none;
   width: 30px;
   height: 30px;
-  background: #4CAF50;
+  background: #6B6A6A;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
   width: 30px;
   height: 30px;
-  background: #4CAF50;
+  background: #6B6A6A;
   cursor: pointer;
 }
 
@@ -466,3 +490,79 @@ li {
   font-size: 20px;
   font-weight: bold;
 }
+
+
+.buttonContainer {
+  position: relative;
+  height: 200px;
+  margin-top: -140px;
+}
+
+.button-m {
+  display: block;
+    width: 180px;
+    height: 55px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 15px 0;
+    margin-left: 50px;
+}
+
+
+.button-m:nth-child(1) {
+  left: 0;
+  top: 0;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.button-m:nth-child(2) {
+  left: 0;
+  top: 0;
+  background-color: #ffffff;
+  color: #000000;
+ 
+}
+
+.button-m:nth-child(3) {
+  right: 0;
+  top: 0;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+
+
+
+.buttonContainer > .button-m:nth-child(1):hover {
+  background-color: #00cc00;
+}
+
+.buttonContainer > .button-m:nth-child(2):hover {
+  background-color: #00cc00;
+}
+
+.buttonContainer > .button-m:nth-child(3):hover {
+  background-color: #cc0000;
+}
+
+
+.container-output{
+  position: relative;
+  height: 200px;
+  margin-top: -350px;
+  margin-left: 50px;
+}
+
+.box {
+  width: 90px;
+    height: 50px;
+    margin-left: 50px;
+    font-family: Arial, sans-serif;
+    
+}
+
+

@@ -1,6 +1,6 @@
-<ons-page id="motors">
+<ons-page id="motors"  class="page__background motors-page">
    
-    <ons-toolbar style="background-color: rgb(0, 0, 0);" class="toolbar-background" >
+    <ons-toolbar  class="toolbar-background-bl">
      <div class="left">
        <ons-back-button>Back</ons-back-button>
         </div>
@@ -173,13 +173,8 @@ function callMyMethod() {
 
 
 
-
-
-
-
-
-
 <div class="slider-container">
+  <div class="slider-background"></div>
   <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
   <div id="slider-value" class="slider-value">50</div>
 </div>
@@ -187,6 +182,36 @@ function callMyMethod() {
 
 
 
+<!--Buttons-
+<div class="motor-buttons">>
+<button id="stopButton" class="motorControlButton">STOP</button>
+</div>-->
+
+
+<div class="buttonContainer">
+  <button class="button-m">Forward</button>
+<button class="button-m">Backward</button>
+  <button id="stopButton" class="button-m">STOP</button>
+</div>
+
+
+
+<div class="container-output">
+  <div class="box">30.000</div>
+  <div class="box">80.000</div>
+  <div class="box">60.000</div>
+</div>
+
+
+
+
+<!---
+<div class="range-slider grad" style='--min:0; --max:10000; --step:100; --value:200; --text-value:"200"; --prefix:"$"'>
+  <input type="range" min="0" max="10000" step="100" value="200" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify((+this.value).toLocaleString()))">
+  <output></output>
+  <div class='range-slider__progress'></div>
+</div>
+-->
 
 
 <script>
@@ -198,6 +223,13 @@ output.innerHTML = slider.value;
 
 slider.oninput = function() {
   output.innerHTML = this.value;
+}
+
+
+document.getElementById("stopButton").addEventListener("click", stopMotor);
+
+function stopMotor() {
+  // Code to stop the motor goes here
 }
 
 
