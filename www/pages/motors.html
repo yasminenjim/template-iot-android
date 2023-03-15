@@ -171,43 +171,61 @@ function callMyMethod() {
 <div class="slider-container">
   <div class="slider-background"></div>
   <input type="range" min="-2000" max="2000" value="0" step="1000" class="slider" id="myRange">
-  <div id="slider-value" class="box" style="margin-left: 23px;">
-  0
-
-  <br>
-  <br>
-  <div style="font-size: small; color: aliceblue; margin-left:40px;">Speed</div></div>
+  
 </div>
 
 
+<!--
+<div class="screen">
+
+  <div id="slider-value" class="box" style="margin-left: 70px; margin-bottom: 20px;">
+    2000
+    
+    <div style="font-size: small; color: aliceblue; margin-left:10px;">Speed</div></div>
+    <div class="box" style="margin-left: 70px;" id="ml-position">45680
+    
+      <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Position</div>
+    
+    </div>
+    <div class="box" style="margin-left: 70px; margin-bottom: 20px;" id="ml-inclination">5.257
+      
+    
+      <div style="font-size: small; color: aliceblue; margin-left:40px;">Inclination</div></div>
+  
+    
+  </div>
+    
+-->
 
 
+<div class="screen">
+
+  <div id="slider-value" class="box" >
+    2000
+    
+    <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Speed</div>
+
+  </div>
+
+    <div class="box" id="ml-position">
+      45680
+    
+      <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Position</div>
+    
+    </div>
+    <div class="box" id="ml-inclination">5.257
+      
+    
+      <div style="font-size: small; color: aliceblue; margin-left:40px;">Inclination</div>
+    </div>
+  
+    
+  </div>
 <!--Buttons-
 <div class="motor-buttons">>
 <button id="stopButton" class="motorControlButton">STOP</button>
 </div>-->
 
-
-<div class="buttonContainer">
-  <button class="button-m">Forward</button>
-<button class="button-m">Backward</button>
-  <button id="stopButton" class="button-m">STOP</button>
-</div>
-
-
-
-
-  <div class="box" style="margin-left: 70px; margin-top:-370px;" id="ml-position">45680
-  
-    <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Position</div>
-  
-  </div>
-  <div class="box" style="margin-left: 70px; margin-bottom: 20px;" id="ml-inclination">5.257
-    
-  
-    <div style="font-size: small; color: aliceblue; margin-left:40px;">Inclination</div></div>
-
-  
 
 <!---
 <div class="range-slider grad" style='--min:0; --max:10000; --step:100; --value:200; --text-value:"200"; --prefix:"$"'>
@@ -217,6 +235,14 @@ function callMyMethod() {
 </div>
 -->
 </div>
+
+
+<div class="buttonContainer">
+  <button class="button-m">Forward</button>
+<button class="button-m">Backward</button>
+  <button id="stopButton" class="button-m">STOP</button>
+</div>
+
 
 <script>
 
