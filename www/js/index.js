@@ -56,6 +56,8 @@ const navigatetopage=(p)=>{
                                   },()=>{console.log("failed to navigate to "+p)}); 	    
 }
 //-----------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
 const gohome=()=>{  // splitter is home
 document.getElementById('appSplitter').left.close(); //
 navigatetopage("splitter.html");	

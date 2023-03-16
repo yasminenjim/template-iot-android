@@ -234,7 +234,17 @@ const output = document.getElementById("slider-value");
 output.innerHTML = slider.value;
 
 slider.oninput = function() {
-  output.innerHTML = this.value;
+  try{
+    output.innerHTML = this.value;
+  console.log("Slider is changing");
+  }
+  catch(e){
+    console.log("the slider is not updated anymore, the error:" +e.output);
+
+  }
+  
+
+
 }
 
 
