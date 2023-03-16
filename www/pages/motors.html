@@ -14,17 +14,13 @@
     </div>
    </ons-toolbar>
 
-
-
+   <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+    <ons-carousel-item>
 
 <!----
  <div class="circle-mot" style="margin-top: -180px">
   <div class="small-circle"></div>
 </div>
-  
-
-
-
 
 <div class="control-buttons">
  <div style="padding-top: 5px; margin-top: 300px;margin-left: 50px;">
@@ -218,14 +214,29 @@ function callMyMethod() {
 
 
 <div class="buttonContainer">
-  <button class="button-m">Forward</button>
-<button class="button-m">Backward</button>
-  <button id="stopButton" class="button-m">STOP</button>
+  <button class="button-m" onclick="motorgo(1,-2000)" >Forward</button>
+<button class="button-m" onclick="motorgo(1,2000)">Backward</button>
+  <button  class="button-m" onclick="motorstop(1)" >STOP</button>
 </div>
 
 
 </div>
 </div>
+
+
+
+
+
+  
+    
+  </ons-carousel-item>
+  <ons-carousel-item style="background-color: #373B44;">
+    <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
+      DARK
+    </div>
+  </ons-carousel-item>
+
+</ons-carousel>
 <script>
 
 const slider = document.getElementById("myRange");
@@ -248,13 +259,43 @@ slider.oninput = function() {
 }
 
 
-document.getElementById("stopButton").addEventListener("click", stopMotor);
-
-function stopMotor() {
-  // Code to stop the motor goes here
-}
+//document.getElementById("stopButton").addEventListener("click", motorstop);
 
 
+
+
+
+
+function motorgo(lr,speed){
+    var o;
+   if (lr==0) {
+	   o={do:{ml:{s:speed}}};
+	      } 
+	  else o={do:{mr:{s:speed}}};
+    fble.sendjson(o); 
+    document.getElementById("debugdiv1").innerHTML=JSON.stringify(o);
+  }
+
+  function motorstop(lr){
+    var o;
+   if (lr==0) {
+	   o={do:{ml:{s:0}}};
+	      } 
+	   else o={do:{mr:{s:0}}};
+  
+           fble.sendjson(o); 
+	   document.getElementById("debugdiv1").innerHTML=JSON.stringify(o);
+  }
+
+
+
+
+  //Swipping right/left
+ons.ready(function() {
+  var carousel = document.addEventListener('postchange', function(event) {
+    console.log('Changed to ' + event.activeIndex)
+  });
+});
 
 </script>
 </ons-page>
