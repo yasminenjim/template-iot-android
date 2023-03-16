@@ -441,13 +441,14 @@ li {
 }
 .slider-background {
   position: absolute;
-  top: 0;
-  left: 239px; /* adjust the left position to align with the slider */
-  width: 50px; /* width of the rectangle */
-  height: 70%; /* height of the rectangle */
-  background-color: #f8f8f8; /* color of the rectangle */
+  top: 88px;
+  left: 239px;
+  width: 56px;
+  height: 72%;
+  background-color: #f8f8f8;
   border-radius: 30px;
-  margin-left: 94px;
+  margin-left: 91px;
+  
 }
 
 
@@ -580,6 +581,7 @@ li {
 .motor-interface{
 
   margin-left: 0px;
+  margin-top: 109px;
 }
 
 .title {
@@ -591,4 +593,11 @@ li {
 .screen{
 
   padding-top: 5px;
+}
+
+.adjusting{
+
+margin: auto;
+margin-top: -32px;
+
 }
