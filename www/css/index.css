@@ -401,14 +401,15 @@ li {
 #myRange {
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
+  width: 153%;
   height: 20px;
   /* height : 18px;*/
-  background-color: #ddd;
+  background-color: #b4b4b4;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
+  margin-left: -126px;
 }
 
 #myRange::-webkit-slider-thumb {
@@ -416,14 +417,14 @@ li {
   appearance: none;
   width: 25px;
   height: 25px;
-  background-color: #ffffff;
+  background-color: #535353;
   cursor: pointer;
 }
 
 #myRange::-moz-range-thumb {
   width: 28px;
   height: 28px;
-  background-color:#6B6A6A;
+  background-color:#626060;
   cursor: pointer;
 }
 
@@ -438,6 +439,7 @@ li {
   margin-right: 100px; 
   **/
   width: 310px;
+  height: auto;
 
 }
 .slider-background {
@@ -448,6 +450,7 @@ li {
   height: 70%; /* height of the rectangle */
   background-color: #f8f8f8; /* color of the rectangle */
   border-radius: 30px;
+  margin-left: 94px;
 }
 
 
@@ -479,7 +482,7 @@ li {
 .slider::-moz-range-thumb {
   width: 30px;
   height: 30px;
-  background: #c3c1c1;
+  background: #9d9d9d;
   cursor: pointer;
 }
 
