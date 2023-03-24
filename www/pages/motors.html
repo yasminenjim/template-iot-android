@@ -4,7 +4,7 @@
      <div class="left">
        <ons-back-button>Back</ons-back-button>
         </div>
-        <div class="center" style="color:rgb(255, 255, 255);">Motors</div>
+        <div class="center" id="toolbar-title" style="color:rgb(255, 255, 255);text-align: center;">Motors</div>
        <div class="right">
       <ons-toolbar-button onclick='gohome();' >  
       <span style="color: rgb(255, 255, 255);">
@@ -15,7 +15,7 @@
    </ons-toolbar>
 
    <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
-    <ons-carousel-item>
+    <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
 
 <!----
  <div class="circle-mot" style="margin-top: -180px">
@@ -214,8 +214,8 @@ function callMyMethod() {
 
 
 <div class="buttonContainer">
-  <button class="button-m" onclick="motorgo(1,-2000)" >Forward</button>
-<button class="button-m" onclick="motorgo(1,2000)">Backward</button>
+  <button class="button-m" onclick="motorgo(1,-2000)" >IN</button>
+<button class="button-m" onclick="motorgo(1,2000)">OUT</button>
   <button  class="button-m" onclick="motorstop(1)" >STOP</button>
 </div>
 
@@ -223,14 +223,11 @@ function callMyMethod() {
 </div>
 </div>
 
-
-
-
-
-  
-    
   </ons-carousel-item>
-  <ons-carousel-item style="background-color: #373B44;">
+
+
+
+  <ons-carousel-item style="background-color: #373B44;" id="right-carousel">
     <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
       DARK
     </div>
@@ -288,14 +285,31 @@ function motorgo(lr,speed){
   }
 
 
+  var titleElement = document.getElementById('toolbar-title');
 
+// Set initial toolbar title
 
+titleElement.innerHTML = 'Right Motor';
   //Swipping right/left
-ons.ready(function() {
-  var carousel = document.addEventListener('postchange', function(event) {
-    console.log('Changed to ' + event.activeIndex)
+  document.addEventListener('DOMContentLoaded', function() {
+    var carousel = document.getElementById('left-carousel');
+    var titleElement = document.getElementById('toolbar-title');
+
+    carousel.addEventListener('postchange', function(event) {
+      if (event.activeIndex === 0) {
+        titleElement.innerHTML = 'Right Motor'; 
+        console.log("the index page now is: " +event.activeIndex);
+
+      } else if (event.activeIndex === 1) {
+        titleElement.innerHTML = 'Left Motor';
+        console.log("the tite now is: " +titleElement);
+        console.log("the index page now is: " +event.activeIndex);
+
+      }
+    });
   });
-});
+
+
 
 </script>
 </ons-page>

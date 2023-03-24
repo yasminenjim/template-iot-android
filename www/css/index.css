@@ -227,6 +227,12 @@ li {
 
 
 }
+.testpage-page {
+
+  background-color: #F6F6F6 !important;
+
+
+}
 
 
 .popup-container {
@@ -532,7 +538,7 @@ li {
 .button-m:nth-child(3) {
   right: 0;
   top: 0;
-  background-color: #cc0000;
+  background-color: #000000;
   color: #ffffff;
 }
 
@@ -548,7 +554,7 @@ li {
 }
 
 .buttonContainer > .button-m:nth-child(3):hover {
-  background-color: #000000;
+  background-color: #cc0000;
 }
 
 
@@ -600,4 +606,113 @@ li {
 margin: auto;
 margin-top: -44px;
 margin-left: 23px;
+}
+
+/** CAN interface**/
+.card-style-can {
+  text-align: center;
+  width: 89%;
+  border-radius: 10px;
+  box-shadow: none;
+  height: 226px;
+  margin: 20px auto;
+  background-color: #efefef;
+  margin-bottom: 24px;
+}
+
+.card-can-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.range-bar {
+  -webkit-appearance: none;
+  width: 112%;
+  height: 20px;
+  margin: 10px 0;
+  background: linear-gradient(to right, #ccc, #ccc) no-repeat;
+  background-size: 100% 100%;
+  
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: opacity .15s ease-in-out;
+  transition: opacity .15s ease-in-out;
+  margin-left: -6%;
+}
+
+.range-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 25px;
+  
+  background-color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.range-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.range-bar::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #6b6a6a 0%, #6b6a6a 50%, #d9d9d9 50%, #d9d9d9 100%);
+  position: relative;
+  z-index: 0;
+}
+
+.range-bar::-moz-range-track {
+  background: linear-gradient(to right, #6b6a6a 0%, #6b6a6a 50%, #d9d9d9 50%, #d9d9d9 100%);
+  position: relative;
+  z-index: 0;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #000000 0%, #000000 calc((var(--value) / (var(--max) - var(--min))) * 100%), #cccccc calc((var(--value) / (var(--max) - var(--min))) * 100%), #cccccc 100%);
+  position: relative;
+  z-index: 0;
+}
+
+.range-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+  font-family: 'Open Sans', sans-serif;
+		 font-weight: 978;
+		 font-size: 14px;
+		 color: #094860;
+
+}
+
+.range-value-text {
+  margin-top: 44px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 978;
+    font-size: 23px;
+    color: #094860;
+    margin-left: -68px;
+
+}
+
+.range-values .range-value {
+  margin-right: 20px;
+}
+
+.out-can{
+
+  color: #ffffff;
+  margin-left: 11px;
+  background-color: #094860;
+  padding: 5px 10px;
+  border: 2px solid #094860; /* add this line */
+  border-radius: 10px; /* add this line */
+  width: 10px;
+  height: 16px;
 }
