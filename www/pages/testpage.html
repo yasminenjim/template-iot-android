@@ -182,9 +182,6 @@
 				   </span></p>
 			 </div>
 		   </ons-card>
-		 
-
-
 	  
 	</div>
   </div>
@@ -226,6 +223,11 @@ rangeBar.oninput = function() {
 	rangeValue.innerHTML = this.value + ' mA'; // update value with unit
 }
 
+/**function updateValue(card) {
+			var range = document.querySelector('.card'+card+'Range');
+			var value = document.querySelector('#card'+card+'Value');
+			value.innerHTML = range.value;
+		}**/
 
 
  </script>  
