@@ -7,7 +7,7 @@ console.log("we are on "+cordova.platformId);
   skip login
   go directly
 */
-setTimeout(login(),200);
+//setTimeout(login(),200);
 
 
 // crobot 7f190f68-2749-493c-947f-178fe27fd4bc

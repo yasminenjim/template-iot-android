@@ -1,11 +1,17 @@
-//const { color } = require("d3");
-
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
 
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+
+
+
+      // Create a reference to your navigator element
+      const navigator = document.querySelector('#navigator');
+
+      // Set the root page to your desired page
+      navigator.setAttribute('page', 'home.html');
     
      ons.ready(function() {
             console.log("ons.ready");
@@ -13,35 +19,16 @@ function onDeviceReady() {
 
     document.addEventListener('init', function(event) {
      let page = event.target;
-    //if (page.page) console.log("init page "+page.page);
-    //else console.log("init a page ");
-     console.log("init a page "); //+JSON.stringify(page));
-     //let page_=page.pushedOptions.page;
-     //console.log("init "+page_);	    
+   
+     console.log("init a page "); 
     });
 
     document.addEventListener('show', function(event) { 
     let page = event.target;   
-    //let page_=page.pushedOptions.page;
-    console.log("show a page "); //+JSON.stringify(page));     
+
+    console.log("show a page ");    
 
     });
-
-    /** 
- // for tabs ?
-    document.addEventListener('prechange', function(event) { 
-     console.log("prechange "+event.tabItem.getAttribute('label'));
-	    
-    });
-
-    document.addEventListener('postchange', function(event) { 
-     console.log("postchange "+event.tabItem.getAttribute('label'));
-     // just scan the new item
-     fvar.scan(event.tabItem).update(); 	    
-	    
-    }); **/
-
-//css_getclass('.page__background').style.background="white";
 
 onappstart(); // defined in app.js  	
 }
@@ -74,9 +61,11 @@ gotopage="splitter.html"
   if (username === '' && password === '') {
     const navigator = document.querySelector('#navigator');
     navigator.resetToPage(gotopage);
+   ons.notification.alert('Loaded the login page');
+
   } else {
-    document.getElementById('navigator').resetToPage(gotopage); 
-    //ons.notification.alert('Wrong username/password combination');
+   // document.getElementById('navigator').resetToPage(gotopage); 
+   ons.notification.alert('Wrong username/password combination');
   }
 }
 //-----------------------------------------------------------------------------
