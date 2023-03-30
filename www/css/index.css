@@ -1,12 +1,16 @@
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.containerlogin {
+  background-image: url(../img/back.jpg);
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  filter: blur(5px);
+}
+
+.login-page {
+
+background-image:  url(../img/back.jpg) !important;
+
+background-repeat: no-repeat;
+background-size: contain;
+background-position: center center;
 }
 
 .content {
@@ -51,7 +55,7 @@
 
 
 .toolbar-background-home {
-  background-color: #0e4b64;
+  background-color: #094860;
   box-shadow: none;
   border-radius: 0 0 34px 30px;
   height: 380px;
@@ -209,7 +213,7 @@ li {
 
 .home-page {
  
-  background-color: #e0e0e0 !important;
+  background-color: #ffffff !important;
 }
 
 .bluetooth-page {
@@ -538,8 +542,8 @@ li {
 .button-m:nth-child(3) {
   right: 0;
   top: 0;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 

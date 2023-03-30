@@ -145,7 +145,7 @@ fullscreen: cover the whole screen you can use the fullscreen
 		<span id="connectTO" style="color:rgb(0, 0, 0)"></span>   	
       </div>
       <div class="right">
-        <ons-switch ></ons-switch>
+        <ons-switch id="mySwitch"></ons-switch>
       </div>
     </ons-list-item>
 
@@ -240,12 +240,14 @@ $('.close-x').click(function () {
 
 
 /***************************************************************************************/
+/********************************************************************************************/
 //initializing
  $('#scanningInterface').hide();
  $('#hide-content').hide();
  hidePopup();
  $('#deviceConnected').hide();
  //var switch1 = document.getElementById('switch-1');
+ var mySwitch = document.getElementById("mySwitch");
 
 //initializing the bluetooth page, if the device is paired, then display the interface for paired device
 document.addEventListener('init', function(event) {
@@ -257,6 +259,7 @@ document.addEventListener('init', function(event) {
     var popup = document.getElementById("popup");
     popup.style.display = "none";
 	console.log("popup is hided");
+
   }
  /******************************************************************************/
  disableSwtich(); 
@@ -321,6 +324,8 @@ $('#scanningInterface').show();
 //-----------------------------------------------------------------------------
 fble.onscanstop(function(){
  //document.getElementById("circles").hide();
+console.log("stoped scanning from onscanstop method ");
+
 });
 //-----------------------------------------------------------------------------
 fble.ondevicefound(function(dev,nr){
@@ -328,16 +333,7 @@ fble.ondevicefound(function(dev,nr){
 adddevicetolist(dev,nr);
 });
 //-----------------------------------------------------------------------------
-//Change tabbar when you swipe to the right/left
-/**function changeTabbar(event) {
-    var index = event.activeIndex;
-    if (index == 1) {
-      document.querySelector('.center').innerHTML = 'Bluetooth Settings';
-    } else {
-      document.querySelector('.center').innerHTML = 'Bluetooth';
-    }
-  }
-**/
+
 //-----------------------------------------------------------------------------
 //dev: object representing the BLE device to add
 //nr: a number representing the device's order in the list
@@ -446,6 +442,17 @@ ons.ready(function() {
 });
 /****************************************************************************/
 
+mySwitch.addEventListener("change", function() {
+  if (this.disabled) {
+    // Switch is turned on, call your method here
+    disconnect();
+	$('#deviceConnected').hide();
+$('#first-interface').show();
+  } else {
+    // Switch is turned off, disable the switch
+    this.disabled = false;
+  }
+});
 
 
 
