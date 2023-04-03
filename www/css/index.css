@@ -73,6 +73,10 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.session-container{
+  display: block;
+  margin-top: 20px;
+}
 
 .card {
 
