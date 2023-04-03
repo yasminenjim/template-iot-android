@@ -40,8 +40,8 @@
 	   </h1>
 
  
-  <div class="sessions">
-	<ons-card class="card-session" id="user-1-card" modifier="material" onclick="selectSession(1)">
+  <div class="sessions" id="sessions">
+	<ons-card class="card-session" id="user-1-card" modifier="material" >
 	  <div class="card-session-body">
 		<span style="color: #0e4b64;">
 		  <i class="fa-solid fa-user " style="font-size: 20px;"></i>
@@ -50,7 +50,7 @@
 	  </div>
 	</ons-card>
 
-	<ons-card class="card-session" modifier="material" id="user-2-card" onclick="selectSession(1)">
+	<ons-card class="card-session" modifier="material" id="user-2-card" >
 		<div class="card-session-body">
 		  <span style="color: #0e4b64;">
 			<i class="fa-solid fa-user " style="font-size: 20px;"></i>
@@ -59,7 +59,7 @@
 		</div>
 	  </ons-card>
 
-	  <ons-card class="card-session" id="user-3-card" modifier="material" onclick="selectSession(1)">
+	  <ons-card class="card-session" id="user-3-card" modifier="material" >
 		<div class="card-session-body">
 		  <span style="color: #0e4b64;">
 			<i class="fa-solid fa-user" style="font-size: 20px;"></i>
@@ -68,7 +68,7 @@
 		</div>
 	  </ons-card>
 
-	  <ons-card class="card-session" id="user-4-card" modifier="material" onclick="selectSession(1)">
+	  <ons-card class="card-session" id="user-4-card" modifier="material" >
 		<div class="card-session-body">
 		  <span style="color: #0e4b64;">
 			<i class="fa-solid fa-user" style="font-size: 20px;"></i>
@@ -77,13 +77,11 @@
 		</div>
 	  </ons-card>
   </div>
-	  <p>
-		<ons-button id="login" onclick="login()" >Login</ons-button>
-	  </p>
+	  
 
 
 
-	 <!--
+		<div id="credentials">
 	   <p>
          
 			<ons-input id="username" placeholder="Username" modifier="underbar" class="username"></ons-input>
@@ -100,11 +98,11 @@
         </p>
 
 		<p style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#043649 ; font-size: small; font-weight: bold;"> Forget Password?</p>
-    -->    
+       
 	</div>
         </div>
 
-
+	</div>
       </ons-page>
     </ons-navigator>
 

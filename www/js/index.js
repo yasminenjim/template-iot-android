@@ -31,6 +31,7 @@ function onDeviceReady() {
     });
 
 onappstart(); // defined in app.js  	
+$('#credentials').hide();
 }
 //-----------------------------------------------------------------------------
 const navigatetopage=(p)=>{
@@ -73,16 +74,19 @@ gotopage="splitter.html"
 //_______________________________________________________________________________
 
 // Add event listener to user's card
-/** 
+
 const userCard = document.getElementById('user-1-card');
 userCard.addEventListener('click', promptForPassword);
 
 // Function to prompt user for password
 function promptForPassword() {
-  const password = prompt('Please enter your password:');
-  // Do something with the password, like sending it to the server for authentication
+  $('#credentials').show();
+  $('#sessions').hide();
+
+  
+ // login();
 }
-*/
+
 //-----------------------------------------------------------------------------
 const toast=(t)=>{ ons.notification.toast(t,{timeout:2000}); };
 
