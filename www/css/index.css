@@ -1,16 +1,8 @@
-.containerlogin {
-  background-image: url(../img/back.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .login-page {
-
-background-image:  url(../img/back.jpg) !important;
-
-background-repeat: no-repeat;
-background-size: contain;
-background-position: center center;
+  background-image: url(../img/back.jpg) !important;
+  background-repeat: no-repeat;
+  background-size: 100% !important;
+  background-position: center center;
 }
 
 .content {
@@ -19,10 +11,9 @@ background-position: center center;
 }
 
 #login {
-  background-color: #ffffff;
-  /* Green */
-  color: rgb(255, 254, 254) !important;
-  font-size: 24px;
+ 
+  color: #ffffff ;
+  font-size: 17px;
   font-weight: bold;
   font-family: Arial, sans-serif;
   width: 230px;
@@ -30,15 +21,42 @@ background-position: center center;
   border-radius: 25px;
   text-align: center;
   line-height: 50px;
+  background-color: #0780B6;
+  margin-top: 10px;
 }
 
-#username {
-  font-size: 18px;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-  padding: 10px;
-  color: #ff0000;
+.username{
+  position: unset!important;
+}
 
+.username{
+  position: unset!important;
+}
+
+
+.username .text-input,
+.password .text-input {
+  color: #0780B6 !important;
+}
+
+.username .text-input::-webkit-input-placeholder,
+.password .text-input::-webkit-input-placeholder {
+  color: #0780B6 !important;
+}
+
+.username .text-input::-moz-placeholder,
+.password .text-input::-moz-placeholder {
+  color: #0780B6 !important;
+}
+
+.username .text-input:-ms-input-placeholder,
+.password .text-input:-ms-input-placeholder {
+  color: #0780B6 !important;
+}
+
+.username .text-input::-ms-input-placeholder,
+.password .text-input::-ms-input-placeholder {
+  color: #0780B6 !important;
 }
 
 
