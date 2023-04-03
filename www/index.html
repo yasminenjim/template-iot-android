@@ -29,8 +29,7 @@
 		margin-bottom: -15%;"
 		>
         <div style="text-align: center; margin-top: 300px; margin-bottom: 10px;">
-        <p>
-         
+        
        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;
 	   font-weight: 978;
 	   font-size: 41px;
@@ -39,6 +38,54 @@
     margin-top: -158px;">
 		Login
 	   </h1>
+
+ 
+  <div class="sessions">
+	<ons-card class="card-session" id="user-1-card" modifier="material" onclick="selectSession(1)">
+	  <div class="card-session-body">
+		<span style="color: #0e4b64;">
+		  <i class="fa-solid fa-user " style="font-size: 20px;"></i>
+		</span> <span>   User 1</span>
+		
+	  </div>
+	</ons-card>
+
+	<ons-card class="card-session" modifier="material" id="user-2-card" onclick="selectSession(1)">
+		<div class="card-session-body">
+		  <span style="color: #0e4b64;">
+			<i class="fa-solid fa-user " style="font-size: 20px;"></i>
+		  </span> <span>   User 2</span>
+		  
+		</div>
+	  </ons-card>
+
+	  <ons-card class="card-session" id="user-3-card" modifier="material" onclick="selectSession(1)">
+		<div class="card-session-body">
+		  <span style="color: #0e4b64;">
+			<i class="fa-solid fa-user" style="font-size: 20px;"></i>
+		  </span> <span>   User 3</span>
+		  
+		</div>
+	  </ons-card>
+
+	  <ons-card class="card-session" id="user-4-card" modifier="material" onclick="selectSession(1)">
+		<div class="card-session-body">
+		  <span style="color: #0e4b64;">
+			<i class="fa-solid fa-user" style="font-size: 20px;"></i>
+		  </span> <span>   User 4</span>
+		  
+		</div>
+	  </ons-card>
+  </div>
+	  <p>
+		<ons-button id="login" onclick="login()" >Login</ons-button>
+	  </p>
+
+
+
+	 <!--
+	   <p>
+         
 			<ons-input id="username" placeholder="Username" modifier="underbar" class="username"></ons-input>
 
         </p>
@@ -53,7 +100,8 @@
         </p>
 
 		<p style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#043649 ; font-size: small; font-weight: bold;"> Forget Password?</p>
-        </div>
+    -->    
+	</div>
         </div>
 
 

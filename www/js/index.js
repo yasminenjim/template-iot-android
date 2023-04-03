@@ -61,13 +61,28 @@ gotopage="splitter.html"
   if (username === '' && password === '') {
     const navigator = document.querySelector('#navigator');
     navigator.resetToPage(gotopage);
-   ons.notification.alert('Loaded the login page');
+   
 
   } else {
    // document.getElementById('navigator').resetToPage(gotopage); 
    ons.notification.alert('Wrong username/password combination');
   }
 }
+
+
+//_______________________________________________________________________________
+
+// Add event listener to user's card
+/** 
+const userCard = document.getElementById('user-1-card');
+userCard.addEventListener('click', promptForPassword);
+
+// Function to prompt user for password
+function promptForPassword() {
+  const password = prompt('Please enter your password:');
+  // Do something with the password, like sending it to the server for authentication
+}
+*/
 //-----------------------------------------------------------------------------
 const toast=(t)=>{ ons.notification.toast(t,{timeout:2000}); };
 

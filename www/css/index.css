@@ -54,6 +54,25 @@
 }
 
 
+.card-session{
+  align-items: center;
+  background-color: #ffffff;
+  width: 228px;
+  height: 64px;
+  border-radius: 27px;
+  text-align: center;
+  margin-bottom: 10px !important;
+
+}
+  
+
+
+.sessions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 .card {
 
