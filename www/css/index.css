@@ -1,5 +1,5 @@
 .login-page {
-  background-image: url(../img/back.jpg) !important;
+  background-image: url(../img/backk.jpg) !important;
   background-repeat: no-repeat;
   background-size: 100% !important;
   background-position: center center;
@@ -56,7 +56,7 @@
 
 .card-session{
   align-items: center;
-  background-color: #ffffff;
+  background-color: #fdfdfd !important;
   width: 228px;
   height: 64px;
   border-radius: 27px;
@@ -86,6 +86,12 @@
   padding: 20px;
   margin: -1px;
 
+
+}
+
+.card-session-body{
+
+  margin-top: -4px;
 }
 
 
@@ -755,4 +761,15 @@ input[type="range"]::-webkit-slider-runnable-track {
   border-radius: 10px; /* add this line */
   width: 10px;
   height: 16px;
+}
+
+
+/******CAN outputs***********/
+
+.grey-row {
+  background-color: #f5f5f5; /* set the background color to grey */
+}
+
+.white-row {
+  background-color: #ffffff; /* set the background color to white */
 }
