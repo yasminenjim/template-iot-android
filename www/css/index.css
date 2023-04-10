@@ -28,6 +28,7 @@
 
 
 
+
 .username .text-input,
 .password .text-input {
   color: #0780B6 !important;
@@ -117,6 +118,18 @@ margin-left: auto;
 
 }
 
+.icon-home-style{
+  margin-left: -73px;
+
+
+}
+.icon-title-stlye{
+  margin-left: 40px;
+  margin-top: 192px !important;
+  font-weight: bold;
+ 
+  font-size: 20px;
+}
 
 .card-session-body{
 
