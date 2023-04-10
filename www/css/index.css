@@ -88,6 +88,35 @@
 
 
 }
+.card-style{
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+ /** padding: 51px;
+ **/ margin: -1px;
+  margin-top: -54px !important;
+  margin-right: -82px !important;
+  margin-bottom: -50px !important;
+  margin-left: -82px !important;
+  border-radius: 20px;
+ /** height: 18px !important; **/
+}
+
+.content-home{
+  width: 435px;
+    margin-top: 213px !important;
+    margin-bottom: auto;
+    margin-left: -8px;
+    margin-right: auto;
+    height: 10px !important;
+}
+
+.home-card-body{
+margin-top: auto;
+margin-left: auto;
+
+}
+
 
 .card-session-body{
 
@@ -96,14 +125,11 @@
 
 
 .toolbar-background-home {
+
   background-color: #094860;
   box-shadow: none;
-  border-radius: 0 0 34px 30px;
-  height: 380px;
-  position: absolute;
-  top: 0;
-  z-index: -1 !important;
-  border-bottom: 1px solid #cccccc;
+  
+ 
 }
 
 
@@ -248,13 +274,13 @@ li {
     transform: scale(2.5, 2.5);
     opacity: 0;
   }
-}
+} 
 
 
 
 .home-page {
  
-  background-color: #ffffff !important;
+  background-color: #094860  !important;
 }
 
 .bluetooth-page {
