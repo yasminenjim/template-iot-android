@@ -128,7 +128,7 @@ margin-top: auto;
   margin-top: 192px !important;
   font-weight: bold;
  
-  font-size: 20px;
+  font-size: 18px;
   color: #0e4b64;
   
 }
@@ -306,6 +306,46 @@ li {
 
 
 }
+
+
+.splitter-page {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,75,100,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+
+
+.splitter-page
+{background-color: #094860 !important;
+  background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
+
+}
+.menuPage-page{
+  background-color: #094860 !important;
+  background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
+
+
+}
+
+/**
+.menuPage-page{
+
+  background: rgb(2,0,36)!important ;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,75,100,1) 35%, rgba(0,212,255,1) 100%) !important;
+
+
+}
+
+.splitter-page {
+
+  background: rgb(2,0,36) !important;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,75,100,1) 35%, rgba(0,212,255,1) 100%) !important;
+
+
+}
+
+**/
+
 
 .motors-page {
 

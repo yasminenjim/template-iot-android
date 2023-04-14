@@ -92,59 +92,24 @@
 	</div>
       </ons-page>
     </ons-navigator>
-
-
-
 <!--  splitter side menue  -->
 <template id="splitter.html">  
- <ons-page id="splitter">   
-    <ons-splitter id="appSplitter">                                                               
-                            <ons-splitter-side id="menu" swipeable swipe-target-width="50px" side="left" width="250px" collapse>
-                              <ons-page id="menuPage">    
+ <ons-page id="splitter" class="page__background splitter-page">   
+    <ons-splitter id="appSplitter" >                                                               
+                            <ons-splitter-side id="menu" swipeable swipe-target-width="50px" side="left" width="250px" collapse >
+                              <ons-page id="menuPage" class="page__content menuPage-page">    
 
-			        <ons-row>
-			          <ons-list id="menuList" class="w-100 background-grey" >
-			            <ons-list-title><br></ons-list-title>
-					  ESP <br>
-					  version <span style="color: rgb(68, 160, 207);" fvar='{name:"version"}' ></span> <br> 
-					  <span style="color: rgb(68, 160, 207);" fvar='{name:"compiled"}' ></span> <br>
-			            <ons-list-item id="appSettings" modifier="chevron"
-					    onclick="navigatetopage('./pages/settings.html')" tappable>
-			            	<div class="left">
-			            	 <ons-icon class="mx-auto" icon="fa-cog" size="20px"></ons-icon>
-			            	</div>
-			            	<div class="center" mlang="settings">
-			            	    Settings
-			            	</div>
-			            </ons-list-item> 
-			            <ons-list-item id="firmwareUpdate" modifier="chevron nodivider"
-					    onclick="navigatetopage('./pages/firmwareupdate.html')" tappable> 
-			            	<div class="left">
-			            	 <ons-icon class="mx-auto" icon="fa-cloud-download-alt" size="20px">
-					 </ons-icon>
-			            	</div>
-			            	<div class="center" mlang="firmwareupdate">
-			            	 	Firmware Update
-			            	</div>
-			           	</ons-list-item>
-				   
-			            <ons-list-item id="debug" modifier="chevron nodivider"
-					    onclick="navigatetopage('./pages/debug.html')" tappable> 
-			            	<div class="left">
-			            	 <ons-icon class="mx-auto" icon="fa-bugs" size="20px">
-					 </ons-icon>
-			            	</div>
-			            	<div class="center">
-			            	 	Debug
-			            	</div>
-			           	</ons-list-item>
-				   </ons-list>
-				  </ons-row>	
-					<div class="center">
-			                    <span class="list-item__title text-black">Frenell GmbH</span>
-			                    <span class="list-item__subtitle text-black">Lotzbeckstraße 9</span>
-			                    <span class="list-item__subtitle">76185 Karlsruhe │ Germany</span>
-			                  </div>
+								<ons-list>
+									<ons-list-item  tappable>
+									  Home
+									</ons-list-item>
+									<ons-list-item tappable>
+									  Settings
+									</ons-list-item>
+									<ons-list-item >
+									  About
+									</ons-list-item>
+								  </ons-list>
 			      </ons-page>
                             </ons-splitter-side>
       <!-- page the splitter is attached to -->
@@ -152,7 +117,6 @@
    </ons-splitter>			    
  </ons-page>      
 </template>     
-
   <script src="cordova.js"></script>
   <script src="js/index.js"></script>
   <script src="js/app.js"></script>
