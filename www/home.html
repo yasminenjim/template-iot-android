@@ -1,6 +1,6 @@
 
 <ons-page id="home" style="text-align: center;"  class="page__background home-page" >
- <ons-toolbar class="toolbar-background-home" >
+  <ons-toolbar class="toolbar-background-home" >
     <div class="left">
 	    <!-- toggle splitter -->
 	    <ons-toolbar-button role="button" component="button/menu"
@@ -12,13 +12,7 @@
     </div>
 </div>
 
-    <div class="center"  style=" 
-  
-    color: #CDCBCB;
-    text-align: center;
-    font-size: 13px;
-    font-family: ui-sans-serif;
-    font-weight: bold;">Connected to ble-45</div>
+    <div class="center" style="color:rgb(255, 255, 255);text-align: center;font-size: 30px;margin-top:50px">Tools</div>
     
     <div class="right"  onclick="navigatetopage('./pages/bluetooth.html');"  >
      <span id="btconnectto" style="color:white"></span>   	    
@@ -26,7 +20,6 @@
      style="color:white;"   ></ons-icon>
      </div>	    
   </ons-toolbar>
-
 
   <!------------------------------------------------------------------------>           
 
@@ -36,7 +29,7 @@
   font-family: ui-sans-serif;
   font-weight: bold;
   margin-top: 86px;
-  margin-bottom: -86px;">Tools</h1>
+  margin-bottom: -71px;">Tools</h1>
   <div class="content-home">
     
     <div style="display: flex; justify-content: center; margin:21px auto;">
@@ -76,7 +69,7 @@
         </ons-card>
       </div>
     </div>
-    <div style="display: flex; justify-content: center; margin: 20px auto;">
+    <div style="display: flex; justify-content: center; margin: 21px auto;">
       <div style="width: 40%;height:70px  !important;">
 
         <ons-card class="card-style" style="text-align: center;" onclick="navigatetopage('./pages/motors.html')" >
@@ -123,7 +116,9 @@
  
 
 
-
+ <ons-bottom-toolbar>
+  Content
+</ons-bottom-toolbar>
 
 
    <script>
