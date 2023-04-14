@@ -92,7 +92,7 @@
 .card-style{
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
+  background-color: #EFEFEF;
  /** padding: 51px;
  **/ margin: -1px;
   margin-top: -54px !important;
@@ -132,6 +132,18 @@ margin-top: auto;
   color: #0e4b64;
   
 }
+
+
+.second-span {
+  display: none;
+}
+
+.first-span:focus + .second-span {
+  display: block;
+}
+
+
+
 
 .card-session-body{
 
