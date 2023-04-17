@@ -159,6 +159,36 @@ margin-top: auto;
  
 }
 
+.splitter-list{
+  background-color: transparent;
+ 
+}
+.gradientuser1{
+background: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+width: 252px;
+height: 207px;
+margin-top: -15px;
+margin-bottom: 78px;
+}
+.gradientuser2{
+  background: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+  width: 252px;
+  height: 207px;
+  margin-top: 215px;
+  margin-bottom: 135px;
+}
+.frenelladd{
+
+    
+      margin-left: 16px;
+      /* text-align: center; */
+      font-size: 15px;
+      font-family: ui-sans-serif;
+      font-weight: bold;
+      color: white;
+      margin-top: 1px;
+}
+
 
 .toolbar-background-bl {
   background-color: transparent ;
