@@ -26,6 +26,7 @@
 			<div class="card-can-body">
 			
 				<input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
+				
 				<div class="range-values">
 				  <span class="range-value">0</span>
 				  <span class="range-value">4</span>
@@ -34,7 +35,9 @@
 				  <span class="range-value">16</span>
 				  <span class="range-value">20</span>
 				</div>
-				<p class="range-value-text">Input <span class="out-can" id="range-value"> 
+				
+
+				<p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value"> 
 					
 				</span></p>
 		  </div>
@@ -64,7 +67,7 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Input <span class="out-can" id="range-value"> 
+				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value"> 
 					   
 				   </span></p>
 			 </div>
@@ -92,7 +95,7 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Input <span class="out-can" id="range-value"> 
+				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value"> 
 					   
 				   </span></p>
 			 </div>
@@ -121,7 +124,7 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Input <span class="out-can" id="range-value"> 
+				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value"> 
 					   
 				   </span></p>
 			 </div>
@@ -150,7 +153,7 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Input <span class="out-can" id="range-value"> 
+				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value"> 
 					   
 				   </span></p>
 			 </div>
@@ -178,7 +181,7 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Input <span class="out-can" id="range-value"> 
+				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value"> 
 					   
 				   </span></p>
 			 </div>
@@ -197,7 +200,7 @@
  
 
   var rangeBar = document.getElementById("myRangeBar");
-var rangeValue = document.getElementById("range-value");
+var rangeValue = document.getElementById("range-value"); //get the element 
 var rangeValues = document.querySelectorAll(".range-value");
 
 rangeBar.addEventListener("input", function() {
@@ -229,6 +232,13 @@ rangeBar.oninput = function() {
 			var value = document.querySelector('#card'+card+'Value');
 			value.innerHTML = range.value;
 		}**/
+
+
+		const editableP = document.querySelector('p[contenteditable="true"]');
+const contents = editableP.textContent;
+
+
+
 
 
  </script>  

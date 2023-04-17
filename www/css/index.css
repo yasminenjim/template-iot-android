@@ -104,12 +104,12 @@
 }
 
 .content-home{
-  width: 399px;
-    margin-top: 199px !important;
-    margin-bottom: auto;
-    margin-left: 8px;
-    margin-right: 87px;
-   
+  width: 378px;
+  margin-top: 199px !important;
+  margin-bottom: auto;
+  margin-left: 18px;
+  margin-right: 100px;
+  position: absolute;
 }
 
 .home-card-body{
@@ -752,13 +752,15 @@ margin-left: 23px;
   text-align: center;
   width: 89%;
   border-radius: 10px;
-  box-shadow: none;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   height: 226px;
   margin: 20px auto;
   background-color: #efefef;
   margin-bottom: 24px;
   height:221px;
 }
+
+
 
 .card-can-body {
   padding: 20px;
@@ -802,17 +804,20 @@ margin-left: 23px;
   z-index: 1;
 }
 
+
 .range-bar::-webkit-slider-runnable-track {
-  background: linear-gradient(to right, #6b6a6a 0%, #6b6a6a 50%, #d9d9d9 50%, #d9d9d9 100%);
+  background: linear-gradient(to right, #6b6a6a 0%, #6b6a6a 5%, #d9d9d9 5%, #d9d9d9 100%);
   position: relative;
   z-index: 0;
 }
 
 .range-bar::-moz-range-track {
-  background: linear-gradient(to right, #6b6a6a 0%, #6b6a6a 50%, #d9d9d9 50%, #d9d9d9 100%);
+  background: linear-gradient(to right, #6b6a6a 0%, #6b6a6a 5%, #d9d9d9 5%, #d9d9d9 100%);
   position: relative;
   z-index: 0;
 }
+
+
 
 input[type="range"]::-webkit-slider-runnable-track {
   background: linear-gradient(to right, #000000 0%, #000000 calc((var(--value) / (var(--max) - var(--min))) * 100%), #cccccc calc((var(--value) / (var(--max) - var(--min))) * 100%), #cccccc 100%);
@@ -828,6 +833,8 @@ input[type="range"]::-webkit-slider-runnable-track {
 		 font-weight: 978;
 		 font-size: 14px;
 		 color: #094860;
+     margin-right: -47px;
+     margin-left: -15px;
 
 }
 
@@ -842,7 +849,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .range-values .range-value {
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .out-can{
