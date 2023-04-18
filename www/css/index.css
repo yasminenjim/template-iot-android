@@ -103,6 +103,7 @@
  /** height: 18px !important; **/
 }
 
+
 .content-home{
   width: 378px;
   margin-top: 199px !important;
@@ -132,7 +133,11 @@ margin-top: auto;
   color: #0e4b64;
   
 }
-
+.modify-me{
+  margin-bottom: 10px;
+  margin-top: -10px;
+  margin-left: 324px;
+}
 
 .second-span {
   display: none;
@@ -739,7 +744,7 @@ li {
     
     font-family: 'Open Sans', sans-serif;
     font-weight: 1000;
-    font-size: 50px;
+    font-size: 43px;
     color: white;
  margin-left: 70px; 
  margin-bottom: 20px;
@@ -771,10 +776,10 @@ li {
 }
 
 .adjusting{
-
-margin: auto;
-margin-top: -44px;
-margin-left: 23px;
+  margin: auto;
+  margin-top: -39px;
+  width: 19px;
+  margin-left: 20px;
 }
 
 /** CAN interface**/
@@ -787,9 +792,12 @@ margin-left: 23px;
   margin: 20px auto;
   background-color: #efefef;
   margin-bottom: 24px;
-  height:221px;
+  height:245px;
 }
 
+.editch{
+  margin-left: auto;
+}
 
 
 .card-can-body {
@@ -903,4 +911,26 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 .white-row {
   background-color: #ffffff; /* set the background color to white */
+}
+
+.searchstyle{
+
+  margin-left: 10px;
+    margin-top: 38px;
+    width: 248px;
+}
+
+.button-srch{
+  display: block;
+  width: 133px;
+  height: 50px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 15px 0;
+  margin-left: 50px;
+  background-color: #094860;
+  color: white;
 }

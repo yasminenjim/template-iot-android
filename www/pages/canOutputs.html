@@ -1,5 +1,5 @@
 <ons-page id="canOutputs">
-    <ons-toolbar class="toolbar-background-bl">
+    <ons-toolbar style="background-color: #094860;">
       <div class="left">
         <ons-back-button>Back</ons-back-button>
       </div>
@@ -13,17 +13,29 @@
       </div>
     </ons-toolbar>
   
-    <ons-list>
+
+
+    <p class="searchstyle">
+      <ons-search-input
+        placeholder="Search"
+        onchange="ons.notification.alert('Searched for: ' + this.value)"
+      ></ons-search-input>
+    </p>
+    <div style="margin-top: -64px; margin-left: 216px;"> <button class="button-srch">Search</button>
+    </div>
+    
+    <ons-list style="margin-top: 33px;">
       <ons-list-header>
-        <ons-row>
+        <ons-row style="color:#094860;">
           <ons-col style="flex: 1;">Date</ons-col>
           <ons-col style="flex: 1;">Type</ons-col>
           <ons-col style="flex: 1;">Priority</ons-col>
           <ons-col style="flex: 1;">ID</ons-col>
+          <ons-col style="flex: 1;">Value</ons-col>
         </ons-row>
       </ons-list-header>
   
-      <ons-list-item ng-repeat="item in items" ng-class="$index % 2 === 0 ? 'grey-row' : 'white-row'">
+     <!--<ons-list-item ng-repeat="item in items" ng-class="$index % 2 === 0 ? 'grey-row' : 'white-row'">
         <ons-row>
           <ons-col style="flex: 1;">{{item.date}}</ons-col>
           <ons-col style="flex: 1;">{{item.type}}</ons-col>
@@ -31,11 +43,11 @@
           <ons-col style="flex: 1;">{{item.id}}</ons-col>
         </ons-row>
       </ons-list-item>
-    </ons-list>
- 
   
+ --> 
+</ons-list>
   <script>
-    function fillTable() {
+   /** function fillTable() {
       // Define the data for the table
       var data = [
         { date: '2023-04-01', type: 'A', priority: 'High', id: '123' },
@@ -68,7 +80,7 @@
     fillTable();
 
 
-
+**/
 
 
 

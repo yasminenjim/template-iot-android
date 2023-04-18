@@ -8,87 +8,52 @@
         <script type="text/javascript" src="vendor/jquery/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" href="css/app.css"> 
  
-
         <title>template</title>
         <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
       </head>
     <body>
     <ons-navigator id="navigator" >
       <ons-page id="login.html" class="page__background login-page">
-        
-
 	<div class="content">
 		<!--<img src="../img/Capturelog.PNG" style="width: fit-content; height: fit-content;" > -->
-		
-		
-		<img src="../img/log.png" style="
-		width: 100px;
-		height: 100px;
-		margin-top: 21%;
-		margin-left: 39%;
-		margin-bottom: -15%;"
-		>
+		<img src="../img/log.png" style="width: 100px;height: 100px;margin-top: 21%;margin-left: 39%;margin-bottom: -15%;">
         <div style="text-align: center; margin-top: 300px; margin-bottom: 10px;">
-        
-       <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;
-	   font-weight: 978;
-	   font-size: 41px;
-	   color: #0780B6;
-	   margin-bottom:80px;
-    margin-top: -158px;">
+       <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: 978;font-size: 41px;color: #0780B6; margin-bottom:80px;margin-top: -158px;">
 		Login
 	   </h1>
-
  <div class="session-container">
   <div class="sessions" id="sessions">
 	<ons-card class="card-session" id="user-1-card" modifier="material" >
 	  <div class="card-session-body">
 		<span style="color: #0e4b64;">
 		  <i class="fa-solid fa-user " style="font-size: 26px; margin-left:-53px"></i>
-		</span> <span style="margin-left:40px; font-weight:bold;">   User 1</span>
-		
+		</span> <span style="margin-left:40px; font-weight:bold;">   Admin</span>
 	  </div>
 	</ons-card>
-
 	<ons-card class="card-session" modifier="material" id="user-2-card" >
 		<div class="card-session-body">
 		  <span style="color: #0e4b64;">
 			<i class="fa-solid fa-user " style="font-size: 26px;margin-left:-53px"></i>
-		  </span> <span style="margin-left:40px; font-weight:bold;">   User 2</span>
-		  
+		  </span> <span style="margin-left:40px; font-weight:bold;">   User</span>
 		</div>
 	  </ons-card>
 <br>
 <br>
 <br>
-
-
   </div>
-	  
-
-
-
 		<div id="credentials">
 	   <p>
-         
-			<ons-input id="username" placeholder="Username" modifier="underbar" class="username"></ons-input>
-
+         <ons-input id="username" placeholder="Username" modifier="underbar" class="username"></ons-input>
         </p>
-      
         <p>
 			<ons-input id="password" placeholder="Password" type="password" modifier="underbar" class="password"></ons-input>
-
         </p>
-      
         <p>
           <ons-button id="login" onclick="login()" >Login</ons-button>
         </p>
-
 		<p style="font-family: Verdana, Geneva, Tahoma, sans-serif; color:#043649 ; font-size: small; font-weight: bold;"> Forget Password?</p>
-       
 	</div>
         </div>
-
 	</div>
       </ons-page>
     </ons-navigator>
@@ -98,30 +63,14 @@
     <ons-splitter id="appSplitter" >                                                               
                             <ons-splitter-side id="menu" swipeable swipe-target-width="50px" side="left" width="250px" collapse >
                               <ons-page id="menuPage" class="page__content menuPage-page">    
-
-
 <div class="gradientuser1">
-
 	<i class="fa-regular fa-user" style="color: white;
     margin-top: 61px;
     margin-left: 87px;
     font-size: 65px;"></i>
-<h1 class="center" style="margin-left: -18px;
-text-align: center;
-font-size: 23px;
-font-family: ui-sans-serif;
-font-weight: bold;
-margin-top: 22px;
-margin-bottom: -71px;
-color: white;
-">Admin</h1>
+<h1 class="center" style="margin-left: -18px;text-align: center;font-size: 23px;font-family: ui-sans-serif;font-weight: bold;margin-top: 22px;margin-bottom: -71px;color: white;">Admin</h1>
 </div>
-
-
 								<ons-list class="splitter-list">
-								
-
-
 										<ons-list-item  id="firmwareUpdate" modifier="chevron nodivider"
 										onclick="navigatetopage('./pages/firmwareupdate.html')" tappable >
 											<div class="left">
@@ -160,7 +109,7 @@ color: white;
 											  </div>
 										</div>
 								  </ons-list>
-								  
+								
 			      </ons-page>
                             </ons-splitter-side>
       <!-- page the splitter is attached to -->
