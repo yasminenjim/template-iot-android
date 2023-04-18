@@ -169,17 +169,17 @@ margin-top: auto;
  
 }
 .gradientuser1{
-background: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
-width: 252px;
-height: 207px;
-margin-top: -15px;
-margin-bottom: 78px;
+  background: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+  width: 252px;
+  height: 207px;
+  margin-top: -24px;
+  margin-bottom: 78px;
 }
 .gradientuser2{
   background: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
   width: 252px;
   height: 207px;
-  margin-top: 178px;
+  margin-top: 183px;
   margin-bottom: 135px;
 }
 .frenelladd{
