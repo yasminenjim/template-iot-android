@@ -2,12 +2,14 @@
   background-image: url(../img/blue.back.jpg) !important;
   background-repeat: no-repeat;
   background-size: 133% !important;
-  background-position: center center;
+  background-position: center center; 
+ 
 }
 
 .content {
   position: relative;
   z-index: 1;
+ 
 }
 
 #login {
@@ -927,10 +929,25 @@ input[type="range"]::-webkit-slider-runnable-track {
   border: none;
   font-size: 18px;
   font-weight: bold;
-  border-radius: 50px;
+  border-radius: 17px;
   cursor: pointer;
   margin: 15px 0;
   margin-left: 50px;
   background-color: #094860;
   color: white;
+}
+
+.buttoptions{
+  /* display: block; */
+  width: 106px;
+  height: 43px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 17px;
+  cursor: pointer;
+  /* margin: 15px 0; */
+  margin-left: 54px;
+  margin-right: -41px;
+  background: #898989;
 }
