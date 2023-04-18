@@ -1,4 +1,4 @@
-<ons-page id="canOutputs">
+<ons-page id="canOutputs" class="page__background canOutputs-page">
     <ons-toolbar style="background-color: #094860;">
       <div class="left">
         <ons-back-button>Back</ons-back-button>
@@ -12,6 +12,9 @@
         </ons-toolbar-button>
       </div>
     </ons-toolbar>
+
+    <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+      <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
     <p class="searchstyle">
       <ons-search-input
         placeholder="Search"
@@ -61,6 +64,15 @@
   
  --> 
 </ons-list>
+</ons-carousel-item>
+<ons-carousel-item style="background-color: #094860;">
+  <ons-card class="cardCanout">
+  </ons-card>
+  <ons-card class="cardCanout">
+  </ons-card>
+</ons-carousel-item>
+
+    </ons-carousel>
   <script>
    /** function fillTable() {
       // Define the data for the table

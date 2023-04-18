@@ -920,7 +920,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   margin-left: 10px;
     margin-top: 38px;
     width: 248px;
+    border-radius: 6px;
 }
+
 
 .button-srch{
   display: block;
@@ -951,3 +953,15 @@ input[type="range"]::-webkit-slider-runnable-track {
   margin-right: -41px;
   background: #898989;
 }
+
+.cardCanout{
+  text-align: center;
+    width: 93%;
+    border-radius: 13px;
+    height: 226px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    margin-bottom: -6px;
+    height: 333px;
+}
+
