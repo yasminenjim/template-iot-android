@@ -39,6 +39,18 @@
         </ons-row>
       </ons-list-header>
   
+      <ons-list-item ng-repeat="item in items" ng-class="$index % 2 === 0 ? 'grey-row' : 'white-row'">
+        <ons-row>
+          <ons-col style="flex: 1;">value1</ons-col>
+          <ons-col style="flex: 1;">value2</ons-col>
+          <ons-col style="flex: 1;">value3</ons-col>
+          <ons-col style="flex: 1;">value4</ons-col>
+          <ons-col style="flex: 1;">value5</ons-col>
+          <ons-col style="flex: 1;">value6</ons-col>
+        </ons-row>
+      </ons-list-item>
+  
+ 
      <!--<ons-list-item ng-repeat="item in items" ng-class="$index % 2 === 0 ? 'grey-row' : 'white-row'">
         <ons-row>
           <ons-col style="flex: 1;">{{item.date}}</ons-col>
