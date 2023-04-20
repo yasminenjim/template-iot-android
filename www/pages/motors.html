@@ -21,11 +21,12 @@
 <div class="slider-container">
   <div class="slider-background"></div>
   <input type="range" min="-2000" max="2000" value="0" step="1000" class="slider" id="myRange"> 
+  <input type="number" min="-2000" max="2000" value="0" step="1000" class="input" id="myInput">
 </div>
 <div class="adjusting">
 <div class="screen">
   <div id="slider-value" class="box" >
-    <span fvar="{name:'ml.s'}" ></span>
+    <span style="margin-left: -30px;" fvar="{name:'ml.s'}" ></span>
     <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Speed</div>
   </div>
     <div class="box" id="ml-position">
@@ -76,6 +77,13 @@ slider.oninput = function() {
     console.log("the slider is not updated anymore, the error:" +e.output);
   }
 }
+
+const input = document.getElementById("myInput");
+input.addEventListener("input", function() {
+  slider.value = this.value;
+  output.innerHTML = this.value;
+  motorgo(0, this.value);
+});
 
 //document.getElementById("stopButton").addEventListener("click", motorstop);
 
