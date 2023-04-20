@@ -948,9 +948,10 @@ input[type="range"]::-webkit-slider-runnable-track {
   font-weight: bold;
   border-radius: 17px;
   cursor: pointer;
-  /* margin: 15px 0; */
+  /* margin: 15px 0; 
   margin-left: 54px;
-  margin-right: -41px;
+  margin-right: -41px;*/
+  margin: 0 10px;
   background: #898989;
 }
 
@@ -965,3 +966,18 @@ input[type="range"]::-webkit-slider-runnable-track {
     height: 333px;
 }
 
+
+.buttoptcontainer {
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  margin: 7px auto;
+
+}
+
+@media screen and (max-width: 480px) {
+  .buttoptcontainer {
+    /**flex-direction: column; **/
+    align-items: center;
+  }
+}

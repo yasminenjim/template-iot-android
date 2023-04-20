@@ -23,12 +23,16 @@
     </p>
     <div style="margin-top: -64px; margin-left: 216px;"> <button class="button-srch">Search</button>
     </div>
-
-    <div style="margin-top: 21px;margin-left: -35px;"> <button class="buttoptions">Filter</button>
-      <button class="buttoptions">Stop</button>
-      <button class="buttoptions">Clear</button>
-    </div>
+  
+  
+    <div class="buttoptcontainer"> 
+      <button class="buttoptions">Filter</button>
+      <button class="buttoptions" id="getcanid">Stop</button>
+      <button class="buttoptions" onclick="clearcanmsg()">Clear</button>
+      <button class="buttoptions" >Show</button>
+    </div> 
    
+  
 
     
     <ons-list style="margin-top: 33px;">
@@ -51,18 +55,23 @@
           <ons-col style="flex: 1;">0x05000000</ons-col>
         </ons-row>
       </ons-list-item>
-  
  
-     <!--<ons-list-item ng-repeat="item in items" ng-class="$index % 2 === 0 ? 'grey-row' : 'white-row'">
-        <ons-row>
-          <ons-col style="flex: 1;">{{item.date}}</ons-col>
-          <ons-col style="flex: 1;">{{item.type}}</ons-col>
-          <ons-col style="flex: 1;">{{item.priority}}</ons-col>
-          <ons-col style="flex: 1;">{{item.id}}</ons-col>
-        </ons-row>
-      </ons-list-item>
-  
- --> 
+    
+
+      <ons-list-item>
+        <div class="center">
+        getcan  
+        </div>
+        <div class="right">
+        <ons-switch id="getcanid" onchange="getcanfunc()"> </ons-switch> <br>
+        </div>
+   </ons-list-item>
+   </ons-list>
+        
+        <span id="canmsg0" ></span>
+       <div id="canmsg" style="margin:10px;font-size:8px;height:600px;overflow-y:scroll;" >
+       </div>
+ 
 </ons-list>
 </ons-carousel-item>
 <ons-carousel-item style="background-color: #094860;">
@@ -145,7 +154,33 @@ for (var i = 0; i < data.length; i++) {
 }
      * 
      * 
-     * 
+     *  function getcanfunc(){
+  var e=document.getElementById("getcanid");
+ 
+	       fble.sendjson({can:"start"});
+	        }
+	       else fble.sendjson({can:"stop"});
      * ****/
+     function clearcanmsg(){
+   var d=document.getElementById("canmsg"); 
+   d.innerHTML="";
+
+  }
+    /** var e=document.getElementById("getcanid");
+
+     function Stopcan(){
+  fble.sendjson({can:"start"});
+     }
+     function Showcan(){
+      fble.sendjson({can:"stop"});
+     }**/
+     function getcanfunc(){
+  var e=document.getElementById("getcanid");
+  console.log("changed to "+e.checked);
+ if (e.checked) {
+	       fble.sendjson({can:"start"});
+	        }
+	       else fble.sendjson({can:"stop"});
+ }
   </script>
    </ons-page>
