@@ -142,7 +142,7 @@
 		   <ons-icon icon="fa-bluetooth-b" class="list-item__icon"></ons-icon>
 		 </div>
 		 <div class="center">
-		   <span id="connectTO" style="color:rgb(0, 0, 0)"></span>   	
+		   <span id="connectTO" style="color:rgb(0, 0, 0);margin-left: -28px;"></span>   	
 		 </div>
 		 <div class="right">
 		   <ons-switch id="mySwitch"></ons-switch>
@@ -258,6 +258,9 @@
 	   var popup = document.getElementById("popup");
 	   popup.style.display = "none";
 	   console.log("popup is hided");
+	$('#scanningInterface').hide();
+   $('#first-interface').show();
+    
    
 	 }
 	/******************************************************************************/
