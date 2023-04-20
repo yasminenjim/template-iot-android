@@ -42,7 +42,7 @@
 		 <br>
 	   <tr>
 		 
-		<p style="color: aliceblue; ">Tap to scan</p>
+		<p style="color: aliceblue; margin-bottom: 110px;">Tap to scan</p>
 	   </tr>
 	   </div>
 	   </div>
@@ -73,7 +73,7 @@
 	
    <tr>
 	 
-	<p style="color: aliceblue; font: bold;">Scanning for devices..
+	<p style="color: aliceblue; font: bold; margin-bottom: 110px;">Scanning for devices..
    <br>
 	</p>
    </tr>
@@ -95,7 +95,7 @@
 	   <div style="text-align: center;" id="deviceFoundMsg">
 	   <br>
 	   <tr>
-		<p style="color: aliceblue; font: bold;">Device Paired
+		<p style="color: aliceblue; font: bold; margin-bottom: 110px;">Device Paired
 	   <br>
 		</p>
 	   </tr>
@@ -137,7 +137,7 @@
    
    
 	   <ons-list-header>Connected to</ons-list-header>
-	   <ons-list-item>
+	   <ons-list-item id="connecteSettings">
 		 <div class="left">
 		   <ons-icon icon="fa-bluetooth-b" class="list-item__icon"></ons-icon>
 		 </div>
@@ -242,6 +242,9 @@
 	$('#hide-content').hide();
 	hidePopup();
 	$('#deviceConnected').hide();
+	$('#connecteSettings').hide();
+
+	
 	//var switch1 = document.getElementById('switch-1');
 	var mySwitch = document.getElementById("mySwitch");
    
@@ -386,6 +389,8 @@
    $('#scanningInterface').hide();
    $('#deviceConnected').show();
    document.querySelector('ons-switch').setAttribute('checked', 'true')
+	$('#connecteSettings').show();
+
    
    if (apponsubscribed)	setTimeout(()=>{apponsubscribed()},1000);
    });
@@ -460,6 +465,8 @@ mySwitch.addEventListener("change", function() {
    $('#scanningInterface').hide();
 	$('#deviceConnected').hide();
 	$('#first-interface').show();
+
+	$('#connecteSettings').hide();
 
 
   }
