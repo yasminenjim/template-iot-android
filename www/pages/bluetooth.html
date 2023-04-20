@@ -108,12 +108,12 @@
 	 <div class="popup-background"></div>
 	 <div class="popup">
    <!--<span class="close-x" style="font-size: 1.5em;right: 55px; position: absolute; top:240px">&times;</span> -->	
-	   <h1>Available Devices</h1>
+	   <h1 style="font-size: 25px;">Available Devices</h1>
 	   <ul class="onsen-list">
    
 		 <ons-list>
 		   <li>
-			 <i class="fa-brands fa-bluetooth" style="font-size: 33px;"></i>
+			 <i class="fa-brands fa-bluetooth" style="font-size: 23px;"></i>
 			 <div>
 			   <h2 id="btscandiv" class="background-grey mt-3"></h2>
 			 </div>
@@ -258,19 +258,7 @@
    
 	 }
 	/******************************************************************************/
-	disableSwtich(); 
-   /****************************************************************************/
-	function disableSwtich()
-	{
-   let switch1=document.querySelector('ons-switch');
-	   
-	   if(switch1.disabled==true){
-	   disconnect();
-	   console.log("disconnected from ble from the switch");
-	}
-   else {
-   console.log("disconnect from the switch please");}
-	}
+	
    
    /****************************************************************************/
    
@@ -313,16 +301,29 @@
    
    $('#first-interface').hide();
    $('#scanningInterface').show();
-   
+   // Set a timeout of 10 seconds to stop the scan
+  setTimeout(function() {
+    fble.onscanstop();
+
+    // Check if any devices were found
+    if (document.getElementById('btscandiv').innerHTML.trim() === '') {
+      // "No devices found, show a popup
+   alert("No Bluetooth devices found. Please make sure your device is discoverable and try again.");
+   $('#first-interface').show();
+   $('#scanningInterface').hide();
+    }
+  },
+   10000);
+
    
    }
    
    
    //-----------------------------------------------------------------------------
-   fble.onscanstop(function(){
-	//document.getElementById("circles").hide();
-   console.log("stoped scanning from onscanstop method ");
+
    
+   fble.onscanstop(function(){
+   console.log("stoped scanning from onscanstop method ");
    });
    //-----------------------------------------------------------------------------
    fble.ondevicefound(function(dev,nr){
@@ -437,7 +438,7 @@
 	   console.log('Changed to ' + event.activeIndex)
 	 });
    });
-   /****************************************************************************/
+   /****************************************************************************//**
    
    mySwitch.addEventListener("change", function() {
 	 if (this.disabled) {
@@ -449,7 +450,21 @@
 	   // Switch is turned off, disable the switch
 	   this.disabled = false;
 	 }
-   });
+   }); **/
+
+// Add an event listener to the switch
+mySwitch.addEventListener("change", function() {
+  if (!this.checked) {
+    // Switch is turned off, disconnect from the device
+	fble.disconnect();
+   $('#scanningInterface').hide();
+	$('#deviceConnected').hide();
+	$('#first-interface').show();
+
+
+  }
+});
+
    
    
    

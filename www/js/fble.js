@@ -123,7 +123,7 @@ fble = (function() {
 
     function defonscanstop(f) {
         if (typeof f != "function") {
-            alert("onscanstop");
+           // alert("onscanstop");
             return;
         }
         onscanstop = f;
