@@ -15,153 +15,8 @@
    </ons-toolbar>
 
    <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+
     <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
-
-<!----
- <div class="circle-mot" style="margin-top: -180px">
-  <div class="small-circle"></div>
-</div>
-
-<div class="control-buttons">
- <div style="padding-top: 5px; margin-top: 300px;margin-left: 50px;">
-
- </div>
-
- <div>
-  <div class="container-motor">
-    
-    <div style="margin-top: -63px;">
-      <span style="color: #ffffff;">
-      <i class="fa-solid fa-angle-up" style="font-size: 40px;margin-top:-90px;margin-left: 17.5px;"></i>
-    </span>
-  </div>
-  <div style="margin-top: -34px;">
-    <span style="color: #ffffff;">
-    <i class="fa-solid fa-angle-down" style="font-size: 40px;margin-top:120px;margin-left: 17.5px;"></i>
-  </span>
-  </div>
-
-  </div>
-</div>
-</div> ---->
-<!---
-
-  <ons-list>
-    <ons-list-item>
-      <ons-range id="myRange" min="0" max="10" value="5" onchange="updateRangeValue()">
-        <span class="range-bar"></span>
-        <span class="range-button"></span>
-      </ons-range>
-    </ons-list-item>
-  </ons-list>
-
-  <div class="range-values">
-    <span class="min-value">0</span>
-    <span class="max-value">10</span>
-  </div>
-
-  <div id="rangeValue">5</div>
-
-
-
-
-<script>
-  var myVariable = 5; // Initialize your variable with a default value
-
-  function updateRangeValue() {
-    var rangeValue = document.getElementById('myRange').value;
-
-    // Update your variable with the new range slider value
-    myVariable = parseFloat(rangeValue); // Use parseFloat to convert the value to a float
-
-    document.getElementById('rangeValue').textContent = rangeValue;
-
-    // Check if the range slider value is zero and call your method if it is
-    if (rangeValue == 0) {
-      myMethod();
-    }
-  }
-
-  function myMethod() {
-    // Your method code goes here
-    console.log('The range slider value is zero!');
-  }
-</script>
--->
-
-
-
-
-<!---
-<div class="slider">
-  <input type="range" min="" max="" step="" value="" class="slider-bar">
-  <div class="slider-values">
-    <span class="value"></span>
-    <span class="value"></span>
-    <span class="value"></span>
-  </div>
-</div>
-
-
--->
-
-<!----<ons-range modifier="custom">
-  <input type="range" min="0" max="100" value="50">
-</ons-range>
-
-<style>
-  /* Customize the track */
-  .range-bar.custom input[type=range] {
-    background-color: #ccc;
-    height: 4px;
-    border-radius: 10px;
-  }
-
-  /* Customize the thumb */
-  .range-bar.custom input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: #333;
-    border-radius: 50%;
-    margin-top: -8px;
-  }
-</style>
-
-
-
--->
-
-<!---
-
-<input type="range" id="myRange" min="0" max="100" value="50">
-<div id="rangeValue">50</div>
-
-
-<script>
-
-const range = document.getElementById("myRange");
-const rangeValue = document.getElementById("rangeValue");
-
-rangeValue.innerHTML = range.value;
-
-range.addEventListener("input", function() {
-  rangeValue.innerHTML = this.value;
-  if (this.value === "0") {
-    callMyMethod();
-  }
-});
-
-function callMyMethod() {
-  // your method code here
-}
-
-
-
-
-</script>-->
-
 <div class="motor-interface">
 <div class="slider-container">
   <div class="slider-background"></div>
@@ -170,44 +25,38 @@ function callMyMethod() {
 <div class="adjusting">
 <div class="screen">
   <div id="slider-value" class="box" >
-    2000
+    <span fvar="{name:'ml.s'}" ></span>
     <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Speed</div>
   </div>
     <div class="box" id="ml-position">
-      45689
+
+      <span style="margin-left: -51px;" fvar="{name:'ml.p'}"></span>
       <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Position</div>
     </div>
-    <div class="box" id="ml-inclination">5.257
+    <div class="box" id="ml-inclination"> <span style="margin-left: 19px;" fvar="{name:'a',idx:4}" ></span>
       <div style="font-size: small; color: aliceblue; margin-left:40px;">Inclination</div>
     </div>
   </div>
 
-<!--Buttons-
-<div class="motor-buttons">>
-<button id="stopButton" class="motorControlButton">STOP</button>
-</div>-->
-
-
-<!---
-<div class="range-slider grad" style='--min:0; --max:10000; --step:100; --value:200; --text-value:"200"; --prefix:"$"'>
-  <input type="range" min="0" max="10000" step="100" value="200" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify((+this.value).toLocaleString()))">
-  <output></output>
-  <div class='range-slider__progress'></div>
-</div>
--->
 <div class="buttonContainer">
-  <button class="button-m" onclick="motorgo(1,-2000)" >IN</button>
-<button class="button-m" onclick="motorgo(1,2000)">OUT</button>
-  <button  class="button-m" onclick="motorstop(1)" >STOP</button>
+  <button class="button-m" onclick="motorgo(0,-2000)" >IN</button>
+<button class="button-m" onclick="motorgo(0,2000)">OUT</button>
+  <button  class="button-m" onclick="motorstop(0)" >STOP</button>
 </div>
 </div>
 </div>
+
+<div id="debugdiv1" >
+</div>
+
   </ons-carousel-item>
+
   <ons-carousel-item style="background-color: #373B44;" id="right-carousel">
     <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
       DARK
     </div>
   </ons-carousel-item>
+
 </ons-carousel>
 
 <script>
@@ -219,7 +68,9 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
   try{
     output.innerHTML = this.value;
-  console.log("Slider is changing");
+    console.log("Slider is changing");
+    // Update motor speed value
+    motorgo(0, this.value);
   }
   catch(e){
     console.log("the slider is not updated anymore, the error:" +e.output);
