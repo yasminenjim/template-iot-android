@@ -24,10 +24,9 @@ fble = (function() {
     let b_scanning = false;
     let lastsendms = Date.now();
     let rssi=0;
-
     let onbtenabled = function(){}; //todo	
     let ondevicefound = function() {console.log("ondevicefound not defined");};
-    let onbtsubscribed = function() {};
+    let onbtsubscribed = function(){console.log("onsubscribed not defined");};
     let onbtdisconnected = function() {console.log("ondisconnected not defined");};
     let onreceivedbinary = function() {};
     let ongotmsg = function() {};
@@ -533,6 +532,8 @@ function getrssi() {
 	getconnected: getconnected,    
         scan : startScan,
 	connect : connect,    
-	start: blestart
+	start: blestart,
+	subscribe: subscribednew
+
     }
 })();
