@@ -43,17 +43,7 @@
         </ons-row>
       </ons-list-header>
   
-      <ons-list-item ng-repeat="item in items" ng-class="$index % 2 === 0 ? 'grey-row' : 'white-row'">
-        <ons-row>
-          <ons-col style="flex: 1;">09:45:38.5800</ons-col>
-          <ons-col style="flex: 1;">NMT-EC</ons-col>
-          <ons-col style="flex: 1;">[40]</ons-col>
-          <ons-col style="flex: 1;">0x728</ons-col>
-          <ons-col style="flex: 1;">0x05000000</ons-col>
-        </ons-row>
-      </ons-list-item>
- 
-    
+      
 
       <ons-list-item>
         <div class="center">
@@ -80,97 +70,13 @@
 
     </ons-carousel>
   <script>
-   /** function fillTable() {
-      // Define the data for the table
-      var data = [
-        { date: '2023-04-01', type: 'A', priority: 'High', id: '123' },
-        { date: '2023-04-02', type: 'B', priority: 'Medium', id: '456' },
-        { date: '2023-04-03', type: 'C', priority: 'Low', id: '789' }
-      ];
-  
-      // Get a reference to the list element
-      var list = document.querySelector('#canOutputs ons-list');
-  
-      // Clear any existing items
-      list.innerHTML = '';
-  
-      // Add each item to the list
-      data.forEach(function(item, index) {
-        var template = `
-          <ons-list-item class="${index % 2 === 0 ? 'grey-row' : 'white-row'}">
-            <ons-row>
-              <ons-col style="flex: 1;">${item.date}</ons-col>
-              <ons-col style="flex: 1;">${item.type}</ons-col>
-              <ons-col style="flex: 1;">${item.priority}</ons-col>
-              <ons-col style="flex: 1;">${item.id}</ons-col>
-            </ons-row>
-          </ons-list-item>
-        `;
-        list.insertAdjacentHTML('beforeend', template);
-      });
-    }
-  
-    fillTable();
+   
 
-
-**/
-
-
-
-    /*****
-     * var data = [  
-  {date: '2023-04-01', type: 'A', priority: 'High', id: '123'},  
-  {date: '2023-04-02', type: 'B', priority: 'Medium', id: '456'},  
-  {date: '2023-04-03', type: 'C', priority: 'Low', id: '789'}
-];
-
-// Get a reference to the table element
-var table = document.getElementById('my-table');
-
-// Create the table header
-var header = table.createTHead();
-var row = header.insertRow();
-var headers = ['Date', 'Type', 'Priority', 'ID'];
-for (var i = 0; i < headers.length; i++) {
-  var cell = row.insertCell(i);
-  cell.innerHTML = headers[i];
-}
-
-// Create the table body
-var tbody = table.createTBody();
-for (var i = 0; i < data.length; i++) {
-  var row = tbody.insertRow();
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-  var cell4 = row.insertCell(3);
-  cell1.innerHTML = data[i].date;
-  cell2.innerHTML = data[i].type;
-  cell3.innerHTML = data[i].priority;
-  cell4.innerHTML = data[i].id;
-}
-     * 
-     * 
-     *  function getcanfunc(){
-  var e=document.getElementById("getcanid");
- 
-	       fble.sendjson({can:"start"});
-	        }
-	       else fble.sendjson({can:"stop"});
-     * ****/
      function clearcanmsg(){
    var d=document.getElementById("canmsg"); 
    d.innerHTML="";
-
   }
-    /** var e=document.getElementById("getcanid");
-
-     function Stopcan(){
-  fble.sendjson({can:"start"});
-     }
-     function Showcan(){
-      fble.sendjson({can:"stop"});
-     }**/
+  
      function getcanfunc(){
   var e=document.getElementById("getcanid");
   console.log("changed to "+e.checked);

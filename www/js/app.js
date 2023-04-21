@@ -2,11 +2,7 @@ console.log("loading app.js");
 
 function onappstart(){
 console.log("we are on "+cordova.platformId);
-/*
-  skip login
-  go directly
-*/
-setTimeout(login(),200);
+
 // crobot 7f190f68-2749-493c-947f-178fe27fd4bc
 // youvee  7f190f68-2749-493c-947f-193fe27fd4bc
 // igauge 7f190f68-2749-493c-947f-193fe27fd4cb
@@ -18,9 +14,9 @@ fble.start();
 fvar.addfunc("sendbtjson", fble.sendjson);  
 fble.ongotjson(onjson);  
 fble.ongotmsg(onascii);
-fhttp.seturl("http://localhost:8000");
+//fhttp.seturl("http://localhost:8000");
 // 
-flogfile.init();
+//flogfile.init();
 }
 //-----------------------------------------------------------------------------
 function apponsubscribed(){
