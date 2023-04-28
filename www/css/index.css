@@ -1023,3 +1023,8 @@ tr.small-row {
   height: 20px; /* set the height of the row */
   font-size: 12px; /* reduce the font size to fit the smaller row */
 }
+
+/**
+.table-container{width: 390px;
+  height: -207px;
+  margin-left: 11px;} **/
