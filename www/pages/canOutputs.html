@@ -1,100 +1,130 @@
 <ons-page id="canOutputs" class="page__background canOutputs-page">
-    <ons-toolbar style="background-color: #094860;">
-      <div class="left">
-        <ons-back-button>Back</ons-back-button>
-      </div>
-      <div class="center" id="toolbar-title" style="color:rgb(255, 255, 255);text-align: center;">Can Outputs</div>
-      <div class="right">
-        <ons-toolbar-button onclick='gohome();'>
-          <span style="color: rgb(255, 255, 255);">
-            <i class="fa-solid fa-home"></i>
-          </span>
-        </ons-toolbar-button>
-      </div>
-    </ons-toolbar>
-
-    <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
-      <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
-    <p class="searchstyle">
-      <ons-search-input
-        placeholder="Search"
-        onchange="ons.notification.alert('Searched for: ' + this.value)"
-      ></ons-search-input>
-    </p>
-    <div style="margin-top: -64px; margin-left: 216px;"> <button class="button-srch">Search</button>
+  <ons-toolbar style="background-color: #094860;">
+    <div class="left">
+      <ons-back-button>Back</ons-back-button>
     </div>
-  
-  
-    <div class="buttoptcontainer"> 
-      <button class="buttoptions">Filter</button>
-      <button class="buttoptions" >Stop</button>
-      <button class="buttoptions" onclick="clearcanmsg()">Clear</button>
-      <button class="buttoptions" >Show</button>
-    </div> 
-    <div class="center">
-      getcan  
-      </div>
-      <div class="right">
-      <ons-switch id="getcanid" onchange="getcanfunc()"> </ons-switch> <br>
-      </div>
-    <table id="can-table">
-      <thead>
-        <tr>
-          <th>CAN ID</th>
-          <th>Node ID</th>
-          <th>Data Length</th>
-          <th>Data</th>
-        </tr>
-      </thead>
-      <tbody id="can-msgs">
-      </tbody>
-    </table>
+    <div class="center" id="toolbar-title" style="color:rgb(255, 255, 255);text-align: center;">Can Outputs</div>
+    <div class="right">
+      <ons-toolbar-button onclick='gohome();'>
+        <span style="color: rgb(255, 255, 255);">
+          <i class="fa-solid fa-home"></i>
+        </span>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
 
+  <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+    <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
+      <p class="searchstyle">
+        <ons-search-input id="searchInput" placeholder="Search" oninput="filterTable(this.value)"></ons-search-input>
+
+      </p>
+      <div style="margin-top: -64px; margin-left: 216px;">
+        <button class="button-srch" onclick="filterTable(document.getElementById('searchInput').value)">Search</button>
+      </div>
+
+
+  <div class="buttoptcontainer"> 
+    <button class="buttoptions">Filter</button>
+    <button class="buttoptions" >Stop</button>
+    <button class="buttoptions" onclick="clearcanmsg()">Clear</button>
+    <button class="buttoptions" >Show</button>
+  </div> 
+  <div class="center">
+    getcan  
+    </div>
+    <div class="right">
+    <ons-switch id="getcanid" onchange="getcanfunc()"> </ons-switch> <br>
+    </div>
+    <div class="table-container">
+  <table id="can-table">
+    <thead>
+      <tr>
+        <th class="thstyle">CAN ID</th>
+        <th class="thstyle">Node ID</th>
+        <th class="thstyle">Data Length</th>
+        <th class="thstyle">Data</th>
+      </tr>
+    </thead>
+    <tbody id="can-msgs">
+    </tbody>
+  </table>
+    </div>
 </ons-carousel-item>
 <ons-carousel-item style="background-color: #ffffff;">
-  <ons-card class="cardCanout">
-    <div style="font-family: monospace; padding: 16px;">
-      <span>COB-ID: </span><input type="text" size="3">
-      <span>Node-ID: </span><input type="text" size="3">
-      <br>
-      <span>DLC: </span><input type="text" size="3">
-      <span>Data 0: </span><input type="text" size="3">
-      <span>Data 1: </span><input type="text" size="3">
-      <span>Data 2: </span><input type="text" size="3">
-      <br>
-      <span>Data 3: </span><input type="text" size="3">
-      <span>Data 4: </span><input type="text" size="3">
-      <span>Data 5: </span><input type="text" size="3">
-      <span>Data 6: </span><input type="text" size="3">
-      <br>
-      <span>Data 7: </span><input type="text" size="3">
+<ons-card class="cardCanout">
+  <div style="font-family: monospace; padding: 16px;">
+    <span>COB-ID: </span><input type="text" size="3">
+    <span>Node-ID: </span><input type="text" size="3">
+    <br>
+    <span>DLC: </span><input type="text" size="3">
+    <span>Data 0: </span><input type="text" size="3">
+    <span>Data 1: </span><input type="text" size="3">
+    <span>Data 2: </span><input type="text" size="3">
+    <br>
+    <span>Data 3: </span><input type="text" size="3">
+    <span>Data 4: </span><input type="text" size="3">
+    <span>Data 5: </span><input type="text" size="3">
+    <span>Data 6: </span><input type="text" size="3">
+    <br>
+    <span>Data 7: </span><input type="text" size="3">
 
-     <button class="buttonsendcan">SEND</button>
+   <button class="buttonsendcan">SEND</button>
 
 
-   
-  </ons-card>
-  
+ 
+</ons-card>
+
 
 </ons-carousel-item>
 
 
-    </ons-carousel>
-  <script>
-   
+  </ons-carousel>
+<script>
 
-     function clearcanmsg(){
-   var d=document.getElementById("canmsg"); 
-   d.innerHTML="";
+   function clearcanmsg(){
+ var d=document.getElementById("canmsg"); 
+ d.innerHTML="";
+}
+
+   function getcanfunc(){
+var e=document.getElementById("getcanid");
+console.log("changed to "+e.checked);
+if (e.checked) {
+       fble.sendjson({can:"start"});
+        }
+       else fble.sendjson({can:"stop"});
+}
+
+function filterTable(searchValue) {
+  var table = document.getElementById("can-table");
+  var rows = table.getElementsByTagName("tr");
+
+  if (searchValue === "") { // reset table to original state
+    for (var i = 0; i < rows.length; i++) {
+      rows[i].style.display = "";
+    }
+    return;
   }
-  
-     function getcanfunc(){
-  var e=document.getElementById("getcanid");
-  console.log("changed to "+e.checked);
- if (e.checked) {
-	       fble.sendjson({can:"start"});
-	        }
-	       else fble.sendjson({can:"stop"});
- }
-  </script>
-   </ons-page>
+
+  for (var i = 0; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName("td");
+    var visible = false;
+    for (var j = 0; j < cells.length; j++) {
+      if (cells[j].innerHTML.toUpperCase().indexOf(searchValue.toUpperCase()) > -1) {
+        visible = true;
+        break;
+      }
+    }
+    if (visible) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+}
+
+
+
+</script>
+ </ons-page>
