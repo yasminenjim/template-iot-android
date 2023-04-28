@@ -31,34 +31,24 @@
       <button class="buttoptions" onclick="clearcanmsg()">Clear</button>
       <button class="buttoptions" >Show</button>
     </div> 
-  
-    <ons-list style="margin-top: 33px;">
-      <ons-list-header>
-        <ons-row style="color:#094860;">
-          <ons-col style="flex: 1;">Date</ons-col>
-          <ons-col style="flex: 1;">Type</ons-col>
-          <ons-col style="flex: 1;">NodeID</ons-col>
-          <ons-col style="flex: 1;">IDmsg</ons-col>
-          <ons-col style="flex: 1;">Data</ons-col>
-        </ons-row>
-      </ons-list-header>
-  
-      
-
-      <ons-list-item>
-        <div class="center">
-        getcan  
-        </div>
-        <div class="right">
-        <ons-switch id="getcanid" onchange="getcanfunc()"> </ons-switch> <br>
-        </div>
-   </ons-list-item>
-   </ons-list>
-        
-        <span id="canmsg0" ></span>
-       <div id="canmsg" style="margin:10px;font-size:8px;height:600px;overflow-y:scroll;" >
-       </div>
- 
+    <div class="center">
+      getcan  
+      </div>
+      <div class="right">
+      <ons-switch id="getcanid" onchange="getcanfunc()"> </ons-switch> <br>
+      </div>
+    <table id="can-table">
+      <thead>
+        <tr>
+          <th>CAN ID</th>
+          <th>Node ID</th>
+          <th>Data Length</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody id="can-msgs">
+      </tbody>
+    </table>
 
 </ons-carousel-item>
 <ons-carousel-item style="background-color: #ffffff;">

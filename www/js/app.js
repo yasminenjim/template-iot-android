@@ -35,32 +35,33 @@ if (e) {
        }
 }
 //-----------------------------------------------------------------------------
-function onascii(txt,ch){
-//console.log("onascii "+txt);
-if (txt.indexOf("can")!=0) return;
+function onascii(txt, ch) {
+	if (txt.indexOf("can") != 0) return;
 
-var d=document.getElementById("canmsg");
+	var tbody = document.getElementById("can-msgs");
 
-	if (d) {
-	
-		if (d.innerHTML.length>2500) {
-			d.innerHTML=d.innerHTML.substr(-800);
-			                     }
-		var cobid=txt.substr(3,3);
-                var cid=parseInt(cobid,16);
-                var nodeid=127 & cid;
-		var len=(txt.length-6)/2;
-		var canstr="0x"+cobid+" ["+nodeid+"] "+len+" ";
+	if (tbody) {
+	  if (tbody.rows.length > 100) {
+		tbody.deleteRow(-1);
+	  }
 
-		for (var i=0;i<len;i++) {
-	             canstr+=" 0x"+txt.substr(6+i*2,2);
-			                }
-                d.innerHTML+=canstr+"<br>";
-	        d.scrollTop=d.scrollHeight;
-	        }
-d=document.getElementById("canmsg0");
-if (d) d.innerHTML=canstr;	
-}
+	  var cobid = txt.substr(3, 3);
+	  var cid = parseInt(cobid, 16);
+	  var nodeid = 127 & cid;
+	  var len = (txt.length - 6) / 2;
+
+	  var row = tbody.insertRow(0);
+	  row.insertCell(0).innerHTML = "0x" + cobid;
+	  row.insertCell(1).innerHTML = "[" + nodeid + "]";
+	  row.insertCell(2).innerHTML = len;
+
+	  var dataCell = row.insertCell(3);
+	  for (var i = 0; i < len; i++) {
+		var dataByte = txt.substr(6 + i * 2, 2);
+		dataCell.innerHTML += " 0x" + dataByte;
+	  }
+	}
+  }
 //-----------------------------------------------------------------------------
 function inputkeydown(e){
                   let t=e.currentTarget;
