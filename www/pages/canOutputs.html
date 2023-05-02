@@ -23,19 +23,27 @@
         <button class="button-srch" onclick="filterTable(document.getElementById('searchInput').value)">Search</button>
       </div>
 
-
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Filter Options</h2>
+            <label for="filterOption">Select Filter Option:</label>
+            <select id="filterOption" name="filterOption">
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
+            <br><br>
+            <button class="filterbuttonop" id="Apply" onclick="filteroptions()">Apply</button>
+        </div>
+      </div>
+      
   <div class="buttoptcontainer"> 
-    <button class="buttoptions">Filter</button>
-    <button class="buttoptions" >Stop</button>
+    <button class="buttoptions" id="show-btn" onclick="showCan()">Show</button>
+    <button class="buttoptions"id="stop-btn" onclick="stopCan()">Stop</button>
+    <button class="buttoptions" id="filterBtn">Filter</button>
     <button class="buttoptions" onclick="clearTable()" id="clearingButton">Clear</button>
-    <button class="buttoptions" >Show</button>
   </div> 
-  <div class="center">
-    getcan  
-    </div>
-    <div class="right">
-    <ons-switch id="getcanid" onchange="getcanfunc()"> </ons-switch> <br>
-    </div>
     <div class="table-container">
   <table id="can-table">
     <thead>
@@ -96,7 +104,40 @@ var rowsPerPage = 20;
 var currentPage = 1;
 const clearButton = document.getElementById("clearingButton");
 clearingButton.addEventListener("click", clearTable);
+// Get the modal
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("filterBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+function showCan() {
+    fble.sendjson({can: "start"});
+}
+
+function stopCan() {
+    fble.sendjson({can: "stop"});
+}
 function clearTable() {
   // get a reference to the table element
   const table = document.getElementById("can-table");
@@ -113,14 +154,6 @@ function clearTable() {
  d.innerHTML="";
 }
 
-   function getcanfunc(){
-var e=document.getElementById("getcanid");
-console.log("changed to "+e.checked);
-if (e.checked) {
-       fble.sendjson({can:"start"});
-        }
-       else fble.sendjson({can:"stop"});
-}
 
 function filterTable(searchValue) {
   var table = document.getElementById("can-table");
