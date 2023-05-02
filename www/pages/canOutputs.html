@@ -13,7 +13,7 @@
     </div>
   </ons-toolbar>
 
-  <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+  <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel" style="overflow-y: scroll;">
     <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
       <p class="searchstyle">
         <ons-search-input id="searchInput" placeholder="Search" oninput="filterTable(this.value)"></ons-search-input>
@@ -46,11 +46,21 @@
         <th class="thstyle">Data</th>
       </tr>
     </thead>
-    <tbody style="font-size: 10px;" id="can-msgs">
+    <tbody style="font-size: 11px;" id="can-msgs">
     </tbody>
   </table>
     </div>
+    <br>
+    <br>
+    <br>
+    <div id="pagination">
+      <button id="prev-page">Prev</button>
+      <button id="next-page">Next</button>
+    </div>
+  
 </ons-carousel-item>
+
+
 <ons-carousel-item style="background-color: #ffffff;">
 <ons-card class="cardCanout">
   <div style="font-family: monospace; padding: 16px;">
@@ -81,6 +91,8 @@
 
   </ons-carousel>
 <script>
+var rowsPerPage = 20;
+var currentPage = 1;
 
    function clearcanmsg(){
  var d=document.getElementById("canmsg"); 
@@ -124,7 +136,39 @@ function filterTable(searchValue) {
   }
 }
 
+// Define a variable to keep track of the current page
+var currentPage = 1;
 
+// Define a function to show the rows for a given page
+function showRowsForPage(page) {
+  var startIdx = (page - 1) * 20;
+  var endIdx = startIdx + 20;
+  $("#can-msgs tr").hide().slice(startIdx, endIdx).show();
+}
 
+// Set up event listeners for the "Prev" and "Next" buttons
+$("#prev-page").on("click", function() {
+  if (currentPage > 1) {
+    currentPage--;
+    gotoPage(currentPage);
+  }
+});
+
+$("#next-page").on("click", function() {
+  if (currentPage < Math.ceil($("#can-msgs tr").length / 20)) {
+    currentPage++;
+    gotoPage(currentPage);
+  }
+});
+
+// Define the gotoPage() function
+function gotoPage(page) {
+  $(".active-page").removeClass("active-page");
+  $("#page-" + page).addClass("active-page");
+  showRowsForPage(page);
+}
+
+// Call the gotoPage() function with the initial page
+gotoPage(1);
 </script>
  </ons-page>

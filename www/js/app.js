@@ -36,32 +36,48 @@ if (e) {
 }
 //-----------------------------------------------------------------------------
 function onascii(txt, ch) {
-	if (txt.indexOf("can") != 0) return;
+    if (txt.indexOf("can") != 0) return;
 
-	var tbody = document.getElementById("can-msgs");
+    var tbody = document.getElementById("can-msgs");
 
-	if (tbody) {
-	  if (tbody.rows.length > 100) {
-		tbody.deleteRow(-1);
-	  }
+    if (tbody) {
+        if (tbody.rows.length >= 100) {
+            tbody.deleteRow(-1);
+        }
 
-	  var cobid = txt.substr(3, 3);
-	  var cid = parseInt(cobid, 16);
-	  var nodeid = 127 & cid;
-	  var len = (txt.length - 6) / 2;
+        var cobid = txt.substr(3, 3);
+        var cid = parseInt(cobid, 16);
+        var nodeid = 127 & cid;
+        var len = (txt.length - 6) / 2;
 
-	  var row = tbody.insertRow(0);
-	  row.insertCell(0).innerHTML = "0x" + cobid;
-	  row.insertCell(1).innerHTML = "[" + nodeid + "]";
-	  row.insertCell(2).innerHTML = len;
+        // Calculate start and end row indices based on currentPage and rowsPerPage
+        var rowsPerPage = 20;
+        var startIdx = (currentPage - 1) * rowsPerPage;
+        var endIdx = startIdx + rowsPerPage;
 
-	  var dataCell = row.insertCell(3);
-	  for (var i = 0; i < len; i++) {
-		var dataByte = txt.substr(6 + i * 2, 2);
-		dataCell.innerHTML += " 0x" + dataByte;
-	  }
-	}
-  }
+        // Hide all rows first
+        for (var i = 0; i < tbody.rows.length; i++) {
+            tbody.rows[i].style.display = "none";
+        }
+
+        // Insert new row at the start index
+        var row = tbody.insertRow(startIdx);
+        row.insertCell(0).innerHTML = "0x" + cobid;
+        row.insertCell(1).innerHTML = "[" + nodeid + "]";
+        row.insertCell(2).innerHTML = len;
+
+        var dataCell = row.insertCell(3);
+        for (var i = 0; i < len; i++) {
+            var dataByte = txt.substr(6 + i * 2, 2);
+            dataCell.innerHTML += " 0x" + dataByte;
+        }
+
+        // Show rows for the current page
+        for (var i = startIdx; i < endIdx && i < tbody.rows.length; i++) {
+            tbody.rows[i].style.display = "";
+        }
+    }
+}
 //-----------------------------------------------------------------------------
 function inputkeydown(e){
                   let t=e.currentTarget;

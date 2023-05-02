@@ -1001,7 +1001,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 #can-table td, #can-table th {
-  padding: 8px;
+  padding: 10px;
 }
 
 #can-table tr:nth-child(even){background-color: #f2f2f2;}
@@ -1016,7 +1016,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   color: white;
 }
 .thstyle{
-  font-size: small;
+  font-size: 10px;
   font-weight: bold;
 }
 tr.small-row {
