@@ -55,6 +55,7 @@
     <br>
     <div id="pagination">
       <button id="prev-page">Prev</button>
+      <span id="current-page">Page 1</span>
       <button id="next-page">Next</button>
     </div>
   
@@ -166,6 +167,7 @@ function gotoPage(page) {
   $(".active-page").removeClass("active-page");
   $("#page-" + page).addClass("active-page");
   showRowsForPage(page);
+  $("#current-page").text("Page " + page);
 }
 
 // Call the gotoPage() function with the initial page
