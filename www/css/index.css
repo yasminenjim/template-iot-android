@@ -1028,3 +1028,14 @@ tr.small-row {
 .table-container{width: 390px;
   height: -207px;
   margin-left: 11px;} **/
+.paginationbutton{
+  background-color: #094860;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* width: 82px; */
+  text-align: center;
+}

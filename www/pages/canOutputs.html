@@ -27,7 +27,7 @@
   <div class="buttoptcontainer"> 
     <button class="buttoptions">Filter</button>
     <button class="buttoptions" >Stop</button>
-    <button class="buttoptions" onclick="clearcanmsg()">Clear</button>
+    <button class="buttoptions" onclick="clearTable()" id="clearingButton">Clear</button>
     <button class="buttoptions" >Show</button>
   </div> 
   <div class="center">
@@ -52,13 +52,13 @@
     </div>
     <br>
     <br>
-    <br>
-    <div id="pagination">
-      <button id="prev-page">Prev</button>
-      <span id="current-page">Page 1</span>
-      <button id="next-page">Next</button>
+    <div id="pagination" style="margin-left: 237px;">
+      <button class="paginationbutton" id="prev-page"><i class="fa-solid fa-chevron-left"></i></button>
+      <span id="current-page" style="font-weight: bold;">Page 1</span>
+      <button class="paginationbutton" id="next-page"><i class="fa-solid fa-chevron-right"></i></button>
+      <br>
     </div>
-  
+    
 </ons-carousel-item>
 
 
@@ -94,6 +94,19 @@
 <script>
 var rowsPerPage = 20;
 var currentPage = 1;
+const clearButton = document.getElementById("clearingButton");
+clearingButton.addEventListener("click", clearTable);
+
+function clearTable() {
+  // get a reference to the table element
+  const table = document.getElementById("can-table");
+
+  // clear the content of the table
+  table.innerHTML = "";
+
+  // clear any associated input fields or other elements
+  // ...
+}
 
    function clearcanmsg(){
  var d=document.getElementById("canmsg"); 
