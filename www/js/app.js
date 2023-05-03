@@ -46,7 +46,15 @@ function onascii(txt, ch) {
 //here I want to create a div element in the onsen page with the id notifications
 //console.log("the Can table reached 100 rows");
 
-            
+console.log("the Can table reached 100 rows");
+
+// Create notification
+var notificationPage = document.querySelector('#notifications');
+var notificationElement = document.createElement('div');
+notificationElement.innerHTML = '<p>New CAN message received</p>';
+notificationElement.setAttribute('id', 'notifications'); // Set ID to "can-notification"
+notificationPage.appendChild(notificationElement);
+tactile();
         }
 
         var cobid = txt.substr(3, 3);
