@@ -140,19 +140,22 @@ function stopCan() {
     fble.sendjson({can: "stop"});
 }
 function clearTable() {
-  // get a reference to the table element
-  const table = document.getElementById("can-table");
+  // Clear the table
+  var tableBody = document.getElementById("can-msgs");
+  tableBody.innerHTML = "";
 
-  // create a new tbody element
-  const tbody = document.createElement("tbody");
+  // Reset the pagination
+  var pagination = document.getElementById("pagination");
+  var currentPageSpan = document.getElementById("current-page");
+  var prevButton = document.getElementById("prev-page");
+  var nextButton = document.getElementById("next-page");
+  var totalPages = 1; // Update the total pages to 1
 
-  // set the id of the tbody element
-  tbody.id = "can-msgs";
+  currentPage = 1;
 
-  // replace the existing tbody element with the new one
-  table.replaceChild(tbody, table.querySelector("tbody"));
-  tbody.className = "can-msgs";
-  console.log("clearing can table from clearTable method");
+  currentPageSpan.innerHTML = "Page " + currentPage;
+  //pagination.style.display = "none";
+  
 }
 
 
