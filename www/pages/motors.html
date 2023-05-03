@@ -18,7 +18,6 @@
 
     <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
       <div>
-        <i class="fa-sharp fa-regular fa-circle-info"></i>
       </div>
 <div class="motor-interface">
   <div class="slider-container">
@@ -53,11 +52,41 @@
 </div>
 
   </ons-carousel-item>
+<!-------------right motor------------------>
+  <ons-carousel-item style="background-color: #094860;" id="right-carousel">
+   
 
-  <ons-carousel-item style="background-color: #373B44;" id="right-carousel">
-    <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">
-      DARK
+    <div>
+      
     </div>
+<div class="motor-interface">
+<div class="slider-container">
+  <div class="slider-background"></div>
+  <input type="range" min="-2000" max="2000" value="0" step="1000" class="slider" id="myRange"> 
+</div>
+<div class="adjusting">
+<div class="screen">
+<div id="slider-value" class="box">
+  <span style="margin-left: 8px;" fvar="{name:'ml.s'}"></span>
+  <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Speed</div>
+</div>
+  <div class="box" id="mr-position">
+
+    <span style="margin-left: 20px;" fvar="{name:'mr.p'}"></span>
+    <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Position</div>
+  </div>
+  <div class="box" id="ml-inclination"> <span style="margin-left: 19px;" fvar="{name:'a',idx:5}" ></span>
+    <div style="font-size: small; color: aliceblue; margin-left:40px;">Inclination</div>
+  </div>
+</div>
+
+<div class="buttonContainer">
+<button class="button-m" onclick="motorgo(1,-2000)" >IN</button>
+<button class="button-m" onclick="motorgo(1,2000)">OUT</button>
+<button  class="button-m" onclick="motorstop(1)" >STOP</button>
+</div>
+</div>
+</div>
   </ons-carousel-item>
 
 </ons-carousel>
@@ -107,27 +136,7 @@ function motorgo(lr,speed){
 	   document.getElementById("debugdiv1").innerHTML=JSON.stringify(o);
   }
 
-var titleElement = document.getElementById('toolbar-title');
 
-// Set initial toolbar title
-
-titleElement.innerHTML = 'Right Motor';
-  //Swipping right/left
-  document.addEventListener('DOMContentLoaded', function() {
-    var carousel = document.getElementById('left-carousel');
-    var titleElement = document.getElementById('toolbar-title');
-
-    carousel.addEventListener('postchange', function(event) {
-      if (event.activeIndex === 0) {
-        titleElement.innerHTML = 'Right Motor'; 
-        console.log("the index page now is: " +event.activeIndex);
-      } else if (event.activeIndex === 1) {
-        titleElement.innerHTML = 'Left Motor';
-        console.log("the tite now is: " +titleElement);
-        console.log("the index page now is: " +event.activeIndex);
-      }
-    });
-  });
 </script>
 </ons-page>
 

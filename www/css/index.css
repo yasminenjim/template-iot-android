@@ -607,7 +607,7 @@ li {
     -webkit-transition: .2s;
     transition: opacity .2s;
     margin-left: -156px;
-    margin-top: -5px;
+    margin-top: 10px;
 }
 
 #myRange::-webkit-slider-thumb {
