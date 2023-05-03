@@ -1025,36 +1025,6 @@ input[type="range"]::-webkit-slider-runnable-track {
   align-content: center;
   margin-top: 64px;
 }
-/**#can-table{
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#can-table td, #can-table th {
-  padding: 10px;
-}
-
-#can-table tr:nth-child(even){background-color: #f2f2f2;}
-
-#can-table tr:hover {background-color: #ddd;}
-
-#can-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #094860;
-  color: white;
-}
-.thstyle{
-  font-size: 10px;
-  font-weight: bold;
-}
-tr.small-row {
-  height: 20px; 
-  font-size: 12px; 
-}
-**/
 #can-table {
   font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
