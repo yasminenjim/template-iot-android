@@ -43,8 +43,9 @@ function onascii(txt, ch) {
     if (tbody) {
         if (tbody.rows.length >= 100) {
             tbody.deleteRow(-1);
-//here I want to create a div element in the an onsen page with the id notifications
-console.log("the Can table reached 100 rows");
+//here I want to create a div element in the onsen page with the id notifications
+//console.log("the Can table reached 100 rows");
+
             
         }
 

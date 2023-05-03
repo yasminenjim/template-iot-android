@@ -133,6 +133,7 @@ window.onclick = function(event) {
 
 function showCan() {
     fble.sendjson({can: "start"});
+    console.log("showing can messages from showcan method");
 }
 
 function stopCan() {
@@ -142,17 +143,19 @@ function clearTable() {
   // get a reference to the table element
   const table = document.getElementById("can-table");
 
-  // clear the content of the table
-  table.innerHTML = "";
+  // create a new tbody element
+  const tbody = document.createElement("tbody");
 
-  // clear any associated input fields or other elements
-  // ...
+  // set the id of the tbody element
+  tbody.id = "can-msgs";
+
+  // replace the existing tbody element with the new one
+  table.replaceChild(tbody, table.querySelector("tbody"));
+
+  console.log("clearing can table from clearTable method");
 }
 
-   function clearcanmsg(){
- var d=document.getElementById("canmsg"); 
- d.innerHTML="";
-}
+
 
 
 function filterTable(searchValue) {
@@ -218,5 +221,19 @@ function gotoPage(page) {
 
 // Call the gotoPage() function with the initial page
 gotoPage(1);
+
+const table = document.getElementById('can-table');
+const notificationPage = document.getElementById('notifications');
+
+
+  const rowCount = table.rows.length;
+  if (rowCount === 100) {
+    var message = "There are more than 100 rows in the table!";
+  var notifications = document.createElement("div");
+  notifications.innerHTML = message;
+  document.getElementById("notifications").appendChild(notifications);
+  }
+
+
 </script>
  </ons-page>

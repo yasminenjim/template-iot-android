@@ -115,6 +115,22 @@
   position: absolute;
 }
 
+#connectdto {
+  animation-name: move;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes move {
+  from {
+    left: 0;
+  }
+  to {
+    left: 20px;
+  }
+}
+
 .home-card-body{
 margin-top: auto;
 
@@ -1039,10 +1055,8 @@ tr.small-row {
   font-size: 12px; /* reduce the font size to fit the smaller row */
 }
 
-/**
-.table-container{width: 390px;
-  height: -207px;
-  margin-left: 11px;} **/
+
+.table-container{margin-top: 15px;} 
 .paginationbutton{
   background-color: #094860;
   color: white;
