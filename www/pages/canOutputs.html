@@ -54,7 +54,7 @@
         <th class="thstyle">Data</th>
       </tr>
     </thead>
-    <tbody style="font-size: 11px;" id="can-msgs">
+    <tbody id="can-msgs">
     </tbody>
   </table>
     </div>
@@ -151,7 +151,7 @@ function clearTable() {
 
   // replace the existing tbody element with the new one
   table.replaceChild(tbody, table.querySelector("tbody"));
-
+  tbody.className = "can-msgs";
   console.log("clearing can table from clearTable method");
 }
 
