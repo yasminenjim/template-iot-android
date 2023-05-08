@@ -96,11 +96,33 @@
       </ons-list-item>
 </onslist>
 </ons-card>
+
 <ons-card class="cardCanout" id="SDO">
   <h2>SDO</h2>
   <div style="font-family: monospace; padding: 16px;">
-    <span>COB-ID: </span><input type="text" size="3">
-    <span>Node-ID: </span><input type="text" size="3">
+    <span>NODE-ID</span><br>
+    <input type="text" maxlength="4" size="4" id="node-id-1">
+    <input type="text" maxlength="4" size="4" id="node-id-2">
+    <input type="text" maxlength="4" size="4" id="node-id-3">
+    <input type="text" maxlength="4" size="4" id="node-id-4">
+    <br>
+    <span>CMD</span><br>
+    <input type="text" maxlength="2" size="2" id="cmd">
+    <br>
+    <span>SDO</span><br>
+    <input type="text" maxlength="4" size="4" id="sdo-1">
+    <input type="text" maxlength="4" size="4" id="sdo-2">
+    <br>
+    <button class="buttonsendcan">SEND</button>
+  </div>
+</ons-card>
+
+<!---
+<ons-card class="cardCanout" id="SDO">
+  <h2>SDO</h2>
+  <div style="font-family: monospace; padding: 16px;">
+    <span>COB-ID: </span><input type="text" size="4">
+    <span>CMD: </span><input type="text" size="4">
     <br>
     <span>DLC: </span><input type="text" size="3">
     <span>Data 0: </span><input type="text" size="3">
@@ -113,9 +135,8 @@
     <span>Data 6: </span><input type="text" size="3">
     <br>
     <span>Data 7: </span><input type="text" size="3">
-
    <button class="buttonsendcan">SEND</button>
-</ons-card>
+</ons-card> -->
 
 <ons-card class="cardpdo" id="PDO">
   <h1>PDO</h1>
@@ -306,6 +327,37 @@ pdoCheckbox.addEventListener('change', function() {
   }
 });
 
+const nodeFields = [
+    document.getElementById("node-id-1"),
+    document.getElementById("node-id-2"),
+    document.getElementById("node-id-3"),
+    document.getElementById("node-id-4")
+  ];
+
+  nodeFields.forEach((field) => {
+    field.addEventListener("input", (event) => {
+      const regex = /[^\d]/g;
+      event.target.value = event.target.value.replace(regex, "");
+    });
+  });
+
+  const cmdField = document.getElementById("cmd");
+  cmdField.addEventListener("input", (event) => {
+    const regex = /[^\d]/g;
+    event.target.value = event.target.value.replace(regex, "");
+  });
+
+  const sdoFields = [
+    document.getElementById("sdo-1"),
+    document.getElementById("sdo-2")
+  ];
+
+  sdoFields.forEach((field) => {
+    field.addEventListener("input", (event) => {
+      const regex = /[^\d]/g;
+      event.target.value = event.target.value.replace(regex, "");
+    });
+  });
 
 </script>
  </ons-page>
