@@ -974,6 +974,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     margin-bottom: -6px;
     height: 333px;
     display: none;
+
 }
 .cardpdo{
   text-align: center;
@@ -985,6 +986,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   margin-bottom: -6px;
   height: 333px;
   display: none;
+
 }
 
 
