@@ -391,31 +391,9 @@ li {
 
 
 }
-
-/**
-.menuPage-page{
-
-  background: rgb(2,0,36)!important ;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,75,100,1) 35%, rgba(0,212,255,1) 100%) !important;
-
-
-}
-
-.splitter-page {
-
-  background: rgb(2,0,36) !important;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(14,75,100,1) 35%, rgba(0,212,255,1) 100%) !important;
-
-
-}
-
-**/
-
-
 .motors-page {
 
   background-color: #094860 !important;
-
 
 }
 .testpage-page {
@@ -806,7 +784,7 @@ li {
   margin: 20px auto;
   background-color: #efefef;
   margin-bottom: 24px;
-  height:245px;
+  height:281px;
 }
 
 .editch{
@@ -915,6 +893,10 @@ input[type="range"]::-webkit-slider-runnable-track {
   width: 10px;
   height: 16px;
 }
+.in-out{
+  margin-left: -100px;
+  margin-top: -9px;
+}
 
 
 /******CAN outputs***********/
@@ -991,6 +973,18 @@ input[type="range"]::-webkit-slider-runnable-track {
     background-color: #efefef;
     margin-bottom: -6px;
     height: 333px;
+    display: none;
+}
+.cardpdo{
+  text-align: center;
+  width: 93%;
+  border-radius: 13px;
+  height: 226px;
+  margin: 20px auto;
+  background-color: #efefef;
+  margin-bottom: -6px;
+  height: 333px;
+  display: none;
 }
 
 

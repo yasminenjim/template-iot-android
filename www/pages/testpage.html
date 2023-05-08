@@ -1,7 +1,7 @@
 <ons-page id="testpage"   class="page__background testpage-page" >
     <ons-toolbar style="background-color: #094860;" >
 			<div class="left">
-			  <ons-back-button style="color: aliceblue;">Back</ons-back-button>
+			  <ons-back-button style="color: aliceblue;" onclick='gohome();'>Back</ons-back-button>
 			   </div>
 			   <div class="center" style="color:rgb(255, 255, 255);text-align: center;margin-left: -49px;">Analog Outputs</div>
 </ons-toolbar>
@@ -9,10 +9,10 @@
 	<div  style="display: block; text-align: center; margin-top: 40px;">
 		<ons-card class="card-style-can">
 			<div class="modify-me">
-				<i class="fa-regular fa-pen-to-square"  onclick="editHeading('h4-1')" style="color: #737373;"></i>
+				<i class="fa-regular fa-pen-to-square" onclick="editHeading('h4-1')" style="color: #737373;"></i>
 			   </div>
          <div>
-		<h4 id="h4-1" style=" font-family: 'Open Sans', sans-serif; font-weight: 978;font-size: 29px;color: #094860; margin-left: -281px;  position: left; margin-bottom: -7px;margin-top:-9px;">CH1</h4>
+		<h4 id="h4-1" style=" font-family: 'Open Sans', sans-serif; font-weight: 978;font-size: 29px;color: #094860; margin-left: -281px;  position: left; margin-bottom: -7px;margin-top:-9px;">AI-1</h4>
 		
 
 	</div>
@@ -26,15 +26,27 @@
 				  <span class="range-value">16</span>
 				  <span class="range-value">20</span>
 				</div>
-				<p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value"> 
-				</span></p>
+				<div class="in-out">
+				<div>
+				<p class="range-value-text">Output </p>
+					<div style="margin-left: -79px;margin-top: -11px;"> 
+					<span contenteditable="true" class="out-can" id="range-value"> 
+				</span></div>
+				</div>
+				<div style= " margin-top: -106px;
+				margin-left: 340px;">
+				<p class="range-value-text">Input </p>
+					<div style="margin-left: -79px;margin-top: -11px;"> 
+					<span contenteditable="true" class="out-can"> 
+				</span></div> </div>
+				</div>
 		  </div>
 		</ons-card>
 		<ons-card class="card-style-can">
 			<div class="modify-me">
 				<i class="fa-regular fa-pen-to-square" onclick="editHeading('h4-2')" style="color: #737373;"></i>
 			   </div>
-			<h4 id="h4-2" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">CH2</h4>
+			<h4 id="h4-2" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
 			   <div class="card-can-body">
 				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
 				   <div class="range-values">
@@ -53,7 +65,7 @@
 			<div class="modify-me">
 				<i onclick="editHeading('h4-3')" class="fa-regular fa-pen-to-square" style="color: #737373;"></i>
 			   </div>
-			   <h4 id="h4-3" tyle=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">CH2</h4>
+			   <h4 id="h4-3" tyle=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
 			   <div class="card-can-body">
 				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
 				   <div class="range-values">
@@ -72,7 +84,7 @@
 			<div class="modify-me">
 				<i onclick="editHeading('h4-4')" class="fa-regular fa-pen-to-square" style="color: #737373;"></i>
 			   </div>
-			   <h4 id="h4-4" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">CH2</h4>
+			   <h4 id="h4-4" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
 			   <div class="card-can-body">
 				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
 				   <div class="range-values">
@@ -91,7 +103,7 @@
 			<div class="modify-me">
 				<i onclick="editHeading('h4-5')" class="fa-regular fa-pen-to-square" style="color: #737373;"></i>
 			   </div>
-			   <h4 id="h4-5" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">CH2</h4>
+			   <h4 id="h4-5" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
 			   <div class="card-can-body">
 				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
 				   <div class="range-values">
@@ -110,7 +122,7 @@
 			<div class="modify-me">
 				<i onclick="editHeading('h4-6')" class="fa-regular fa-pen-to-square" style="color: #737373;"></i>
 			   </div>
-			   <h4 id="h4-6" style="font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">CH2</h4>
+			   <h4 id="h4-6" style="font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
 			   <div class="card-can-body">
 				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
 				   <div class="range-values">
@@ -161,7 +173,7 @@ rangeBar.oninput = function() {
 }
 
 
-const editableP = document.querySelector('p[contenteditable="true"]');
+//const editableP = document.querySelector('p[contenteditable="true"]');
 //const contents = editableP.textContent;
 function editHeading(id) {
   const heading = document.querySelector(`#${id}`);
@@ -169,5 +181,6 @@ function editHeading(id) {
   newHeadingText = newHeadingText.toUpperCase();
   heading.textContent = newHeadingText;
 }
+
  </script>  
 </ons-page>
