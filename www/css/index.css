@@ -1148,3 +1148,7 @@ tr.small-row {
   text-decoration: none;
   cursor: pointer;
 }
+
+.invalid-input {
+  border: 1px solid red;
+}
