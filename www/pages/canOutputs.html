@@ -67,7 +67,7 @@
 </ons-carousel-item>
 
 
-<ons-carousel-item style="background-color: #ffffff;">
+<ons-carousel-item style="background-color: rgb(241 241 241);">
 
   <ons-card class="m-2">
     <ons-row>
@@ -97,56 +97,44 @@
 </onslist>
 </ons-card>
 
-<ons-card class="cardCanout" id="SDO">
+<ons-card class="cardpdo" id="SDO">
   <h2>SDO</h2>
-  <div style="font-family: monospace; padding: 16px;">
-    <span>NODE-ID</span><br>
-    <input type="text" maxlength="4" size="4" id="node-id-1">
-    <input type="text" maxlength="4" size="4" id="node-id-2">
-    <input type="text" maxlength="4" size="4" id="node-id-3">
-    <input type="text" maxlength="4" size="4" id="node-id-4">
-    <br>
-    <span>CMD</span><br>
-    <input type="text" maxlength="2" size="2" id="cmd">
-    <br>
-    <span>SDO</span><br>
-    <input type="text" maxlength="4" size="4" id="sdo-1">
-    <input type="text" maxlength="4" size="4" id="sdo-2">
-    <br>
-    <button class="buttonsendcan">SEND</button>
-  </div>
+   <form id="sdoForm">
+    <div style="font-family: monospace; padding: 16px;">
+      <label for="nodeId">NODE-ID (1 byte)</label><br>
+      <input type="text" id="nodeId" name="nodeId" size="4" maxlength="4" placeholder="0000"><br>
+      <label for="cmd">CMD (1 byte)</label><br>
+      <input type="text" id="cmdsdo" name="cmd" size="8" maxlength="8" placeholder="00000000"><br>
+      <label for="sdo">SDO (2 bytes)</label><br>
+      <input type="text" id="sdo1" name="sdo1" size="4" maxlength="4" placeholder="0000">
+      <input type="text" id="sdo2" name="sdo2" size="4" maxlength="4" placeholder="0000"><br>
+      <button class="buttonsendcan" type="submit">SEND</button>
+    </div>
+  </form>
 </ons-card>
 
-<!---
-<ons-card class="cardCanout" id="SDO">
-  <h2>SDO</h2>
-  <div style="font-family: monospace; padding: 16px;">
-    <span>COB-ID: </span><input type="text" size="4">
-    <span>CMD: </span><input type="text" size="4">
-    <br>
-    <span>DLC: </span><input type="text" size="3">
-    <span>Data 0: </span><input type="text" size="3">
-    <span>Data 1: </span><input type="text" size="3">
-    <span>Data 2: </span><input type="text" size="3">
-    <br>
-    <span>Data 3: </span><input type="text" size="3">
-    <span>Data 4: </span><input type="text" size="3">
-    <span>Data 5: </span><input type="text" size="3">
-    <span>Data 6: </span><input type="text" size="3">
-    <br>
-    <span>Data 7: </span><input type="text" size="3">
-   <button class="buttonsendcan">SEND</button>
-</ons-card> -->
-
 <ons-card class="cardpdo" id="PDO">
-  <h1>PDO</h1>
+<h2>PDO</h2>
+ <!--- 
   <div style="font-family: monospace; padding: 16px;">
     <span>COB-ID: </span><input type="text" size="3">
     <span>Node-ID: </span><input type="text" size="3">
     <br>
     <span>DLC: </span><input type="text" size="3">
     <span>Data 0: </span><input type="text" size="3">
-   <button class="buttonsendcan">SEND</button>
+   <button class="buttonsendcan">SEND</button> -->
+   <form id="pdoForm">
+    <div style="font-family: monospace; padding: 16px;">
+      <label for="cobId">COB-ID (1 byte)</label><br>
+      <input type="text" id="cobId" name="cobId" size="4" maxlength="4" placeholder="0000"><br>
+      <label for="data">DATA (8 byte)</label><br>
+      <input type="text" id="data1" name="data1" size="4" maxlength="4" placeholder="0000">
+      <input type="text" id="data2" name="data2" size="4" maxlength="4" placeholder="0000"><br>
+      <input type="text" id="data3" name="data3" size="4" maxlength="4" placeholder="0000">
+      <input type="text" id="data4" name="data4" size="4" maxlength="4" placeholder="0000"><br>
+      <button class="buttonsendcan" type="submit">SEND</button>
+    </div>
+  </form>
 </ons-card>
 
 </ons-carousel-item>
@@ -216,8 +204,8 @@ function clearTable() {
 
 
 function filterTable(searchValue) {
-  var table = document.getElementById("can-table");
-  var rows = table.getElementsByTagName("tr");
+  var tablevar = document.getElementById("can-table");
+  var rows = tablevar.getElementsByTagName("tr");
 
   if (searchValue === "") { // reset table to original state
     for (var i = 0; i < rows.length; i++) {
