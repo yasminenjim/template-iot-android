@@ -1,0 +1,29 @@
+<ons-page id="canInterfaces">
+<ons-toolbar style="background-color: #094860;">
+    <div class="left">
+      <ons-back-button>Back</ons-back-button>
+    </div>
+    <div class="center" id="toolbar-title" style="color:rgb(255, 255, 255);text-align: center;">Can Outputs</div>
+    <div class="right">
+      <ons-toolbar-button onclick='gohome();'>
+        <span style="color: rgb(255, 255, 255);">
+          <i class="fa-solid fa-home"></i>
+        </span>
+      </ons-toolbar-button>
+    </div>
+  </ons-toolbar>
+
+
+
+  <ons-tabbar swipeable 
+  class="tabbarPosition tabbarStyle"
+  animation-options="{duration: 0.4, delay: 0.0, timing: 'ease-in'}" 
+  position="bottom" 
+  ignore-edge-width="20">
+    <ons-tab label="page2" icon="fa-sliders-h" style="height: 62%;" page="./pages/canOutputs.html">
+    </ons-tab>
+    <ons-tab label="page2" icon="fa-sliders-h" style="height: 62%;" page="./pages/sendCan.html">
+    </ons-tab>
+  </ons-tabbar>
+
+</ons-page>
