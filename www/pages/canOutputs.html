@@ -66,7 +66,7 @@
     
 </ons-carousel-item>
 
-
+<!--second interface-->
 <ons-carousel-item style="background-color: rgb(241 241 241);">
 
   <ons-card class="m-2">
@@ -95,6 +95,7 @@
         </label>
       </ons-list-item>
 </onslist>
+<!-----SDO-->
 </ons-card>
 <ons-card class="cardpdo" id="SDO">
   <h2>SDO</h2>
@@ -107,11 +108,15 @@
       <label for="sdo">SDO (2 bytes)</label><br>
       <input type="text" id="sdo1" name="sdo1" size="4" maxlength="4" placeholder="0x0000">
       <input type="text" id="sdo2" name="sdo2" size="4" maxlength="4" placeholder="0x0000"><br>
-      <button class="buttonsendcan" type="submit" id="sendSDOButton">SEND</button>
+     <div id="warningDivsdo" style="display: none; align-items: center;">
+      <i  style="margin-right: 10px;color: red;" class="fa-solid fa-circle-exclamation"></i>
+      <p class="warningStyle" id="warningMessagesdo"></p>
+</div>
+<button class="buttonsendcan" type="submit" id="sendSDOButton">SEND</button>
     </div>
   </form>
 </ons-card>
-
+<!-----PDO-->
 <ons-card class="cardpdo" id="PDO">
   <h2>PDO</h2>
   <form id="pdoForm">
@@ -121,7 +126,11 @@
       <label for="data">DATA (4 bytes)</label><br>
       <input type="text" id="data1" name="data1" size="4" maxlength="4" placeholder="0x0000">
       <input type="text" id="data2" name="data2" size="4" maxlength="4" placeholder="0x0000"><br>
-      <button class="buttonsendcan" type="submit" id="sendPDOButton">SEND</button>
+      <div id="warningDivpdo" style="display: none; align-items: center;">
+        <i  style="margin-right: 10px;color: red;" class="fa-solid fa-circle-exclamation"></i>
+        <p class="warningStyle" id="warningMessagepdo" ></p>
+  </div>
+  <button class="buttonsendcan" type="submit" id="sendPDOButton">SEND</button>
     </div>
   </form>
 </ons-card>
@@ -186,8 +195,6 @@ function clearTable() {
   //pagination.style.display = "none";
   
 }
-
-
 
 
 function filterTable(searchValue) {
@@ -304,25 +311,87 @@ pdoCheckbox.addEventListener('change', function() {
 
 //control over the input fields
 function validateInput(input) {
+  let isValid = true;
   if (!/^(0x)?[0-9a-fA-F]{1,8}$/.test(input.value)) {
     input.classList.add("invalid-input");
     input.nextElementSibling.innerText = "Invalid input: Must be a hexadecimal value.";
-    return false;
+    isValid = false;
   } else {
     input.classList.remove("invalid-input");
     input.nextElementSibling.innerText = "";
-    return true;
   }
+  return isValid;
 }
 
 
+//some variables from the dom (the two forms)
 const sdoForm = document.querySelector("#sdoForm");
 const pdoForm = document.querySelector("#pdoForm");
-
+//Submit buttons for sending SDO/PDO messages
 const sdoSubmitBtn = sdoForm.querySelector("#sendSDOButton");
 const pdoSubmitBtn = pdoForm.querySelector("#sendPDOButton");
-
+//SDO
 sdoSubmitBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  const nodeId = sdoForm.querySelector("#nodeId");
+  const cmd = sdoForm.querySelector("#cmdsdo");
+  const sdo1 = sdoForm.querySelector("#sdo1");
+  const sdo2 = sdoForm.querySelector("#sdo2");
+
+  const validNode = validateInput(nodeId);
+  const validCmd = validateInput(cmd);
+  const validSdo1 = validateInput(sdo1);
+  const validSdo2 = validateInput(sdo2);
+  const warningDiv = sdoForm.querySelector("#warningDivsdo");
+  const warningMessage = sdoForm.querySelector("#warningMessagesdo");
+  const isValid = validNode && validCmd && validSdo1 && validSdo2;
+  if (!isValid) {
+    warningMessage.innerText = "Please fill in all fields correctly.";
+    warningDiv.style.display = "flex";
+    return;
+  } else{
+  // send SDO message
+    console.log("your SDO message is sent");
+    warningDiv.style.display = "none";
+  
+  }
+
+});
+//PDO
+pdoSubmitBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  const cobId = pdoForm.querySelector("#cobId");
+  const data1 = pdoForm.querySelector("#data1");
+  const data2 = pdoForm.querySelector("#data2");
+
+  const validCobId = validateInput(cobId);
+  const validData1 = validateInput(data1);
+  const validData2 = validateInput(data2);
+  const isValid = validCobId && validData1 && validData2;
+  const warningDivpdo = pdoForm.querySelector("#warningDivpdo");
+  const warningMessagepdo = pdoForm.querySelector("#warningMessagepdo");
+  if (!isValid) {
+    warningMessagepdo.innerText = "Please fill in all fields correctly.";
+    warningDivpdo.style.display = "flex";
+  } 
+else {
+  warningDivpdo.style.display = "none";
+  console.log("your pdo message is correct");
+
+}
+
+  // send PDO message
+  console.log("your PDO message is sent");
+});
+
+
+/***
+//the event for clicing on the sendSDOButton 
+sdoSubmitBtn.addEventListener("click", (event) => {
+
+  /**event.preventDefault(), to tell the browser not to perform 
+   * its default action of submitting the form to the server. 
+   * Instead, I can perform my own logic to handle the form submission.
   event.preventDefault(); 
   console.log("test from the sdo button event");
 
@@ -338,19 +407,18 @@ sdoSubmitBtn.addEventListener("click", (event) => {
 
 
   if (!validNode || !validCmd || !validSdo1 || !validSdo2) {
-   
+   //in case one of the inputs is incorrect 
   console.log("your SDO message is incorrect");
 
     return;
   } else if (validNode && validCmd && validSdo1 && validSdo2) {
-  // send SDO message
+   //in case everything is fine
+   // here we are going to send the SDO message
   console.log("your SDO  message is sent");
 }
-
-
- 
 });
 
+//the event for clicing on the sendPDOButton 
 
 pdoSubmitBtn.addEventListener("click", (event) => {
   event.preventDefault();
@@ -362,12 +430,17 @@ pdoSubmitBtn.addEventListener("click", (event) => {
   const validData1 = validateInput(data1);
   const validData2 = validateInput(data2);
 
-  if (validCobId && validData1 && validData2) {
+  if (!validCobId || !validData1 || !validData2) {
+   //in case one of the inputs is incorrect 
+  console.log("your PDO message is incorrect");
+
+    return; }
+ else if (validCobId && validData1 && validData2) {
     // send PDO message
     console.log("your PDO  message is sent");
   }
 });
-
+**/
 
 </script>
  </ons-page>

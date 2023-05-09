@@ -1152,3 +1152,9 @@ tr.small-row {
 .invalid-input {
   border: 1px solid red;
 }
+
+.warningStyle {
+  margin: 10px 0;
+  color: red;
+  
+}
