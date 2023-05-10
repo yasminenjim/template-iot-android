@@ -51,8 +51,7 @@
       <br>
     </div> -->
 <script>
-//var rowsPerPage = 20;
-//var currentPage = 1;
+
 //const clearButton = document.getElementById("clearingButton");
 clearingButton.addEventListener("click", clearTable);
 // Get the modal
@@ -86,7 +85,9 @@ function clearTable() {
   // Clear the table
   var tableBody = document.getElementById("can-msgs");
   tableBody.innerHTML = "";
-  /**
+  /**This is for the pagination
+   * //var rowsPerPage = 20;
+//var currentPage = 1;
   // Reset the pagination
   var pagination = document.getElementById("pagination");
   var currentPageSpan = document.getElementById("current-page");

@@ -1,69 +1,69 @@
 <ons-page id="sendCan" >
-    <ons-card class="m-2">
-        <ons-row>
-          <ons-col>
-            <div class="text-center">
-              <h4 mlang="overview">Select a type of message to send:</h4>
-            </div>
-          </ons-col>
-        </ons-row>
-        <onslist>
-          <ons-list-item tappable>
-            <label class="left">
-              <ons-checkbox input-id="check-2" id="check-2"></ons-checkbox>
-            </label>
-            <label for="check-2" class="center">
-              PDO
-            </label>
-          </ons-list-item>
-           <ons-list-item tappable>
-            <label class="left">
-              <ons-checkbox input-id="check-1" id="check-1"></ons-checkbox>
-            </label>
-            <label for="check-1" class="center">
-              SDO
-            </label>
-          </ons-list-item>
-    </onslist>
-    <!-----SDO-->
-    </ons-card>
-    <ons-card class="cardpdo" id="SDO">
-      <h2>SDO</h2>
-      <form id="sdoForm">
-        <div style="font-family: monospace; padding: 16px;">
-          <label for="nodeId">NODE-ID (1 byte)</label><br>
-          <input type="text" id="nodeId" name="nodeId" size="4" maxlength="4" placeholder="0x0000"><br>
-          <label for="cmd">CMD (1 byte)</label><br>
-          <input type="text" id="cmdsdo" name="cmd" size="8" maxlength="8" placeholder="0x0000"><br>
-          <label for="sdo">SDO (2 bytes)</label><br>
-          <input type="text" id="sdo1" name="sdo1" size="4" maxlength="4" placeholder="0x0000">
-          <input type="text" id="sdo2" name="sdo2" size="4" maxlength="4" placeholder="0x0000"><br>
-         <div id="warningDivsdo" style="display: none; align-items: center;">
-          <i  style="margin-right: 10px;color: red;" class="fa-solid fa-circle-exclamation"></i>
-          <p class="warningStyle" id="warningMessagesdo"></p>
-    </div>
-    <button class="buttonsendcan" type="submit" id="sendSDOButton">SEND</button>
-        </div>
-      </form>
-    </ons-card>
-    <!-----PDO-->
-    <ons-card class="cardpdo" id="PDO">
-      <h2>PDO</h2>
-      <form id="pdoForm">
-        <div style="font-family: monospace; padding: 16px;">
-          <label for="cobId">COB-ID (1 byte)</label><br>
-          <input type="text" id="cobId" name="cobId" size="4" maxlength="4" placeholder="0x0000"><br>
-          <label for="data">DATA (4 bytes)</label><br>
-          <input type="text" id="data1" name="data1" size="4" maxlength="4" placeholder="0x0000">
-          <input type="text" id="data2" name="data2" size="4" maxlength="4" placeholder="0x0000"><br>
-          <div id="warningDivpdo" style="display: none; align-items: center;">
-            <i  style="margin-right: 10px;color: red;" class="fa-solid fa-circle-exclamation"></i>
-            <p class="warningStyle" id="warningMessagepdo" ></p>
+  <ons-card class="m-2">
+      <ons-row>
+        <ons-col>
+          <div class="text-center">
+            <h4 mlang="overview">Select a type of message to send:</h4>
+          </div>
+        </ons-col>
+      </ons-row>
+      <onslist>
+        <ons-list-item tappable>
+          <label class="left">
+            <ons-checkbox input-id="check-2" id="check-2"></ons-checkbox>
+          </label>
+          <label for="check-2" class="center">
+            PDO
+          </label>
+        </ons-list-item>
+         <ons-list-item tappable>
+          <label class="left">
+            <ons-checkbox input-id="check-1" id="check-1"></ons-checkbox>
+          </label>
+          <label for="check-1" class="center">
+            SDO
+          </label>
+        </ons-list-item>
+  </onslist>
+  <!-----SDO-->
+  </ons-card>
+  <ons-card class="cardpdo" id="SDO">
+    <h2>SDO</h2>
+    <form id="sdoForm">
+      <div style="font-family: monospace; padding: 16px;">
+        <label for="nodeId">NODE-ID (1 byte)</label><br>
+        <input type="text" id="nodeId" name="nodeId" size="4" maxlength="4" placeholder="0x0000"><br>
+        <label for="cmd">CMD (1 byte)</label><br>
+        <input type="text" id="cmdsdo" name="cmd" size="8" maxlength="8" placeholder="0x0000"><br>
+        <label for="sdo">SDO (2 bytes)</label><br>
+        <input type="text" id="sdo1" name="sdo1" size="4" maxlength="4" placeholder="0x0000">
+        <input type="text" id="sdo2" name="sdo2" size="4" maxlength="4" placeholder="0x0000"><br>
+       <div id="warningDivsdo" style="display: none; align-items: center;">
+        <i  style="margin-right: 10px;color: red;" class="fa-solid fa-circle-exclamation"></i>
+        <p class="warningStyle" id="warningMessagesdo"></p>
+  </div>
+  <button class="buttonsendcan" type="submit" id="sendSDOButton">SEND</button>
       </div>
-      <button class="buttonsendcan" type="submit" id="sendPDOButton">SEND</button>
-        </div>
-      </form>
-    </ons-card>
+    </form>
+  </ons-card>
+  <!-----PDO-->
+  <ons-card class="cardpdo" id="PDO">
+    <h2>PDO</h2>
+    <form id="pdoForm">
+      <div style="font-family: monospace; padding: 16px;">
+        <label for="cobId">COB-ID (1 byte)</label><br>
+        <input type="text" id="cobId" name="cobId" size="4" maxlength="4" placeholder="0x0000"><br>
+        <label for="data">DATA (4 bytes)</label><br>
+        <input type="text" id="data1" name="data1" size="4" maxlength="4" placeholder="0x0000">
+        <input type="text" id="data2" name="data2" size="4" maxlength="4" placeholder="0x0000"><br>
+        <div id="warningDivpdo" style="display: none; align-items: center;">
+          <i  style="margin-right: 10px;color: red;" class="fa-solid fa-circle-exclamation"></i>
+          <p class="warningStyle" id="warningMessagepdo" ></p>
+    </div>
+    <button class="buttonsendcan" type="submit" id="sendPDOButton">SEND</button>
+      </div>
+    </form>
+  </ons-card>
 <script>
 // Get the checkboxes and the cards
 const sdoCheckbox = document.querySelector('#check-1');
@@ -72,40 +72,40 @@ const sdoCard = document.querySelector('#SDO');
 const pdoCard = document.querySelector('#PDO');
 // Add a change event listener to the SDO checkbox
 sdoCheckbox.addEventListener('change', function() {
-  // If the checkbox is checked, show the SDO card and hide the PDO card
-  if (sdoCheckbox.checked) {
-    sdoCard.style.display = 'block';
-  //  pdoCard.style.display = 'none';
-    console.log("displaying sdo card from checkbox");
-  } else { // If the checkbox is not checked, hide the SDO card
-    sdoCard.style.display = 'none';
-    console.log("hiding sdo card from checkbox");
-  }
+// If the checkbox is checked, show the SDO card and hide the PDO card
+if (sdoCheckbox.checked) {
+  sdoCard.style.display = 'block';
+//  pdoCard.style.display = 'none';
+  console.log("displaying sdo card from checkbox");
+} else { // If the checkbox is not checked, hide the SDO card
+  sdoCard.style.display = 'none';
+  console.log("hiding sdo card from checkbox");
+}
 });
 // Add a change event listener to the PDO checkbox
 pdoCheckbox.addEventListener('change', function() {
-  // If the checkbox is checked, show the PDO card and hide the SDO card
-  if (pdoCheckbox.checked) {
-    pdoCard.style.display = 'block';
-    //sdoCard.style.display = 'none';
-    console.log("displaying pdo card from checkbox");
-  } else { // If the checkbox is not checked, hide the PDO card
-    pdoCard.style.display = 'none';
-    console.log("hiding the PDO card");
-  }
+// If the checkbox is checked, show the PDO card and hide the SDO card
+if (pdoCheckbox.checked) {
+  pdoCard.style.display = 'block';
+  //sdoCard.style.display = 'none';
+  console.log("displaying pdo card from checkbox");
+} else { // If the checkbox is not checked, hide the PDO card
+  pdoCard.style.display = 'none';
+  console.log("hiding the PDO card");
+}
 });
 //control over the input fields
 function validateInput(input) {
-  let isValid = true;
-  if (!/^(0x)?[0-9a-fA-F]{1,8}$/.test(input.value)) {
-    input.classList.add("invalid-input");
-    input.nextElementSibling.innerText = "Invalid input: Must be a hexadecimal value.";
-    isValid = false;
-  } else {
-    input.classList.remove("invalid-input");
-    input.nextElementSibling.innerText = "";
-  }
-  return isValid;
+let isValid = true;
+if (!/^(0x)?[0-9a-fA-F]{1,8}$/.test(input.value)) {
+  input.classList.add("invalid-input");
+  input.nextElementSibling.innerText = "Invalid input: Must be a hexadecimal value.";
+  isValid = false;
+} else {
+  input.classList.remove("invalid-input");
+  input.nextElementSibling.innerText = "";
+}
+return isValid;
 }
 //some variables from the dom (the two forms)
 const sdoForm = document.querySelector("#sdoForm");
@@ -115,50 +115,50 @@ const sdoSubmitBtn = sdoForm.querySelector("#sendSDOButton");
 const pdoSubmitBtn = pdoForm.querySelector("#sendPDOButton");
 //SDO
 sdoSubmitBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  const nodeId = sdoForm.querySelector("#nodeId");
-  const cmd = sdoForm.querySelector("#cmdsdo");
-  const sdo1 = sdoForm.querySelector("#sdo1");
-  const sdo2 = sdoForm.querySelector("#sdo2");
-  const validNode = validateInput(nodeId);
-  const validCmd = validateInput(cmd);
-  const validSdo1 = validateInput(sdo1);
-  const validSdo2 = validateInput(sdo2);
-  const warningDiv = sdoForm.querySelector("#warningDivsdo");
-  const warningMessage = sdoForm.querySelector("#warningMessagesdo");
-  const isValid = validNode && validCmd && validSdo1 && validSdo2;
-  if (!isValid) {
-    warningMessage.innerText = "Please fill in all fields correctly.";
-    warningDiv.style.display = "flex";
-    return;
-  } else{
-  // send SDO message
-    console.log("your SDO message is sent");
-    warningDiv.style.display = "none";
-  }
+event.preventDefault();
+const nodeId = sdoForm.querySelector("#nodeId");
+const cmd = sdoForm.querySelector("#cmdsdo");
+const sdo1 = sdoForm.querySelector("#sdo1");
+const sdo2 = sdoForm.querySelector("#sdo2");
+const validNode = validateInput(nodeId);
+const validCmd = validateInput(cmd);
+const validSdo1 = validateInput(sdo1);
+const validSdo2 = validateInput(sdo2);
+const warningDiv = sdoForm.querySelector("#warningDivsdo");
+const warningMessage = sdoForm.querySelector("#warningMessagesdo");
+const isValid = validNode && validCmd && validSdo1 && validSdo2;
+if (!isValid) {
+  warningMessage.innerText = "Please fill in all fields correctly.";
+  warningDiv.style.display = "flex";
+  return;
+} else{
+// send SDO message
+  console.log("your SDO message is sent");
+  warningDiv.style.display = "none";
+}
 });
 //PDO
 pdoSubmitBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  const cobId = pdoForm.querySelector("#cobId");
-  const data1 = pdoForm.querySelector("#data1");
-  const data2 = pdoForm.querySelector("#data2");
-  const validCobId = validateInput(cobId);
-  const validData1 = validateInput(data1);
-  const validData2 = validateInput(data2);
-  const isValid = validCobId && validData1 && validData2;
-  const warningDivpdo = pdoForm.querySelector("#warningDivpdo");
-  const warningMessagepdo = pdoForm.querySelector("#warningMessagepdo");
-  if (!isValid) {
-    warningMessagepdo.innerText = "Please fill in all fields correctly.";
-    warningDivpdo.style.display = "flex";
-  } 
+event.preventDefault();
+const cobId = pdoForm.querySelector("#cobId");
+const data1 = pdoForm.querySelector("#data1");
+const data2 = pdoForm.querySelector("#data2");
+const validCobId = validateInput(cobId);
+const validData1 = validateInput(data1);
+const validData2 = validateInput(data2);
+const isValid = validCobId && validData1 && validData2;
+const warningDivpdo = pdoForm.querySelector("#warningDivpdo");
+const warningMessagepdo = pdoForm.querySelector("#warningMessagepdo");
+if (!isValid) {
+  warningMessagepdo.innerText = "Please fill in all fields correctly.";
+  warningDivpdo.style.display = "flex";
+} 
 else {
-  warningDivpdo.style.display = "none";
-  console.log("your pdo message is correct");
+warningDivpdo.style.display = "none";
+console.log("your pdo message is correct");
 }
-  // send PDO message
-  console.log("your PDO message is sent");
+// send PDO message
+console.log("your PDO message is sent");
 });
 
 </script>
