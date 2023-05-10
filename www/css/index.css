@@ -248,9 +248,9 @@ button {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
+/**button:hover {
   background-color: #3e8e41;
-}
+}***/
 
 li {
   background-color: white;
@@ -1038,6 +1038,8 @@ input[type="range"]::-webkit-slider-runnable-track {
   /* flex-wrap: wrap; */
   /* justify-content: center; */
   margin: 7px auto;
+  margin-top: 23px;
+  margin-bottom: -15px;
 
 }
 
@@ -1099,7 +1101,7 @@ tr.small-row {
 }
 
 
-.table-container{margin-top: 15px;} 
+.table-container{margin-top: 53px;} 
 .paginationbutton{
   background-color: #094860;
   color: white;

@@ -1,19 +1,4 @@
 <ons-page id="canOutputs" class="page__background canOutputs-page">
-  <!--<ons-toolbar style="background-color: #094860;">
-    <div class="left">
-      <ons-back-button>Back</ons-back-button>
-    </div>
-    <div class="center" id="toolbar-title" style="color:rgb(255, 255, 255);text-align: center;">Can Outputs</div>
-    <div class="right">
-      <ons-toolbar-button onclick='gohome();'>
-        <span style="color: rgb(255, 255, 255);">
-          <i class="fa-solid fa-home"></i>
-        </span>
-      </ons-toolbar-button>
-    </div>
-  </ons-toolbar> -->
-  <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel" style="overflow-y: scroll;">
-    <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
       <p class="searchstyle">
         <ons-search-input id="searchInput" placeholder="Search" oninput="filterTable(this.value)"></ons-search-input>
       </p>
@@ -63,18 +48,7 @@
       <button class="paginationbutton" id="next-page"><i class="fa-solid fa-chevron-right"></i></button>
       <br>
     </div>
-    
-</ons-carousel-item>
-
-
-<ons-carousel-item style="background-color: rgb(241 241 241);">
-
-
-</ons-carousel-item>
-  </ons-carousel>
-
   
-
 <script>
 var rowsPerPage = 20;
 var currentPage = 1;
