@@ -43,29 +43,20 @@ function onascii(txt, ch) {
     if (tbody) {
         if (tbody.rows.length >= 100) {
             tbody.deleteRow(-1);
-//here I want to create a div element in the onsen page with the id notifications
-//console.log("the Can table reached 100 rows");
-
-            
+            //console.log("the Can table reached 100 rows");
         }
-
+/**Calculate start and end row indices based on currentPage and rowsPerPage
+var rowsPerPage = 20;
+var startIdx = (currentPage - 1) * rowsPerPage;
+var endIdx = startIdx + rowsPerPage;
+*/
         var cobid = txt.substr(3, 3);
         var cid = parseInt(cobid, 16);
         var nodeid = 127 & cid;
         var len = (txt.length - 6) / 2;
 
-        // Calculate start and end row indices based on currentPage and rowsPerPage
-        var rowsPerPage = 20;
-        var startIdx = (currentPage - 1) * rowsPerPage;
-        var endIdx = startIdx + rowsPerPage;
-
-        // Hide all rows first
-        for (var i = 0; i < tbody.rows.length; i++) {
-            tbody.rows[i].style.display = "none";
-        }
-
-        // Insert new row at the start index
-        var row = tbody.insertRow(startIdx);
+        // Insert new row at the start of the table
+        var row = tbody.insertRow(0);
         row.insertCell(0).innerHTML = "0x" + cobid;
         row.insertCell(1).innerHTML = "[" + nodeid + "]";
         row.insertCell(2).innerHTML = len;
@@ -75,13 +66,9 @@ function onascii(txt, ch) {
             var dataByte = txt.substr(6 + i * 2, 2);
             dataCell.innerHTML += " 0x" + dataByte;
         }
-
-        // Show rows for the current page
-        for (var i = startIdx; i < endIdx && i < tbody.rows.length; i++) {
-            tbody.rows[i].style.display = "";
-        }
     }
 }
+
 //-----------------------------------------------------------------------------
 function inputkeydown(e){
                   let t=e.currentTarget;

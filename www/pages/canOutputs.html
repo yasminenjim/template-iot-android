@@ -40,6 +40,8 @@
     </tbody>
   </table>
     </div>
+     <!------------ This is for pagination, in case you want to use it 
+    </div>
     <br>
     <br>
     <div id="pagination" style="margin-left: 237px;">
@@ -47,11 +49,11 @@
       <span id="current-page" style="font-weight: bold;">Page 1</span>
       <button class="paginationbutton" id="next-page"><i class="fa-solid fa-chevron-right"></i></button>
       <br>
-    </div>
+    </div> -->
   
 <script>
-var rowsPerPage = 20;
-var currentPage = 1;
+//var rowsPerPage = 20;
+//var currentPage = 1;
 //const clearButton = document.getElementById("clearingButton");
 clearingButton.addEventListener("click", clearTable);
 // Get the modal
@@ -94,6 +96,7 @@ function clearTable() {
   var tableBody = document.getElementById("can-msgs");
   tableBody.innerHTML = "";
 
+  /**
   // Reset the pagination
   var pagination = document.getElementById("pagination");
   var currentPageSpan = document.getElementById("current-page");
@@ -104,7 +107,8 @@ function clearTable() {
   currentPage = 1;
 
   currentPageSpan.innerHTML = "Page " + currentPage;
-  //pagination.style.display = "none";
+  //pagination.style.display = "none"; 
+  **/
   
 }
 
@@ -138,8 +142,9 @@ function filterTable(searchValue) {
 }
 
 // Define a variable to keep track of the current page
-var currentPage = 1;
+//var currentPage = 1;
 
+/**
 // Define a function to show the rows for a given page
 function showRowsForPage(page) {
   var startIdx = (page - 1) * 20;
@@ -160,7 +165,7 @@ $("#next-page").on("click", function() {
     currentPage++;
     gotoPage(currentPage);
   }
-});
+}); 
 
 // Define the gotoPage() function
 function gotoPage(page) {
@@ -171,7 +176,7 @@ function gotoPage(page) {
 }
 
 // Call the gotoPage() function with the initial page
-gotoPage(1);
+gotoPage(1); **/
 
 const table = document.getElementById('can-table');
 const notificationPage = document.getElementById('notifications');
