@@ -65,12 +65,9 @@
       </form>
     </ons-card>
 <script>
-
-
 // Get the checkboxes and the cards
 const sdoCheckbox = document.querySelector('#check-1');
 const pdoCheckbox = document.querySelector('#check-2');
-
 const sdoCard = document.querySelector('#SDO');
 const pdoCard = document.querySelector('#PDO');
 // Add a change event listener to the SDO checkbox
@@ -80,14 +77,11 @@ sdoCheckbox.addEventListener('change', function() {
     sdoCard.style.display = 'block';
   //  pdoCard.style.display = 'none';
     console.log("displaying sdo card from checkbox");
-
   } else { // If the checkbox is not checked, hide the SDO card
     sdoCard.style.display = 'none';
     console.log("hiding sdo card from checkbox");
-
   }
 });
-
 // Add a change event listener to the PDO checkbox
 pdoCheckbox.addEventListener('change', function() {
   // If the checkbox is checked, show the PDO card and hide the SDO card
@@ -98,10 +92,8 @@ pdoCheckbox.addEventListener('change', function() {
   } else { // If the checkbox is not checked, hide the PDO card
     pdoCard.style.display = 'none';
     console.log("hiding the PDO card");
-
   }
 });
-
 //control over the input fields
 function validateInput(input) {
   let isValid = true;
@@ -115,8 +107,6 @@ function validateInput(input) {
   }
   return isValid;
 }
-
-
 //some variables from the dom (the two forms)
 const sdoForm = document.querySelector("#sdoForm");
 const pdoForm = document.querySelector("#pdoForm");
@@ -130,7 +120,6 @@ sdoSubmitBtn.addEventListener("click", (event) => {
   const cmd = sdoForm.querySelector("#cmdsdo");
   const sdo1 = sdoForm.querySelector("#sdo1");
   const sdo2 = sdoForm.querySelector("#sdo2");
-
   const validNode = validateInput(nodeId);
   const validCmd = validateInput(cmd);
   const validSdo1 = validateInput(sdo1);
@@ -154,7 +143,6 @@ pdoSubmitBtn.addEventListener("click", (event) => {
   const cobId = pdoForm.querySelector("#cobId");
   const data1 = pdoForm.querySelector("#data1");
   const data2 = pdoForm.querySelector("#data2");
-
   const validCobId = validateInput(cobId);
   const validData1 = validateInput(data1);
   const validData2 = validateInput(data2);
@@ -168,15 +156,10 @@ pdoSubmitBtn.addEventListener("click", (event) => {
 else {
   warningDivpdo.style.display = "none";
   console.log("your pdo message is correct");
-
 }
-
   // send PDO message
   console.log("your PDO message is sent");
 });
-
-
-
 
 </script>
 </ons-page>   

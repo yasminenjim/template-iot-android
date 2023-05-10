@@ -19,26 +19,26 @@
             <button class="filterbuttonop" id="Apply" onclick="filteroptions()">Apply</button>
         </div>
       </div>
-      
   <div class="buttoptcontainer"> 
     <button class="buttoptions" id="show-btn" onclick="showCan()">Show</button>
     <button class="buttoptions"id="stop-btn" onclick="stopCan()">Stop</button>
     <button class="buttoptions" id="filterBtn">Filter</button>
     <button class="buttoptions" onclick="clearTable()" id="clearingButton">Clear</button>
   </div> 
-    <div class="table-container">
-  <table id="can-table">
-    <thead>
-      <tr>
-        <th class="thstyle">CanID</th>
-        <th class="thstyle">NodeID</th>
-        <th class="thstyle">Bytes</th>
-        <th class="thstyle">Data</th>
-      </tr>
-    </thead>
-    <tbody id="can-msgs">
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table id="can-table">
+      <thead>
+        <tr>
+          <th class="thstyle">Date</th>
+          <th class="thstyle">CanID</th>
+          <th class="thstyle">NodeID</th>
+          <th class="thstyle">Data</th>
+        </tr>
+      </thead>
+      <tbody id="can-msgs">
+      </tbody>
+    </table>
+  </div>
     </div>
      <!------------ This is for pagination, in case you want to use it 
     </div>
@@ -50,7 +50,6 @@
       <button class="paginationbutton" id="next-page"><i class="fa-solid fa-chevron-right"></i></button>
       <br>
     </div> -->
-  
 <script>
 //var rowsPerPage = 20;
 //var currentPage = 1;
@@ -58,36 +57,28 @@
 clearingButton.addEventListener("click", clearTable);
 // Get the modal
 var modal = document.getElementById("myModal");
-
 // Get the button that opens the modal
 var btn = document.getElementById("filterBtn");
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
-
-
 function showCan() {
     fble.sendjson({can: "start"});
     console.log("showing can messages from showcan method");
 }
-
 function stopCan() {
     fble.sendjson({can: "stop"});
 }
@@ -95,7 +86,6 @@ function clearTable() {
   // Clear the table
   var tableBody = document.getElementById("can-msgs");
   tableBody.innerHTML = "";
-
   /**
   // Reset the pagination
   var pagination = document.getElementById("pagination");
@@ -103,27 +93,18 @@ function clearTable() {
   var prevButton = document.getElementById("prev-page");
   var nextButton = document.getElementById("next-page");
   var totalPages = 1; // Update the total pages to 1
-
   currentPage = 1;
-
   currentPageSpan.innerHTML = "Page " + currentPage;
   //pagination.style.display = "none"; 
   **/
-  
 }
-
-
 function filterTable(searchValue) {
   var tablevar = document.getElementById("can-table");
   var rows = tablevar.getElementsByTagName("tr");
-
   if (searchValue === "") { // reset table to original state
     for (var i = 0; i < rows.length; i++) {
-      rows[i].style.display = "";
-    }
-    return;
-  }
-
+      rows[i].style.display = "";}
+    return;}
   for (var i = 0; i < rows.length; i++) {
     var cells = rows[i].getElementsByTagName("td");
     var visible = false;
@@ -143,7 +124,6 @@ function filterTable(searchValue) {
 
 // Define a variable to keep track of the current page
 //var currentPage = 1;
-
 /**
 // Define a function to show the rows for a given page
 function showRowsForPage(page) {
@@ -151,7 +131,6 @@ function showRowsForPage(page) {
   var endIdx = startIdx + 20;
   $("#can-msgs tr").hide().slice(startIdx, endIdx).show();
 }
-
 // Set up event listeners for the "Prev" and "Next" buttons
 $("#prev-page").on("click", function() {
   if (currentPage > 1) {
@@ -159,14 +138,12 @@ $("#prev-page").on("click", function() {
     gotoPage(currentPage);
   }
 });
-
 $("#next-page").on("click", function() {
   if (currentPage < Math.ceil($("#can-msgs tr").length / 20)) {
     currentPage++;
     gotoPage(currentPage);
   }
 }); 
-
 // Define the gotoPage() function
 function gotoPage(page) {
   $(".active-page").removeClass("active-page");
@@ -174,22 +151,17 @@ function gotoPage(page) {
   showRowsForPage(page);
   $("#current-page").text("Page " + page);
 }
-
 // Call the gotoPage() function with the initial page
 gotoPage(1); **/
-
 const table = document.getElementById('can-table');
 const notificationPage = document.getElementById('notifications');
-
-
-  const rowCount = table.rows.length;
+const rowCount = table.rows.length;
   if (rowCount === 100) {
     var message = "There are more than 100 rows in the table!";
   var notifications = document.createElement("div");
   notifications.innerHTML = message;
   document.getElementById("notifications").appendChild(notifications);
   }
-
 
 </script>
  </ons-page>

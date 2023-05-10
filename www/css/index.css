@@ -933,6 +933,10 @@ input[type="range"]::-webkit-slider-runnable-track {
   background-color: #094860;
   color: white;
 }
+.button-srch:hover{
+  background-color: #3e8e41;
+
+}
 
 .buttoptions{
   /* display: block; */
@@ -949,6 +953,11 @@ input[type="range"]::-webkit-slider-runnable-track {
   margin: 0 10px;
   background: #898989;
 }
+
+.buttoptions:hover {
+  background-color: #3e8e41;
+}
+
 .filterbuttonop{
   /* display: block; */
   width: 106px;
