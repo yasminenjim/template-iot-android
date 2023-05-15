@@ -65,7 +65,20 @@ function onascii(txt, ch) {
       }
     }
   }
-  
+//---------------------------------------------------------------------------
+//AO boxes
+/** 
+function setAOModuleCurrent(moduleNumber, channelNumber, mA) {
+  // Create a JSON object with the "ao" key and the module number, channel number, and mA value
+  var json = {"ao": {"nr": moduleNumber, "c": channelNumber, "mA": mA}};
+
+  // Convert the JSON object to a string
+  var jsonString = JSON.stringify(json);
+
+  // Send the string over BLE to the C++ code
+  ble.write(deviceId, serviceUUID, characteristicUUID, jsonString, successCallback, errorCallback);
+}*/
+
 //-----------------------------------------------------------------------------
 function inputkeydown(e){
                   let t=e.currentTarget;

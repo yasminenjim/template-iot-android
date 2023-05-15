@@ -182,5 +182,18 @@ function editHeading(id) {
   heading.textContent = newHeadingText;
 }
 
+function sendao(){
+	var oavalue;
+	oavalue={ao:{nr:1,c:3,mA:10.5}};
+	fble.sendjson(oavalue);
+	console.log("sending a AO object to the esp via ble");}
+
+/**function sendao(nodeId,channelnbr,currentValue){
+	var oavalue;
+	oavalue={ao:{nr:1,c:3,mA:10.5}};
+	fble.sendjson(oavalue);
+	console.log("sending a AO object to the esp via ble");
+}**/
+
  </script>  
 </ons-page>
