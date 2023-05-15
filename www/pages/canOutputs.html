@@ -11,12 +11,12 @@
           <h2>Filter Options</h2>
             <label for="filterOption">Select Filter Option:</label>
             <select id="filterOption" name="filterOption">
-              <option value="option1">Node ID</option>
-              <option value="option2">SDO</option>
-              <option value="option3">PDO</option>
+              <option value="NodeID">NodeID</option>
+              <option value="SDO">SDO</option>
+              <option value="PDO">PDO</option>
             </select>
             <br><br>
-            <button class="filterbuttonop" id="Apply" onclick="filteroptions()">Apply</button>
+            <button class="filterbuttonop" id="Apply" >Apply</button>
         </div>
       </div>
   <div class="buttoptcontainer"> 
@@ -30,7 +30,7 @@
       <thead>
         <tr>
           <th class="thstyle">Date</th>
-          <th class="thstyle">CanID</th>
+          <th class="thstyle">cobid</th>
           <th class="thstyle">NodeID</th>
           <th class="thstyle">Data</th>
         </tr>
@@ -74,9 +74,38 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+function getCobIdsFromTable() {
+  const cobIds = []; // initialize an empty array to hold cobids
+
+  const table = document.getElementById("can-table"); // replace "myTable" with the ID of your table element
+  const rows = table.getElementsByTagName("tr"); // get all the rows in the table
+
+  // loop through each row in the table, skipping the first row (which likely contains header cells)
+  for (let i = 1; i < rows.length; i++) {
+ 
+
+    const cells = rows[i].getElementsByTagName("td"); // get all the cells in the row
+    const cobidCell = cells[1]; // the cobid value should be in the first cell of each row
+    console.log(cobidCell);
+
+    if (cobidCell) { // make sure the cell actually exists
+      const cobid = cobidCell.innerText.trim(); // get the text content of the cell and remove any leading/trailing whitespace
+      cobIds.push(cobid); // add the cobid to the array
+      console.log("just pushed the cobid values in the new array");
+    }
+  }
+
+  return cobIds; // return the array of cobids
+}
+
+
 function showCan() {
     fble.sendjson({can: "start"});
     console.log("showing can messages from showcan method");
+//testing/ extracting the cobid values for the filter
+setTimeout(function() {
+  console.log(getCobIdsFromTable());
+}, 3000);
 }
 function stopCan() {
     fble.sendjson({can: "stop"});
@@ -163,5 +192,234 @@ const rowCount = table.rows.length;
   notifications.innerHTML = message;
   document.getElementById("notifications").appendChild(notifications);
   }**/
+  //*******************Filter options implementation (SDO/PDO/nodeID)*******************//
+ 
+  function getMessageType(cobId) {
+  /**let cobId = (canId + nodeId).toString(16);
+  cobId = cobId.padStart(4, '0');
+  cobId = '0x' + cobId; **/
+  
+  if (cobId >= 0x000 && cobId <= 0x07F) {
+    return "EMCY";
+  } else if (cobId >= 0x080 && cobId <= 0x0FF) {
+    return "SYNC";
+  } else if (cobId >= 0x100 && cobId <= 0x1FF) {
+    return "TXPDO1";
+  } else if (cobId >= 0x200 && cobId <= 0x27F) {
+    return "RXPDO1";
+  } else if (cobId >= 0x280 && cobId <= 0x2FF) {
+    return "TXPDO2";
+  } else if (cobId >= 0x300 && cobId <= 0x37F) {
+    return "RXPDO2";
+  } else if (cobId >= 0x380 && cobId <= 0x3FF) {
+    return "TXPDO3";
+  } else if (cobId >= 0x400 && cobId <= 0x47F) {
+    return "RXPDO3";
+  } else if (cobId >= 0x480 && cobId <= 0x4FF) {
+    return "TXPDO4";
+  } else if (cobId >= 0x500 && cobId <= 0x57F) {
+    return "RXPDO4";
+  } else if (cobId >= 0x580 && cobId <= 0x5FF) {
+    return "TXSDO";
+  } else if (cobId >= 0x600 && cobId <= 0x67F) {
+    return "RXSDO";
+  } else if (cobId >= 0x700 && cobId <= 0x77F) {
+    return "TXNMT";
+  } else if (cobId >= 0x780 && cobId <= 0x7FF) {
+    return "RXNMT";
+  } else {
+    return "UNKNOWN";
+  }
+}
+
+
+
+  // Get the filter option dropdown menu element
+var filterOption = document.getElementById("filterOption");
+
+filterOption.addEventListener("change", function() {
+  // Check which option was selected
+  switch(filterOption.value) {
+    case "NodeID":
+      // call your function for sdo option here
+      console.log("NodeID option1 filter is chosed");
+      break;
+    case "SDO":
+      // call your function for sdo option here
+      const cobIds = getCobIdsFromTable(); // get an array of all the cobids in the table
+      cobIds.forEach(cobid => {
+        const messageType = getMessageType(cobid); // convert the cobid from hex to decimal and pass it to getMessagetype
+        console.log(`Message type for cobid ${cobid}: ${messageType}`);
+      });
+      break;
+    case "PDO":
+      // call your function for mdo option here
+      console.log("PDO option3 filter is chosed");
+      break;
+    default:
+      // handle any other case
+      break;
+  }
+});
+
+/**
+// Add an event listener to the dropdown menu
+
+filterOption.addEventListener("change", function() {
+  // Check which option was selected
+  switch(filterOption.value) {
+    case "NodeID":
+      // call your function for sdo option here
+    console.log("NodeID option1 filter is chosed");
+
+      break;
+    case "SDO":
+      // call your function for rdo option here
+      filteroptions("SDO");
+    console.log("SDO option2 filter is chosed");
+
+      break;
+    case "PDO":
+      // call your function for mdo option here
+    console.log("PDO option3 filter is chosed");
+    filteroptions("PDO");
+
+
+      break;
+    default:
+      // handle any other case
+      break;
+  }
+});
+
+
+/**
+function filteroptions(filter) {
+  // reference the table body
+  const tableBody = document.querySelector("#can-msgs");
+
+  // create a new table
+  const newTable = document.createElement("tbody");
+
+  // iterate the table rows
+  const tableRows = tableBody.querySelectorAll("tr");
+  tableRows.forEach((row) => {
+    // extract the CanID and NodeID from the row
+    const cobid = parseInt(row.querySelector(".cobid").textContent);
+    // determine the message type
+    const messageType = getMessageType(cobid);
+
+    // check if the message should be displayed based on the filter
+    if ((messageType === "TXPDO1" || messageType === "RXPDO1") && filter === "PDO" ||
+        (messageType === "TXSDO" || messageType === "RXSDO") && filter === "SDO") {
+      // clone the row and append it to the new table
+      const newRow = row.cloneNode(true);
+      newTable.appendChild(newRow);
+    }
+  });
+
+  // replace the old table body with the new table
+  tableBody.parentNode.replaceChild(newTable, tableBody);
+}
+
+
+/**
+
+function filteroptions(filter) {
+  // reference the table body
+  const tableBody = document.querySelector("#can-msgs");
+
+  // create a new table
+  const newTable = document.createElement("tbody");
+
+  // iterate the table rows
+  const tableRows = tableBody.querySelectorAll("tr");
+  tableRows.forEach((row) => {
+    // extract the CanID and NodeID from the row
+    const canId = parseInt(row.querySelector(".cobid").textContent, 16);
+    const nodeId = parseInt(row.querySelector(".nodeid").textContent);
+
+    // determine the message type
+    const messageType = getMessageType(canId, nodeId);
+
+    // check if the message should be displayed based on the filter
+    if ((messageType === "TXPDO1" || messageType === "RXPDO1") && filter === "PDO" ||
+        (messageType === "TXSDO" || messageType === "RXSDO") && filter === "SDO") {
+      // clone the row and append it to the new table
+      const newRow = row.cloneNode(true);
+      newTable.appendChild(newRow);
+    }
+  });
+
+  // replace the old table body with the new table
+  tableBody.parentNode.replaceChild(newTable, tableBody);
+}
+
+
+/**
+function filteroptions() {
+  // Get the selected filter option from the dropdown menu
+  const filterOption = document.getElementById("filterOption").value;
+
+  // Iterate over the rows in the table and filter the messages
+  const rows = document.querySelectorAll('#can-msgs tr');
+  rows.forEach((row) => {
+    const canId = row.children[1].textContent;
+    const nodeId = row.children[2].textContent;
+    const messageType = getMessageType(parseInt(canId, 16), parseInt(nodeId, 10));
+    if (filterOption === "NodeID") {
+      row.style.display = "table-row";
+    } else if (filterOption === "SDO" && (messageType === "TXSDO" || messageType === "RXSDO")) {
+      row.style.display = "table-row";
+    } else if (filterOption === "PDO" && (messageType === "TXPDO1" || messageType === "RXPDO1" || messageType === "TXPDO2" || messageType === "RXPDO2" || messageType === "TXPDO3" || messageType === "RXPDO3" || messageType === "TXPDO4" || messageType === "RXPDO4")) {
+      row.style.display = "table-row";
+    } else {
+      row.style.display = "none";
+    }
+  });
+
+  // Hide the popup modal
+  const modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
+// Add an event listener to the Apply button in the popup modal
+const applyButton = document.getElementById("Apply");
+applyButton.addEventListener("click", filteroptions);
+
+// Show the popup modal and update the table when the page is loaded
+window.onload = function() {
+  // Show the popup modal
+  let modal = document.getElementById("myModal");
+  let span = document.getElementsByClassName("close")[0];
+  modal.style.display = "block";
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // Update the table
+  let canMsgs = document.getElementById("can-msgs");
+  canMsgs.innerHTML = "";
+  for (let i = 0; i < messages.length; i++) {
+    let message = messages[i];
+    let row = canMsgs.insertRow();
+    let dateCell = row.insertCell(0);
+    let canIdCell = row.insertCell(1);
+    let nodeIdCell = row.insertCell(2);
+    let dataCell = row.insertCell(3);
+    dateCell.innerHTML = message.date;
+    canIdCell.innerHTML = message.canId;
+    nodeIdCell.innerHTML = message.nodeId;
+    dataCell.innerHTML = message.data;
+  }
+};
+**/
+  
+
+
 </script>
  </ons-page>

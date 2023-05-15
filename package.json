@@ -16,8 +16,15 @@
     "cordova-android": "^10.1.2",
     "cordova-browser": "^6.0.0",
     "cordova-plugin-device": "^2.1.0",
+    "cordova-plugin-enable-cleartext-traffic": "^2.1.0",
+    "cordova-plugin-file": "^7.0.0",
+    "cordova-plugin-file-transfer": "github:apache/cordova-plugin-file-transfer",
+    "cordova-plugin-network-information": "^3.0.0",
     "cordova-plugin-splashscreen": "^6.0.2",
-    "cordova.plugins.diagnostic": "^7.1.1"
+    "cordova-plugin-zip": "^3.1.0",
+    "cordova.plugins.diagnostic": "^7.1.1",
+    "es6-promise-plugin": "^4.1.0",
+    "wifiwizard2": "^3.1.1"
   },
   "cordova": {
     "platforms": [
@@ -35,7 +42,12 @@
       },
       "cordova-plugin-bluetoothle": {},
       "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "wifiwizard2": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-zip": {},
+      "cordova-plugin-enable-cleartext-traffic": {},
+      "cordova-plugin-network-information": {}
     }
   },
   "dependencies": {

@@ -116,19 +116,23 @@
 }
 
 #connectdto {
+  position: relative;
   animation-name: move;
-  animation-duration: 2s;
+  animation-duration: 10s; /* Change this value to adjust the speed of the animation */
   animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+#bticononhome{
+  position: relative;
+  animation-name: move;
+  animation-duration: 10s; /* Change this value to adjust the speed of the animation */
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 @keyframes move {
-  from {
-    left: 0;
-  }
-  to {
-    left: 20px;
-  }
+  0% { right: 0; }
+  100% { right: calc(100vw - 100%); }
 }
 
 .home-card-body{
@@ -176,7 +180,7 @@ margin-top: auto;
 
 .toolbar-background-home {
 
-  background-color: #094860;
+  background-color: transparent;
   box-shadow: none;
   
  
@@ -201,8 +205,6 @@ margin-top: auto;
   margin-bottom: 135px;
 }
 .frenelladd{
-
-    
       margin-left: 16px;
       /* text-align: center; */
       font-size: 15px;
@@ -211,7 +213,6 @@ margin-top: auto;
       color: white;
       margin-top: 1px;
 }
-
 
 .toolbar-background-bl {
   background-color: transparent ;
@@ -268,7 +269,6 @@ li {
   transform-origin: center;
 }
 
-
 .device-list {
   display: flex;
   flex-direction: column;
@@ -302,9 +302,6 @@ li {
   transform: translate(-50%, -50%);
 }
 
-
-
-
 #outerContainer {
   display: flex;
   justify-content: center;
@@ -312,8 +309,6 @@ li {
   height: 40vh;
   padding-top: 50px;
 }
-
-
 #container {
   width: 600px;
   height: 400px;
@@ -360,17 +355,13 @@ li {
 
 .home-page {
  
-  background-color: #094860  !important;
-}
-
-
-.bluetooth-page {
-
   background-color: #094860 !important;
   background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
+}
 
-
-
+.bluetooth-page {
+  background-color: #094860 !important;
+  background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
 }
 
 
@@ -395,6 +386,7 @@ li {
 .motors-page {
 
   background-color: #094860 !important;
+  background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
 
 }
 .testpage-page {
@@ -1168,4 +1160,8 @@ tr.small-row {
   margin: 10px 0;
   color: red;
   
+}
+
+.blue-toolbar{
+  background-color: #094860;
 }
