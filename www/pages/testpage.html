@@ -3,21 +3,31 @@
 			<div class="left">
 			  <ons-back-button style="color: aliceblue;" onclick='gohome();'>Back</ons-back-button>
 			   </div>
-			   <div class="center" style="color:rgb(255, 255, 255);text-align: center;margin-left: -49px;">Analog Outputs</div>
+			   <div class="center" style="color:rgb(255, 255, 255);text-align: center;margin-left: -49px;">Analog Channels</div>
 </ons-toolbar>
+<div id="myModalAO" class="modal">
+	<div class="modal-content">
+	  <span class="close">&times;</span>
+	  <h2>Info</h2>
+	  <p>this is some information about channel number 1</p>
+	</div>
+  </div>
 
 <div class="content-can">
 	<button onclick="sendao()">test</button>
+	<br>
+	
+
 	<div  style="display: block; text-align: center; margin-top: 40px;">
-		<ons-card class="card-style-can">
+		<ons-card class="card-style-can" id="ao-card0">
 			<div class="modify-me">
-				<i class="fa-regular fa-pen-to-square" onclick="editHeading('h4-1')" style="color: #737373;"></i>
+				<i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
 			   </div>
          <div>
-		<h4 id="h4-1" style=" font-family: 'Open Sans', sans-serif; font-weight: 978;font-size: 29px;color: #094860; margin-left: -281px;  position: left; margin-bottom: -7px;margin-top:-9px;">AI-1</h4>
+		<h4 class="h4style" id="h4-0" >AI-0</h4>
 	</div>
 			<div class="card-can-body">
-				<input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
+				<input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar0">
 				<div class="range-values">
 				  <span class="range-value">0</span>
 				  <span class="range-value">4</span>
@@ -30,7 +40,7 @@
 				<div>
 				<p class="range-value-text">Output </p>
 					<div style="margin-left: -79px;margin-top: -11px;"> 
-					<span contenteditable="true" class="out-can" id="range-value"> 
+					<span contenteditable="true" class="out-can" id="range-value0"> 
 				</span></div>
 				</div>
 				<div style= " margin-top: -106px;
@@ -42,13 +52,13 @@
 				</div>
 		  </div>
 		</ons-card>
-		<ons-card class="card-style-can">
+		<ons-card class="card-style-can" id="ao-card1">
 			<div class="modify-me">
-				<i class="fa-regular fa-pen-to-square" onclick="editHeading('h4-2')" style="color: #737373;"></i>
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
 			   </div>
-			<h4 id="h4-2" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
+			<h4 class="h4style" id="h4-1">AI-1</h4>
 			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar1">
 				   <div class="range-values">
 					 <span class="range-value">0</span>
 					 <span class="range-value">4</span>
@@ -57,17 +67,17 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value"> 
+				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value1"> 
 				   </span></p>
 			 </div>
 			</ons-card>
-		   <ons-card class="card-style-can">
+		   <ons-card class="card-style-can" id="ao-card2">
 			<div class="modify-me">
-				<i onclick="editHeading('h4-3')" class="fa-regular fa-pen-to-square" style="color: #737373;"></i>
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
 			   </div>
-			   <h4 id="h4-3" tyle=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
+			   <h4 class="h4style" id="h4-2">AI-2</h4>
 			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar2">
 				   <div class="range-values">
 					 <span class="range-value">0</span>
 					 <span class="range-value">4</span>
@@ -76,17 +86,17 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value"> 
+				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value2"> 
 				   </span></p>
 			 </div>
 		   </ons-card>
-		   <ons-card class="card-style-can">
+		   <ons-card class="card-style-can" id="ao-card3">
 			<div class="modify-me">
-				<i onclick="editHeading('h4-4')" class="fa-regular fa-pen-to-square" style="color: #737373;"></i>
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
 			   </div>
-			   <h4 id="h4-4" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
+			   <h4 class="h4style" id="h4-3">AI-3</h4>
 			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar3">
 				   <div class="range-values">
 					 <span class="range-value">0</span>
 					 <span class="range-value">4</span>
@@ -95,17 +105,17 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value">  
+				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value3">  
 				   </span></p>
 			 </div>
 			</ons-card>
-		   <ons-card class="card-style-can">
+		   <ons-card class="card-style-can" id="ao-card4">
 			<div class="modify-me">
-				<i onclick="editHeading('h4-5')" class="fa-regular fa-pen-to-square" style="color: #737373;"></i>
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
 			   </div>
-			   <h4 id="h4-5" style=" font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
+			   <h4 class="h4style" id="h4-4">AI-4</h4>
 			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar4">
 				   <div class="range-values">
 					 <span class="range-value">0</span>
 					 <span class="range-value">4</span>
@@ -114,17 +124,17 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value">    
+				   <p class="range-value-text">Output <span contenteditable="true" class="out-can" id="range-value4">    
 				   </span></p>
 			 </div>
 		   </ons-card>
-		   <ons-card class="card-style-can">
+		   <ons-card class="card-style-can" id="ao-card5">
 			<div class="modify-me">
-				<i onclick="editHeading('h4-6')" class="fa-regular fa-pen-to-square" style="color: #737373;"></i>
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
 			   </div>
-			   <h4 id="h4-6" style="font-family: 'Open Sans', sans-serif;font-weight: 978;font-size: 29px;color: #094860;margin-left: -281px; position: left;margin-bottom: -7px;margin-top:-9px;">AI-2</h4>
+			   <h4 class="h4style" id="h4-5">AI-5</h4>
 			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar5">
 				   <div class="range-values">
 					 <span class="range-value">0</span>
 					 <span class="range-value">4</span>
@@ -133,18 +143,118 @@
 					 <span class="range-value">16</span>
 					 <span class="range-value">20</span>
 				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value"> 
+				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value5"> 
+				   </span></p>
+			 </div>
+		   </ons-card>
+		   <ons-card class="card-style-can" id="ao-card6">
+			<div class="modify-me">
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
+			   </div>
+			   <h4 class="h4style" id="h4-6">AI-6</h4>
+			   <div class="card-can-body">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar6">
+				   <div class="range-values">
+					 <span class="range-value">0</span>
+					 <span class="range-value">4</span>
+					 <span class="range-value">8</span>
+					 <span class="range-value">12</span>
+					 <span class="range-value">16</span>
+					 <span class="range-value">20</span>
+				   </div>
+				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value"6> 
+				   </span></p>
+			 </div>
+		   </ons-card>
+		   <ons-card class="card-style-can" id="ao-card7">
+			<div class="modify-me">
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
+			   </div>
+			   <h4 class="h4style" id="h4-7">AI-7</h4>
+			   <div class="card-can-body">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar7">
+				   <div class="range-values">
+					 <span class="range-value">0</span>
+					 <span class="range-value">4</span>
+					 <span class="range-value">8</span>
+					 <span class="range-value">12</span>
+					 <span class="range-value">16</span>
+					 <span class="range-value">20</span>
+				   </div>
+				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value7"> 
+				   </span></p>
+			 </div>
+		   </ons-card>
+		   <ons-card class="card-style-can" id="ao-card8">
+			<div class="modify-me">
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
+			   </div>
+			   <h4 class="h4style" id="h4-8">AI-8</h4>
+			   <div class="card-can-body">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar8">
+				   <div class="range-values">
+					 <span class="range-value">0</span>
+					 <span class="range-value">4</span>
+					 <span class="range-value">8</span>
+					 <span class="range-value">12</span>
+					 <span class="range-value">16</span>
+					 <span class="range-value">20</span>
+				   </div>
+				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value8"> 
+				   </span></p>
+			 </div>
+		   </ons-card>
+		   <ons-card class="card-style-can" id="ao-card9">
+			<div class="modify-me">
+				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
+			   </div>
+			   <h4 class="h4style" id="h4-9">AI-9</h4>
+			   <div class="card-can-body">
+				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar9">
+				   <div class="range-values">
+					 <span class="range-value">0</span>
+					 <span class="range-value">4</span>
+					 <span class="range-value">8</span>
+					 <span class="range-value">12</span>
+					 <span class="range-value">16</span>
+					 <span class="range-value">20</span>
+				   </div>
+				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value9"> 
 				   </span></p>
 			 </div>
 		   </ons-card>
 	</div>
   </div>
  <script> 
+ //popup code
+// Get the modal
+var modal = document.getElementById("myModalAO");
+// Get the button that opens the modal
+var btn = document.getElementById("aboutchannels");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+ /*********************************************************/
 console.log("loading testpage");	 
 ons.getScriptPage().onInit = function() {console.log("testpage onInit "); };       
  
-var rangeBar = document.getElementById("myRangeBar");
-var rangeValue = document.getElementById("range-value"); //get the element 
+var rangeBar = document.getElementById("myRangeBar0");
+var rangeValue = document.getElementById("range-value0"); //get the element 
 var rangeValues = document.querySelectorAll(".range-value");
 
 rangeBar.addEventListener("input", function() {
@@ -187,7 +297,7 @@ function sendao(){
 	fble.sendjson(oavalue);
 	console.log("sending a AO object to the esp via ble");}
 
-/**function sendao(nodeId,channelnbr,currentValue){
+/**function sendao(nodeId/boxnumber 1,2,3,channelnbr,currentValue){
 	var oavalue;
 	oavalue={ao:{nr:1,c:3,mA:10.5}};
 	fble.sendjson(oavalue);

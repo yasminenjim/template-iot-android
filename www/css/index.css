@@ -767,7 +767,18 @@ li {
   margin-left: 20px;
 }
 
-/** CAN interface**/
+/** AO interface**/
+
+.h4style{
+  font-family: 'Open Sans', sans-serif !important; 
+  font-weight: 978 !important;
+  font-size: 29px;
+  color: #094860; 
+  margin-left: -281px !important; 
+   position: left !important;
+    margin-bottom: -7px !important;
+    margin-top:-9px !important;
+}
 .card-style-can {
   text-align: center;
   width: 89%;
@@ -1133,7 +1144,7 @@ tr.small-row {
 }
 
 
-.table-container{margin-top: 53px; display: block;} 
+.table-container{margin-top: 53px;} 
 .paginationbutton{
   background-color: #094860;
   color: white;

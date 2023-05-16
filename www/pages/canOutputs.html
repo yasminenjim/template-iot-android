@@ -247,11 +247,21 @@ filterOption.addEventListener("change", function() {
       break;
     case "SDO":
     filteredmsgs("SDO");
+
+      // call your function for sdo option here
+     // const cobIds = getCobIdsFromTable(); // get an array of all the cobids in the table
+      //cobIds.forEach(cobid => {
+        //const messageType = getMessageType(cobid); // convert the cobid from hex to decimal and pass it to getMessagetype
+        //console.log(`Message type for cobid ${cobid}: ${messageType}`);
+  //    });
+
+  filteredmsgs("SDO");
       break;
     case "PDO":
       // call your function for mdo option here
       console.log("PDO option3 filter is chosed");
     filteredmsgs("PDO");
+
       break;
     default:
       // handle any other case
@@ -276,7 +286,7 @@ function filteredmsgs(filter) {
     if ((msgType === "TXPDO1" || msgType === "RXPDO1") && filter === "PDO") {
       filteredMessages.push(cells);
     } else if ((msgType === "TXSDO" || msgType === "RXSDO") && filter === "SDO") {
-      filteredMessages.push(cells);
+      sdofiltered.push(cells);
     }
   }
 
@@ -298,14 +308,10 @@ const filteredTable = document.createElement("table");
   document.body.appendChild(filteredTable);
   filteredTable.classList.add("filtered-table");
 currenttable.style.display = "none";
-
 }
 
 function resetcantable(){
-
   const currenttable = document.getElementById("can-table"); 
-  const filteredTable = document.getElementById("filteredTable"); 
-
   const tablecontainer = document.getElementById("table-container");
   tablecontainer.style.display="block";
  filteredTable.style.display="none";

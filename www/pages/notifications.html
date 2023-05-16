@@ -17,11 +17,34 @@
    <div id="notifications"></div>
    <div >
    </div>
+
+   <p style="text-align: center; margin: 50% 0;">
+      <ons-button onclick="showPopover(this)">Click me</ons-button>
+    </p>
+    <ons-popover direction="up" id="popover">
+      <div style="padding: 10px; text-align: center;">
+        <p>
+          This is a popover
+        </p>
+        <p>
+          <ons-button onclick="hidePopover()">Close</ons-button>
+        </p>
+      </div>
+    </ons-popover>
 <script>
 
-  
+var showPopover = function(target) {
+  document
+    .getElementById('popover')
+    .show(target);
+};
+
+var hidePopover = function() {
+  document
+    .getElementById('popover')
+    .hide();
+};
 </script>
 
 </ons-page>
 
-   
