@@ -1133,7 +1133,7 @@ tr.small-row {
 }
 
 
-.table-container{margin-top: 53px;} 
+.table-container{margin-top: 53px; display: block;} 
 .paginationbutton{
   background-color: #094860;
   color: white;
