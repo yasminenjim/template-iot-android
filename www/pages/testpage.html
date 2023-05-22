@@ -4,14 +4,15 @@
 			  <ons-back-button style="color: aliceblue;" onclick='gohome();'>Back</ons-back-button>
 			   </div>
 			   <div class="center" style="color:rgb(255, 255, 255);text-align: center;margin-left: -49px;">Analog Channels</div>
-</ons-toolbar><div id="myModalAO" class="modal">
+</ons-toolbar>
+<div id="myModalAO" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Info</h2>
       <p>this is some information</p>
     </div>
     </div>
-
+	<span style="margin-left: 8px;" fvar="{name:'a[1]'}"></span>
    <div id="cards-container">
     <!-- Card 0 -->
     <ons-card class="card-style-can" id="ao-card0">
@@ -326,7 +327,7 @@ function sendaoOnChange(event) {
     };
     console.log(oavalue1);
     console.log(oavalue2);
-  fble.sendjson(oavalue2);
+    fble.sendjson(oavalue2);
     setTimeout(function() {
       fble.sendjson(oavalue1);
 }, 2000);

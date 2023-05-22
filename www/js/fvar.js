@@ -54,7 +54,6 @@ var fvar = (function() {
                 });
 
                 console.log("arg now " + JSON.stringify(arg));
-
                 if (fnc) fnc(arg);
                 //back to $value
                 setarray.forEach(function(key) {
