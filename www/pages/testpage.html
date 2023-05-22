@@ -288,8 +288,14 @@ cards.forEach(function(card) {
   valueInput.addEventListener('input', sendaoOnChange);
   inputField.addEventListener('input', sendaoOnChange);
   valueInput.setAttribute('data-card-id', cardId);
-});
 
+  // Add event listener to update output value dynamically
+  valueInput.addEventListener('input', function() {
+    var cardId = this.getAttribute('data-card-id');
+    var outputElement = document.getElementById('value' + cardId + 'Display');
+    outputElement.innerText = this.value;
+  });
+});
 function sendaoOnChange(event) {
   var cardId = event.target.getAttribute('data-card-id');
   var valueInput = document.getElementById('value' + cardId + 'Input');
