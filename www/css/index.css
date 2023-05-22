@@ -160,9 +160,16 @@ margin-top: auto;
   margin-top: -10px;
   margin-left: 324px;
 }
-
+.first-span{
+    font-family: ui-sans-serif;
+    font-weight: bold;
+    color:#EFEFEF ;font-size: 17px;
+}
 .second-span {
+  font-family: ui-sans-serif;
+  font-weight: bold;
   display: none;
+  color:#EFEFEF ;font-size: 17px;
 }
 
 .first-span:focus + .second-span {

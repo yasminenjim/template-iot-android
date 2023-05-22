@@ -19,13 +19,11 @@
 
 
       <ons-icon id="bticononhome"   class="mx-auto" icon="fa-bluetooth-b" aria-hidden="true" size="13px"
-      style="color:#EFEFEF;"   ></ons-icon>
-
-     <span id="btconnectto" style="color:#EFEFEF ;font-size: 17px;" class="First-span">
+      style="color:#EFEFEF;">
+      <span class="second-span">Connected to </span>
+     <span id="btconnectto" class="first-span">
     </span>   	
-    <span class="second-span"> Connected to </span>
-
-    
+    </ons-icon>
      </div>	    
   </ons-toolbar>
 
@@ -125,10 +123,8 @@
 -->
 
    <script>
-    
-     ons.getScriptPage().onInit = function() {
-	                                      console.log("home onInit "); 
-                                            }; 	  
+  ons.getScriptPage().onInit = function() {
+	console.log("home onInit ");  }; 	  
   function togglesplitter(){
    console.log("toggle");
   var s=document.getElementById('appSplitter');s.left.toggle().then((r)=>{fvar.scan(s).update();console.log("splitter updated");});
