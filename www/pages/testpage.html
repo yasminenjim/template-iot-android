@@ -11,7 +11,6 @@
       <p>this is some information</p>
     </div>
     </div>
-	<button onclick="initializing()">test</button>
 
    <div id="cards-container">
     <!-- Card 0 -->
@@ -294,8 +293,14 @@ cards.forEach(function(card) {
     var cardId = this.getAttribute('data-card-id');
     var outputElement = document.getElementById('value' + cardId + 'Display');
     outputElement.innerText = this.value;
+//	var value = event.target.value;
+  //console.log('Input value:', value);
+  console.log('Input value:', outputElement);
   });
 });
+
+
+
 function sendaoOnChange(event) {
   var cardId = event.target.getAttribute('data-card-id');
   var valueInput = document.getElementById('value' + cardId + 'Input');
@@ -386,7 +391,7 @@ function sendaoOnChange(event) {
       fble.sendjson(oavalue1);
 }, 2000);
   }  
-  console.log("Sending json object from notification page");}
+console.log("Sending json object from notification page");}
 
 function getChannelCount(cardId) {
   if (cardId === '0') {
@@ -404,19 +409,11 @@ function getChannelCount(cardId) {
     return [2,4];
   }
 }
-
 function getMAValue(valueInput) {
 var mAdivided=(parseInt(valueInput.value))/2;
 console.log("Divided");
 console.log("sending the value: " + mAdivided + " mA to the AO box");
 return mAdivided;
-}
-
-function initializing(){
-  var oavalue;
-	oavalue={ao:{nr:3,c:1,mA:0}};
-	fble.sendjson(oavalue);
-	console.log("sending the json object from the initializing function");
 }
  </script>  
 </ons-page>
