@@ -5,19 +5,11 @@
 			   </div>
 			   <div class="center" style="color:rgb(255, 255, 255);text-align: center;margin-left: -49px;">Analog Channels</div>
 </ons-toolbar>
-<div id="myModalAO" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Info</h2>
-      <p>this is some information</p>
-    </div>
-    </div>
-	<span style="margin-left: 8px;" fvar="{name:'a[1]'}"></span>
    <div id="cards-container">
     <!-- Card 0 -->
     <ons-card class="card-style-can" id="ao-card0">
       <div class="modify-me">
-        <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
+        <i class="fa-solid fa-circle-info" id="aboutchannels0" style="color:#737373;"></i>
       </div>
       <div>
         <h4 class="h4style" id="h4-0">AI-0</h4>
@@ -47,7 +39,7 @@
           <div style="margin-top: -106px; margin-left: 340px;">
             <p class="range-value-text">Input</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <span contenteditable="true" class="out-can"></span>
+              <span contenteditable="true" class="out-can" fvar='{name:"a",idx:0}'></span>
             </div>
           </div>
         </div>
@@ -56,7 +48,7 @@
     <!-- Card 1 -->
     <ons-card class="card-style-can" id="ao-card1">
       <div class="modify-me">
-        <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
+        <i class="fa-solid fa-circle-info" id="aboutchannels1" style="color:#737373;"></i>
       </div>
       <div>
         <h4 class="h4style" id="h4-1">AI-1</h4>
@@ -86,7 +78,7 @@
           <div style="margin-top: -106px; margin-left: 340px;">
             <p class="range-value-text">Input</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <input type="number" min="0" max="20" step="4" value="8" class="out-can" id="input-value1">
+				<span contenteditable="true" class="out-can" fvar='{name:"a",idx:1}'></span>
             </div>
           </div>
         </div>
@@ -95,7 +87,7 @@
 	<!-- Card 2 -->
     <ons-card class="card-style-can" id="ao-card2">
 		<div class="modify-me">
-		  <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
+		  <i class="fa-solid fa-circle-info" id="aboutchannels2" style="color:#737373;"></i>
 		</div>
 		<div>
 		  <h4 class="h4style" id="h4-2">AI-2</h4>
@@ -125,7 +117,7 @@
 			<div style="margin-top: -106px; margin-left: 340px;">
 			  <p class="range-value-text">Input</p>
 			  <div style="margin-left: -79px;margin-top: -11px;">
-				<input type="number" min="0" max="20" step="4" value="8" class="out-can" id="input-value2">
+				<span contenteditable="true" class="out-can" fvar='{name:"a",idx:2}'></span>
 			  </div>
 			</div>
 		  </div>
@@ -134,8 +126,8 @@
 	  <!-- Card 3 -->
 	  <ons-card class="card-style-can" id="ao-card3">
 		<div class="modify-me">
-		  <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
-		</div>
+			<i class="fa-solid fa-circle-info" id="aboutchannels3" style="color:#737373;"></i>
+		  </div>
 		<div>
 		  <h4 class="h4style" id="h4-3">AI-3</h4>
 		</div>
@@ -164,7 +156,7 @@
 			<div style="margin-top: -106px; margin-left: 340px;">
 			  <p class="range-value-text">Input</p>
 			  <div style="margin-left: -79px;margin-top: -11px;">
-				<input type="number" min="0" max="20" step="4" value="8" class="out-can" id="input-value3">
+				<span contenteditable="true" class="out-can" fvar='{name:"a",idx:3}'></span>
 			  </div>
 			</div>
 		  </div>
@@ -173,7 +165,7 @@
     <!-- Card 4 -->
     <ons-card class="card-style-can" id="ao-card4">
       <div class="modify-me">
-        <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
+        <i class="fa-solid fa-circle-info" id="aboutchannels4" style="color:#737373;"></i>
       </div>
       <div>
         <h4 class="h4style" id="h4-4">AI-4</h4>
@@ -203,7 +195,7 @@
           <div style="margin-top: -106px; margin-left: 340px;">
             <p class="range-value-text">Input</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <input type="number" min="0" max="20" step="4" value="8" class="out-can" id="input-value4">
+				<span contenteditable="true" class="out-can" fvar='{name:"a",idx:4}'></span>
             </div>
           </div>
         </div>
@@ -212,7 +204,7 @@
 	<!-- Card 5 -->
     <ons-card class="card-style-can" id="ao-card5">
       <div class="modify-me">
-        <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
+        <i class="fa-solid fa-circle-info" id="aboutchannels5" style="color:#737373;"></i>
       </div>
       <div>
         <h4 class="h4style" id="h4-5">AI-5</h4>
@@ -236,35 +228,86 @@
           <div>
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
+
               <span contenteditable="true" class="out-can" id="value5Display">8</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
             <p class="range-value-text">Input</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <input type="number" min="0" max="20" step="4" value="8" class="out-can" id="input-value5">
+				<span contenteditable="true" class="out-can" fvar='{name:"a",idx:5}'></span>
             </div>
           </div>
         </div>
       </div>
     </ons-card>
   </div>
+   <!-- Modal popup -->
+   <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Modal Title</h2>
+      <p id="modalContent">Modal content</p>
+    </div>
+  </div>
   <script>
-    //popup code
+//popup code
 // Get the modal
-var modal = document.getElementById("myModalAO");
-// Get the button that opens the modal
-var btn = document.getElementById("aboutchannels");
+var modal = document.getElementById("myModal");
+
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+var closeBtn = modal.querySelector(".close");
+
+// Get the buttons that open the modal
+var buttons = document.querySelectorAll(".fa-circle-info");
+
+// Set event listeners for each button
+buttons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // Get the corresponding card ID
+    var cardId = this.parentElement.parentElement.id;
+
+    // Get the title and content for the modal based on the card ID
+    var title, content;
+
+    if (cardId === "ao-card0") {
+      title = "AI-0 Info";
+      content = "LEFT PV/WHITE -> INNER/RED."
+    } else if (cardId === "ao-card1") {
+      title = "AI-1 Info";
+      content = "RIGHT PV/ORANGE->OUTER/RED LONG.";
+    }
+	else if (cardId === "ao-card2") {
+      title = "AI-2 Info";
+      content = "RIGHT PV/ORANGE->INNER/RED";
+    }
+	else if (cardId === "ao-card3") {
+      title = "AI-3 Info";
+      content = "LEFT PV/RIGHT->OUTER RED LONG.";
+    } else if (cardId === "ao-card4") {
+      title = "AI-4 Info";
+      content = "Tilt_sensor_left.";
+    }
+	else if (cardId === "ao-card5") {
+      title = "AI-5 Info";
+      content = "Tilt_sensor_right";
+    }
+
+    // Update the modal content with the title and content
+    var modalTitle = modal.querySelector("#modalTitle");
+    var modalContent = modal.querySelector("#modalContent");
+    modalTitle.textContent = title;
+    modalContent.textContent = content;
+
+    // Display the modal
+    modal.style.display = "block";
+  });
+});
+
+// Close the modal when the <span> element is clicked
+closeBtn.addEventListener("click", function () {
   modal.style.display = "none";
-}
+});
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
