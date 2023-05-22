@@ -171,9 +171,11 @@ function sendaoOnChange(event) {
     };
     console.log(oavalue1);
     console.log(oavalue2);
-    fble.sendjson(oavalue1);
   fble.sendjson(oavalue2);
-  } 
+    setTimeout(function() {
+      fble.sendjson(oavalue1);
+}, 2000);
+      } 
   //this is for the third AO box
   else if (cardId === '5') {
     var channelCounts = getChannelCount(cardId);
