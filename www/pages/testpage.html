@@ -9,15 +9,12 @@
 	<div class="modal-content">
 	  <span class="close">&times;</span>
 	  <h2>Info</h2>
-	  <p>this is some information about channel number 1</p>
+	  <p>this is some information</p>
 	</div>
   </div>
-
 <div class="content-can">
 	<button onclick="sendao()">test</button>
 	<br>
-	
-
 	<div  style="display: block; text-align: center; margin-top: 40px;">
 		<ons-card class="card-style-can" id="ao-card0">
 			<div class="modify-me">
@@ -27,7 +24,7 @@
 		<h4 class="h4style" id="h4-0" >AI-0</h4>
 	</div>
 			<div class="card-can-body">
-				<input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar0">
+				<input type="range" min="0" max="40" step="4" value="8" class="range-bar" id="value0Input" oninput="updateValue('value0')">
 				<div class="range-values">
 				  <span class="range-value">0</span>
 				  <span class="range-value">4</span>
@@ -35,12 +32,17 @@
 				  <span class="range-value">12</span>
 				  <span class="range-value">16</span>
 				  <span class="range-value">20</span>
+				  <span class="range-value">24</span>
+				  <span class="range-value">28</span>
+				  <span class="range-value">32</span>
+				  <span class="range-value">36</span>
+				  <span class="range-value">40</span>
 				</div>
 				<div class="in-out">
 				<div>
 				<p class="range-value-text">Output </p>
 					<div style="margin-left: -79px;margin-top: -11px;"> 
-					<span contenteditable="true" class="out-can" id="range-value0"> 
+					<span contenteditable="true" class="out-can" id="value0Display"> 
 				</span></div>
 				</div>
 				<div style= " margin-top: -106px;
@@ -60,7 +62,7 @@
 			  <h4 class="h4style" id="h4-1">AI-1</h4>
 			</div>
 			<div class="card-can-body">
-			  <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar1">
+			  <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="value1Input" oninput="updateValue('value1')">
 			  <div class="range-values">
 				<span class="range-value">0</span>
 				<span class="range-value">4</span>
@@ -73,7 +75,7 @@
 				<div>
 				  <p class="range-value-text">Output</p>
 				  <div style="margin-left: -79px;margin-top: -11px;">
-					<span contenteditable="true" class="out-can" id="range-value1">8</span>
+					<span contenteditable="true" class="out-can" id="value1Display">8</span>
 				  </div>
 				</div>
 				<div style="margin-top: -106px; margin-left: 340px;">
@@ -161,104 +163,13 @@
 				   </span></p>
 			 </div>
 		   </ons-card>
-		   <ons-card class="card-style-can" id="ao-card6">
-			<div class="modify-me">
-				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
-			   </div>
-			   <h4 class="h4style" id="h4-6">AI-6</h4>
-			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar6">
-				   <div class="range-values">
-					 <span class="range-value">0</span>
-					 <span class="range-value">4</span>
-					 <span class="range-value">8</span>
-					 <span class="range-value">12</span>
-					 <span class="range-value">16</span>
-					 <span class="range-value">20</span>
-				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value"6> 
-				   </span></p>
-			 </div>
-		   </ons-card>
-		   <ons-card class="card-style-can" id="ao-card7">
-			<div class="modify-me">
-				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
-			   </div>
-			   <h4 class="h4style" id="h4-7">AI-7</h4>
-			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar7">
-				   <div class="range-values">
-					 <span class="range-value">0</span>
-					 <span class="range-value">4</span>
-					 <span class="range-value">8</span>
-					 <span class="range-value">12</span>
-					 <span class="range-value">16</span>
-					 <span class="range-value">20</span>
-				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value7"> 
-				   </span></p>
-			 </div>
-		   </ons-card>
-		   <ons-card class="card-style-can" id="ao-card8">
-			<div class="modify-me">
-				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
-			   </div>
-			   <h4 class="h4style" id="h4-8">AI-8</h4>
-			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar8">
-				   <div class="range-values">
-					 <span class="range-value">0</span>
-					 <span class="range-value">4</span>
-					 <span class="range-value">8</span>
-					 <span class="range-value">12</span>
-					 <span class="range-value">16</span>
-					 <span class="range-value">20</span>
-				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value8"> 
-				   </span></p>
-			 </div>
-		   </ons-card>
-		   <ons-card class="card-style-can" id="ao-card9">
-			<div class="modify-me">
-				<i class="fa-solid fa-circle-info" onclick="editHeading('h4-0')" style="color: #737373;"></i>
-			   </div>
-			   <h4 class="h4style" id="h4-9">AI-9</h4>
-			   <div class="card-can-body">
-				   <input type="range" min="0" max="20" step="4" value="8" class="range-bar" id="myRangeBar9">
-				   <div class="range-values">
-					 <span class="range-value">0</span>
-					 <span class="range-value">4</span>
-					 <span class="range-value">8</span>
-					 <span class="range-value">12</span>
-					 <span class="range-value">16</span>
-					 <span class="range-value">20</span>
-				   </div>
-				   <p class="range-value-text">Output <span contenteditable="true"class="out-can" id="range-value9"> 
-				   </span></p>
-			 </div>
-		   </ons-card>
 	</div>
   </div>
  <script> 
- //for the card number 1
-
- const input1 = document.getElementById('input-value1');
-  const range1 = document.getElementById('myRangeBar1');
-  const rangeValue1 = document.getElementById('range-value1');
-
-  // Update the range slider value and range value when the input field changes
-  input1.addEventListener('input', () => {
-    range1.value = input1.value;
-    rangeValue1.textContent = input1.value;
-  });
-
-  // Update the input field value and range value when the range slider changes
-  range1.addEventListener('input', () => {
-    input1.value = range1.value;
-    rangeValue1.textContent = range1.value;
-  });
-
- //--------------------------------------------------------------------------------------------------------/
+//--------------------------------------------------------------------------------------------------------/
+console.log("loading testpage");	 
+ons.getScriptPage().onInit = function() {console.log("testpage onInit "); };      
+//----------------------------------------------------------------------------------------------/ 
  //popup code
 // Get the modal
 var modal = document.getElementById("myModalAO");
@@ -280,62 +191,33 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-
- /*********************************************************/
-console.log("loading testpage");	 
-ons.getScriptPage().onInit = function() {console.log("testpage onInit "); };       
- 
-var rangeBar = document.getElementById("myRangeBar0");
-var rangeValue = document.getElementById("range-value0"); //get the element 
-var rangeValues = document.querySelectorAll(".range-value");
-
-rangeBar.addEventListener("input", function() {
-  var thumbPosition = (rangeBar.value / rangeBar.max) * 100;
-  var thumbWidth = 16; // width of the thumb element
-  var rangeValuePosition = thumbPosition - thumbWidth / 2;
-  
-  // Set the position of each range value
-  rangeValues.forEach(function(rangeValue, index) {
-    rangeValue.style.left = (index * 100 / (rangeValues.length - 1)) + '%';
-  });
-  
-  // Set the position of the range value div
-  var rangeValueDiv = document.querySelector(".range-values");
-  rangeValueDiv.style.left = rangeValuePosition + '%';
-  
-  // Set the value of the range value text
-  rangeValue.innerText = rangeBar.value;
-});
-
-rangeValue.innerHTML = rangeBar.value + ' mA'; // set initial value
-
-rangeBar.oninput = function() {
-	rangeValue.innerHTML = this.value + ' mA'; // update value with unit
-}
-
-
-//const editableP = document.querySelector('p[contenteditable="true"]');
-//const contents = editableP.textContent;
+/**********************************************************************************************/
 function editHeading(id) {
   const heading = document.querySelector(`#${id}`);
   let newHeadingText = prompt('Enter new heading text:');
   newHeadingText = newHeadingText.toUpperCase();
   heading.textContent = newHeadingText;
 }
-
+//**************************************************************************************/
 function sendao(){
 	var oavalue;
-	oavalue={ao:{nr:1,c:3,mA:11}};
+	oavalue={ao:{nr:2,c:1,mA:16}};
 	fble.sendjson(oavalue);
 	console.log("sending a AO object to the esp via ble");}
-
 /**function sendao(nodeId/boxnumber 1,2,3,channelnbr,currentValue){
 	var oavalue;
 	oavalue={ao:{nr:1,c:3,mA:10.5}};
 	fble.sendjson(oavalue);
 	console.log("sending a AO object to the esp via ble");
 }**/
+function updateValue(value) {
+        // Update the displayed value based on the range input
+        var display = document.getElementById(value + 'Display');
+        var input = document.getElementById(value + 'Input');
+        display.textContent = input.value;
+      }
+
+/*************************************************************************/
 
  </script>  
 </ons-page>

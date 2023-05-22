@@ -40,12 +40,9 @@
     </table>
   </div>
   <table id="filteredTable">
-
   </table>
-  
-
     </div>
-     <!------------ This is for pagination, in case you want to use it 
+     <!------------ This is for pagination, in case you want to use it
     </div>
     <br>
     <br>
@@ -81,29 +78,21 @@ window.onclick = function(event) {
 }
 function getCobIdsFromTable() {
   const cobIds = []; // initialize an empty array to hold cobids
-
   const table = document.getElementById("can-table"); // replace "myTable" with the ID of your table element
   const rows = table.getElementsByTagName("tr"); // get all the rows in the table
-
   // loop through each row in the table, skipping the first row (which likely contains header cells)
   for (let i = 1; i < rows.length; i++) {
- 
-
     const cells = rows[i].getElementsByTagName("td"); // get all the cells in the row
     const cobidCell = cells[1]; // the cobid value should be in the first cell of each row
     console.log(cobidCell);
-
     if (cobidCell) { // make sure the cell actually exists
       const cobid = cobidCell.innerText.trim(); // get the text content of the cell and remove any leading/trailing whitespace
       cobIds.push(cobid); // add the cobid to the array
       console.log("just pushed the cobid values in the new array");
     }
   }
-
   return cobIds; // return the array of cobids
 }
-
-
 function showCan() {
     fble.sendjson({can: "start"});
     console.log("showing can messages from showcan method");
@@ -119,10 +108,11 @@ function clearTable() {
   // Clear the table
   var tableBody = document.getElementById("can-msgs");
   tableBody.innerHTML = "";
-  /**This is for the pagination
-   * //var rowsPerPage = 20;
+/***
+ This is also for the pagination
+//var rowsPerPage = 20;
 //var currentPage = 1;
-  // Reset the pagination
+// Reset the pagination
   var pagination = document.getElementById("pagination");
   var currentPageSpan = document.getElementById("current-page");
   var prevButton = document.getElementById("prev-page");
@@ -156,54 +146,11 @@ function filterTable(searchValue) {
     }
   }
 }
-// Define a variable to keep track of the current page
-//var currentPage = 1;
-/**
-// Define a function to show the rows for a given page
-function showRowsForPage(page) {
-  var startIdx = (page - 1) * 20;
-  var endIdx = startIdx + 20;
-  $("#can-msgs tr").hide().slice(startIdx, endIdx).show();
-}
-// Set up event listeners for the "Prev" and "Next" buttons
-$("#prev-page").on("click", function() {
-  if (currentPage > 1) {
-    currentPage--;
-    gotoPage(currentPage);
-  }
-});
-$("#next-page").on("click", function() {
-  if (currentPage < Math.ceil($("#can-msgs tr").length / 20)) {
-    currentPage++;
-    gotoPage(currentPage);
-  }
-}); 
-// Define the gotoPage() function
-function gotoPage(page) {
-  $(".active-page").removeClass("active-page");
-  $("#page-" + page).addClass("active-page");
-  showRowsForPage(page);
-  $("#current-page").text("Page " + page);
-}
-// Call the gotoPage() function with the initial page
-gotoPage(1); **/
-/**
-const table = document.getElementById('can-table');
-const notificationPage = document.getElementById('notifications');
-const rowCount = table.rows.length;
-  if (rowCount === 100) {
-    var message = "There are more than 100 rows in the table!";
-  var notifications = document.createElement("div");
-  notifications.innerHTML = message;
-  document.getElementById("notifications").appendChild(notifications);
-  }**/
   //*******************Filter options implementation (SDO/PDO/nodeID)*******************//
- 
   function getMessageType(cobId) {
   /**let cobId = (canId + nodeId).toString(16);
   cobId = cobId.padStart(4, '0');
   cobId = '0x' + cobId; **/
-  
   if (cobId >= 0x000 && cobId <= 0x07F) {
     return "EMCY";
   } else if (cobId >= 0x080 && cobId <= 0x0FF) {
@@ -247,29 +194,17 @@ filterOption.addEventListener("change", function() {
       break;
     case "SDO":
     filteredmsgs("SDO");
-
-      // call your function for sdo option here
-     // const cobIds = getCobIdsFromTable(); // get an array of all the cobids in the table
-      //cobIds.forEach(cobid => {
-        //const messageType = getMessageType(cobid); // convert the cobid from hex to decimal and pass it to getMessagetype
-        //console.log(`Message type for cobid ${cobid}: ${messageType}`);
-  //    });
-
-  filteredmsgs("SDO");
       break;
     case "PDO":
       // call your function for mdo option here
       console.log("PDO option3 filter is chosed");
     filteredmsgs("PDO");
-
       break;
     default:
       // handle any other case
       break;
   }
 });
-
-
 function filteredmsgs(filter) {
   const currenttable = document.getElementById("can-table");
   const tablecontainer = document.getElementById("table-container");
@@ -289,7 +224,6 @@ function filteredmsgs(filter) {
       sdofiltered.push(cells);
     }
   }
-
 // create a new table element to display the filtered messages
 const filteredTable = document.createElement("table");
   // add a header row to the filtered table
@@ -309,16 +243,53 @@ const filteredTable = document.createElement("table");
   filteredTable.classList.add("filtered-table");
 currenttable.style.display = "none";
 }
-
 function resetcantable(){
   const currenttable = document.getElementById("can-table"); 
   const tablecontainer = document.getElementById("table-container");
   tablecontainer.style.display="block";
  filteredTable.style.display="none";
-
 }
-
-
-
+/*******************************this js code is for adding a pagination functionality*********************************************/
+// Define a variable to keep track of the current page
+//var currentPage = 1;
+/**
+// Define a function to show the rows for a given page
+function showRowsForPage(page) {
+  var startIdx = (page - 1) * 20;
+  var endIdx = startIdx + 20;
+  $("#can-msgs tr").hide().slice(startIdx, endIdx).show();
+}
+// Set up event listeners for the "Prev" and "Next" buttons
+$("#prev-page").on("click", function() {
+  if (currentPage > 1) {
+    currentPage--;
+    gotoPage(currentPage);
+  }
+});
+$("#next-page").on("click", function() {
+  if (currentPage < Math.ceil($("#can-msgs tr").length / 20)) {
+    currentPage++;
+    gotoPage(currentPage);
+  }
+}); 
+// Define the gotoPage() function
+function gotoPage(page) {
+  $(".active-page").removeClass("active-page");
+  $("#page-" + page).addClass("active-page");
+  showRowsForPage(page);
+  $("#current-page").text("Page " + page);
+}
+// Call the gotoPage() function with the initial page
+gotoPage(1); **/
+/**
+const table = document.getElementById('can-table');
+const notificationPage = document.getElementById('notifications');
+const rowCount = table.rows.length;
+  if (rowCount === 100) {
+    var message = "There are more than 100 rows in the table!";
+  var notifications = document.createElement("div");
+  notifications.innerHTML = message;
+  document.getElementById("notifications").appendChild(notifications);
+  }**/
 </script>
  </ons-page>

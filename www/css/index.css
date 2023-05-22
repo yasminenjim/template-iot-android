@@ -803,29 +803,28 @@ li {
 
 .range-bar {
   -webkit-appearance: none;
-  width: 112%;
+  width: 119%;
   height: 20px;
   margin: 10px 0;
   background: linear-gradient(to right, #ccc, #ccc) no-repeat;
   background-size: 100% 100%;
-  
   outline: none;
   opacity: 0.7;
   -webkit-transition: opacity .15s ease-in-out;
   transition: opacity .15s ease-in-out;
-  margin-left: -6%;
+  margin-left: -10%;
 }
 
 .range-bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 30px;
-  height: 25px;
-  
+  width: 17px;
+  height: 29px;
   background-color: #ffffff;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 1;
+
 }
 
 .range-bar::-moz-range-thumb {
@@ -864,12 +863,11 @@ input[type="range"]::-webkit-slider-runnable-track {
   justify-content: space-between;
   margin-top: 3px;
   font-family: 'Open Sans', sans-serif;
-		 font-weight: 978;
-		 font-size: 14px;
-		 color: #094860;
-     margin-right: -47px;
-     margin-left: -15px;
-
+  font-weight: bolder;
+  font-size: -11px;
+  color: #094860;
+  margin-right: -47px;
+  margin-left: -25px;
 }
 
 .range-value-text {
@@ -883,7 +881,9 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .range-values .range-value {
-  margin-right: 30px;
+  margin-right: 21px;
+  font-size: 6px;
+  font-weight: bolder;
 }
 
 .out-can{

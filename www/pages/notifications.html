@@ -1,5 +1,4 @@
 <ons-page id="notifications">
-
     <ons-toolbar  class="blue-toolbar" >
      <div class="left">
        <ons-back-button>Back</ons-back-button>
@@ -13,38 +12,232 @@
      </ons-toolbar-button>
     </div>
    </ons-toolbar>
-<h1>Hi!</h1>
-   <div id="notifications"></div>
-   <div >
-   </div>
+	<button onclick="initializing()">test</button>
 
-   <p style="text-align: center; margin: 50% 0;">
-      <ons-button onclick="showPopover(this)">Click me</ons-button>
-    </p>
-    <ons-popover direction="up" id="popover">
-      <div style="padding: 10px; text-align: center;">
-        <p>
-          This is a popover
-        </p>
-        <p>
-          <ons-button onclick="hidePopover()">Close</ons-button>
-        </p>
+   <div id="cards-container">
+    <!-- Card 0 -->
+    <ons-card class="card-style-can" id="ao-card0">
+      <div class="modify-me">
+        <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
       </div>
-    </ons-popover>
-<script>
+      <div>
+        <h4 class="h4style" id="h4-0">AI-0</h4>
+      </div>
+      <div class="card-can-body">
+        <input type="range" min="0" max="40" step="4" value="8" class="range-bar" id="value0Input" data-card-id="0">
+        <div class="range-values">
+          <span class="range-value">0</span>
+          <span class="range-value">4</span>
+          <span class="range-value">8</span>
+          <span class="range-value">12</span>
+          <span class="range-value">16</span>
+          <span class="range-value">20</span>
+          <span class="range-value">24</span>
+          <span class="range-value">28</span>
+          <span class="range-value">32</span>
+          <span class="range-value">36</span>
+          <span class="range-value">40</span>
+        </div>
+        <div class="in-out">
+          <div>
+            <p class="range-value-text">Output</p>
+            <div style="margin-left: -79px;margin-top: -11px;">
+              <span contenteditable="true" class="out-can" id="value0Display"></span>
+            </div>
+          </div>
+          <div style="margin-top: -106px; margin-left: 340px;">
+            <p class="range-value-text">Input</p>
+            <div style="margin-left: -79px;margin-top: -11px;">
+              <span contenteditable="true" class="out-can"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ons-card>
+    <!-- Card 1 -->
+    <ons-card class="card-style-can" id="ao-card1">
+      <div class="modify-me">
+        <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
+      </div>
+      <div>
+        <h4 class="h4style" id="h4-1">AI-1</h4>
+      </div>
+      <div class="card-can-body">
+        <input type="range" min="0" max="40" step="4" value="8" class="range-bar" id="value1Input" data-card-id="1">
+        <div class="range-values">
+          <span class="range-value">0</span>
+				  <span class="range-value">4</span>
+				  <span class="range-value">8</span>
+				  <span class="range-value">12</span>
+				  <span class="range-value">16</span>
+				  <span class="range-value">20</span>
+				  <span class="range-value">24</span>
+				  <span class="range-value">28</span>
+				  <span class="range-value">32</span>
+				  <span class="range-value">36</span>
+				  <span class="range-value">40</span>
+        </div>
+        <div class="in-out">
+          <div>
+            <p class="range-value-text">Output</p>
+            <div style="margin-left: -79px;margin-top: -11px;">
+              <span contenteditable="true" class="out-can" id="value1Display">8</span>
+            </div>
+          </div>
+          <div style="margin-top: -106px; margin-left: 340px;">
+            <p class="range-value-text">Input</p>
+            <div style="margin-left: -79px;margin-top: -11px;">
+              <input type="number" min="0" max="20" step="4" value="8" class="out-can" id="input-value1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </ons-card>
+    <!-- Card 3 -->
+    <ons-card class="card-style-can" id="ao-card2">
+      <div class="modify-me">
+        <i class="fa-solid fa-circle-info" id="aboutchannels" style="color:#737373;"></i>
+      </div>
+      <div>
+        <h4 class="h4style" id="h4-2">AI-5</h4>
+      </div>
+      <div class="card-can-body">
+        <input type="range" min="0" max="40" step="4" value="8" class="range-bar" id="value5Input" data-card-id="5">
+        <div class="range-values">
+          <span class="range-value">0</span>
+				  <span class="range-value">4</span>
+				  <span class="range-value">8</span>
+				  <span class="range-value">12</span>
+				  <span class="range-value">16</span>
+				  <span class="range-value">20</span>
+				  <span class="range-value">24</span>
+				  <span class="range-value">28</span>
+				  <span class="range-value">32</span>
+				  <span class="range-value">36</span>
+				  <span class="range-value">40</span>
+        </div>
+        <div class="in-out">
+          <div>
+            <p class="range-value-text">Output</p>
+            <div style="margin-left: -79px;margin-top: -11px;">
+              <span contenteditable="true" class="out-can" id="value5Display">8</span>
+            </div>
+          </div>
+          <div style="margin-top: -106px; margin-left: 340px;">
+            <p class="range-value-text">Input</p>
+            <div style="margin-left: -79px;margin-top: -11px;">
+              <input type="number" min="0" max="20" step="4" value="8" class="out-can" id="input-value5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </ons-card>
+  </div>
+  <script>
+// Add event listeners to range bars and input fields of each card
+var cards = document.querySelectorAll('.card-style-can');
+cards.forEach(function(card) {
+  var cardId = card.id.replace('ao-card', '');
+  var valueInput = card.querySelector('.range-bar');
+  var inputField = card.querySelector('.out-can');
+  var aoboxID = card.querySelector('.h4style');
+  valueInput.addEventListener('input', sendaoOnChange);
+  inputField.addEventListener('input', sendaoOnChange);
+  valueInput.setAttribute('data-card-id', cardId);
+});
 
-var showPopover = function(target) {
-  document
-    .getElementById('popover')
-    .show(target);
-};
+function sendaoOnChange(event) {
+  var cardId = event.target.getAttribute('data-card-id');
+  var valueInput = document.getElementById('value' + cardId + 'Input');
+  var inputField = document.getElementById('input-value' + cardId);
+  var oavalue1;
+  var oavalue2;
 
-var hidePopover = function() {
-  document
-    .getElementById('popover')
-    .hide();
-};
-</script>
+  //please take a look on the circuit (channels from AO box1 and AO box2 are linked together to input number 1,2,3,4)
+  if (cardId === '0' || cardId === '1') {
+    oavalue1 = {
+      ao: {
+        nr: 1,
+        c: getChannelCount(cardId),
+        mA: getMAValue(cardId, valueInput)
+      }
+    };
+    oavalue2 = {
+      ao: {
+        nr: 2,
+        c: getChannelCount(cardId),
+        mA: getMAValue(cardId, valueInput)
+      }
+    };
+    console.log(oavalue1);
+    console.log(oavalue2);
+    fble.sendjson(oavalue1);
+  fble.sendjson(oavalue2);
+  } 
+  //this is for the third AO box
+  else if (cardId === '5') {
+    var channelCounts = getChannelCount(cardId);
+    var cone = channelCounts[0];
+    var ctwo = channelCounts[1];
 
+    oavalue1 = {
+      ao: {
+        nr: 3,
+        c: cone,
+        mA: getMAValue(cardId, valueInput)
+      }
+    };
+    oavalue2 = {
+      ao: {
+        nr: 3,
+        c: ctwo,
+        mA: getMAValue(cardId, valueInput)
+      }
+    };
+    //console.log(oavalue1);
+    console.log(oavalue2);
+    console.log(oavalue1);
+    console.log("we are working on the card number 5");
+    fble.sendjson(oavalue1);
+  console.log("sendding oavalue1 from card 5: " + oavalue1);
+
+  //fble.sendjson(oavalue2);
+  }  
+  console.log("Sending json object from notification page");
+
+ 
+}
+
+function getChannelCount(cardId) {
+  if (cardId === '0') {
+    return 1;
+  } else if (cardId === '1') {
+    return 2;
+  } else if(cardId === '5') {
+    return [1,3];
+  }
+}
+
+function getMAValue(cardId, valueInput) {
+  if (cardId === '0' || cardId === '1') {
+    console.log("I am gonna divide the value");
+var mAdivided=(parseInt(valueInput.value))/2;
+console.log("Divided");
+console.log("sending the value: " + mAdivided + " mA to the AO box");
+return mAdivided;
+
+  } else if (cardId === '5') {
+    var mAdivided = parseInt(valueInput.value) / 2;
+    console.log("Sending the value: " + mAdivided + " mA to the AO box");
+    return mAdivided;
+}}
+
+function initializing(){
+  var oavalue;
+	oavalue={ao:{nr:1,c:1,mA:0}};
+	fble.sendjson(oavalue);
+}
+  </script>
 </ons-page>
 
+   
