@@ -1,0 +1,187 @@
+.bluetooth-page {
+    background-color: #094860 !important;
+    background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
+  }
+  .ble-img {
+    animation: pulse 8s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.9);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  #bluetooth-icon {
+    width: 50px;
+    height: 50px;
+    animation: pulse 2s ease-in-out infinite;
+    transform-origin: center;
+  }
+  
+  .device-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .device-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .device-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .device-name {
+    font-size: 20px;
+  }
+  
+  
+  .icon-ble-scan {
+    font-size: 50px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #outerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    padding-top: 50px;
+  }
+  #container {
+    width: 600px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    padding-top: 50px;
+  }
+  
+  .circle {
+    border-radius: 50%;
+    background-color: deepskyblue;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    opacity: 0;
+    animation: scaleIn 4s infinite cubic-bezier(.36, .11, .89, .32);
+  }
+  
+  .item {
+    z-index: 100;
+    padding: 5px;
+  }
+  
+  .item img {
+    width: 150px;
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(.5, .5);
+      opacity: .5;
+    }
+  
+    to {
+      transform: scale(2.5, 2.5);
+      opacity: 0;
+    }
+  } 
+  
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .popup-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+  }
+  
+  .popup {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    animation-name: popup-animation;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+  }
+  
+  @keyframes popup-animation {
+    from {
+      transform: scale(0);
+    }
+  
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .onsen-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .onsen-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .onsen-list li img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+  
+  .onsen-list li h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .onsen-list li p {
+    font-size: 14px;
+    margin: 0;
+    color: #999;
+  }  
+  

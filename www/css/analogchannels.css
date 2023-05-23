@@ -1,0 +1,137 @@
+.testpage-page {
+    background-color: #F6F6F6 !important;
+  }
+  .h4style{
+    font-family: 'Open Sans', sans-serif !important; 
+    font-weight: 978 !important;
+    font-size: 29px;
+    color: #094860; 
+    margin-left: -281px !important; 
+     position: left !important;
+      margin-bottom: -7px !important;
+      margin-top:-9px !important;
+  }
+  .card-style-can {
+    text-align: center;
+    width: 89%;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: 226px;
+    margin: 20px auto;
+    background-color: #efefef;
+    margin-bottom: 24px;
+    height:281px;
+  }
+  
+  .editch{
+    margin-left: auto;
+  }
+  
+  
+  .card-can-body {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .range-bar {
+    -webkit-appearance: none;
+    width: 119%;
+    height: 20px;
+    margin: 10px 0;
+    background: linear-gradient(to right, #ccc, #ccc) no-repeat;
+    background-size: 100% 100%;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: opacity .15s ease-in-out;
+    transition: opacity .15s ease-in-out;
+    margin-left: -10%;
+  }
+  
+  .range-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 17px;
+    height: 29px;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  
+  }
+  
+  .range-bar::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  
+  .range-bar::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #6b6a6a 0%, #6b6a6a 5%, #d9d9d9 5%, #d9d9d9 100%);
+    position: relative;
+    z-index: 0;
+  }
+  
+  .range-bar::-moz-range-track {
+    background: linear-gradient(to right, #6b6a6a 0%, #6b6a6a 5%, #d9d9d9 5%, #d9d9d9 100%);
+    position: relative;
+    z-index: 0;
+  }
+  
+  
+  
+  input[type="range"]::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #000000 0%, #000000 calc((var(--value) / (var(--max) - var(--min))) * 100%), #cccccc calc((var(--value) / (var(--max) - var(--min))) * 100%), #cccccc 100%);
+    position: relative;
+    z-index: 0;
+  }
+  
+  .range-values {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    font-size: -11px;
+    color: #094860;
+    margin-right: -47px;
+    margin-left: -25px;
+  }
+  
+  .range-value-text {
+    margin-top: 44px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 978;
+      font-size: 23px;
+      color: #094860;
+      margin-left: -68px;
+  
+  }
+  
+  .range-values .range-value {
+    margin-right: 21px;
+    font-size: 6px;
+    font-weight: bolder;
+  }
+  
+  .out-can{
+  
+    color: #ffffff;
+    margin-left: 11px;
+    background-color: #094860;
+    padding: 5px 10px;
+    border: 2px solid #094860; /* add this line */
+    border-radius: 10px; /* add this line */
+    width: 10px;
+    height: 16px;
+  }
+  .in-out{
+    margin-left: -100px;
+    margin-top: -9px;
+  }
+  
+  
