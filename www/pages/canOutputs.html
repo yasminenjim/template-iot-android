@@ -76,6 +76,7 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+/**
 function getCobIdsFromTable() {
   const cobIds = []; // initialize an empty array to hold cobids
   const table = document.getElementById("can-table"); // replace "myTable" with the ID of your table element
@@ -92,15 +93,15 @@ function getCobIdsFromTable() {
     }
   }
   return cobIds; // return the array of cobids
-}
+} **/
 function showCan() {
     fble.sendjson({can: "start"});
     console.log("showing can messages from showcan method");
 //testing/ extracting the cobid values for the filter
-setTimeout(function() {
+/** setTimeout(function() {
   console.log(getCobIdsFromTable());
-}, 3000);
-}
+}, 3000); **/
+} 
 function stopCan() {
     fble.sendjson({can: "stop"});
 }

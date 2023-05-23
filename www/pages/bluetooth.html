@@ -101,36 +101,25 @@
 	   </tr>
 	   </div> 
    </div>
-   
    <!---------------------------Popup tab----------------------------------------------------------------------------------------------->
    <div class="popup-container" id="popup">
 	 <div class="popup-background"></div>
 	 <div class="popup">
-   <!--<span class="close-x" style="font-size: 1.5em;right: 55px; position: absolute; top:240px">&times;</span> -->	
+		<span class="close">&times;</span>
 	   <h1 style="font-size: 25px;">Available Devices</h1>
-	   <ul class="onsen-list">
-   
 		 <ons-list>
-		   <li>
-			 <div>
-			   <h2 id="btscandiv" class="background-grey mt-3"></h2>
-			 </div>
-		   </li>
+			<ons-list-item>
+				<span id="btscandiv"></span>
+			</ons-list-item>
 		 </ons-list>
-	   </ul>
-	   <button class="close-button" onclick="hidePopup()">Close</button>
 	 </div>
    </div>
-   
    </ons-carousel-item>
-   
    <!----------------------------------Content for the second carousel item (Parametres)--------------------------------------------->
    <ons-carousel-item style="background-color: #ffffff;">
 	   <div style="margin-top: 20px; color: #000000;margin-right: 250px;">
 		 <h3 style="margin-left: -46px;">Settings</h3>
 	   </div>
-   
-   
 	   <ons-list-header>Connected to</ons-list-header>
 	   <ons-list-item id="connecteSettings">
 		 <div class="left">
@@ -143,7 +132,6 @@
 		   <ons-switch id="mySwitch"></ons-switch>
 		 </div>
 	   </ons-list-item>
-   
 	   <ons-list-header>PAIRED DEVICES</ons-list-header>
 	   <ons-list-item expandable>
 		 Tap to expand
@@ -157,7 +145,6 @@
 			   </div>
 			 </ons-list-item>
 	   </div>
-   
 	   </ons-list-item>
 	   <ons-list-header>AVAILABLE DEVICES</ons-list-header>
 	   <ons-list-item>
@@ -178,9 +165,6 @@
 	 </ons-list-item>
    <!----------------------------------The end of the second swipe page(number 1)------------------------------------------------------------------------->
 	 </ons-carousel-item>
-   
-   
-   <!----------------------------------The end of ons-carousel items------------------------------------------------------------------------->
    </ons-carousel>
    
    <!----------------------------------Have to delete this-------------------------------------------------------------------------->
@@ -199,22 +183,6 @@
    <span id="char2001" ></span> <br>
 	   </div>
    <!------------------------------------------------------------------------------------------------------->
-   
-   <!--bottom toolbar-----------------------------------------Not sure yet---------------------------------->		
-   
-		   <!--<ons-bottom-toolbar class="bl-toolbar-bottom">
-				   <div class="bottom-toolbar__content">
-					 <div class="bottom-toolbar__item" onclick="doSomething()">
-					   <ons-icon icon="fa-home"></ons-icon>
-					   <div class="bottom-toolbar__label">Home</div>
-					 </div>
-					 <div class="bottom-toolbar__item" onclick="doSomethingElse()">
-					   <ons-icon icon="fa-cog"></ons-icon>
-					   <div class="bottom-toolbar__label">Settings</div>
-					 </div>
-				   </div>
-				 </ons-bottom-toolbar> -->
-   <!----------------------------------------------------------------------------->
    
    <script>
 	
@@ -241,19 +209,31 @@
 	  testingconn(); }}, false);
    
    /************************************************************************/
-	function hidePopup() {
-	   var popup = document.getElementById("popup");
+   var popup = document.getElementById("popup");  
+   // Get the <span> element that closes the popup
+   var closeBtn = popup.querySelector(".close");
+   closeBtn.addEventListener("click", function () {
+	//popup.style.display = "none";
+	hidePopup();
+});
+function hidePopup() {
+	var popup = document.getElementById("popup");
 	   popup.style.display = "none";
 	   console.log("popup is hided");
 	$('#scanningInterface').hide();
    $('#first-interface').show();
-    
-   
 	 }
-	/******************************************************************************/
+	 // When the user clicks anywhere outside of the popup, close it
+window.onclick = function(event) {
+  if (event.target == popup) {
+    popup.style.display = "none";
+   //hidePopup();
+  }
+}
+/******************************************************************************/
 	
    
-   /****************************************************************************/
+/****************************************************************************/
    
    var devices=fble.founddevices()
    
@@ -283,7 +263,7 @@
    //-----------------------------------------------------------------------------
    function scanforble(){
 	   if (fble.isconnected()) {
-				 ons.notification.toast('still connected to ' + o.name, { timeout: 2000 });
+				 ons.notification.toast('Still connected to ' + o.name, { timeout: 2000 });
 				 return;
 						   }
    console.log("scanforble");
@@ -307,14 +287,8 @@
     }
   },
    10000);
-
-   
    }
-   
-   
    //-----------------------------------------------------------------------------
-
-   
    fble.onscanstop(function(){
    console.log("stoped scanning from onscanstop method ");
    });
@@ -334,18 +308,15 @@
 		 element.setAttribute('tappable', 'true');
 		 element.setAttribute('id', deviceId);
 	   element.innerHTML = dev.name+"  "+dev.rssi;
-	   
 	   element.setAttribute('btaddress',dev.address);
 	   element.setAttribute('btname',dev.name);
-	   
 	   element.style.fontSize="36px;";
-   
 	   element.addEventListener("click", function (e) {
 		var btn=e.currentTarget;
 		var address=btn.getAttribute('btaddress');
 		var btname=btn.getAttribute('btname');	
 		if (fble.isconnected()) {
-			 ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
+			 ons.notification.toast('Already connected to ' + btname, { timeout: 1000 });
 		return; 	
 		}
 	   console.log("clicked "+btn.id+"  "+address);
@@ -397,7 +368,7 @@
    b.style.color="white";
    b=document.getElementById("btconnectto");
    b.innerHTML="";
-   ons.notification.toast('disconnected ' + o.name, { timeout: 3000 }); 	
+   ons.notification.toast('Disconnected ' + o.name, { timeout: 3000 }); 	
 							 });
    
    function disconnect(e){
@@ -408,7 +379,7 @@
    function popupshow(){
 	   
 	   if (fble.isconnected()) {
-				 ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
+				 ons.notification.toast('Already connected to ' + btname, { timeout: 2000 });
 	   $('#scanningInterface').hide();
 	   $('#deviceConnected').show();
 	   $('#first-interface').hide();
@@ -421,7 +392,7 @@
    function testingconn(){
 	   
    if (fble.isconnected()) {
-   ons.notification.toast('already connected to ' + btname, { timeout: 2000 });
+   ons.notification.toast('Already connected to ' + btname, { timeout: 2000 });
    $('#scanningInterface').hide();
    $('#deviceConnected').show();
    $('#first-interface').hide();
