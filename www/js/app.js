@@ -2,7 +2,6 @@ console.log("loading app.js");
 
 function onappstart(){
 console.log("we are on "+cordova.platformId);
-
 // crobot 7f190f68-2749-493c-947f-178fe27fd4bc
 // youvee  7f190f68-2749-493c-947f-193fe27fd4bc
 // igauge 7f190f68-2749-493c-947f-193fe27fd4cb

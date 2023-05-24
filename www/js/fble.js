@@ -55,7 +55,10 @@ fble = (function() {
 
         bluetoothle.isEnabled(function(b) {
             console.log("bluetooth is " + JSON.stringify(b));
-        });
+            if (!b.isEnabled) {
+             // alert("Bluetooth is not enabled. Please enable Bluetooth.");
+            }
+          });
         if (window.cordova.platformId === "ios") {
             console.log("we are on iOs ?");
             setTimeout(function() {
@@ -67,6 +70,8 @@ fble = (function() {
             // does the trick for android                                                                                  
             bluetoothle.requestPermission(function(r) {
                 console.log("req permission");
+               // alert("Please enable Location to start.");
+
             }, handleError);
             //                                                                                                              
             // plugin diagnostic asks for background location                                                               
@@ -106,8 +111,48 @@ fble = (function() {
         }
         onbtsubscribed = f;
     }
-    //-----------------------------------------------------------------------------
-    
+    //---------------------------------Checking adapters (location/bluetooth) if they are enabled---------------
+    // bleLocationCheck.js
+
+    function checkAdapters() {
+        var isLocationEnabled = false;
+        var isBluetoothEnabled = false;
+      
+        // Check if location is enabled for Android
+        cordova.plugins.diagnostic.isLocationEnabled(function(locationEnabled) {
+          console.log("Location enabled: " + locationEnabled);
+          isLocationEnabled = locationEnabled;
+          checkBluetoothEnabled();
+        }, function(error) {
+          console.log("Error occurred while checking location: " + error);
+          checkBluetoothEnabled();
+        });
+      
+        function checkBluetoothEnabled() {
+          bluetoothle.isEnabled(function(result) {
+            console.log("Bluetooth is " + JSON.stringify(result));
+            isBluetoothEnabled = result.isEnabled;
+            handleAdapterStatus(isLocationEnabled, isBluetoothEnabled);
+          }, function(error) {
+            console.log("Error occurred while checking Bluetooth: " + error);
+            handleAdapterStatus(isLocationEnabled, isBluetoothEnabled);
+          });
+        }
+      
+        function handleAdapterStatus(isLocationEnabled, isBluetoothEnabled) {
+          if (!isLocationEnabled) {
+            alert("Please enable Location to start.");
+          }
+      
+          if (!isBluetoothEnabled) {
+            alert("Please enable Bluetooth to start.");
+          }
+      
+          // Do additional processing or trigger events based on adapter status...
+        }
+      }
+      
+  
     //-----------------------------------------------------------------------------
     function defdisconnect(f) {
         if (typeof f != "function") {
@@ -506,7 +551,6 @@ function getrssi() {
             gotline(v, "testjson");
         }
     }
-    	
     function getfounddevices(){
     return foundDevices;
     }
@@ -514,6 +558,28 @@ function getrssi() {
     if (!btconnected) return{};
      return({name:btname,address:btaddress,nr:nrinfoundDevices,service:config.btservice}); 
     }
+    //--------------------------------------------------------------------------------
+    function fillListBasedOnConnectionStatus() {
+        var listElement = document.getElementById("deviceList");
+      
+        // Check if the device was previously connected
+        bluetoothle.wasConnected(
+          function(result) {
+            // Result contains information about previously connected devices
+            var devices = result.devices;
+      
+            // Iterate through the devices and add them to the list
+            devices.forEach(function(device) {
+              var listItem = document.createElement("li");
+              listItem.textContent = device.name;
+              listElement.appendChild(listItem);
+            });
+          },
+          function(error) {
+            console.log("Error occurred while checking connection status: " + error);
+          }
+        );
+      }
     //-----------------------------------------------------------------------------
     return {
         sendjson: sendbtjson,
@@ -535,7 +601,8 @@ function getrssi() {
         scan : startScan,
 	connect : connect,    
 	start: blestart,
-	subscribe: subscribednew
-
+	subscribe: subscribednew,
+    wasconnected:fillListBasedOnConnectionStatus,
+    checkAdapters:checkAdapters
     }
 })();

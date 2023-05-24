@@ -134,7 +134,7 @@
 				 <ons-icon icon="fa-bluetooth-b" class="list-item__icon"></ons-icon>
 			   </div>
 			   <div class="center">
-				 Device A
+				 <span id="deviceList"></span>
 			   </div>
 			 </ons-list-item>
 	   </div>
@@ -188,6 +188,7 @@
    /***************************************************************************************/
    /********************************************************************************************/
    //initializing
+   fble.wasconnected();
 	$('#scanningInterface').hide();
 	$('#hide-content').hide();
 	hidePopup();
@@ -198,10 +199,15 @@
    
    //initializing the bluetooth page, if the device is paired, then display the interface for paired device
    document.addEventListener('init', function(event) {
-	 if (event.target.matches('#bluetooth')) {
-	  testingconn(); }}, false);
-   
-   /************************************************************************/
+  if (event.target.matches('#bluetooth')) {
+    fble.checkAdapters();
+    testingconn();
+
+    // Unregister the event listener after it has been triggered
+    document.removeEventListener('init', arguments.callee, false);
+  }
+}, false);
+/************************************************************************/
    var popup = document.getElementById("popup");  
    // Get the <span> element that closes the popup
    var closeBtn = popup.querySelector(".closepop");
