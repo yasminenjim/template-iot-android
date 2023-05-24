@@ -1,15 +1,14 @@
 <ons-page id="bluetooth" style="text-align: center;"  class="page__background bluetooth-page" >
 	<ons-toolbar class="toolbar-background-bl" >
 	 <div class="left">
-	   <ons-back-button style="color: aliceblue;">Back</ons-back-button>
+		<ons-toolbar-button onclick='gohome();' >  
+			<span style="color: rgb(255, 255, 255);">
+				<i class="fa-solid fa-arrow-left"></i>
+		   </span>
+		   </ons-toolbar-button>
 		</div>
 		<div class="center" style="color:rgb(255, 255, 255);text-align: center;">Bluetooth</div>
 	   <div class="right">
-	  <ons-toolbar-button onclick='gohome();' >  
-	  <span style="color: rgb(255, 255, 255);">
-	   <i class="fa-solid fa-home"></i>
-	 </span>
-	 </ons-toolbar-button>
 	</div>
    </ons-toolbar>
    <!------------------------------------------------------------------------------------------------------->
@@ -250,6 +249,9 @@ window.onclick = function(event) {
    let b=document.getElementById(deviceId);
 	   if (b) {
 			  b.style.background="LightBlue";	
+			/**  c=document.getElementById("connectTO");
+   console.log("filling connectTO with the connected device");
+   c.innerHTML=deviceId;	**/
 			  }
    b=document.getElementById("btdisconnect");
    b.disabled=false;
@@ -272,16 +274,22 @@ window.onclick = function(event) {
    $('#scanningInterface').show();
    // Set a timeout of 10 seconds to stop the scan
   setTimeout(function() {
-    fble.onscanstop();
     // Check if any devices were found
     if (document.getElementById('btscandiv').innerHTML.trim() === '') {
       // "No devices found, show a popup
+	  fble.onscanstop();
    alert("No Bluetooth devices found. Please make sure your device is discoverable and try again.");
    $('#first-interface').show();
    $('#scanningInterface').hide();
+
     }
   },
    20000);
+   setTimeout(function() {
+	   $('#popup').show();
+	   console.log("popup is called from scanforble method");
+   
+	 }, 5000);
    }
    //-----------------------------------------------------------------------------
    fble.onscanstop(function(){
@@ -318,11 +326,7 @@ window.onclick = function(event) {
 	   });
    var d=document.getElementById('btscandiv');
    if (d) 	d.appendChild(element); 
-   setTimeout(function() {
-	   $('#popup').show();
-	   console.log("popup is showed from adddevicetolist method called from scanforble method");
    
-	 }, 5000);
    }
    //-----------------------------------------------------------------------------
    fble.onsubscribed(function(o){
@@ -339,6 +343,7 @@ window.onclick = function(event) {
    b.style.color="LightBlue";
    b=document.getElementById("btconnectto");
    c=document.getElementById("connectTO");
+   console.log("filling connectTO with the connected device");
    c.innerHTML=o.name;	
    b.innerHTML=o.name;	
    $('#scanningInterface').hide();
@@ -381,6 +386,7 @@ window.onclick = function(event) {
    $('#scanningInterface').hide();
    $('#deviceConnected').show();
    $('#first-interface').hide();
+	$('#connecteSettings').show();
    $('#popup').hide();}}
    /****************************************************************************/
    //Swipping right/left
