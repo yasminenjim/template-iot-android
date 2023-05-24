@@ -128,7 +128,7 @@
 
 @keyframes move {
   0% { right: 0; }
-  100% { right: calc(100vw - 100%); }
+  100% { right: calc(100vw - 100% - 20px);}
 }
 
 .home-card-body{

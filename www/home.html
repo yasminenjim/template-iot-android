@@ -11,24 +11,17 @@
       </ons-toolbar-button>
     </div>
 </div>
-
     <div class="center" style="color:rgb(255, 255, 255);text-align: center;font-size: 30px;margin-top:50px">Tools</div>
-    
     <div style="margin-left:auto;" class="right"  id="connectdto" onclick="navigatetopage('./pages/bluetooth.html');">
-
-
-
       <ons-icon id="bticononhome"   class="mx-auto" icon="fa-bluetooth-b" aria-hidden="true" size="13px"
-      style="color:#EFEFEF;">
+      style="color:#EFEFEF;margin-top: 21px;">
       <span class="second-span">Connected to </span>
      <span id="btconnectto" class="first-span">
     </span>   	
     </ons-icon>
      </div>	    
   </ons-toolbar>
-
   <!------------------------------------------------------------------------>           
-
   <h1 class="center" style="    color: #ffffff;
   text-align: center;
   font-size: 30px;
@@ -52,14 +45,8 @@
         </ons-card>
       </div>
     </div>
-
-    
-
-
-    
     <div style="display: flex; justify-content: center; margin: -7px auto;">
       <div style="width: 40%;height:70px  !important;">
-
         <ons-card class="card-style" style="text-align: center;"  onclick='navigatetopage("./pages/testpage.html");'>
           <div class="home-card-body" style="margin-left: 58px;">
           <span style="margin-left: -104px;color: #0e4b64;">
@@ -75,7 +62,6 @@
     </div>
     <div style="display: flex; justify-content: center; margin: 14px auto;">
       <div style="width: 40%;height:70px  !important;">
-
         <ons-card class="card-style" style="text-align: center;" onclick="navigatetopage('./pages/motors.html')" >
           <div class="home-card-body" style="margin-left: -27px;">
           <span style="margin-left: -104px;color: #0e4b64;">
@@ -114,22 +100,14 @@
     </div>
   </div>
  </div>
- 
-
-<!---
- <ons-bottom-toolbar>
-  Content
-</ons-bottom-toolbar>
--->
-
    <script>
+  
   ons.getScriptPage().onInit = function() {
-	console.log("home onInit ");  }; 	  
+	console.log("home onInit "); $('#bticononhome').hide();  }; 	  
   function togglesplitter(){
    console.log("toggle");
   var s=document.getElementById('appSplitter');s.left.toggle().then((r)=>{fvar.scan(s).update();console.log("splitter updated");});
   }
- 
   </script>
  </ons-page>
  
