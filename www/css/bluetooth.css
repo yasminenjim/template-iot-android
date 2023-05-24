@@ -220,4 +220,6 @@
   .dot.active {
     background-color: #000;
   }
-  
+  .bleicon{
+    font-size: 14px;
+  }

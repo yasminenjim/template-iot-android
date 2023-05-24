@@ -13,16 +13,7 @@
 	</div>
    </ons-toolbar>
    <!------------------------------------------------------------------------------------------------------->
-   <!---
-   auto-scroll: automatically snap to item borders
-   overscrollable: scroll past the first and last element of the carousel.
-   fullscreen: cover the whole screen you can use the fullscreen
-   ---->
-   <!---
-   <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel" onpostchange="changeTabbar()" animation="true"> -->
-   <ons-carousel fullscreen swipeable auto-refresh auto-scroll overscrollable id="carousel"> 
-   
-   <!------------Content for the first carousel item (bl scan/connected)------------------------------------>	
+   <ons-carousel fullscreen swipeable auto-refresh auto-scroll overscrollable id="carousel"> 	
    <!--first bluetooth interface-->
    <ons-carousel-item>
 	   <div style="padding-top: 5px; margin-top: 20px;" id="first-interface">
@@ -37,26 +28,20 @@
 	   </div>
 	   <br>
 	   <br>
-   
 	   <div style="text-align: center;" id="scanMsg">
 		 <br>
 	   <tr>
-		 
 		<p style="color: aliceblue; margin-bottom: 110px;">Tap to scan</p>
 	   </tr>
 	   </div>
 	   </div>
-	   
    <!--Second bluetooth interface-> Scanning process-->
-   
    <div style="padding-top: 5px; margin-top: 20px;" id="scanningInterface">
    <div id="outerContainer">
 	 <div id="container">
 	   <div class="item">
 		 <img src="../img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
 	   </div>
-   
-	 
    <div class="circle" style="animation-delay: -3s"></div>
    <div class="circle" style="animation-delay: -2s"></div>
    <div class="circle" style="animation-delay: -1s"></div>
@@ -103,10 +88,10 @@
 	   <ons-list-header>Connected to</ons-list-header>
 	   <ons-list-item id="connecteSettings">
 		 <div class="left">
-		   <ons-icon icon="fa-bluetooth-b" class="list-item__icon"></ons-icon>
+		   <ons-icon icon="fa-bluetooth-b" class="list-item__icon bleicon"></ons-icon>
 		 </div>
 		 <div class="center">
-		   <span id="connectTO" style="color:rgb(0, 0, 0);margin-left: -28px;"></span>   	
+		   <span id="connectTO" style="color:rgb(0, 0, 0);margin-left: -31px;"></span>   	
 		 </div>
 		 <div class="right">
 		   <ons-switch id="mySwitch"></ons-switch>
@@ -147,7 +132,7 @@
 	<div class="popup-background"></div>
 	<div class="popup">
 	   <span class="closepop">&times;</span>
-	  <h1 style="font-size: 25px;">Available Devices</h1>
+	  <h1>Available Devices</h1>
 		<ons-list>
 		   <ons-list-item>
 			   <span id="btscandiv" style="font-size: 15px;"></span>
@@ -159,7 +144,6 @@
    <!----------------------------------The end of the second swipe page(number 1)------------------------------------------------------------------------->
 	 </ons-carousel-item>
    </ons-carousel>
-   
    <!----------------------------------Have to delete this-------------------------------------------------------------------------->
    <div id="hide-content">
 	   <br>
@@ -181,7 +165,6 @@
 	<span class="dot"></span>
   </div>
    <script>
-	
    /**
    //This is a nice functionality for closing a popup
 	// added Close-x into the selectors
@@ -252,20 +235,13 @@ window.onclick = function(event) {
    //hidePopup();
   }
 }
-/******************************************************************************/
-	
-   
+/******************************************************************************/ 
 /****************************************************************************/
-   
    var devices=fble.founddevices()
-   
-   devices.forEach(function(o,nr) { // add  devices already found
-		//console.log(i+"  "+e.name);
-	   
-		   var deviceId = "id_" + o.name + "_" + nr;  
-	   adddevicetolist(o,nr); 
+   devices.forEach(function(o,nr) { 
+	var deviceId = "id_" + o.name + "_" + nr;  
+	adddevicetolist(o,nr); 
 							 });
-   
    //are we already connected when changing to bluetooth.html
    var connecteddevice=fble.getconnected();
    if (connecteddevice.name){
@@ -290,16 +266,13 @@ window.onclick = function(event) {
 						   }
    console.log("scanforble");
    //document.getElementById("circles").show();
-   
    document.getElementById('btscandiv').innerHTML="";	
    fble.scan();
-   
    $('#first-interface').hide();
    $('#scanningInterface').show();
    // Set a timeout of 10 seconds to stop the scan
   setTimeout(function() {
     fble.onscanstop();
-
     // Check if any devices were found
     if (document.getElementById('btscandiv').innerHTML.trim() === '') {
       // "No devices found, show a popup
@@ -320,7 +293,6 @@ window.onclick = function(event) {
    adddevicetolist(dev,nr);
    });
    //-----------------------------------------------------------------------------
-   
    //-----------------------------------------------------------------------------
    //dev: object representing the BLE device to add
    //nr: a number representing the device's order in the list
@@ -371,12 +343,10 @@ window.onclick = function(event) {
    b.innerHTML=o.name;	
    $('#scanningInterface').hide();
    $('#deviceConnected').show();
-   document.querySelector('ons-switch').setAttribute('checked', 'true')
+   document.querySelector('ons-switch').setAttribute('checked', 'true');
 	$('#connecteSettings').show();
-
    if (apponsubscribed)	setTimeout(()=>{apponsubscribed()},1000);
    });
-   
    fble.ondisconnected((o)=>{
 						 var deviceId = "id_" + o.name + "_" + o.nr;
 						 console.log("disconnected "+deviceId); 
@@ -384,21 +354,17 @@ window.onclick = function(event) {
 						 b.disabled=true;
 							b=document.getElementById(deviceId);     
 						b.style.background="none";
-   
    b=document.getElementById("bticononhome");
    b.style.color="white";
    b=document.getElementById("btconnectto");
    b.innerHTML="";
    ons.notification.toast('Disconnected ' + o.name, { timeout: 3000 }); 	
 							 });
-   
    function disconnect(e){
    fble.disconnect();
    }
-   
    /************************************************************************/
    function popupshow(){
-	   
 	   if (fble.isconnected()) {
 	$('#connecteSettings').show();
 	ons.notification.toast('Already connected to ' + btname, { timeout: 2000 });
@@ -406,13 +372,10 @@ window.onclick = function(event) {
 	   $('#deviceConnected').show();
 	   $('#first-interface').hide();
 	   console.log("popup is hided from init method");
-   
    }}
    /************************************************************************/
-   
    //when navigation from home to bluetooth interface, check if the device is connected and display the appropriate interface
    function testingconn(){
-	   
    if (fble.isconnected()) {
    ons.notification.toast('Already connected to ' + btname, { timeout: 2000 });
    $('#scanningInterface').hide();
@@ -426,20 +389,7 @@ window.onclick = function(event) {
 	   console.log('Changed to ' + event.activeIndex)
 	 });
    });
-   /****************************************************************************//**
-   
-   mySwitch.addEventListener("change", function() {
-	 if (this.disabled) {
-	   // Switch is turned on, call your method here
-	   disconnect();
-	   $('#deviceConnected').hide();
-   $('#first-interface').show();
-	 } else {
-	   // Switch is turned off, disable the switch
-	   this.disabled = false;
-	 }
-   }); **/
-
+   /****************************************************************************/
 // Add an event listener to the switch
 mySwitch.addEventListener("change", function() {
   if (!this.checked) {
@@ -448,20 +398,11 @@ mySwitch.addEventListener("change", function() {
    $('#scanningInterface').hide();
 	$('#deviceConnected').hide();
 	$('#first-interface').show();
-
 	$('#connecteSettings').hide();
-
-
   }
 });
 
-   
-   
-   
-   
-   
    </script>
-   
    </ons-page>
 	 
    
