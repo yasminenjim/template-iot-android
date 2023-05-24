@@ -198,5 +198,26 @@
     color: #999;
   }
   
-
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    position: absolute;
+    bottom: 79px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+  }
+  
+  .dot.active {
+    background-color: #000;
+  }
   

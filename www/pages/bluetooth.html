@@ -20,7 +20,7 @@
    ---->
    <!---
    <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel" onpostchange="changeTabbar()" animation="true"> -->
-   <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel"> 
+   <ons-carousel fullscreen swipeable auto-refresh auto-scroll overscrollable id="carousel"> 
    
    <!------------Content for the first carousel item (bl scan/connected)------------------------------------>	
    <!--first bluetooth interface-->
@@ -94,19 +94,6 @@
 	   </tr>
 	   </div> 
    </div>
-   <!---------------------------Popup tab----------------------------------------------------------------------------------------------->
-   <div class="popup-container" id="popup">
-	 <div class="popup-background"></div>
-	 <div class="popup">
-		<span class="closepop">&times;</span>
-	   <h1 style="font-size: 25px;">Available Devices</h1>
-		 <ons-list>
-			<ons-list-item>
-				<span id="btscandiv" style="font-size: 15px;"></span>
-			</ons-list-item>
-		 </ons-list>
-	 </div>
-   </div>
    </ons-carousel-item>
    <!----------------------------------Content for the second carousel item (Parametres)--------------------------------------------->
    <ons-carousel-item style="background-color: #ffffff;">
@@ -155,6 +142,19 @@
 	   <div>
 		 Device A
 	   </div>
+	    <!---------------------------Popup tab----------------------------------------------------------------------------------------------->
+   <div class="popup-container" id="popup">
+	<div class="popup-background"></div>
+	<div class="popup">
+	   <span class="closepop">&times;</span>
+	  <h1 style="font-size: 25px;">Available Devices</h1>
+		<ons-list>
+		   <ons-list-item>
+			   <span id="btscandiv" style="font-size: 15px;"></span>
+		   </ons-list-item>
+		</ons-list>
+	</div>
+  </div>
 	 </ons-list-item>
    <!----------------------------------The end of the second swipe page(number 1)------------------------------------------------------------------------->
 	 </ons-carousel-item>
@@ -176,7 +176,10 @@
    <span id="char2001" ></span> <br>
 	   </div>
    <!------------------------------------------------------------------------------------------------------->
-   
+   <div class="carousel-dots">
+	<span class="dot"></span>
+	<span class="dot"></span>
+  </div>
    <script>
 	
    /**
@@ -203,10 +206,30 @@
     fble.checkAdapters();
     testingconn();
 
+    const carousel = document.querySelector('ons-carousel');
+    const dots = document.querySelectorAll('.dot');
+
+    carousel.addEventListener('postchange', function(event) {
+      const activeIndex = event.carousel.getActiveIndex();
+
+      // Remove active class from all dots
+      dots.forEach(function(dot) {
+        dot.classList.remove('active');
+      });
+
+      // Add active class to the corresponding dot
+      dots[activeIndex].classList.add('active');
+    });
+
+    // Add active class to the first dot initially
+    dots[0].classList.add('active');
+
     // Unregister the event listener after it has been triggered
     document.removeEventListener('init', arguments.callee, false);
   }
 }, false);
+
+
 /************************************************************************/
    var popup = document.getElementById("popup");  
    // Get the <span> element that closes the popup
