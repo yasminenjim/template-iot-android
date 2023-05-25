@@ -34,10 +34,10 @@
         <label for="nodeId">NODE-ID</label><br>
         <input type="text" id="nodeId" name="nodeId" size="4" maxlength="4" placeholder="0x0000"><br>
         <label for="cmd">CMD</label><br>
-        <input type="text" id="cmdsdo" name="cmd" size="8" maxlength="8" placeholder="0x0000"><br>
+        <input type="text" id="cmdsdo" name="cmd" size="8" maxlength="8" placeholder="0x00000000"><br>
         <label for="sdo">SDO</label><br>
-        <input type="text" id="sdo1" name="sdo1" size="4" maxlength="4" placeholder="0x0000">
-        <input type="text" id="sdo2" name="sdo2" size="4" maxlength="4" placeholder="0x0000"><br>
+        <input type="text" id="sdo1" name="sdo1" size="8" maxlength="8" placeholder="0x00000000">
+        <input type="text" id="sdo2" name="sdo2" size="8" maxlength="8" placeholder="0x00000000"><br>
        <div id="warningDivsdo" style="display: none; align-items: center;">
         <i  style="margin-right: 10px;color: red;" class="fa-solid fa-circle-exclamation"></i>
         <p class="warningStyle" id="warningMessagesdo"></p>
@@ -54,8 +54,8 @@
         <label for="cobId">COB-ID</label><br>
         <input type="text" id="cobId" name="cobId" size="4" maxlength="4" placeholder="0x0000"><br>
         <label for="data">DATA</label><br>
-        <input type="text" id="data1" name="data1" size="4" maxlength="4" placeholder="0x0000">
-        <input type="text" id="data2" name="data2" size="4" maxlength="4" placeholder="0x0000"><br>
+        <input type="text" id="data1" name="data1" size="8" maxlength="8" placeholder="0x00000000">
+        <input type="text" id="data2" name="data2" size="8" maxlength="8" placeholder="0x00000000"><br>
         <div id="warningDivpdo" style="display: none; align-items: center;">
           <i  style="margin-right: 10px;color: red;" class="fa-solid fa-circle-exclamation"></i>
           <p class="warningStyle" id="warningMessagepdo" ></p>
@@ -70,6 +70,8 @@ const sdoCheckbox = document.querySelector('#check-1');
 const pdoCheckbox = document.querySelector('#check-2');
 const sdoCard = document.querySelector('#SDO');
 const pdoCard = document.querySelector('#PDO');
+
+
 // Add a change event listener to the SDO checkbox
 sdoCheckbox.addEventListener('change', function() {
 // If the checkbox is checked, show the SDO card and hide the PDO card
@@ -135,6 +137,7 @@ if (!isValid) {
 // send SDO message
   console.log("your SDO message is sent");
   warningDiv.style.display = "none";
+  sendsdomsg();
 }
 });
 //PDO
@@ -158,8 +161,39 @@ warningDivpdo.style.display = "none";
 console.log("your pdo message is correct");
 }
 // send PDO message
+console.log("your PDO message is gonna be sent");
+sendpdomsg();
 console.log("your PDO message is sent");
+
 });
+
+//-----------------------------------Sending PDO/SDO-------------------------------------------------------
+
+function sendpdomsg(){
+  const cobId = document.querySelector("#cobId").value;
+  const data1 = document.querySelector("#data1").value;
+  const data2 = document.querySelector("#data2").value;
+  // Construct the message
+   const message = `can${cobId}${data1}${data2}`;
+   console.log("the pdo message to be sent: "+message);
+// Send the message using fble.send()
+fble.send(message);
+
+ }
+
+ function sendsdomsg(){
+const nodeId = sdoForm.querySelector("#nodeId");
+const cmd = sdoForm.querySelector("#cmdsdo");
+const sdo1 = sdoForm.querySelector("#sdo1");
+const sdo2 = sdoForm.querySelector("#sdo2");
+  // Construct the message
+   const message = `can${nodeId}${cmd}${sdo1}${sdo2}`;
+   console.log("the sdo message to be sent: "+message);
+// Send the message using fble.send()
+fble.send(message);
+
+ }
+
 
 </script>
 </ons-page>   
