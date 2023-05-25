@@ -96,6 +96,7 @@
 		   <ons-switch id="mySwitch"></ons-switch>
 		 </div>
 	   </ons-list-item>
+<!---
 	   <ons-list-header>PAIRED DEVICES</ons-list-header>
 	   <ons-list-item expandable>
 		 Tap to expand
@@ -126,6 +127,7 @@
 	   <div>
 		 Device A
 	   </div>
+	   </ons-list-item> !-->
 	    <!---------------------------Popup tab----------------------------------------------------------------------------------------------->
    <div class="popup-container" id="popup">
 	<div class="popup-background"></div>
@@ -139,7 +141,7 @@
 		</ons-list>
 	</div>
   </div>
-	 </ons-list-item>
+	
    <!----------------------------------The end of the second swipe page(number 1)------------------------------------------------------------------------->
 	 </ons-carousel-item>
    </ons-carousel>
@@ -187,25 +189,19 @@
   if (event.target.matches('#bluetooth')) {
     fble.checkAdapters();
     testingconn();
-
     const carousel = document.querySelector('ons-carousel');
     const dots = document.querySelectorAll('.dot');
-
     carousel.addEventListener('postchange', function(event) {
-      const activeIndex = event.carousel.getActiveIndex();
-
+    const activeIndex = event.carousel.getActiveIndex();
       // Remove active class from all dots
       dots.forEach(function(dot) {
         dot.classList.remove('active');
       });
-
       // Add active class to the corresponding dot
       dots[activeIndex].classList.add('active');
     });
-
     // Add active class to the first dot initially
     dots[0].classList.add('active');
-
     // Unregister the event listener after it has been triggered
     document.removeEventListener('init', arguments.callee, false);
   }
@@ -218,20 +214,26 @@
    var closeBtn = popup.querySelector(".closepop");
    closeBtn.addEventListener("click", function () {
 	//popup.style.display = "none";
+	if (!fble.isconnected()){
+		$('#scanningInterface').hide();
+		$('#first-interface').show();
+	}
 	hidePopup();
 });
 function hidePopup() {
 	var popup = document.getElementById("popup");
 	   popup.style.display = "none";
 	   console.log("popup is hided");
-	$('#scanningInterface').hide();
-   $('#first-interface').show();
+	   
 	 }
 	 // When the user clicks anywhere outside of the popup, close it
 window.onclick = function(event) {
   if (event.target == popup) {
     popup.style.display = "none";
-   //hidePopup();
+    if (!fble.isconnected()){
+		$('#scanningInterface').hide();
+		$('#first-interface').show();
+	}
   }
 }
 /******************************************************************************/ 
@@ -280,15 +282,12 @@ window.onclick = function(event) {
 	  fble.onscanstop();
    alert("No Bluetooth devices found. Please make sure your device is discoverable and try again.");
    $('#first-interface').show();
-   $('#scanningInterface').hide();
-
-    }
+   $('#scanningInterface').hide();}
   },
-   20000);
+   10000);
    setTimeout(function() {
 	   $('#popup').show();
 	   console.log("popup is called from scanforble method");
-   
 	 }, 5000);
    }
    //-----------------------------------------------------------------------------
@@ -344,6 +343,7 @@ window.onclick = function(event) {
    b.style.display="block";
    b=document.getElementById("btconnectto");
    c=document.getElementById("connectTO");
+   fble.getDeviceDetails();
    console.log("filling connectTO with the connected device");
    c.innerHTML=o.name;	
    b.innerHTML=o.name;	
@@ -371,14 +371,16 @@ window.onclick = function(event) {
    }
    /************************************************************************/
    function popupshow(){
-	   if (fble.isconnected()) {
+	var d=document.getElementById('btscandiv');
+	   if (fble.isconnected() && (d)) {
 	$('#connecteSettings').show();
 	ons.notification.toast('Already connected to ' + btname, { timeout: 2000 });
 	   $('#scanningInterface').hide();
 	   $('#deviceConnected').show();
 	   $('#first-interface').hide();
 	   console.log("popup is hided from init method");
-   }}
+   }
+}
    /************************************************************************/
    //when navigation from home to bluetooth interface, check if the device is connected and display the appropriate interface
    function testingconn(){
@@ -388,7 +390,8 @@ window.onclick = function(event) {
    $('#deviceConnected').show();
    $('#first-interface').hide();
 	$('#connecteSettings').show();
-   $('#popup').hide();}}
+   $('#popup').hide();
+}}
    /****************************************************************************/
    //Swipping right/left
    ons.ready(function() {

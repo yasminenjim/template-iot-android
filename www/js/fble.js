@@ -55,10 +55,7 @@ fble = (function() {
 
         bluetoothle.isEnabled(function(b) {
             console.log("bluetooth is " + JSON.stringify(b));
-            if (!b.isEnabled) {
-             // alert("Bluetooth is not enabled. Please enable Bluetooth.");
-            }
-          });
+        });
         if (window.cordova.platformId === "ios") {
             console.log("we are on iOs ?");
             setTimeout(function() {
@@ -70,7 +67,6 @@ fble = (function() {
             // does the trick for android                                                                                  
             bluetoothle.requestPermission(function(r) {
                 console.log("req permission");
-               // alert("Please enable Location to start.");
 
             }, handleError);
             //                                                                                                              
@@ -111,48 +107,7 @@ fble = (function() {
         }
         onbtsubscribed = f;
     }
-    //---------------------------------Checking adapters (location/bluetooth) if they are enabled---------------
-    // bleLocationCheck.js
-
-    function checkAdapters() {
-        var isLocationEnabled = false;
-        var isBluetoothEnabled = false;
-      
-        // Check if location is enabled for Android
-        cordova.plugins.diagnostic.isLocationEnabled(function(locationEnabled) {
-          console.log("Location enabled: " + locationEnabled);
-          isLocationEnabled = locationEnabled;
-          checkBluetoothEnabled();
-        }, function(error) {
-          console.log("Error occurred while checking location: " + error);
-          checkBluetoothEnabled();
-        });
-      
-        function checkBluetoothEnabled() {
-          bluetoothle.isEnabled(function(result) {
-            console.log("Bluetooth is " + JSON.stringify(result));
-            isBluetoothEnabled = result.isEnabled;
-            handleAdapterStatus(isLocationEnabled, isBluetoothEnabled);
-          }, function(error) {
-            console.log("Error occurred while checking Bluetooth: " + error);
-            handleAdapterStatus(isLocationEnabled, isBluetoothEnabled);
-          });
-        }
-      
-        function handleAdapterStatus(isLocationEnabled, isBluetoothEnabled) {
-          if (!isLocationEnabled) {
-            alert("Please enable Location to start.");
-          }
-      
-          if (!isBluetoothEnabled) {
-            alert("Please enable Bluetooth to start.");
-          }
-      
-          // Do additional processing or trigger events based on adapter status...
-        }
-      }
-      
-  
+    //-----------------------------------------------------------------------------
     //-----------------------------------------------------------------------------
     function defdisconnect(f) {
         if (typeof f != "function") {
@@ -580,6 +535,80 @@ function getrssi() {
           }
         );
       }
+      //-------------------------------------------------------------------------
+      function getDeviceDetails() {
+        if (!btconnected) {
+          console.log("No device connected.");
+          return;
+        }
+      
+        var params = {
+          address: btaddress
+        };
+      
+        bluetoothle.services(function(result) {
+          if (result.status === "services") {
+            console.log("Device Services:");
+            result.services.forEach(function(service) {
+              console.log("Service UUID: " + service.uuid);
+              // Retrieve characteristics for each service
+              bluetoothle.characteristics(function(charResult) {
+                if (charResult.status === "characteristics") {
+                  console.log("Characteristics for Service: " + service.uuid);
+                  charResult.characteristics.forEach(function(characteristic) {
+                    console.log("  Characteristic UUID: " + characteristic.uuid);
+                  });
+                }
+              }, handleError, {
+                address: btaddress,
+                service: service.uuid
+              });
+            });
+          }
+        }, handleError, params);
+      }
+//-------------------------------------------------------------------------------
+// bleLocationCheck.js
+
+function checkAdapters() {
+    var isLocationEnabled = false;
+    var isBluetoothEnabled = false;
+  
+    // Check if location is enabled for Android
+    cordova.plugins.diagnostic.isLocationEnabled(function(locationEnabled) {
+      console.log("Location enabled: " + locationEnabled);
+      isLocationEnabled = locationEnabled;
+      checkBluetoothEnabled();
+    }, function(error) {
+      console.log("Error occurred while checking location: " + error);
+      checkBluetoothEnabled();
+    });
+  
+    function checkBluetoothEnabled() {
+      bluetoothle.isEnabled(function(result) {
+        console.log("Bluetooth is " + JSON.stringify(result));
+        isBluetoothEnabled = result.isEnabled;
+        handleAdapterStatus(isLocationEnabled, isBluetoothEnabled);
+      }, function(error) {
+        console.log("Error occurred while checking Bluetooth: " + error);
+        handleAdapterStatus(isLocationEnabled, isBluetoothEnabled);
+      });
+    }
+  
+    function handleAdapterStatus(isLocationEnabled, isBluetoothEnabled) {
+      if (!isLocationEnabled) {
+        alert("Please enable Location to start.");
+      }
+  
+      if (!isBluetoothEnabled) {
+        alert("Please enable Bluetooth to start.");
+      }
+  
+      // Do additional processing or trigger events based on adapter status...
+    }
+  }
+  
+    
     //-----------------------------------------------------------------------------
     return {
         sendjson: sendbtjson,
@@ -603,6 +632,7 @@ function getrssi() {
 	start: blestart,
 	subscribe: subscribednew,
     wasconnected:fillListBasedOnConnectionStatus,
+    getDeviceDetails:getDeviceDetails,
     checkAdapters:checkAdapters
     }
 })();

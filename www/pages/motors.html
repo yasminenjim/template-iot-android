@@ -13,12 +13,9 @@
      </ons-toolbar-button>
     </div>
    </ons-toolbar>
-
    <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
-
     <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
-      <div>
-      </div>
+
 <div class="motor-interface">
   <div class="slider-container">
     <div class="slider-background"></div>
@@ -47,18 +44,10 @@
 </div>
 </div>
 </div>
-
-<div id="debugdiv1" >
-</div>
-
   </ons-carousel-item>
 <!-------------right motor------------------>
   <ons-carousel-item>
-   
-
-    <div>
-      
-    </div>
+  
 <div class="motor-interface">
 <div class="slider-container">
   <div class="slider-background"></div>
@@ -92,7 +81,7 @@
 </ons-carousel>
 
 <script>
-   $('#debugdiv1').hide();
+
 
 const slider = document.getElementById("myRange");
 const output = document.getElementById("slider-value");
@@ -124,7 +113,7 @@ function motorgo(lr,speed){
 	      } 
 	  else o={do:{mr:{s:speed}}};
     fble.sendjson(o); 
-    document.getElementById("debugdiv1").innerHTML=JSON.stringify(o);
+   
   }
   function motorstop(lr){
     var o;
@@ -133,7 +122,7 @@ function motorgo(lr,speed){
 	      } 
 	   else o={do:{mr:{s:0}}};
            fble.sendjson(o); 
-	   document.getElementById("debugdiv1").innerHTML=JSON.stringify(o);
+	   
   }
 
 
