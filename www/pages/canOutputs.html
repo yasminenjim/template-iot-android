@@ -65,6 +65,7 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
+  console.log("displaying the model from the button function");
 }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
@@ -73,7 +74,10 @@ span.onclick = function() {
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
+  console.log("closing the modal by clicking anyhwre outside1");
     modal.style.display = "none";
+  console.log("closing the modal by clicking anyhwre outside2");
+
   }
 }
 /**
@@ -250,6 +254,7 @@ function resetcantable(){
   tablecontainer.style.display="block";
  filteredTable.style.display="none";
 }
+//_------------------------------------------------------------------------------
 /*******************************this js code is for adding a pagination functionality*********************************************/
 // Define a variable to keep track of the current page
 //var currentPage = 1;
