@@ -39,8 +39,7 @@
       </tbody>
     </table>
   </div>
-  <table id="filteredTable">
-  </table>
+  <table id="filteredTable" class="filtered-table" style="display: none;"></table>
     </div>
      <!------------ This is for pagination, in case you want to use it
     </div>
@@ -210,50 +209,68 @@ filterOption.addEventListener("change", function() {
       break;
   }
 });
-function filteredmsgs(filter) {
-  const currenttable = document.getElementById("can-table");
-  const tablecontainer = document.getElementById("table-container");
 
-  let filteredMessages = [];
-  let sdofiltered = [];
-  const rows = currenttable.getElementsByTagName("tr"); // get all the rows in the table
-  // loop through each row in the table, skipping the first row (which likely contains header cells)
-  for (let i = 1; i < rows.length; i++) {
-    const cells = rows[i].getElementsByTagName("td"); // get all the cells in the row
-    const cobidCell = cells[1]; // the cobid value should be in the second cell of each row
-    const cobid = cobidCell.innerText.trim();
-    const msgType = getMessageType(parseInt(cobid));
-    if ((msgType === "TXPDO1" || msgType === "RXPDO1") && filter === "PDO") {
-      filteredMessages.push(cells);
-    } else if ((msgType === "TXSDO" || msgType === "RXSDO") && filter === "SDO") {
-      sdofiltered.push(cells);
+
+function filteredmsgs(filter) {
+    const currentTable = document.getElementById("can-table");
+    const filteredTable = document.getElementById("filteredTable");
+
+    let filteredMessages = [];
+    const rows = currentTable.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("td");
+      const cobidCell = cells[1];
+      const cobid = cobidCell.innerText.trim();
+      const msgType = getMessageType(parseInt(cobid));
+
+      if (
+        (msgType === "TXPDO1" || msgType === "RXPDO1") &&
+        filter === "PDO"
+      ) {
+        filteredMessages.push(cells);
+      } else if (
+        (msgType === "TXSDO" || msgType === "RXSDO") &&
+        filter === "SDO"
+      ) {
+        filteredMessages.push(cells);
+      }
     }
-  }
-// create a new table element to display the filtered messages
-const filteredTable = document.createElement("table");
-  // add a header row to the filtered table
-  const headerRow = filteredTable.insertRow();
-  headerRow.innerHTML = "<th>Date</th><th>Cobid</th><th>NodeID</th><th>Data</th>";
-  // add rows to the filtered table for each filtered message
-  const filteredMessagesArray = filter === "PDO" ? filteredMessages : sdofiltered;
-  for (let i = 0; i < filteredMessagesArray.length; i++) {
-    const newRow = filteredTable.insertRow();
-    for (let j = 0; j < filteredMessagesArray[i].length; j++) {
-      const newCell = newRow.insertCell();
-      newCell.innerHTML = filteredMessagesArray[i][j].innerText;
+
+    // Clear any previous content
+    filteredTable.innerHTML = "";
+
+    if (filteredMessages.length === 0) {
+      filteredTable.style.display = "none";
+      currentTable.style.display = "table";
+      return;
     }
+
+    // Add a header row to the filtered table
+    const headerRow = filteredTable.insertRow();
+    headerRow.innerHTML = "<th>Date</th><th>Cobid</th><th>NodeID</th><th>Data</th>";
+
+    // Add rows to the filtered table for each filtered message
+    for (let i = 0; i < filteredMessages.length; i++) {
+      const newRow = filteredTable.insertRow();
+      for (let j = 0; j < filteredMessages[i].length; j++) {
+        const newCell = newRow.insertCell();
+        newCell.innerHTML = filteredMessages[i][j].innerText;
+      }
+    }
+
+    filteredTable.style.display = "table";
+    currentTable.style.display = "none";
   }
-  // add the filtered table to the DOM
-  document.body.appendChild(filteredTable);
-  filteredTable.classList.add("filtered-table");
-currenttable.style.display = "none";
-}
-function resetcantable(){
-  const currenttable = document.getElementById("can-table"); 
-  const tablecontainer = document.getElementById("table-container");
-  tablecontainer.style.display="block";
- filteredTable.style.display="none";
-}
+
+  function resetcantable() {
+    const currentTable = document.getElementById("can-table");
+    const filteredTable = document.getElementById("filteredTable");
+
+    filteredTable.style.display = "none";
+    filteredTable.innerHTML = ""; // Clear the filtered table's content
+    currentTable.style.display = "table";
+  }
 //_------------------------------------------------------------------------------
 /*******************************this js code is for adding a pagination functionality*********************************************/
 // Define a variable to keep track of the current page
