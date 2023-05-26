@@ -14,8 +14,8 @@
  </div>
 </ons-toolbar>
 
-
- <ons-card class="m-2">
+<!---
+ <ons-card class="m-2" style="margin: 7px;border-radius: 4%;">
         <ons-row>
           <ons-col>
             <div class="text-center">
@@ -34,8 +34,127 @@
                </div>
           </ons-list-item>
 	</onslist>
-	</ons-card>
+	</ons-card> -->
 
+  <ons-card id="noDeviceConnectedUpdate" class="m-2" style="margin: 7px;  border-radius: 4%;">
+    <div class="text-center">
+      <h4 mlang="startNoyouvee">No device connected.</h4>
+    </div>
+</ons-card>
 
+<div id="mainContentUpdate">
+  <ons-card id="updateFirmware" class="m-2" style="margin: 7px;  border-radius: 4%;">
+    <ons-row>
+      <ons-col>
+        <div class="text-center">
+          <h4 mlang="FirmwareHeadline">Firmware update</h4>
+          <ons-icon id="updSpinner" size="20px" spin icon="md-spinner"></ons-icon>
+        </div>
+      </ons-col>
+    </ons-row>
+
+    <ons-list class="mt-2 mb-3">
+        <ons-list-item id="">
+          <div class="center">
+            <span class="list-item__title" mlang="currentVersion">Current version</span>
+            <span id="currentVersionTxt" fvar='{name:"send.version"}' class="list-item__subtitle">N/A</span>
+          </div>
+        </ons-list-item>
+          <ons-list-item id="">
+            <div class="center">
+              <span class="list-item__title" mlang="availableVersion">Available version</span>
+              <span id="vviaweb" class="list-item__subtitle" mlang="loadFirmwareDataClick">Please load firmware</span>
+            </div>
+          </ons-list-item>
+        <ons-list-item id="" modifier="nodivider">
+            <div class="center">
+              <span class="list-item__title" mlang="ipYouvee">IP-Adresse QC</span>
+              <span id="idiv2" fvar='{name:"d2.IP"}' class="list-item__subtitle">N/A</span>
+            </div>
+        </ons-list-item>
+    </ons-list>
+  </ons-card>
+  <ons-card id="updateFirmwareStep1" class="m-2" style="margin: 7px;  border-radius: 4%;">
+    <ons-row>
+      <ons-col>
+        <div class="text-center">
+          <h4 mlang="stepOneLoadData">Step 1: Load firmware</h4>
+          <p class="text-medium" mlang="internetNeeded">Make sure the smartphone is connected to the internet</p>
+        </div>
+      </ons-col>
+    </ons-row>
+    <ons-row class="pt-3">
+      <ons-col class="text-center">
+        <ons-button id="dwnldbt"  class="mx-auto">
+          <span mlang="loadFirmwareData">Load current firmware</span>
+        </ons-button>
+      </ons-col>
+    </ons-row>
+    <ons-progress-bar class="pt-3 pb-3" id="dwnprogress" value="0" secondary-value="100"></ons-progress-bar>
+    <ons-row class="pt-3">
+      <ons-col class="text-center">
+        <span class="text-pink" style="font-size: 16px;" id="dwnres"></span>
+      </ons-col>
+    </ons-row>
+    <ons-row class="pt-3">
+      <ons-col class="text-center">
+        <span class="text-medium" id="compareVersionsTxt"></span>
+      </ons-col>
+    </ons-row>
+  </ons-card>
+
+  <ons-card id="updateFirmwareStep2" class="m-2" style="margin: 7px;  border-radius: 4%;">
+    <ons-row>
+      <ons-col>
+        <div class="text-center text-medium">
+          <h4><span id="stepNumber2" mlang="step2">step 2</span><span mlang="connectViaWifi">: connect QC via WLAN</span></h4>
+          <p mlang="connectViaWifiTxt">For this step, please connect to the QC via WiFi.</p>
+        </div>
+      </ons-col>
+    </ons-row>
+    <ons-row class="pt-3">
+      <ons-col class="text-center">
+        <ons-button id="checkForWifi" class="mx-auto" mlang="refresh">
+          To update
+        </ons-button>
+      </ons-col>
+    </ons-row>
+  </ons-card>
+
+  <ons-card id="updateFirmwareStep3" class="m-2" style="margin: 7px;  border-radius: 4%;">
+    <ons-row>
+      <ons-col>
+        <div class="text-center">
+          <h4 mlang=""><span id="stepNumber3" mlang="step3">Step 3</span><span mlang="uploadFirmware">: Upload loaded firmware to device</span></h4>
+          <p class="text-pink" mlang="stayConnectedDuringUpload">Please stay connected during the reading process.</p>
+        </div>
+      </ons-col>
+    </ons-row>
+    <ons-row class="pt-3">
+      <ons-col class="text-center">
+        <ons-button id="upldbt" class="mx-auto">
+          <span mlang="uploadToDevice">Upload to device</span>
+        </ons-button>
+      </ons-col>
+    </ons-row>
+    <ons-progress-bar class="pt-3 pb-2" id="progressBar" value="0" secondary-value="100"></ons-progress-bar>
+    <ons-row class="pb-3">
+      <ons-col class="text-center">
+        <h5 style="font-weight: 300;"><span id="percentageCalc">0%</span></h5>
+      </ons-col>
+    </ons-row>
+    <ons-row class="pt-3">
+      <ons-col class="text-center">
+        <span id="upres"></span>
+      </ons-col>
+    </ons-row>
+    <ons-row class="pt-2">
+      <ons-col class="text-center">
+        <p class="text-medium" id="ftransid"></p>
+        <p class="text-medium" id="updlog"> </p>
+      </ons-col>
+    </ons-row>
+  </ons-card>
+</div>
 <div >
 </div>

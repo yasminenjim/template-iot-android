@@ -1,0 +1,325 @@
+.text-red {
+    color: red;
+  }
+  
+  .text-light-green {
+    color: #18a461;
+  }
+  
+  .text-light-turquoise {
+    color: #B7F7F9;
+  }
+  
+  .text-pink {
+    color: #EB23E7;
+  }
+  
+  .text-black {
+    color: #000 !important;
+  }
+  
+  .text-white {
+    color: #fff !important;
+  }
+  
+  .background-white {
+    background-color: #ffffff !important;
+  }
+  
+  .background-grey {
+    background-color: #d6d6d6 !important;
+  }
+  
+  .background-color-turquoise {
+    background-color: #23e7eb;
+  }
+  
+  .background-light-turquoise {
+    background-color: #B7F7F9;
+  }
+  
+  .background-pink {
+    background-color: #EB23E7;
+  }
+  
+  .border-black-2 {
+    border: 2px solid #000000;
+  }
+  
+  .border-radius-10 {
+    border-radius: 10px;
+  }
+  
+  .border-radius-5 {
+    border-radius: 5px;
+  }
+  
+  .rounded-circle {
+    border-radius: 50%;
+  }
+  
+  .toolbar--material {
+    box-shadow: none;
+  }
+  
+  .tabbarPosition {
+    top: 90px !important;
+  }
+  
+  .tabbarStyle {
+    margin: 10px !important;
+  }
+  
+  .tabbar {
+    height: 75px;
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  
+  .tabbar__content {
+    bottom: 75px;
+  }
+  
+  .tabbar__button {
+    height: 75px;
+    line-height: 75px;
+  }
+  
+  :checked+.tabbar__button {
+    color: #23e7eb;
+  }
+  
+  .tabbar__label {
+    padding-top: 0.8rem;
+  }
+  
+  .tabbar__content {
+    margin-bottom: 10px;
+  }
+  
+  .tabbar--material__button {
+    font-size: 14px;
+  }
+  
+  .tabbar__border {
+    background-color: transparent !important;
+  }
+  
+  .m-2 {
+    border-radius: 10px !important;
+    background-color: #ffffff;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  
+  .button {
+    border-radius: 10px !important;
+    color: #000000;
+    background-color: #23e7eb;
+  }
+  
+  .switch__handle {
+    background-color: #000 !important;
+  }
+  
+  :checked+.switch__toggle {
+    background-color: #EB23E7;
+  }
+  
+  :checked+.segment__button {
+    background-color: #EB23E7 !important;
+    color: #fff !important;
+    transition: none;
+  }
+  
+  .button--material {
+    text-transform: none;
+  }
+  
+  .list-item--chevron:before,
+  .list-item__expand-chevron {
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    width: 10px;
+    height: 10px;
+  }
+  
+  .text-input--material__label--active {
+    color: #EB23E7;
+  }
+  
+  .list {
+    border-radius: 5px;
+  }
+  
+  .list-item__title {
+    font-weight: bold;
+    color: #10aeb1;
+    font-size: 15px;
+  }
+  
+  .list-item--material__center {
+    background-size: 100% 4px;
+  }
+  
+  .list-item--material__right {
+    background-size: 100% 4px;
+  }
+  
+  .text-medium {
+    font-size: 0.9rem;
+  }
+  
+  .text-large {
+    font-size: 1.3rem;
+  }
+  
+  .alert-dialog--material {
+    border-radius: 8px;
+  }
+  
+  .alert-dialog {
+    width: 300px;
+  }
+  
+  .font-weight-bold {
+    font-weight: 700 !important;
+  }
+  
+  .font-weight-normal {
+   font-weight: normal !important;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-strike {
+  text-decoration: line-through;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-inline {
+  list-style: none;
+  padding-left: 0;
+  display: inline;
+}
+
+.list-inline-item {
+  display: inline-block;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.visibility-visible {
+  visibility: visible;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.no-pointer {
+  cursor: not-allowed;
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.animation-fade-in {
+  animation: fade-in 0.5s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  
