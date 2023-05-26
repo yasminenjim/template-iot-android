@@ -5,9 +5,9 @@
       <div style="margin-top: -64px; margin-left: 216px;">
         <button class="button-srch" onclick="filterTable(document.getElementById('searchInput').value)">Search</button>
       </div>
-      <div id="myModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
+      <div id="myModalcan" class="modal-can">
+        <div class="modal-content-can">
+          <span id="closefilter-can" class="close-can">&times;</span>
           <h2>Filter Options</h2>
             <label for="filterOption">Select Filter Option:</label>
             <select id="filterOption" name="filterOption">
@@ -55,34 +55,32 @@
 
 //const clearButton = document.getElementById("clearingButton");
 clearingButton.addEventListener("click", clearTable);
-// Get the modal
-var modal = document.getElementById("myModal");
 // Get the button that opens the modal
 var btn = document.getElementById("filterBtn");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var modal = document.getElementById("myModalcan");
+var closeBtn = document.getElementById("closefilter-can");
 // When the user clicks the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
-  console.log("displaying the model from the button function");
-}
+  console.log("Displaying the modal from the button function");
+};
+
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+closeBtn.onclick = function() {
   modal.style.display = "none";
-}
+};
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
-  console.log("closing the modal by clicking anyhwre outside1");
     modal.style.display = "none";
-  console.log("closing the modal by clicking anyhwre outside2");
-
   }
-}
+}; 
+
 /**
 function getCobIdsFromTable() {
   const cobIds = []; // initialize an empty array to hold cobids
-  const table = document.getElementById("can-table"); // replace "myTable" with the ID of your table element
+  const table = document.getElementById("can-table");
   const rows = table.getElementsByTagName("tr"); // get all the rows in the table
   // loop through each row in the table, skipping the first row (which likely contains header cells)
   for (let i = 1; i < rows.length; i++) {
