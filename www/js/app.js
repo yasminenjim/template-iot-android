@@ -42,6 +42,8 @@ function onascii(txt, ch) {
     if (tbody) {
       if (tbody.rows.length >= 100) {
         tbody.deleteRow(-1);
+        updateNotification("Table reached 100 rows!");
+      
       }
   
       var cobid = txt.substr(3, 3);
@@ -64,6 +66,37 @@ function onascii(txt, ch) {
       }
     }
   }
+
+  function updateNotification(message) {
+    // Update the DOM in notifications.html
+  var notificationDiv = document.getElementById("notification-content");
+  if (notificationDiv) {
+    // Get the current date and time
+    var now = new Date();
+    var hours = now.getHours().toString().padStart(2, "0");
+    var minutes = now.getMinutes().toString().padStart(2, "0");
+    var timeString = hours + ":" + minutes;
+
+    // Update the time display
+    var timeElement = notificationDiv.querySelector(".notification-time");
+    if (timeElement) {
+      timeElement.textContent = timeString;
+    }
+
+    // Update the message content
+    var messageElement = notificationDiv.querySelector(".notification-content");
+    if (messageElement) {
+      messageElement.textContent = message;
+    }
+
+    // Show the notification
+    notificationDiv.classList.add("show");
+  }
+}
+  
+  
+
+ 
 //---------------------------------------------------------------------------
 //AO boxes
 /** 

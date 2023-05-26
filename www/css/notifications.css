@@ -1,0 +1,60 @@
+.notification-item {
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    display: none; /* Initially hidden */
+  }
+  
+  .notification-item:hover {
+    background-color: #eaeaea;
+  }
+  
+  .notification-item:active {
+    background-color: #dcdcdc;
+  }
+  
+  .notification-item .notification-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #333;
+  }
+  
+  .notification-item .notification-content {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .notification-item .notification-time {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .notification-item .notification-content:hover,
+  .notification-item .notification-time:hover {
+    color: #009688;
+  }
+  
+  .notification-item .notification-content:hover::before {
+    content: "\f0f2";
+  }
+  
+  .notification-item .notification-time:hover::before {
+    content: "\f073";
+  }
+  
+
+  
+  .notification-item.show {
+    display: flex; /* Show when the "show" class is added */
+  }
+.hidden {
+  display: none;
+}
+  

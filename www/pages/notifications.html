@@ -13,39 +13,12 @@
     </div>
    </ons-toolbar>
 
-   <ons-page>
-    <ons-toolbar>
-      <div class="center">Popover</div>
-    </ons-toolbar>
-  
-    <p style="text-align: center; margin: 50% 0;">
-      <ons-button onclick="showPopover(this)">Click me</ons-button>
-    </p>
-  </ons-page>
-  
-  <ons-popover direction="up" id="popover">
-    <div style="padding: 10px; text-align: center;">
-      <p>
-        This is a popover
-      </p>
-      <p>
-        <ons-button onclick="hidePopover()">Close</ons-button>
-      </p>
-    </div>
-  </ons-popover>
-   <script>
-    var showPopover = function(target) {
-  document
-    .getElementById('popover')
-    .show(target);
-};
+   <div id="notification-content" class="notification-item hidden"  onclick='navigatetopage("./pages/canInterfaces.html");'>
+    <i class="fas fa-bell notification-icon"></i>
+    <div class="notification-content">Table reached 100 rows!</div>
+    <div class="notification-time"></div>
+  </div>
 
-var hidePopover = function() {
-  document
-    .getElementById('popover')
-    .hide();
-};
-   </script>
 </ons-page>
 
    
