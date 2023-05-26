@@ -35,42 +35,41 @@ if (e) {
 }
 //-----------------------------------------------------------------------------
 function onascii(txt, ch) {
-    if (txt.indexOf("can") != 0) return;
-  
-    var tbody = document.getElementById("can-msgs");
-  
-    if (tbody) {
-      if (tbody.rows.length >= 100) {
-        tbody.deleteRow(-1);
-        updateNotification("Table reached 100 rows!");
-var notificationCount = 1;
-updateNotificationCount(notificationCount);
-      
-      }
-  
-      var cobid = txt.substr(3, 3);
-      var cid = parseInt(cobid, 16);
-      var nodeid = 127 & cid;
-      var len = (txt.length - 6) / 2;
-  
-      var row = tbody.insertRow(0);
-      var now = new Date();
-      var time = now.toISOString().slice(11, 23);
-  
-      row.insertCell(0).innerHTML = time;
-      row.insertCell(1).innerHTML = "0x" + cobid;
-      row.insertCell(2).innerHTML = "[" + nodeid + "]";
-  
-      var dataCell = row.insertCell(3);
-      for (var i = 0; i < len; i++) {
-        var dataByte = txt.substr(6 + i * 2, 2);
-        dataCell.innerHTML += " 0x" + dataByte;
-      }
+  if (txt.indexOf("can") != 0) return;
+
+  var tbody = document.getElementById("can-msgs");
+
+  if (tbody) {
+    if (tbody.rows.length >= 100) {
+      tbody.deleteRow(-1);
+      updateNotification("Table reached 100 rows!");
+      var notificationCount = 1;
+      updateNotificationCount(notificationCount);
+    }
+
+    var cobid = txt.substr(3, 3);
+    var cid = parseInt(cobid, 16);
+    var nodeid = 127 & cid;
+    var len = (txt.length - 6) / 2;
+
+    var row = tbody.insertRow(0);
+    var now = new Date();
+    var time = now.toISOString().slice(11, 23);
+
+    row.insertCell(0).innerHTML = time;
+    row.insertCell(1).innerHTML = "0x" + cobid;
+    row.insertCell(2).innerHTML = "[" + nodeid + "]";
+
+    var dataCell = row.insertCell(3);
+    for (var i = 0; i < len; i++) {
+      var dataByte = txt.substr(6 + i * 2, 2);
+      dataCell.innerHTML += " 0x" + dataByte;
     }
   }
+}
 
-  function updateNotification(message) {
-    // Update the DOM in notifications.html
+function updateNotification(message) {
+  // Update the DOM in notifications.html
   var notificationDiv = document.getElementById("notification-content");
   if (notificationDiv) {
     // Get the current date and time
@@ -91,6 +90,9 @@ updateNotificationCount(notificationCount);
       messageElement.textContent = message;
     }
 
+    // Save the message in localStorage
+    localStorage.setItem("notificationMessage", message);
+
     // Show the notification
     notificationDiv.classList.add("show");
   }
@@ -101,14 +103,15 @@ function updateNotificationCount(count) {
   var notificationCountElement = document.getElementById("notification-count");
   if (notificationCountElement) {
     notificationCountElement.textContent = count;
-    if (count > 0) {
-      notificationCountElement.style.display = "inline-block";
-    }
+    notificationCountElement.style.display = count > 0 ? "inline-block" : "none";
   }
 }
 
-  
-  
+// Check if there is a saved notification message in localStorage
+var savedNotificationMessage = localStorage.getItem("notificationMessage");
+if (savedNotificationMessage) {
+  updateNotification(savedNotificationMessage);
+}
 
  
 //---------------------------------------------------------------------------
