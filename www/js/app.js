@@ -43,6 +43,8 @@ function onascii(txt, ch) {
       if (tbody.rows.length >= 100) {
         tbody.deleteRow(-1);
         updateNotification("Table reached 100 rows!");
+var notificationCount = 1;
+updateNotificationCount(notificationCount);
       
       }
   
@@ -93,6 +95,18 @@ function onascii(txt, ch) {
     notificationDiv.classList.add("show");
   }
 }
+
+// Function to update the notification count and display it
+function updateNotificationCount(count) {
+  var notificationCountElement = document.getElementById("notification-count");
+  if (notificationCountElement) {
+    notificationCountElement.textContent = count;
+    if (count > 0) {
+      notificationCountElement.style.display = "inline-block";
+    }
+  }
+}
+
   
   
 
