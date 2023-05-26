@@ -5,18 +5,18 @@
       <div style="margin-top: -64px; margin-left: 216px;">
         <button class="button-srch" onclick="filterTable(document.getElementById('searchInput').value)">Search</button>
       </div>
-      <div id="myModalcan" class="modal-can">
-        <div class="modal-content-can">
-          <span id="closefilter-can" class="close-can">&times;</span>
+      <div id="popupContainer" class="popupContainer">
+        <div class="popupContent">
+          <span class="closeButton" onclick="closePopup()">&times;</span>
           <h2>Filter Options</h2>
-            <label for="filterOption">Select Filter Option:</label>
-            <select id="filterOption" name="filterOption">
-              <option value="NodeID">NodeID</option>
-              <option value="SDO">SDO</option>
-              <option value="PDO">PDO</option>
-            </select>
-            <br><br>
-            <button class="filterbuttonop" id="Apply" onclick="resetcantable()" >Reset</button>
+          <label for="filterOption">Select Filter Option:</label>
+          <select id="filterOption" name="filterOption">
+            <option value="NodeID">NodeID</option>
+            <option value="SDO">SDO</option>
+            <option value="PDO">PDO</option>
+          </select>
+          <br><br>
+          <button class="filterButton" id="resetButton" onclick="resetcantable()">Reset</button>
         </div>
       </div>
   <div class="buttoptcontainer"> 
@@ -56,26 +56,22 @@
 //const clearButton = document.getElementById("clearingButton");
 clearingButton.addEventListener("click", clearTable);
 // Get the button that opens the modal
-var btn = document.getElementById("filterBtn");
-var modal = document.getElementById("myModalcan");
-var closeBtn = document.getElementById("closefilter-can");
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-  console.log("Displaying the modal from the button function");
-};
+//var btn = document.getElementById("filterBtn");
+document.getElementById("filterBtn").addEventListener("click", function() {
+  var popup = document.getElementById("popupContainer");
+  popup.style.display = "block";
+});
 
-// When the user clicks on <span> (x), close the modal
-closeBtn.onclick = function() {
-  modal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+document.getElementById("popupContainer").addEventListener("click", function(event) {
+  if (event.target === this) {
+    closePopup();
   }
-}; 
+});
+
+function closePopup() {
+  var popup = document.getElementById("popupContainer");
+  popup.style.display = "none";
+}
 
 /**
 function getCobIdsFromTable() {
