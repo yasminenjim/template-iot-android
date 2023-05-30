@@ -1,4 +1,4 @@
-<ons-page>
+<ons-page id="settings">
 
  <ons-toolbar  class="blue-toolbar">
   <div class="left">
@@ -15,48 +15,5 @@
 </ons-toolbar>
 
 
- <ons-card class="m-2">
-        <ons-row>
-          <ons-col>
-            <div class="text-center">
-              <h4 mlang="overview">Overview</h4>
-            </div>
-          </ons-col>
-        </ons-row>
-        <onslist>
-          <ons-list-item>
-               <div class="left">
-                <ons-icon class="mx-auto" icon="fa-cog" size="20px"></ons-icon>
-               </div>
-               <div class="center">
-                <span id="dis_ver" fvar='{name:"version"}' class="list-item__title">N/A</span>
-               </div>
-          </ons-list-item>
-	</onslist>
-	</ons-card>
-        press return after input <br>
-	testparameter <input fvar='{name:"setting.test",act:{fnc:"sendbtjson",arg:{set:{test:"$value"}}}}' class="biginput" type="TEXT" />  <BR> 
-        testparameter22 <input fvar='{name:"setting.test2",act:{fnc:"sendbtjson",arg:{set:{test2:"$value"}}}}' class="biginput" type="TEXT" />  <BR>
 
-	<ons-list>
-    <ons-list-header>Settings</ons-list-header>
-    <ons-list-item>
-      <div class="center">
-        Enable 
-      </div>
-      <div class="right">
-        <ons-switch id="switch1" onchange="toast('switched')" checked></ons-switch>
-      </div>
-    </ons-list-item>
-     <ons-list-item>
-      <div class="center">
-        Enable2 
-      </div>
-      <div class="right">
-        <ons-switch id="switch2" checked></ons-switch>
-      </div>
-    </ons-list-item>
-
-     </ons-list>  
-<div >
-</div>
+</ons-page>

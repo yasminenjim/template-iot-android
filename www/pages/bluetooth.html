@@ -19,8 +19,7 @@
 	   <div id="outerContainer">
 		 <div id="container">
 		   <div class="item">
-			 <img
-			  class="ble-img" src="../img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
+			<img class="ble-img" src="/android_asset/www/img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
 		   </div>
 	   </div> 
 	   
@@ -39,7 +38,7 @@
    <div id="outerContainer">
 	 <div id="container">
 	   <div class="item">
-		 <img src="../img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
+		 <img src="/android_asset/www/img/Bluetooth-scan.png" id="scanButton" onclick="scanforble()"/>
 	   </div>
    <div class="circle" style="animation-delay: -3s"></div>
    <div class="circle" style="animation-delay: -2s"></div>
@@ -63,7 +62,7 @@
 	   <div id="outerContainer">
 		 <div id="container">
 		   <div class="item">
-			 <img class="ble-img" src="../img/done.png"/>
+			 <img class="ble-img" src="/android_asset/www/img/done.png"/>
 		   </div>
 	   </div>
 	   </div>
@@ -141,7 +140,6 @@
 		</ons-list>
 	</div>
   </div>
-	
    <!----------------------------------The end of the second swipe page(number 1)------------------------------------------------------------------------->
 	 </ons-carousel-item>
    </ons-carousel>
@@ -166,14 +164,6 @@
 	<span class="dot"></span>
   </div>
    <script>
-   /**
-   //This is a nice functionality for closing a popup
-	// added Close-x into the selectors
-   $('.close-x').click(function () {
-	   $('#popup').fadeOut('slow');
-   }); **/
-   /***************************************************************************************/
-   /********************************************************************************************/
    //initializing
    fble.wasconnected();
 	$('#scanningInterface').hide();
@@ -183,7 +173,6 @@
 	$('#connecteSettings').hide();
 	//var switch1 = document.getElementById('switch-1');
 	var mySwitch = document.getElementById("mySwitch");
-   
    //initializing the bluetooth page, if the device is paired, then display the interface for paired device
    document.addEventListener('init', function(event) {
   if (event.target.matches('#bluetooth')) {
@@ -206,8 +195,6 @@
     document.removeEventListener('init', arguments.callee, false);
   }
 }, false);
-
-
 /************************************************************************/
    var popup = document.getElementById("popup");  
    // Get the <span> element that closes the popup
@@ -224,7 +211,6 @@ function hidePopup() {
 	var popup = document.getElementById("popup");
 	   popup.style.display = "none";
 	   console.log("popup is hided");
-	   
 	 }
 	 // When the user clicks anywhere outside of the popup, close it
 window.onclick = function(event) {
@@ -237,7 +223,6 @@ window.onclick = function(event) {
   }
 }
 /******************************************************************************/ 
-/****************************************************************************/
    var devices=fble.founddevices()
    devices.forEach(function(o,nr) { 
 	var deviceId = "id_" + o.name + "_" + nr;  
@@ -257,7 +242,6 @@ window.onclick = function(event) {
 			  }
    b=document.getElementById("btdisconnect");
    b.disabled=false;
-   
    } else {
 	   let b=document.getElementById("btdisconnect"); 
 	   b.setAttribute('disabled','true');
@@ -325,7 +309,6 @@ window.onclick = function(event) {
 	   });
    var d=document.getElementById('btscandiv');
    if (d) 	d.appendChild(element); 
-   
    }
    //-----------------------------------------------------------------------------
    fble.onsubscribed(function(o){
@@ -411,7 +394,6 @@ mySwitch.addEventListener("change", function() {
 	$('#connecteSettings').hide();
   }
 });
-
    </script>
    </ons-page>
 	 

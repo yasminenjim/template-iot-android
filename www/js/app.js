@@ -12,10 +12,12 @@ fble.start();
 }	
 fvar.addfunc("sendbtjson", fble.sendjson);  
 fble.ongotjson(onjson);  
-fble.ongotmsg(onascii);
-//fhttp.seturl("http://localhost:8000");
-// 
-//flogfile.init();
+fble.ongotmsg(onascii); 
+
+fhttp.seturl("http://localhost:8000");
+flogfile.init();
+fOTA.config({fname:"firmware.zip"});
+fOTA.init();
 }
 //-----------------------------------------------------------------------------
 function apponsubscribed(){

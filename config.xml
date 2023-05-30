@@ -6,9 +6,14 @@
         Frenell IT Team
     </author>
     <content src="index.html" />
-    <icon src="www/img/log.small.png" />   
+    <icon src="/www/img/log.small.png"/>  
+    <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+     <access origin="https://www.frenell.de" />
+    <preference name="AndroidInsecureFileModeEnabled" value="true" />
+
+
 <platform name="android">
     <splash src="res/screen/android/bluetooth.png" density="land-hdpi" />
     <splash src="res/screen/android/bluetooth.png" density="land-ldpi" />

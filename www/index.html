@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        
         <link rel="stylesheet" type="text/css" href="vendor/OnsenUI/css/onsenui.css">
 	    	<link rel="stylesheet" type="text/css" href="vendor/OnsenUI/css/onsen-css-components.min.css">
         <link rel="stylesheet" href="css/index.css">
@@ -10,6 +11,7 @@
         <link rel="stylesheet" href="css/canoutputs.css">
         <link rel="stylesheet" href="css/analogchannels.css">
         <link rel="stylesheet" href="css/notifications.css">
+        <link rel="stylesheet" href="css/firmwareupdate.css">
         <script type="text/javascript" src="vendor/jquery/jquery-3.6.0.min.js"></script>
         <title>template</title>
         <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -19,7 +21,7 @@
       <ons-page id="login.html" class="page__background login-page">
 	<div class="content">
 		<!--<img src="../img/Capturelog.PNG" style="width: fit-content; height: fit-content;" > -->
-		<img src="../img/log.png" style="width: 100px;height: 100px;margin-top: 21%;margin-left: 39%;margin-bottom: -15%;">
+		<img src="/android_asset/www/img/log.png" style="width: 100px;height: 100px;margin-top: 21%;margin-left: 39%;margin-bottom: -15%;">
         <div style="text-align: center; margin-top: 300px; margin-bottom: 10px;">
        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;font-weight: 978;font-size: 41px;color: #0780B6; margin-bottom:80px;margin-top: -158px;">
 		Login
@@ -126,8 +128,10 @@ onclick="navigatetopage('./pages/firmwareupdate.html')" tappable >
   <script src="js/app.js"></script>
 	<script src="js/fvar.js"></script>
 	<script src="js/fble.js"></script> 
+	<script src="js/fota.js"></script> 
+	<script src="js/fhttp.js"></script> 
+	<script src="js/flogfile.js"></script> 
   <script type="text/javascript" src="vendor/OnsenUI/js/onsenui.js"></script>
-       
     </body>
 </html>
 
