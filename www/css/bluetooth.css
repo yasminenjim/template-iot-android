@@ -211,10 +211,10 @@
   }
   
   .dot {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #e7e1e1;
     margin: 0 5px;
   }
   
@@ -223,4 +223,14 @@
   }
   .bleicon{
     font-size: 14px;
+  }
+  .bleSettings{
+    border-radius: 10px !important;
+    background-color: #ffffff;
+    /* margin-left: 0px; */
+    /* margin-right: 0px; */
+    margin: 14px;
+    width: 384px;
+    margin-top: 56px;
+    height: 210px;
   }

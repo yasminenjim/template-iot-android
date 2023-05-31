@@ -79,9 +79,10 @@
    </div>
    </ons-carousel-item>
    <!----------------------------------Content for the second carousel item (Parametres)--------------------------------------------->
-   <ons-carousel-item style="background-color: #ffffff;">
-	   <div style="margin-top: 20px; color: #000000;margin-right: 250px;">
-		 <h3 style="margin-left: -46px;">Settings</h3>
+   <ons-carousel-item>
+	<ons-card id="bleSettings" class="bleSettings">
+	<div style="margin-top: 20px; color: #000000;margin-right: 250px;">
+		 <h3 style="font-size: 20px; font-weight: 600;">Settings</h3>
 	   </div>
 	   <ons-list-header>Connected to</ons-list-header>
 	   <ons-list-item id="connecteSettings">
@@ -95,6 +96,7 @@
 		   <ons-switch id="mySwitch"></ons-switch>
 		 </div>
 	   </ons-list-item>
+	</ons-card>
 <!---
 	   <ons-list-header>PAIRED DEVICES</ons-list-header>
 	   <ons-list-item expandable>
@@ -345,6 +347,10 @@ window.onclick = function(event) {
 						 b.disabled=true;
 							b=document.getElementById(deviceId);     
 						b.style.background="none";
+						b=document.getElementById("bticononhome");
+   
+   b.style.display="none";
+
    b=document.getElementById("bticononhome");
    b.style.color="white";
    b=document.getElementById("btconnectto");
