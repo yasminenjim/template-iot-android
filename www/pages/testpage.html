@@ -34,10 +34,10 @@
           <span class="range-value">40</span>
         </div>
         <div class="in-out">
-          <div>
+          <div class="output-field">
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <span contenteditable="true" class="out-can" id="value0Display">8 mA</span>
+              <span class="out-can" id="value0Display">8 mA</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
@@ -73,10 +73,10 @@
 				  <span class="range-value">40</span>
         </div>
         <div class="in-out">
-          <div>
+          <div class="output-field">
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <span contenteditable="true" class="out-can" id="value1Display">8 mA</span>
+              <span class="out-can" id="value1Display">8 mA</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
@@ -112,10 +112,10 @@
 					<span class="range-value">40</span>
 		  </div>
 		  <div class="in-out">
-			<div>
+			<div class="output-field">
 			  <p class="range-value-text">Output</p>
 			  <div style="margin-left: -79px;margin-top: -11px;">
-				<span contenteditable="true" class="out-can" id="value2Display">8 mA</span>
+				<span class="out-can" id="value2Display">8 mA</span>
 			  </div>
 			</div>
 			<div style="margin-top: -106px; margin-left: 340px;">
@@ -151,10 +151,10 @@
 					<span class="range-value">40</span>
 		  </div>
 		  <div class="in-out">
-			<div>
+			<div class="output-field">
 			  <p class="range-value-text">Output</p>
 			  <div style="margin-left: -79px;margin-top: -11px;">
-				<span contenteditable="true" class="out-can" id="value3Display">8 mA</span>
+				<span class="out-can" id="value3Display">8 mA</span>
 			  </div>
 			</div>
 			<div style="margin-top: -106px; margin-left: 340px;">
@@ -190,10 +190,10 @@
 				  <span class="range-value">40</span>
         </div>
         <div class="in-out">
-          <div>
+          <div class="output-field">
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <span contenteditable="true" class="out-can" id="value4Display">8 mA</span>
+              <span class="out-can" id="value4Display">8 mA</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
@@ -229,10 +229,10 @@
 				  <span class="range-value">40</span>
         </div>
         <div class="in-out">
-          <div>
+          <div class="output-field">
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <span contenteditable="true" class="out-can" id="value5Display">8 mA</span>
+              <span class="out-can" id="value5Display">8 mA</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
@@ -253,6 +253,16 @@
       <p id="modalContent">Modal content</p>
     </div>
   </div>
+
+  <div class="custom-popup" id="customPopup">
+    <div class="custom-popup-content">
+      <span class="customclose">&times;</span>
+      <input type="number" id="currentNumberInput">
+      <button id="submitBtnn">Submit</button>
+    </div>
+  </div>
+
+
   <script>
 //popup code
 // Get the modal
@@ -263,6 +273,9 @@ var closeBtn = modal.querySelector(".close");
 
 // Get the buttons that open the modal
 var buttons = document.querySelectorAll(".fa-circle-info");
+var manualinput = document.querySelectorAll(".custom-popup");
+
+
 
 // Set event listeners for each button
 buttons.forEach(function (button) {
@@ -344,7 +357,7 @@ cards.forEach(function(card) {
     outputElement.innerText = this.value+' mA';
     inElement.innerText = this.value+ ' mA';
     
-//	var value = event.target.value;
+  //	var value = event.target.value;
   //console.log('Input value:', value);
   console.log('Input value:', outputElement);
   });
@@ -465,5 +478,83 @@ console.log("Divided");
 console.log("sending the value: " + mAdivided + " mA to the AO box");
 return mAdivided;
 }
+
+/*****************************To send the output from typing*********************************************/
+// Custom popup code
+// Get the modal
+var custommodal = document.getElementById("customPopup");
+
+// Get the <span> element that closes the modal
+var closeBtnn = custommodal.querySelector(".customclose");
+
+// Get the buttons that open the modal
+var outputfld = document.querySelectorAll(".output-field");
+
+// Set event listeners for each button
+outputfld.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // Get the corresponding card ID
+    var cardId = this.parentElement.parentElement.id;
+
+    // Get the value from the input field
+    var inputv = document.getElementById("currentNumberInput").value;
+
+
+  if (cardId === "ao-card0" || cardId === 'ao-card1'|| cardId === 'ao-card2'|| cardId === 'ao-card3' ) {
+  var oavalue1;
+  var oavalue2;
+
+  //please take a look on the circuit (channels from AO box1 and AO box2 are linked together to input number 1,2,3,4)
+  
+    oavalue1 = {
+      ao: {
+        nr: 1,
+        c: getChannelCount(cardId),
+        mA: inputv/2
+      }
+    };
+    oavalue2 = {
+      ao: {
+        nr: 2,
+        c: getChannelCount(cardId),
+        mA: inputv/2
+      }
+    };
+    console.log("oavalue2 from the input field"+ oavalue2);
+    fble.sendjson(oavalue2);
+    setTimeout(function() {
+      fble.sendjson(oavalue1);
+    console.log("oavalue2 from the input field"+ oavalue1);
+
+}, 2000);
+    
+      
+    }  else if (cardId === "ao-card4") {
+
+      
+    }
+	else if (cardId === "ao-card5") {
+      
+    }
+
+    // Update the modal content with the title and content
+    outputfld.innerText = inputv + ' mA';
+
+    // Display the modal
+    custommodal.style.display = "block";
+  });
+});
+
+// Close the modal when the <span> element is clicked
+closeBtnn.addEventListener("click", function () {
+  custommodal.style.display = "none";
+});
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == custommodal) {
+    custommodal.style.display = "none";
+  }
+};
  </script>  
 </ons-page>
