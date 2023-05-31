@@ -133,9 +133,9 @@
 	<div class="popup">
 	   <span class="closepop">&times;</span>
 	  <h1>Available Devices</h1>
-		<ons-list>
+		<ons-list style="margin-top: -21px;font-weight: 500;">
 		   <ons-list-item>
-			   <span id="btscandiv" style="font-size: 15px;"></span>
+			   <span id="btscandiv" style="font-size: 16px;"></span>
 		   </ons-list-item>
 		</ons-list>
 	</div>
@@ -316,7 +316,9 @@ window.onclick = function(event) {
    console.log(deviceId+" connected and subscribed to characteristic "+o.characteristic); 
    let b=document.getElementById(deviceId);
 	   if (b) {
-			  b.style.background="LightBlue";	
+		b.style.color = "green";
+        b.style.fontWeight = "bold"; 
+        b.style.textDecoration = "underline"; 
 			  }
    b=document.getElementById("btdisconnect");
    b.disabled=false;
@@ -369,6 +371,9 @@ window.onclick = function(event) {
    function testingconn(){
    if (fble.isconnected()) {
    ons.notification.toast('Already connected to ' + btname, { timeout: 2000 });
+   c=document.getElementById("connectTO");
+   c.innerHTML=btname;	
+   document.querySelector('ons-switch').setAttribute('checked', 'true');
    $('#scanningInterface').hide();
    $('#deviceConnected').show();
    $('#first-interface').hide();
