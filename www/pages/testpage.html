@@ -37,13 +37,13 @@
           <div>
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-				<input type="number" class="out-can" id="value0Display" value="8">
+              <span contenteditable="true" class="out-can" id="value0Display">8 mA</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
             <p class="range-value-text">Input</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <span class="out-can" fvar='{name:"a",idx:0}'></span>
+              <span class="out-can" fvar='{name:"a",idx:0}' id="input0Display">0 mA</span>
             </div>
           </div>
         </div>
@@ -76,13 +76,13 @@
           <div>
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <span contenteditable="true" class="out-can" id="value1Display">8</span>
+              <span contenteditable="true" class="out-can" id="value1Display">8 mA</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
             <p class="range-value-text">Input</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-				<span class="out-can" fvar='{name:"a",idx:1}'></span>
+				<span class="out-can" fvar='{name:"a",idx:1}' id="input1Display">0 mA</span>
             </div>
           </div>
         </div>
@@ -115,13 +115,13 @@
 			<div>
 			  <p class="range-value-text">Output</p>
 			  <div style="margin-left: -79px;margin-top: -11px;">
-				<span contenteditable="true" class="out-can" id="value2Display">8</span>
+				<span contenteditable="true" class="out-can" id="value2Display">8 mA</span>
 			  </div>
 			</div>
 			<div style="margin-top: -106px; margin-left: 340px;">
 			  <p class="range-value-text">Input</p>
 			  <div style="margin-left: -79px;margin-top: -11px;">
-				<span class="out-can" fvar='{name:"a",idx:2}'></span>
+				<span class="out-can" fvar='{name:"a",idx:2}' id="input2Display">0 mA</span>
 			  </div>
 			</div>
 		  </div>
@@ -154,13 +154,13 @@
 			<div>
 			  <p class="range-value-text">Output</p>
 			  <div style="margin-left: -79px;margin-top: -11px;">
-				<span contenteditable="true" class="out-can" id="value3Display">8</span>
+				<span contenteditable="true" class="out-can" id="value3Display">8 mA</span>
 			  </div>
 			</div>
 			<div style="margin-top: -106px; margin-left: 340px;">
 			  <p class="range-value-text">Input</p>
 			  <div style="margin-left: -79px;margin-top: -11px;">
-				<span class="out-can" fvar='{name:"a",idx:3}'></span>
+				<span class="out-can" fvar='{name:"a",idx:3}' id="input3Display">0 mA</span>
 			  </div>
 			</div>
 		  </div>
@@ -193,13 +193,13 @@
           <div>
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-              <span contenteditable="true" class="out-can" id="value4Display">8</span>
+              <span contenteditable="true" class="out-can" id="value4Display">8 mA</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
             <p class="range-value-text">Input</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-				<span class="out-can" fvar='{name:"a",idx:4}'></span>
+				<span class="out-can" fvar='{name:"a",idx:4}' id="input4Display">0 mA</span>
             </div>
           </div>
         </div>
@@ -232,14 +232,13 @@
           <div>
             <p class="range-value-text">Output</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-
-              <span contenteditable="true" class="out-can" id="value5Display">8</span>
+              <span contenteditable="true" class="out-can" id="value5Display">8 mA</span>
             </div>
           </div>
           <div style="margin-top: -106px; margin-left: 340px;">
             <p class="range-value-text">Input</p>
             <div style="margin-left: -79px;margin-top: -11px;">
-				<span class="out-can" fvar='{name:"a",idx:5}'></span>
+				<span class="out-can" fvar='{name:"a",idx:5}' id="input5Display">0 mA</span>
             </div>
           </div>
         </div>
@@ -325,6 +324,7 @@ function editHeading(id) {
   newHeadingText = newHeadingText.toUpperCase();
   heading.textContent = newHeadingText;
 }
+
 // Add event listeners to range bars and input fields of each card
 var cards = document.querySelectorAll('.card-style-can');
 cards.forEach(function(card) {
@@ -340,14 +340,16 @@ cards.forEach(function(card) {
   valueInput.addEventListener('input', function() {
     var cardId = this.getAttribute('data-card-id');
     var outputElement = document.getElementById('value' + cardId + 'Display');
-    outputElement.innerText = this.value;
+    var inElement = document.getElementById('input' + cardId + 'Display');
+    outputElement.innerText = this.value+' mA';
+    inElement.innerText = this.value+ ' mA';
+    
 //	var value = event.target.value;
   //console.log('Input value:', value);
   console.log('Input value:', outputElement);
   });
+
 });
-
-
 
 function sendaoOnChange(event) {
   var cardId = event.target.getAttribute('data-card-id');
