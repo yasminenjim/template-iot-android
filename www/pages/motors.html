@@ -117,7 +117,7 @@
         slider.oninput = function() {
           output.innerHTML = this.value;
           motorgo(0, this.value);
-          showScreen(0);
+         // showScreen(0);
         };
 
         const slider2 = document.getElementById("myRange2");
@@ -128,10 +128,10 @@
         slider2.oninput = function() {
           output2.innerHTML = this.value;
           motorgo(1, this.value);
-          showScreen(1);
+         // showScreen(1);
         };
 
-        function showScreen(motorIndex) {
+      /**function showScreen(motorIndex) {
       const screens = document.querySelectorAll('.screen');
       screens.forEach(function(screen) {
         screen.style.display = "none";
@@ -145,7 +145,7 @@
             const motorIndex = parseInt(this.getAttribute('onclick').match(/\((.*?)\)/)[1].split(',')[0]);
             showScreen(motorIndex);
           });
-        });
+        }); **/
 
        
 
