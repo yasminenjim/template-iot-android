@@ -1,53 +1,20 @@
 <ons-page id="motors"  class="page__background motors-page">
    
-    <ons-toolbar  class="toolbar-background-bl">
-     <div class="left">
-       <ons-back-button>Back</ons-back-button>
-        </div>
-        <div class="center" id="toolbar-title" style="color:rgb(255, 255, 255);text-align: center;">Motors</div>
-       <div class="right">
+  <ons-toolbar  class="toolbar-background-bl">
+    <div class="left">
       <ons-toolbar-button onclick='gohome();' >  
-      <span style="color: rgb(255, 255, 255);">
-       <i class="fa-solid fa-home"></i>
-     </span>
-     </ons-toolbar-button>
-    </div>
-   </ons-toolbar>
-   <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
-    <ons-carousel-item style="margin-top: 25px;" id="left-carousel">
+        <span style="color: rgb(255, 255, 255);">
+          <i class="fa-solid fa-arrow-left" style="font-size: 20px;"></i>
+         </span>
+         </ons-toolbar-button>
+      </div>
+ </ons-toolbar>
 
-<div class="motor-interface">
-  <div class="slider-container">
-    <div class="slider-background"></div>
-    <input type="range" min="-2000" max="2000" value="0" step="1000" class="slider" id="myRange"> 
-  </div>
-<div class="adjusting">
-<div class="screen">
-  <div id="slider-value" class="box">
-    <span style="margin-left: 8px;" fvar="{name:'ml.s'}"></span>
-    <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Speed</div>
-  </div>
-    <div class="box" id="ml-position">
-
-      <span style="margin-left: 20px;" fvar="{name:'ml.p'}"></span>
-      <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Position</div>
+ <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
+  <ons-carousel-item style="margin-top: 25px;">
+    <div class="customheading">
+      <div class="h1motors">Motor Left</div>
     </div>
-    <div class="box" id="ml-inclination"> <span style="margin-left: 19px;" fvar="{name:'a',idx:4}" ></span>
-      <div style="font-size: small; color: aliceblue; margin-left:40px;">Inclination</div>
-    </div>
-  </div>
-
-<div class="buttonContainer">
-  <button class="button-m" onclick="motorgo(0,-2000)" >IN</button>
-<button class="button-m" onclick="motorgo(0,2000)">OUT</button>
-  <button  class="button-m" onclick="motorstop(0)" >STOP</button>
-</div>
-</div>
-</div>
-  </ons-carousel-item>
-<!-------------right motor------------------>
-  <ons-carousel-item>
-  
 <div class="motor-interface">
 <div class="slider-container">
   <div class="slider-background"></div>
@@ -57,16 +24,50 @@
 <div class="screen">
 <div id="slider-value" class="box">
   <span style="margin-left: 8px;" fvar="{name:'ml.s'}"></span>
-  <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Speed</div>
 </div>
-  <div class="box" id="mr-position">
-
-    <span style="margin-left: 20px;" fvar="{name:'mr.p'}"></span>
+<div class="box">
+<div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Speed</div>
+</div> 
+<div class="box" id="ml-position">
+    <span style="margin-left: 20px;" fvar="{name:'ml.p'}"></span>
     <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Position</div>
   </div>
-  <div class="box" id="ml-inclination"> <span style="margin-left: 19px;" fvar="{name:'a',idx:5}" ></span>
+  <div class="box" id="ml-inclination"> <span style="margin-left: 19px;" fvar="{name:'a',idx:4}" ></span>
     <div style="font-size: small; color: aliceblue; margin-left:40px;">Inclination</div>
   </div>
+</div>
+
+<div class="buttonContainer">
+<button class="button-m" onclick="motorgo(0,-2000)" >IN</button>
+<button class="button-m" onclick="motorgo(0,2000)">OUT</button>
+<button  class="button-m" onclick="motorstop(0)" >STOP</button>
+</div>
+</div>
+</div>
+</ons-carousel-item>
+<!-------------right motor------------------>
+<ons-carousel-item style="margin-top: 25px;">
+  <div class="customheading">
+    <div class="h1motors">Motor Right</div>
+  </div>
+<div class="motor-interface">
+  <div class="slider-container">
+    <div class="slider-background"></div>
+    <input type="range" min="-2000" max="2000" value="0" step="1000" class="slider" id="myRange2">
+  </div>
+<div class="adjusting">
+<div class="screen">
+  <div  id="slider-value2" class="box">
+<span style="margin-left: 8px;" fvar="{name:'mr.s'}"></span>
+</div>
+<div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Speed</div>
+<div class="box" id="mr-position">
+  <span style="margin-left: 20px;" fvar="{name:'mr.p'}"></span>
+  <div class="title" style="font-size: small; margin-bottom: 20px; color: aliceblue; margin-left: 40px;">Position</div>
+</div>
+<div class="box" id="mr-inclination"> <span style="margin-left: 19px;" fvar="{name:'a',idx:5}" ></span>
+  <div style="font-size: small; color: aliceblue; margin-left:40px;">Inclination</div>
+</div>
 </div>
 
 <div class="buttonContainer">
@@ -76,56 +77,76 @@
 </div>
 </div>
 </div>
-  </ons-carousel-item>
+</ons-carousel-item>
 
 </ons-carousel>
-
+<div class="carousel-dots">
+	<span class="dotmot"></span>
+	<span class="dotmot"></span>
+  </div>
 <script>
+ document.addEventListener('init', function(event) {
+      if (event.target.matches('#motors')) {
+        const carouselmt = document.querySelector('ons-carousel');
+        const dots = document.querySelectorAll('.dotmot');
+        carouselmt.addEventListener('postchange', function(event) {
+          const activeIndex = carouselmt.getActiveIndex();
+          // Remove active class from all dots
+          dots.forEach(function(dotmot) {
+            dotmot.classList.remove('active');
+          });
+          // Add active class to the corresponding dot
+          dots[activeIndex].classList.add('active');
+        });
 
+        const slider = document.getElementById("myRange");
+        const output = document.getElementById("slider-value");
 
-const slider = document.getElementById("myRange");
-const output = document.getElementById("slider-value");
+        output.innerHTML = slider.value;
 
+        slider.oninput = function() {
+          try {
+            output.innerHTML = this.value;
+            console.log("Slider is changing");
+            // Update motor speed value
+            motorgo(0, this.value);
+            showScreen(0); // Show the screen for Motor Left
+          } catch (e) {
+            console.log("The slider is not updated anymore. Error: " + e.output);
+          }
+        };
 
+        const slider2 = document.getElementById("myRange2");
+        const output2 = document.getElementById("slider-value2");
 
-output.innerHTML = slider.value;
+        output2.innerHTML = slider2.value;
 
-slider.oninput = function() {
-  try {
-    output.innerHTML = this.value;
-    console.log("Slider is changing");
-    // Update motor speed value
-    motorgo(0, this.value);
-  } catch (e) {
-    console.log("the slider is not updated anymore, the error:" + e.output);
-  }
-};
+        slider2.oninput = function() {
+          try {
+            output2.innerHTML = this.value;
+            console.log("Slider 2 is changing");
+            // Update motor speed value
+            motorgo(1, this.value); // Pass 1 as the first argument to indicate Motor Right
+            showScreen(1); // Show the screen for Motor Right
+          } catch (e) {
+            console.log("The second slider is not updated anymore. Error: " + e.output);
+          }
+        };
 
+        function showScreen(motorIndex) {
+          const screen = document.querySelectorAll('.screen')[motorIndex];
+          screen.style.display = "block";
+        }
 
-
-
-//document.getElementById("stopButton").addEventListener("click", motorstop);
-
-function motorgo(lr,speed){
-    var o;
-   if (lr==0) {
-	   o={do:{ml:{s:speed}}};
-	      } 
-	  else o={do:{mr:{s:speed}}};
-    fble.sendjson(o); 
-   
-  }
-  function motorstop(lr){
-    var o;
-   if (lr==0) {
-	   o={do:{ml:{s:0}}};
-	      } 
-	   else o={do:{mr:{s:0}}};
-           fble.sendjson(o); 
-	   
-  }
-
-
+        const buttons = document.querySelectorAll('.button-m');
+        buttons.forEach(function(button) {
+          button.addEventListener('click', function() {
+            const motorIndex = this.getAttribute('onclick').match(/\((.*?)\)/)[1].split(',')[0];
+            showScreen(motorIndex);
+          });
+        });
+      }
+    }, false);
 </script>
 </ons-page>
 
@@ -137,4 +158,4 @@ function motorgo(lr,speed){
 
 
 
-     
+   
