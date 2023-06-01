@@ -2,6 +2,7 @@
   background-color: #094860 !important;
   background-image: linear-gradient(to bottom, #094860, #2587b8) !important;
 }
+
 #myRange {
   -webkit-appearance: none;
   appearance: none;
@@ -15,6 +16,7 @@
   margin-left: -103px;
   margin-top: 2px;
 }
+
 #myRange::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -23,17 +25,20 @@
   background: #6B6A6A;
   cursor: pointer;
 }
+
 #myRange::-moz-range-thumb {
   width: 40px;
   height: 40px;
   background: #9d9d9d;
   cursor: pointer;
 }
+
 .slider-container {
   width: 305px;
   height: 28px;
   margin-top: 81px !important;
 }
+
 .slider-background {
   position: absolute;
   top: 104px;
@@ -44,11 +49,12 @@
   border-radius: 30px;
   margin-left: 82px;
 }
+
 .slider {
   -webkit-appearance: none;
   width: 400%;
   height: 20px;
-  background: transparent; /* make the slider transparent */
+  background: transparent;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -58,6 +64,7 @@
   transform: rotate(270deg);
   transform-origin: right top 0;
 }
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -66,12 +73,14 @@
   background: #6B6A6A;
   cursor: pointer;
 }
+
 .slider::-moz-range-thumb {
   width: 40px;
   height: 40px;
   background: #9d9d9d;
   cursor: pointer;
 }
+
 .slider-value {
   position: absolute;
   left: calc(100% + 20px);
@@ -80,23 +89,27 @@
   font-size: 20px;
   font-weight: bold;
 }
+
 .buttonContainer {
   position: relative;
   height: 200px;
   margin-top: 40px;
 }
+
 .button-m {
   display: block;
-  width: 155px;
-  height: 55px;
+  width: 152px;
+  height: 43px;
   border: none;
   font-size: 18px;
   font-weight: bold;
   border-radius: 50px;
   cursor: pointer;
   margin: 15px 0;
-  margin-left: 65px;
+  margin-left: 70px;
+
 }
+
 .button-m:nth-child(1) {
   left: 0;
   top: 0;
@@ -110,83 +123,89 @@
   background-color: #ffffff;
   color: #000000;
 }
+
 .button-m:nth-child(3) {
   right: 0;
   top: 0;
   background-color: #ffffff;
   color: #000000;
 }
+
 .buttonContainer > .button-m:nth-child(1):hover {
   background-color: #00cc00;
 }
+
 .buttonContainer > .button-m:nth-child(2):hover {
   background-color: #00cc00;
 }
+
 .buttonContainer > .button-m:nth-child(3):hover {
   background-color: #cc0000;
 }
-.container-output{
+
+.container-output {
   position: relative;
   height: 200px;
   margin-top: -350px;
   margin-left: 50px;
 }
+
 .box {
-  /**width: 90px;
-    height: 60px; **/
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 1000;
-    font-size: 29px;
-    color: white;
-    margin-left: 68px; 
-    margin-bottom: 20px; 
-     /**margin-top: 20px; **/  
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 1000;
+  font-size: 29px;
+  color: white;
+  margin-left: 111px;
+  margin-bottom: 20px;
 }
+
 .boxspeed {
-  /**width: 90px;
-    height: 60px; **/
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 1000;
-    font-size: 29px;
-    color: white;
-    margin-left: 118px; 
-    margin-bottom: 20px; 
-     /**margin-top: 20px; **/  
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 1000;
+  font-size: 29px;
+  color: white;
+  margin-left: 118px;
+  margin-bottom: 20px;
 }
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
-.motor-interface{
+
+.motor-interface {
   margin-left: 0px;
   margin-top: 127px;
 }
+
 .title {
-font-size: 20px;
-font-weight: bold;
-margin-top: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
 }
-.screen{
-padding-top: 16px;
-display: none;
+
+.screen {
+  padding-top: 16px;
+  display: none;
 }
-.adjusting{
-margin: auto;
-margin-top: -39px;
-width: 19px;
-margin-left: 20px;
+
+.adjusting {
+  margin: auto;
+  margin-top: -39px;
+  width: 19px;
+  margin-left: 20px;
 }
+
 .container-motor {
-position: relative;
-width: 70px;
-height: 100px;
-background-color: #333;
-border-radius: 30px;
-padding-top: 100px;
-display: block;
+  position: relative;
+  width: 70px;
+  height: 100px;
+  background-color: #333;
+  border-radius: 30px;
+  padding-top: 100px;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 #myRange2 {
-  /* Same styles as #myRange in Motor Left */
   -webkit-appearance: none;
   appearance: none;
   width: 142%;
@@ -201,7 +220,6 @@ display: block;
 }
 
 #myRange2::-webkit-slider-thumb {
-  /* Same styles as #myRange::-webkit-slider-thumb in Motor Left */
   -webkit-appearance: none;
   appearance: none;
   width: 25px;
@@ -211,35 +229,32 @@ display: block;
 }
 
 #myRange2::-moz-range-thumb {
-  /* Same styles as #myRange::-moz-range-thumb in Motor Left */
   width: 40px;
   height: 40px;
   background: #9d9d9d;
   cursor: pointer;
 }
 
-.carousel-dots{
+.carousel-dots {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 10px;
-  position: absolute;
-  bottom: 79px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .dotmot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
+  background-color: #c3c3c3;
   border-radius: 50%;
-  background-color: #e7e1e1;
   margin: 0 5px;
 }
 
 .dotmot.active {
-  background-color: #000;
+  background-color: #ffffff;
 }
-.customheading{
+
+.customheading {
   position: absolute;
   top: -28px;
   left: 120px;
@@ -248,15 +263,29 @@ display: block;
   color: white;
   font-weight: bold;
 }
-.h1motors{
+
+.h1motors {
   margin-top: 2px;
   font-size: 24px;
   margin-left: 4px;
   color: #094860;
-  /* margin-left: 11px; */
   background-color: #d8d8d8;
   padding: 5px 10px;
   border: 2px solid #094860;
   border-radius: 16px;
   font-weight: 700;
+}
+
+/* Popup Motor */
+#popupmotor {
+  width: 126%;
+  max-width: 413px;
+  text-align: center;
+}
+
+#motor-speed-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
 }
