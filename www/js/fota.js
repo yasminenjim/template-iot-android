@@ -387,67 +387,49 @@ let ret=new Promise(function(resolve,reject){
 return ret;	
 }
 //-----------------------------------------------------------------------------
-function scanwifi(f) {
+// Define the fOTA object and initialize the foundSSIDList property
+var fOTA = {
+	foundSSIDList: [] // Initialize the foundSSIDList property as an empty array
+  };
+  
+  function scanwifi(f) {
 	var d = document.getElementById("divscanwifi");
 	d.innerHTML = ""; // Clear the existing content
-	
+  
 	WifiWizard2.scan().then(function(res) {
 	  console.log("scan " + JSON.stringify(res));
 	  const wifiArray = res.map(network => network.SSID);
 	  console.log(wifiArray);
   
-	  var uniqueSSIDs = []; // Array to store unique SSIDs
-	  
-	  res.forEach(function(o, i) {
-		console.log(i + " " + o);
-		let b_show = false;
-		config.ssidbasename.forEach(function(p) {
-		  if (o.SSID.indexOf(p) >= 0) b_show = true;
-		});
+	  var uniqueSSIDs = [...new Set(wifiArray)]; // Get unique SSIDs using Set
   
-		if (b_show) {
-		  if (typeof f === "function") f(o.SSID);
-		  console.log("found SSID " + o.SSID);
-		  
-		  // Check if the SSID is already added
-		  if (!uniqueSSIDs.includes(o.SSID)) {
-			uniqueSSIDs.push(o.SSID); // Add the unique SSID to the array
-  
-			var p = document.createElement("p");
-			p.textContent = o.SSID + " " + o.level;
-			d.appendChild(p);
-  
-			var btn = document.createElement("button");
-			btn.innerHTML = "Connect to " + o.SSID + " " + o.level;
-			btn.ssid = o.SSID;
-			btn.setAttribute("id", "btn_ssid_" + i);
-			btn.className = "longbutton";
-			btn.addEventListener("click", function(event) {
-			  tactile();
-			  console.log("clicked " + event.target.ssid);
-			  connecttossid(event.target.ssid);
-			});
-			d.appendChild(btn);
-		  }
-		}
+	  uniqueSSIDs.forEach(function(ssid) {
+		if (typeof f === "function") f(ssid);
+		console.log("found SSID " + ssid);
 	  });
   
 	  // Create a list element
 	  var list = document.createElement("ons-list");
 	  list.setAttribute("id", "my-custom-list"); // Set the desired ID for the list
-	  
+  
 	  // Iterate over the unique SSIDs
 	  uniqueSSIDs.forEach(function(ssid) {
-		// Create a list item for each SSID
-		var item = document.createElement("ons-list-item");
-		item.textContent = ssid;
-		list.appendChild(item);
+		// Check if the SSID is found in the foundSSIDList
+		if (fOTA.foundSSIDList.includes(ssid)) {
+		  // Create a list item for each found SSID
+		  var item = document.createElement("ons-list-item");
+		  item.textContent = ssid;
+		  list.appendChild(item);
+		}
 	  });
   
 	  // Append the list to the divscanwifi element
 	  d.appendChild(list);
+	  var spinn = document.getElementById("updSpinner");
+	  spinn.style.display = "none";
 	});
   }
+  
   
 //-----------------------------------------------------------------------------
 function checkfnc(){
