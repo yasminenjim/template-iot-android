@@ -387,38 +387,60 @@ let ret=new Promise(function(resolve,reject){
 return ret;	
 }
 //-----------------------------------------------------------------------------
-function scanwifi(f){
-WifiWizard2.scan().then(function(res){
-console.log("scan "+JSON.stringify(res)); 
-//document.getElementById("divscanwifi").innerHTML="";	
-res.forEach(function(o,i){
-console.log(i+" "+o);
-let b_show=false;	
-config.ssidbasename.forEach((p)=>{
-if (o.SSID.indexOf(p)>=0) b_show=true; 
-});
-if (b_show) { 
-	if (typeof f ==="function") f(o.SSID); 
-	console.log("found SSID "+o.SSID );
-        /*
-	document.getElementById("divscanwifi").innerHTML+=o.SSID+" "+o.level+"<br>";
-        var btn=document.createElement("button");
-	btn.innerHTML="connect to "+o.SSID+" "+o.level;
-	btn.ssid=o.SSID;
-	btn.setAttribute("id","btn_ssid_"+i);
-	btn.className="longbutton";
-	btn.addEventListener("click",function(event){ 
-	tactile();
-	console.log("clicked "+event.target.ssid);
-	connecttossid(event.target.ssid);
+function scanwifi(f) {
+	var d = document.getElementById("divscanwifi");
+	d.innerHTML = ""; // Clear the existing content
+	
+	WifiWizard2.scan().then(function(res) {
+	  console.log("scan " + JSON.stringify(res));
+	  const wifiArray = res.map(network => network.SSID);
+	  console.log(wifiArray);
+	
+	  res.forEach(function(o, i) {
+		console.log(i + " " + o);
+		let b_show = false;
+		config.ssidbasename.forEach(function(p) {
+		  if (o.SSID.indexOf(p) >= 0) b_show = true;
+		});
+	
+		if (b_show) {
+		  if (typeof f === "function") f(o.SSID);
+		  console.log("found SSID " + o.SSID);
+	
+		  var p = document.createElement("p");
+		  p.textContent = o.SSID + " " + o.level;
+		  d.appendChild(p);
+	
+		  var btn = document.createElement("button");
+		  btn.innerHTML = "Connect to " + o.SSID + " " + o.level;
+		  btn.ssid = o.SSID;
+		  btn.setAttribute("id", "btn_ssid_" + i);
+		  btn.className = "longbutton";
+		  btn.addEventListener("click", function(event) {
+			tactile();
+			console.log("clicked " + event.target.ssid);
+			connecttossid(event.target.ssid);
+		  });
+		  d.appendChild(btn);
+		}
+	  });
+  
+	  // Create a list element
+	  var ul = document.createElement("ul");
+  
+	  // Iterate over the wifiArray
+	  wifiArray.forEach(function(ssid) {
+		// Create a list item for each SSID
+		var li = document.createElement("li");
+		li.textContent = ssid;
+		ul.appendChild(li);
+	  });
+  
+	  // Append the list to the divscanwifi element
+	  d.appendChild(ul);
 	});
-	document.getElementById("divscanwifi").appendChild(btn);
-	*/
-       }
-});
-
-});
-}
+  }
+  
 //-----------------------------------------------------------------------------
 function checkfnc(){
  console.log("checkfnc not used");

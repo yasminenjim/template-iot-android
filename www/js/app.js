@@ -36,12 +36,14 @@ if (e) {
        }
 }
 //-----------------------------------------------------------------------------
+//-----------------------the function for filling the CAN msgs table-------------
 function onascii(txt, ch) {
   if (txt.indexOf("can") != 0) return;
 
   var tbody = document.getElementById("can-msgs");
 
   if (tbody) {
+    //max 100 rows in the table
     if (tbody.rows.length >= 100) {
       tbody.deleteRow(-1);
       updateNotification("Table reached 100 rows!");
@@ -69,7 +71,7 @@ function onascii(txt, ch) {
     }
   }
 }
-
+//--------------------------------------------------------------------------
 function updateNotification(message) {
   // Update the DOM in notifications.html
   var notificationDiv = document.getElementById("notification-content");

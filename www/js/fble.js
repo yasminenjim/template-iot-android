@@ -2,7 +2,7 @@
 
 
 */
-fble = (function() {
+fble = (function() {handleError
     let config = {
         btservice: "",
         btpassword: "frenell",
@@ -11,7 +11,7 @@ fble = (function() {
 	readchar: "2001",   
         btnamefilter: "",
 	scantimeout: 5000,
-	mtu: 94    
+	mtu: 128    
     }
 
     let foundDevices = [];
@@ -303,6 +303,19 @@ fble = (function() {
         console.log("discoverSuccess " + result.status);
         if (result.status === "discovered") {
             atbtconnection();
+        }
+    }
+    //-----------------------------------------------------------------------------
+    function setMTU(mtu) {
+        config.mtu = mtu;
+        if (btconnected && cordova.platformId === "android") {
+            var params = {
+                address: btaddress,
+                mtu: mtu
+            };
+            bluetoothle.mtu(function(result) {
+                console.log("MTU set to " + mtu);
+            }, handleError, params);
         }
     }
     //-----------------------------------------------------------------------------
@@ -633,6 +646,7 @@ function checkAdapters() {
 	subscribe: subscribednew,
     wasconnected:fillListBasedOnConnectionStatus,
     getDeviceDetails:getDeviceDetails,
-    checkAdapters:checkAdapters
+    checkAdapters:checkAdapters,
+    setMTU:setMTU
     }
 })();

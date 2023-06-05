@@ -38,11 +38,30 @@
     </ons-list>
   </ons-card>
 
-  <ons-card id="updateFirmwareStep1" class="m-2" style="margin: 7px;  border-radius: 4%;">
+
+  <ons-card id="updateFirmwareStep0" class="m-2" style="margin: 7px;  border-radius: 4%;">
     <ons-row>
       <ons-col>
         <div class="text-center">
           <h4><span style="font-weight: bolder;">Step 1:</span> <span>Scan Wifi</span></h4>
+          <p class="text-medium" mlang="internetNeeded">Enable the Wifi functionality in the QC tool to start.</p>
+        </div>
+      </ons-col>
+    </ons-row>
+    <ons-row class="pt-3">
+      <ons-col class="text-center">
+        <button id="enablewifi" onclick="enbalewifiqc()" class="mx-auto">
+          Enable Wifi
+        </button>   
+      </ons-col>
+    </ons-row>
+  </ons-card>
+
+  <ons-card id="updateFirmwareStep1" class="m-2" style="margin: 7px;  border-radius: 4%;">
+    <ons-row>
+      <ons-col>
+        <div class="text-center">
+          <h4><span style="font-weight: bolder;">Step 2:</span> <span>Scan Wifi</span></h4>
           <p class="text-medium" mlang="internetNeeded">Make sure the smartphone is connected to the internet.</p>
         </div>
       </ons-col>
@@ -53,7 +72,7 @@
           Scan Wifi
         </button> 
         <ons-icon id="updSpinner" size="20px" spin icon="md-spinner" style="display: none;"></ons-icon>
-      <div id="divscanwifi" style="font-size: 18;" ></div>     
+      <div id="divscanwifi" style="font-size: 18px;" ></div>     
       </ons-col>
     </ons-row>
   </ons-card>
@@ -62,7 +81,7 @@
     <ons-row>
       <ons-col>
         <div class="text-center text-medium">
-          <h4><span id="stepNumber2" style="font-weight: bolder;">Step 2</span><span mlang="connectViaWifi">: Download latest Frimware</span></h4>
+          <h4><span id="stepNumber2" style="font-weight: bolder;">Step 3</span><span mlang="connectViaWifi">: Download latest Frimware</span></h4>
           <p>Please stay connected during the download process</p>
         </div>
       </ons-col>
@@ -106,7 +125,7 @@
     <ons-row>
       <ons-col>
         <div class="text-center">
-          <h4><span style="font-weight: bolder;">Step 3</span><span>: Upload loaded firmware to device</span></h4>
+          <h4><span style="font-weight: bolder;">Step 4</span><span>: Upload loaded firmware to device</span></h4>
           <p class="text-pink">Please stay connected during the reading process.</p>
         </div>
       </ons-col>
@@ -157,23 +176,35 @@ ons.notification.toast("not connected to internet",{timeout:3000});});
            } 
 //-----------------------------------------------------------------------------
 
-  function startscanwifi(){
-var d=document.getElementById("divscanwifi"); 
-var spinn=document.getElementById("updSpinner");
-spinn.style.display="inline-flex"; 
-d.innerHTML="";
-fOTA.scanwifi(function(n){
-         var b=document.createElement("button"); 
-          b.ssidname=n;
-          b.innerHTML=n;
-          b.addEventListener("click",(e)=>{
-      fOTA.connect(e.currentTarget.ssidname).then((r)=>{
-       ons.notification.toast(r,{timeout:2000});  
-      },(e)=>{alert(e);});  
+function startscanwifi() {
+  var d = document.getElementById("divscanwifi");
+  var spinn = document.getElementById("updSpinner");
+  spinn.style.display = "inline-flex";
+  d.innerHTML = "";
+
+  fOTA.scanwifi(function(n) {
+    var p = document.createElement("p");
+    p.textContent = n;
+    d.appendChild(p);
+    
+    var b = document.createElement("button");
+    b.ssidname = n;
+    b.textContent = "Connect to " + n;
+    b.addEventListener("click", function(e) {
+      fOTA.connect(e.currentTarget.ssidname).then(function(r) {
+        ons.notification.toast(r, { timeout: 2000 });
+      }).catch(function(e) {
+        alert(e);
+      });
     });
-          d.appendChild(b); 
-                             
-                        });
+    d.appendChild(b);
+  });
+}
+
+
+//_---------------------------------------------------------------------------
+function enbalewifiqc(){
+  fble.sendjson({wifi:true});
 }
 //-----------------------------------------------------------------------------
    function showfiles(){

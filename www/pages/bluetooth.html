@@ -84,7 +84,7 @@
 	<div style="margin-top: 20px; color: #000000;margin-right: 250px;">
 		 <h3 style="font-size: 20px; font-weight: 600;">Settings</h3>
 	   </div>
-	   <ons-list-header>Connected to</ons-list-header>
+	   <ons-list-header id="headersett">Connected to</ons-list-header>
 	   <ons-list-item id="connecteSettings">
 		 <div class="left">
 		   <ons-icon icon="fa-bluetooth-b" class="list-item__icon bleicon"></ons-icon>
@@ -97,38 +97,6 @@
 		 </div>
 	   </ons-list-item>
 	</ons-card>
-<!---
-	   <ons-list-header>PAIRED DEVICES</ons-list-header>
-	   <ons-list-item expandable>
-		 Tap to expand
-		 <div class="expandable-content">		
-		   <ons-list-item>
-			   <div class="left">
-				 <ons-icon icon="fa-bluetooth-b" class="list-item__icon"></ons-icon>
-			   </div>
-			   <div class="center">
-				 <span id="deviceList"></span>
-			   </div>
-			 </ons-list-item>
-	   </div>
-	   </ons-list-item>
-	   <ons-list-header>AVAILABLE DEVICES</ons-list-header>
-	   <ons-list-item>
-	   <div class="left">
-		 <ons-icon icon="fa-bluetooth-b" ></ons-icon>
-	   </div>
-	   <div>
-		 Device A
-	   </div>
-	 </ons-list-item>
-	 <ons-list-item>
-	   <div class="left">
-		 <ons-icon icon="fa-bluetooth-b" ></ons-icon>
-	   </div>
-	   <div>
-		 Device A
-	   </div>
-	   </ons-list-item> !-->
 	    <!---------------------------Popup tab----------------------------------------------------------------------------------------------->
    <div class="popup-container" id="popup">
 	<div class="popup-background"></div>
@@ -345,17 +313,21 @@ window.onclick = function(event) {
 						 console.log("disconnected "+deviceId); 
 							 let b=document.getElementById("btdisconnect");       
 						 b.disabled=true;
-							b=document.getElementById(deviceId);     
+							b=document.getElementById(deviceId);   
 						b.style.background="none";
 						b=document.getElementById("bticononhome");
-   
+//sett=document.getElementById("headersett");  
+///sett.style.display="none"; 	
    b.style.display="none";
-
    b=document.getElementById("bticononhome");
    b.style.color="white";
    b=document.getElementById("btconnectto");
    b.innerHTML="";
    ons.notification.toast('Disconnected from ' + o.name, { timeout: 3000 }); 	
+   $('#scanningInterface').hide();
+	$('#deviceConnected').hide();
+	$('#first-interface').show();
+	$('#connecteSettings').hide();
 							 });
    function disconnect(e){
    fble.disconnect();

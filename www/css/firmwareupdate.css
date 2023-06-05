@@ -17,8 +17,6 @@
     margin: 0 10px;
     background: #0e4b64;
 }
-  
-  
   .firmwarefiles{
     font-weight: bold;
     font-size: 17px;
@@ -28,3 +26,4 @@
   .d_dwn_files{
     display: block; margin-left: -6px; margin-top: -41px;
   }
+  
