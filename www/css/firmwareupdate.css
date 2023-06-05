@@ -26,4 +26,6 @@
   .d_dwn_files{
     display: block; margin-left: -6px; margin-top: -41px;
   }
-  
+  .my-custom-list{
+    font-size: 14px; margin-top: 17px;
+  }

@@ -390,27 +390,27 @@ return ret;
 function scanwifi(f) {
 	var d = document.getElementById("divscanwifi");
 	d.innerHTML = ""; // Clear the existing content
-	
+  
 	WifiWizard2.scan().then(function(res) {
 	  console.log("scan " + JSON.stringify(res));
 	  const wifiArray = res.map(network => network.SSID);
 	  console.log(wifiArray);
-	
+  
 	  res.forEach(function(o, i) {
 		console.log(i + " " + o);
 		let b_show = false;
 		config.ssidbasename.forEach(function(p) {
 		  if (o.SSID.indexOf(p) >= 0) b_show = true;
 		});
-	
+  
 		if (b_show) {
 		  if (typeof f === "function") f(o.SSID);
 		  console.log("found SSID " + o.SSID);
-	
+  
 		  var p = document.createElement("p");
 		  p.textContent = o.SSID + " " + o.level;
 		  d.appendChild(p);
-	
+  
 		  var btn = document.createElement("button");
 		  btn.innerHTML = "Connect to " + o.SSID + " " + o.level;
 		  btn.ssid = o.SSID;
@@ -426,18 +426,20 @@ function scanwifi(f) {
 	  });
   
 	  // Create a list element
-	  var ul = document.createElement("ul");
+	  var list = document.createElement("ons-list");
+	  list.setAttribute("class", "my-custom-list"); // Add your custom class for styling
+	  //list.setAttribute("style", "font-size: 14px; margin-top: 17px;"); // Set the desired styles
   
 	  // Iterate over the wifiArray
 	  wifiArray.forEach(function(ssid) {
 		// Create a list item for each SSID
-		var li = document.createElement("li");
-		li.textContent = ssid;
-		ul.appendChild(li);
+		var item = document.createElement("ons-list-item");
+		item.textContent = ssid;
+		list.appendChild(item);
 	  });
   
 	  // Append the list to the divscanwifi element
-	  d.appendChild(ul);
+	  d.appendChild(list);
 	});
   }
   
