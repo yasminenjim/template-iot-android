@@ -7,7 +7,7 @@
 </ons-toolbar>
 
 <div id="mainContentUpdate">
-  <ons-card id="updateFirmware" class="m-2" style="margin: 7px;  border-radius: 4%;">
+  <ons-card id="updateFirmware" class="m-2" style="margin: 7px;  border-radius: 4%; display: none;">
     <ons-row>
       <ons-col>
         <div class="text-center">
@@ -39,11 +39,11 @@
   </ons-card>
 
 
-  <ons-card id="updateFirmwareStep0" class="m-2" style="margin: 7px;  border-radius: 4%;">
+  <ons-card id="updateFirmwareStep1" class="m-2" style="margin: 7px;  border-radius: 4%;">
     <ons-row>
       <ons-col>
         <div class="text-center">
-          <h4><span style="font-weight: bolder;">Step 1:</span> <span>Scan Wifi</span></h4>
+          <h4><span style="font-weight: bolder;">Step 1:</span> <span>Enable Wifi</span></h4>
           <p class="text-medium" mlang="internetNeeded">Enable the Wifi functionality in the QC tool to start.</p>
         </div>
       </ons-col>
@@ -57,7 +57,7 @@
     </ons-row>
   </ons-card>
 
-  <ons-card id="updateFirmwareStep1" class="m-2" style="margin: 7px;  border-radius: 4%;">
+  <ons-card id="updateFirmwareStep2" class="m-2" style="margin: 7px;  border-radius: 4%;display: none;">
     <ons-row>
       <ons-col>
         <div class="text-center">
@@ -68,16 +68,18 @@
     </ons-row>
     <ons-row class="pt-3">
       <ons-col class="text-center">
-        <button id="dwnldbt" onclick="startscanwifi()" class="mx-auto">
+        <button id="dwnldbt" onclick="startScanWifi()" class="mx-auto">
           Scan Wifi
-        </button> 
+        </button>
         <ons-icon id="updSpinner" size="20px" spin icon="md-spinner" style="display: none;"></ons-icon>
-      <div id="divscanwifi" style="font-size: 18px;" ></div>     
+        <div id="divscanwifi" style="font-size: 18px;"></div>
       </ons-col>
     </ons-row>
   </ons-card>
+  
+  
 
-  <ons-card id="updateFirmwareStep2" class="m-2" style="margin: 7px;  border-radius: 4%;">
+  <ons-card id="updateFirmwareStep3" class="m-2" style="margin: 7px;  border-radius: 4%;display: none;">
     <ons-row>
       <ons-col>
         <div class="text-center text-medium">
@@ -121,7 +123,7 @@
      </ons-row>
   </ons-card>
 
-  <ons-card id="updateFirmwareStep3" class="m-2" style="margin: 7px;  border-radius: 4%;">
+  <ons-card id="updateFirmwareStep4" class="m-2" style="margin: 7px;  border-radius: 4%;display: none;">
     <ons-row>
       <ons-col>
         <div class="text-center">
@@ -175,36 +177,34 @@ ons.notification.toast("not connected to internet",{timeout:3000});});
       if (confirm("mobile settings")) gotomobilesettings();
            } 
 //-----------------------------------------------------------------------------
-
-function startscanwifi() {
-  var d = document.getElementById("divscanwifi");
+function startScanWifi() {
   var spinn = document.getElementById("updSpinner");
   spinn.style.display = "inline-flex";
-  d.innerHTML = "";
+
+  remainingSSIDs = []; // Reset the remaining SSIDs array
 
   fOTA.scanwifi(function(n) {
+    var d=document.getElementById("divscanwifi"); 
+		 d.innerHTML="";
+
     var p = document.createElement("p");
     p.textContent = n;
+    p.setAttribute("data-ssid", n); // Add a data attribute to identify the SSID
+
+    var wifiIcon = document.createElement("i");
+    wifiIcon.classList.add("fa-solid", "fa-wifi");
+    p.appendChild(wifiIcon); // Append the Wi-Fi icon to the <p> element
     d.appendChild(p);
-    
-    var b = document.createElement("button");
-    b.ssidname = n;
-    b.textContent = "Connect to " + n;
-    b.addEventListener("click", function(e) {
-      fOTA.connect(e.currentTarget.ssidname).then(function(r) {
-        ons.notification.toast(r, { timeout: 2000 });
-      }).catch(function(e) {
-        alert(e);
-      });
-    });
-    d.appendChild(b);
   });
 }
+
 
 
 //_---------------------------------------------------------------------------
 function enbalewifiqc(){
   fble.sendjson({wifi:true});
+	var steptwo = document.getElementById("updateFirmwareStep2");
+  steptwo.style.display="block";
 }
 //-----------------------------------------------------------------------------
    function showfiles(){

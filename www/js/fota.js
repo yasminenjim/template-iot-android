@@ -391,10 +391,24 @@ return ret;
 var fOTA = {
 	foundSSIDList: [] // Initialize the foundSSIDList property as an empty array
   };
+  function hideRemainingSSIDs() {
+	var d = document.getElementById("divscanwifi");
+  
+	remainingSSIDs.forEach(function(ssid) {
+	  var p = d.querySelector("p[data-ssid='" + ssid + "']");
+	  if (p) {
+		p.style.display = "none";
+	  }
+	});
+  }
+  
+  var remainingSSIDs = []; // Array to store remaining SSIDs
   
   function scanwifi(f) {
 	var d = document.getElementById("divscanwifi");
 	d.innerHTML = ""; // Clear the existing content
+  
+	var fOTADisplayed = false; // Flag to track if fOTA has been displayed
   
 	WifiWizard2.scan().then(function(res) {
 	  console.log("scan " + JSON.stringify(res));
@@ -404,32 +418,102 @@ var fOTA = {
 	  var uniqueSSIDs = [...new Set(wifiArray)]; // Get unique SSIDs using Set
   
 	  uniqueSSIDs.forEach(function(ssid) {
-		if (typeof f === "function") f(ssid);
-		console.log("found SSID " + ssid);
-	  });
-  
-	  // Create a list element
-	  var list = document.createElement("ons-list");
-	  list.setAttribute("id", "my-custom-list"); // Set the desired ID for the list
-  
-	  // Iterate over the unique SSIDs
-	  uniqueSSIDs.forEach(function(ssid) {
-		// Check if the SSID is found in the foundSSIDList
-		if (fOTA.foundSSIDList.includes(ssid)) {
-		  // Create a list item for each found SSID
-		  var item = document.createElement("ons-list-item");
-		  item.textContent = ssid;
-		  list.appendChild(item);
+		if (ssid === "fOTA" && !fOTADisplayed) {
+		  displayFOTA(ssid);
+		  fOTADisplayed = true;
+		} else {
+		  remainingSSIDs.push(ssid); // Add the SSID to the remaining SSIDs array
 		}
 	  });
   
-	  // Append the list to the divscanwifi element
-	  d.appendChild(list);
+	  var showMoreBtn = document.createElement("button");
+	  showMoreBtn.innerHTML = "Show More";
+	  showMoreBtn.className = "show-more-btn";
+	  showMoreBtn.addEventListener("click", showMore);
+	  d.appendChild(showMoreBtn);
+  
 	  var spinn = document.getElementById("updSpinner");
 	  spinn.style.display = "none";
+  
+	  // Hide the remaining SSIDs initially
+	  hideRemainingSSIDs();
 	});
   }
   
+  function displayFOTA(ssid) {
+	var d = document.getElementById("divscanwifi");
+  
+	var p = document.createElement("p");
+	p.textContent = ssid;
+	p.setAttribute("data-ssid", ssid); // Add a data attribute to identify the SSID
+	p.classList.add("ssid-item"); // Add a class to the <p> element
+  
+	var wifiIcon = document.createElement("i");
+	wifiIcon.classList.add("fa-solid", "fa-wifi", "fa-beat");
+	wifiIcon.classList.add("wifi-icon");
+	p.appendChild(wifiIcon); // Append the wifi icon to the <p> element
+  
+	p.addEventListener("click", function(e) {
+	  var ssid = e.currentTarget.getAttribute("data-ssid");
+	  connected2ssid(ssid).then(function(r) {
+		ons.notification.toast("Connected to " + ssid, { timeout: 2000 });
+		p.style.color = "green";
+        p.style.fontWeight = "bold"; 
+        p.style.textDecoration = "underline"; 
+	  }).catch(function(e) {
+		alert(e);
+	  });
+	});
+  
+	d.appendChild(p);
+  }
+  
+  
+  
+  function showSSIDsList() {
+	var d = document.getElementById("divscanwifi");
+	d.innerHTML = ""; // Clear the existing content
+  
+	remainingSSIDs.forEach(function(ssid) {
+	  var p = document.createElement("p");
+	  p.textContent = ssid;
+	  p.setAttribute("data-ssid", ssid); // Add a data attribute to identify the SSID
+	  p.classList.add("ssid-item"); // Add a class to the <p> element
+	  d.appendChild(p);
+	});
+  
+	var showMoreBtn = document.createElement("button");
+	showMoreBtn.innerHTML = "Show More";
+	showMoreBtn.className = "show-more-btn";
+	showMoreBtn.addEventListener("click", showMore);
+	d.appendChild(showMoreBtn);
+  }
+  
+  function showMore() {
+	var d = document.getElementById("divscanwifi");
+	var showMoreBtn = document.querySelector(".show-more-btn");
+  
+	var uniqueRemainingSSIDs = [...new Set(remainingSSIDs)]; // Get unique remaining SSIDs
+  
+	// Clear the existing content
+	//d.innerHTML = "";
+  
+	uniqueRemainingSSIDs.forEach(function(ssid) {
+
+		var wifiIcon = document.createElement("i");
+
+	  var p = document.createElement("p");
+	  p.textContent = ssid;
+	  p.setAttribute("data-ssid", ssid); // Add a data attribute to identify the SSID
+	  p.classList.add("ssid-item"); // Add a class to the <p> element
+	  		wifiIcon.classList.add("fa-solid", "fa-wifi", "fa-beat");
+			  wifiIcon.classList.add("wifi-icon");
+		p.appendChild(wifiIcon); // Append the wifi icon to the <p> element
+	  d.appendChild(p);
+	});
+  
+	showMoreBtn.style.display = "none"; // Hide the "Show More" button
+  }
   
 //-----------------------------------------------------------------------------
 function checkfnc(){

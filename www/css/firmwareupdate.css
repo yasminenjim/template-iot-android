@@ -29,3 +29,27 @@
   .my-custom-list{
     font-size: 14px; margin-top: 17px;
   }
+  .show-more-btn{
+    background-color: transparent;
+    margin-left: 11px;
+    color: black;
+    box-shadow: none;
+    font-weight: initial;
+  
+  }
+
+  .ssid-item{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 22px;
+    background-color: transparent;
+    /* width: 55px; */
+    /* -webkit-text-decorations-in-effect: revert; */
+    text-decoration: underline;
+  }
+.wifi-icon{
+  font-weight: 900;
+  font-size: 12px;
+  margin-left: 27px;
+  margin-top: 26px;
+}
