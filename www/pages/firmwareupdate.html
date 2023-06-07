@@ -7,36 +7,42 @@
 </ons-toolbar>
 
 <div id="mainContentUpdate">
-  <ons-card id="updateFirmware" class="m-2" style="margin: 7px;  border-radius: 4%; display: none;">
+  <ons-button modifier="large" onclick="getinfo()" style="    background-color: grey;
+  border-radius: 0;">get device info</ons-button> 	    
+  <div id="deviceinfo" style="font-size: 18;display: none;" ></div>  
+  <ons-card id="updateFirmware" class="m-2" style="margin: 7px; border-radius: 4%; display: none;">
     <ons-row>
       <ons-col>
         <div class="text-center">
-          <h4>Firmware update</h4>
+          <h4>Device Info</h4>
         </div>
       </ons-col>
     </ons-row>
-
+  
     <ons-list class="mt-2 mb-3">
-        <ons-list-item id="">
-          <div class="center">
-            <span class="list-item__title" mlang="currentVersion" style="color: #094860;font-weight:600;">Current version</span>
-            <span id="currentVersionTxt" fvar='{name:"send.version"}' class="list-item__subtitle">N/A</span>
-          </div>
-        </ons-list-item>
-          <ons-list-item id="">
-            <div class="center">
-              <span class="list-item__title" mlang="availableVersion" style="color: #094860;font-weight:600;">Available version</span>
-              <span id="vviaweb" class="list-item__subtitle" mlang="loadFirmwareDataClick">Please load firmware</span>
-            </div>
-          </ons-list-item>
-        <ons-list-item id="" modifier="nodivider">
-            <div class="center">
-              <span class="list-item__title" mlang="ipYouvee" style="color: #094860;font-weight:600;">IP-Adresse QC</span>
-              <span id="idiv2" fvar='{name:"d2.IP"}' class="list-item__subtitle">N/A</span>
-            </div>
-        </ons-list-item>
+      <ons-list-item>
+        <div class="center">
+          <span class="list-item__title" style="color: #094860;font-weight:600;">Device Name:</span>
+          <span id="deviceName" class="list-item__subtitle"></span>
+        </div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">
+          <span class="list-item__title" style="color: #094860;font-weight:600;">Current Version:</span>
+          <span id="currentVersion" class="list-item__subtitle"></span>
+        </div>
+      </ons-list-item>
+      <ons-list-item modifier="nodivider">
+        <div class="center">
+          <span class="list-item__title" style="color: #094860;font-weight:600;">Date:</span>
+          <span id="date" class="list-item__subtitle"></span>
+        </div>
+      </ons-list-item>
     </ons-list>
   </ons-card>
+  
+  
+
 
 
   <ons-card id="updateFirmwareStep1" class="m-2" style="margin: 7px;  border-radius: 4%;">
@@ -83,7 +89,7 @@
     <ons-row>
       <ons-col>
         <div class="text-center text-medium">
-          <h4><span id="stepNumber2" style="font-weight: bolder;">Step 3</span><span mlang="connectViaWifi">: Download latest Frimware</span></h4>
+          <h4><span id="stepNumber2" style="font-weight: bolder;">Step 3</span><span mlang="connectViaWifi">: Download Frimware</span></h4>
           <p>Please stay connected during the download process</p>
         </div>
       </ons-col>
@@ -137,8 +143,8 @@
         <button id="uploadbtn" class="mx-auto" onclick="startupload()" disabled="true">
           Upload to device
         </button>
-    <progress id="upprogress" value="0" max="100" style="height: 9px;width: 90%;"></progress>
-    <div id="uppercent" style="font-size: 12px;" ></div>
+   <progress id="upprogress" value="0" max="100"  style="height:15px;width:90%;"> </progress>
+	  <div id="uppercent" ></div>
   </ons-col>
 </ons-row>
   </ons-card>
@@ -157,6 +163,8 @@ function gotomobilesettings(){
 cordova.plugins.diagnostic.switchToMobileDataSettings();
 }
 function startdownload(){
+  var step4=document.getElementById("updateFirmwareStep4");
+      step4.style.display="block";
 fOTA.isconnectedtointernet().then((r)=>{
 if (r) {
 var inp=document.getElementById("dwn_fn").value;  
@@ -175,12 +183,15 @@ else {
 },(e)=>{
 ons.notification.toast("not connected to internet",{timeout:3000});});
       if (confirm("mobile settings")) gotomobilesettings();
+      var step4=document.getElementById("updateFirmwareStep4");
+      step4.style.display="block";
            } 
 //-----------------------------------------------------------------------------
 function startScanWifi() {
   var spinn = document.getElementById("updSpinner");
   spinn.style.display = "inline-flex";
-
+ var step3=document.getElementById("updateFirmwareStep3");
+ step3.style.display="block";
   remainingSSIDs = []; // Reset the remaining SSIDs array
 
   fOTA.scanwifi(function(n) {
@@ -195,11 +206,10 @@ function startScanWifi() {
     wifiIcon.classList.add("fa-solid", "fa-wifi");
     p.appendChild(wifiIcon); // Append the Wi-Fi icon to the <p> element
     d.appendChild(p);
+    getinfo();
   });
 }
-
-
-
+//getinfo();
 //_---------------------------------------------------------------------------
 function enbalewifiqc(){
   fble.sendjson({wifi:true});
@@ -250,19 +260,29 @@ function startupload(){
     fOTA.upload();
  }
               }
+            
 //-----------------------------------------------------------------------------
-function getinfo(){
-var d=document.getElementById("deviceinfo");             
-fOTA.isconnectedtodevice().then((r)=>{
-       document.getElementById("uploadbtn").disabled=false;
- console.log("isconnected to device "+r);
-       d.innerHTML=JSON.stringify(r);
-},(e)=>{
- console.log("not connected to device "+e);
-  d.innerHTML=e;
+
+function getinfo() {
+  var d = document.getElementById("deviceinfo");
+
+  fOTA.isconnectedtodevice().then(function(response) {
+    console.log("isconnected to device", response);
+    d.innerHTML = JSON.stringify(response);
+
+    document.getElementById("deviceName").textContent = response.pn;
+    document.getElementById("currentVersion").textContent = response.version;
+    document.getElementById("date").textContent = response.cdate;
+    document.getElementById("updateFirmware").style.display = "block";
+  }).catch(function(error) {
+    console.log("not connected to device", error);
+    d.innerHTML = error;
+  });
+
+  console.log("calling getinfo function");
 }
-   );
-         }
+
+         
 function clearfiles(){
 fOTA.clear(); // clear all
 }
